@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /// <summary>
+    /// 碎片队列
+    /// </summary>
+    public List<BaseFragment> fragmentList = new List<BaseFragment>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    /// <summary>
+    /// 仓库物品队列
+    /// </summary>
+    public List<BaseObject> baseList = new List<BaseObject>();
 }

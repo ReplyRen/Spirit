@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StaticMethod : MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class StaticMethod : MonoBehaviour
     /// <param name="str"></param>
     public static void Tips(string str)
     {
-        
+        GameObject obj = Instantiate(LoadPrefab("Prefab/TipPanel"));
+        obj.transform.SetParent(GameObject.FindWithTag("Canvas").transform,false);
+        obj.GetComponent<TipPanel>().Show(str);
     }
-    
+
     /// <summary>
     /// 加载图片
     /// </summary>
@@ -33,6 +36,7 @@ public class StaticMethod : MonoBehaviour
 
         return sprite;
     }
+
     /// <summary>
     /// 加载预制体
     /// </summary>
