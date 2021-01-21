@@ -17,7 +17,7 @@ public class pm : MonoBehaviour
         }
         text.text = n.ToString();
     }
-    public void plus()
+    public void Plus()
     {
         n++;
         if (n > 5) n = 5;

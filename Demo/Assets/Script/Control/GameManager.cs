@@ -13,4 +13,10 @@ public class GameManager : MonoBehaviour
     /// 仓库物品队列
     /// </summary>
     public List<BaseObject> baseList = new List<BaseObject>();
+
+    public Dictionary<string, BaseFragment> valuePairs = new Dictionary<string, BaseFragment>();
+    private void Start()
+    {
+        
+    }
 }
