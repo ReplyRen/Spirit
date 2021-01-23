@@ -40,4 +40,12 @@ public class FragmentsManager
         foreach (var fragment in newFragments)
             fragments.Add(fragment);
     }
+    /// <summary>
+    /// 返回确认时候圆盘上的碎片
+    /// </summary>
+    /// <returns></returns>
+    /*public static List<BaseFragment> RetrueFragments()
+    {
+        //return FragmentsManager.GetFragments();
+    }*/
 }

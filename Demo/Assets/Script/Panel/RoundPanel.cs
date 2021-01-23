@@ -10,7 +10,6 @@ public class RoundPanel : BasePanel
     {
         roundPanel = GameObject.Find("RoundPanel");
     }
-
     // Update is called once per frame
     private static void UpdatePanel()
     {
