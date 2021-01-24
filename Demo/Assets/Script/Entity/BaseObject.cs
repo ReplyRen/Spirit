@@ -18,4 +18,9 @@ public class BaseObject
     /// 物品的描述
     /// </summary>
     public string description;
+
+    /// <summary>
+    /// 属性数据
+    /// </summary>
+    public Element element;
 }
