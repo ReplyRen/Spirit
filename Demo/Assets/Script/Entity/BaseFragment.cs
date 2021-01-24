@@ -17,6 +17,7 @@ public class BaseFragment
     /// 名称
     /// </summary>
     public string name;
+
     /// <summary>
     /// 描述
     /// </summary>
@@ -31,12 +32,16 @@ public class BaseFragment
     /// 对应游戏物体
     /// </summary>
     public GameObject obj;
-    
 
     /// <summary>
     /// 持续时间
     /// </summary>
-    public int duration;
+    public int duration = 1;
+
+    /// <summary>
+    /// 属性数据
+    /// </summary>
+    public Element element;
 
     public void DurationDecrease()
     {
