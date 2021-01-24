@@ -12,7 +12,8 @@ public enum FragmentModel
 
 public class BaseFragment
 {
-    
+
+
     /// <summary>
     /// 名称
     /// </summary>
@@ -43,12 +44,21 @@ public class BaseFragment
     /// </summary>
     public Element element;
 
+    /// <summary>
+    /// 对应酒基
+    /// </summary>
+    public BaseObject baseObject;
+
+    /// <summary>
+    /// 是否完成
+    /// </summary>
+    public bool finished = false;
     public void DurationDecrease()
     {
         duration--;
         if (duration <= 0)
         {
-            
+            finished = true;
         }
     }
 }
