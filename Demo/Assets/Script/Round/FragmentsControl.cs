@@ -22,6 +22,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     public GameObject round;                //圆盘
     public GameObject information;          //信息牌
     private RectTransform roundRect;        //圆盘的rect
+    private GameObject line;                //提示线
+    private RectTransform lineRect;         //线的rect
 
     /// <summary>
     /// 两个bool值用来调整拖动逻辑的
@@ -37,6 +39,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// </summary>
     private bool inRound;
     private const float exp = (float)Math.PI * 2 / 360;
+    private bool lineActive;
     /// <summary>
     /// 偏移量与缩放
     /// </summary>
@@ -54,11 +57,14 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         parent = transform.parent;
         parentRect = parent.GetComponent<RectTransform>();
         roundRect = round.GetComponent<RectTransform>();
+        line = round.transform.GetChild(0).gameObject;
+        lineRect = line.GetComponent<RectTransform>();
         firstTime[0] = true;
         firstTime[1] = true;
         endDrag = false;
         inRound = false;
         ifClose = true;
+        lineActive = false;
     }
 
     /// <summary>
@@ -125,6 +131,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             //与round的交互
             if (Vector2.Distance(imgRect.anchoredPosition, roundRect.anchoredPosition) < 500f)
             {
+                ShowLine();
                 Vector2 vector2 = imgRect.anchoredPosition - roundRect.anchoredPosition;
                 float angle = Vector2.Angle(new Vector2(1, 0), vector2);
                 if (imgRect.anchoredPosition.y > roundRect.anchoredPosition.y)
@@ -132,9 +139,12 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 else
                     imgRect.localEulerAngles = new Vector3(0, 0, 360-angle);
                 inRound = true;
+                int index = (int)imgRect.localEulerAngles.z / 6;
+                lineRect.localEulerAngles = new Vector3(0, 0, index * 6);
             }
             else
             {
+                HideLine();
                 imgRect.localEulerAngles = new Vector3(0, 0, 0);
                 inRound = false;
             }
@@ -157,6 +167,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         offset = Vector2.zero;
+        HideLine();
     }
 
     /// <summary>
@@ -177,6 +188,16 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             int index = (int)imgRect.localEulerAngles.z / 6;
             imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2((float)Math.Cos(index * 6 * exp), (float)Math.Sin(index * 6 * exp)) * 300f;
             imgRect.localEulerAngles = new Vector3(0, 0, index * 6);
+        }
+        else
+        {
+            RectTransform rectTransform = imgRect;
+            transform.SetParent(parent);
+            ChangeChildOrder();
+            imgRect = rectTransform;
+            firstTime[1] = true;
+            endDrag = true;
+            imgRect.localScale = imgReduceScale;
         }
     }
 
@@ -232,5 +253,21 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
         information.SetActive(false);
         ifClose = true;
+    }
+    private void ShowLine()
+    {
+        if(!lineActive)
+        {
+            line.SetActive(true);
+            lineActive = true;
+        }
+    }
+    private void HideLine()
+    {
+        if(lineActive)
+        {
+            line.SetActive(false);
+            lineActive = false;
+        }
     }
 }
