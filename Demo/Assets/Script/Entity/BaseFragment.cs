@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public enum FragmentModel
 {
-    singleConcave, singleConvex, doubleConvex, halfConcaveAndConvex
+    thirty, sixty, ninety, oneHundredAndTwenty
 }
 
 public class BaseFragment

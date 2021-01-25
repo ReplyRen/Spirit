@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler,
     IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    public BaseFragment fragmentInformation;
     /// <summary>
     /// 鼠标拖动模块变量
     /// </summary>
@@ -24,6 +25,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     private RectTransform roundRect;        //圆盘的rect
     private GameObject line;                //提示线
     private RectTransform lineRect;         //线的rect
+    private GameObject angleTip;            //提示模板
+    private RectTransform angleTipRect;
 
     /// <summary>
     /// 两个bool值用来调整拖动逻辑的
@@ -44,10 +47,10 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// 偏移量与缩放
     /// </summary>
     Vector2 offset = new Vector3();    //用来得到鼠标和图片的差值
-    Vector3 imgReduceScale = new Vector3(2f, 2f, 1);   //设置图片缩放
-    Vector3 imgNormalScale = new Vector3(1, 1, 1);   //正常大小
+    Vector3 imgReduceScale = new Vector3(1f, 1f, 1);   //设置图片缩放
+    Vector3 imgMovingScale = new Vector3(0.6f, 0.6f, 1);
+    Vector3 imgNormalScale = new Vector3(0.4f, 0.4f, 1);   //正常大小
 
-    public string fragmentName;
     // Use this for initialization
     void Start()
     {
@@ -65,6 +68,27 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         inRound = false;
         ifClose = true;
         lineActive = false;
+        
+
+        switch(/*fragmentInformation.model*/FragmentModel.thirty)
+        {
+            case FragmentModel.thirty:
+                angleTip = round.transform.GetChild(1).gameObject;
+                angleTipRect = angleTip.GetComponent<RectTransform>();
+                break;
+            case FragmentModel.sixty:
+                angleTip = round.transform.GetChild(2).gameObject;
+                angleTipRect = angleTip.GetComponent<RectTransform>();
+                break;
+            case FragmentModel.ninety:
+                angleTip = round.transform.GetChild(3).gameObject;
+                angleTipRect = angleTip.GetComponent<RectTransform>();
+                break;
+            case FragmentModel.oneHundredAndTwenty:
+                angleTip = round.transform.GetChild(4).gameObject;
+                angleTipRect = angleTip.GetComponent<RectTransform>();
+                break;
+        }
     }
 
     /// <summary>
@@ -92,7 +116,6 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             //计算图片中心和鼠标点的差值
             offset = imgRect.anchoredPosition - mouseUguiPos;
         }
-        endDrag = false;
         Debug.Log(offset);
     }
 
@@ -102,7 +125,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnDrag(PointerEventData eventData)
     {
-        if (offset.x < -618.0f && offset.x > -775f && offset.y < -474.0f && offset.y > -622.1f) 
+        //if (offset.x < -618.0f && offset.x > -775f && offset.y < -474.0f && offset.y > -622.1f) 
         {
             Vector2 mouseDrag = eventData.position;   //当鼠标拖动时的屏幕坐标
             Vector2 uguiPos = new Vector2();   //用来接收转换后的拖动坐标
@@ -115,7 +138,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 transform.SetParent(transform.parent.parent);
                 imgRect = rectTransform;
                 firstTime[1] = false;
-                imgRect.localScale = imgNormalScale;
+                imgRect.localScale = imgMovingScale;
             }
             if (!firstTime[1] && Math.Abs(prePosition.x - imgRect.anchoredPosition.x) < 100f)
             {
@@ -133,14 +156,17 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             {
                 ShowLine();
                 Vector2 vector2 = imgRect.anchoredPosition - roundRect.anchoredPosition;
-                float angle = Vector2.Angle(new Vector2(1, 0), vector2);
-                if (imgRect.anchoredPosition.y > roundRect.anchoredPosition.y)
-                    imgRect.localEulerAngles = new Vector3(0, 0, angle);
+                float angle = Vector2.Angle(new Vector2(0, 1), vector2);
+                if (imgRect.anchoredPosition.x > roundRect.anchoredPosition.x)
+                    imgRect.localEulerAngles = new Vector3(0, 0, 360 - angle);
                 else
-                    imgRect.localEulerAngles = new Vector3(0, 0, 360-angle);
+                    imgRect.localEulerAngles = new Vector3(0, 0, angle);
                 inRound = true;
-                int index = (int)imgRect.localEulerAngles.z / 6;
+                int index = (int)(imgRect.localEulerAngles.z + 3) / 6;
                 lineRect.localEulerAngles = new Vector3(0, 0, index * 6);
+                angleTipRect.localEulerAngles = new Vector3(0, 0, index * 6);
+                if(endDrag)
+                    imgRect.localScale = imgMovingScale;
             }
             else
             {
@@ -157,6 +183,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             }
             if (!ifClose)
                 HideInformation();
+            if(endDrag)
+                endDrag = false;
         }
     }
 
@@ -186,8 +214,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         if(inRound)
         {
             int index = (int)imgRect.localEulerAngles.z / 6;
-            imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2((float)Math.Cos(index * 6 * exp), (float)Math.Sin(index * 6 * exp)) * 300f;
+            imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 6 * exp), (float)Math.Cos(index * 6 * exp)) * 200f;
             imgRect.localEulerAngles = new Vector3(0, 0, index * 6);
+            imgRect.localScale = imgReduceScale;
         }
         else
         {
@@ -212,7 +241,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             imgRect.localScale = imgReduceScale;   //变化图片
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
             ShowInformation();
-        }  
+        }
     }
 
     /// <summary>
@@ -221,9 +250,11 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnPointerExit(PointerEventData eventData)
     {
-        imgRect.localScale = imgNormalScale;   //恢复图片
         if (firstTime[1])
+        {
+            imgRect.localScale = imgNormalScale;   //恢复图片
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
+        }   
         HideInformation();
     }
     /// <summary>
@@ -259,7 +290,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         if(!lineActive)
         {
             line.SetActive(true);
+            angleTip.SetActive(true);
             lineActive = true;
+
         }
     }
     private void HideLine()
@@ -267,6 +300,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         if(lineActive)
         {
             line.SetActive(false);
+            angleTip.SetActive(false);
             lineActive = false;
         }
     }

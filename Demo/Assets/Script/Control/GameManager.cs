@@ -213,17 +213,17 @@ public class GameManager : MonoBehaviour
         fragment.description = ss[11];
         switch (ss[12])
         {
-            case "单凸":
-                fragment.model = FragmentModel.singleConvex;
+            case "30":
+                fragment.model = FragmentModel.thirty;
                 break;
-            case "单凹":
-                fragment.model = FragmentModel.singleConcave;
+            case "60":
+                fragment.model = FragmentModel.sixty;
                 break;
-            case "双凸":
-                fragment.model = FragmentModel.doubleConvex;
+            case "90":
+                fragment.model = FragmentModel.ninety;
                 break;
-            case "半凹半凸":
-                fragment.model = FragmentModel.halfConcaveAndConvex;
+            case "120":
+                fragment.model = FragmentModel.oneHundredAndTwenty;
                 break;
         }
         return fragment;
