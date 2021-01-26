@@ -54,6 +54,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     // Use this for initialization
     void Start()
     {
+
         firstTime = new bool[2];
         canvas = GameObject.Find("Canvas").GetComponent<RectTransform>();
         imgRect = GetComponent<RectTransform>();
@@ -70,7 +71,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         lineActive = false;
         
 
-        switch(/*fragmentInformation.model*/FragmentModel.thirty)
+        switch(fragmentInformation.model)
         {
             case FragmentModel.thirty:
                 angleTip = round.transform.GetChild(1).gameObject;
@@ -238,7 +239,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
         if(firstTime[1])
         {
-            imgRect.localScale = imgReduceScale;   //变化图片
+            imgRect.localScale = imgMovingScale;   //变化图片
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
             ShowInformation();
         }

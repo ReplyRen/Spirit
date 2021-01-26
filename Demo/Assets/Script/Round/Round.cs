@@ -9,13 +9,13 @@ public class Round
     /// 0--无
     /// 1--满
     /// </summary>
-    public static int[] angleState;
+    public static bool[] angleState;
 
     public static void InitialAngle()
     {
-        angleState = new int[60];
+        angleState = new bool[60];
         for (int i = 0; i < 60; i++)
-            angleState[i] = 0;
+            angleState[i] = false;
     }
     /// <summary>
     /// 给出中心线位置判断是否可嵌入
@@ -27,6 +27,38 @@ public class Round
     /// <returns></returns>
     public static int PlaceRight(int index,FragmentModel fragmentModel)
     {
-        return 0;
+        int totalAngle = ((int)fragmentModel + 1) * 30;
+        for (int i = 0; i < totalAngle; i++) 
+        {
+            if (angleState[index - totalAngle / 2 + i])
+                return 0;
+        }
+        return 1;
+    }
+    /// <summary>
+    /// 放置碎片
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="fragmentModel"></param>
+    public static void PutFragment(int index, FragmentModel fragmentModel)
+    {
+        int totalAngle = ((int)fragmentModel + 1) * 30;
+        for (int i = 0; i < totalAngle; i++)
+        {
+            angleState[index - totalAngle / 2 + i] = true;
+        }
+    }
+    /// <summary>
+    /// 移出碎片
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="fragmentModel"></param>
+    public static void RemoveFragment(int index, FragmentModel fragmentModel)
+    {
+        int totalAngle = ((int)fragmentModel + 1) * 30;
+        for (int i = 0; i < totalAngle; i++)
+        {
+            angleState[index - totalAngle / 2 + i] = false;
+        }
     }
 }

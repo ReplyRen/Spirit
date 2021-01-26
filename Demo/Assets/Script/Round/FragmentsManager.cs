@@ -12,6 +12,10 @@ public class FragmentsManager
     {
         fragments.Clear();
     }
+    public static void InitialFragments()
+    {
+        fragments = new List<BaseFragment>();
+    }
     /// <summary>
     /// 获得碎片列
     /// </summary>
@@ -36,7 +40,8 @@ public class FragmentsManager
     /// <param name="newFragments"></param>
     public static void UpdateFragments(List<BaseFragment> newFragments)
     {
-        ClearFragments();
+        if (fragments != null || fragments.Count != 0)  
+            ClearFragments();
         foreach (var fragment in newFragments)
             fragments.Add(fragment);
     }
