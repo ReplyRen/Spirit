@@ -51,6 +51,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     Vector3 imgMovingScale = new Vector3(0.6f, 0.6f, 1);
     Vector3 imgNormalScale = new Vector3(0.4f, 0.4f, 1);   //正常大小
 
+    private int preIndex;           //纪录之前的序号，-1代表未在圆盘上
     // Use this for initialization
     void Start()
     {
@@ -69,7 +70,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         inRound = false;
         ifClose = true;
         lineActive = false;
-        
+        preIndex = -1;
 
         switch(fragmentInformation.model)
         {
@@ -126,6 +127,10 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnDrag(PointerEventData eventData)
     {
+        if (preIndex != -1)
+        {
+            Round.RemoveFragment(preIndex, fragmentInformation.model);
+        }
         //if (offset.x < -618.0f && offset.x > -775f && offset.y < -474.0f && offset.y > -622.1f) 
         {
             Vector2 mouseDrag = eventData.position;   //当鼠标拖动时的屏幕坐标
@@ -168,6 +173,14 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 angleTipRect.localEulerAngles = new Vector3(0, 0, index * 6);
                 if(endDrag)
                     imgRect.localScale = imgMovingScale;
+                if(Round.PlaceRight(index,fragmentInformation.model)==0)
+                {
+                    angleTip.GetComponent<Image>().color = Color.red - new Color(0, 0, 0, 0.5f);
+                }
+                else
+                {
+                    angleTip.GetComponent<Image>().color = Color.white - new Color(0, 0, 0, 0.5f);
+                }
             }
             else
             {
@@ -205,6 +218,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnEndDrag(PointerEventData eventData)
     {
+        int index = (int)imgRect.localEulerAngles.z / 6;
         offset = Vector2.zero;
         if (firstTime[1])
         {
@@ -212,12 +226,22 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
         }
         endDrag = true;
-        if(inRound)
+        if (inRound && Round.PlaceRight(index, fragmentInformation.model) == 1) 
         {
-            int index = (int)imgRect.localEulerAngles.z / 6;
             imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 6 * exp), (float)Math.Cos(index * 6 * exp)) * 200f;
             imgRect.localEulerAngles = new Vector3(0, 0, index * 6);
             imgRect.localScale = imgReduceScale;
+            if (preIndex != -1)
+            {
+                Round.RemoveFragment(preIndex, fragmentInformation.model);
+                Round.PutFragment(index, fragmentInformation.model);
+                preIndex = index;
+            }
+            else
+            {
+                Round.PutFragment(index, fragmentInformation.model);
+                preIndex = index;
+            }
         }
         else
         {
@@ -228,6 +252,11 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             firstTime[1] = true;
             endDrag = true;
             imgRect.localScale = imgReduceScale;
+            if (preIndex != -1)
+            {
+                Round.RemoveFragment(preIndex, fragmentInformation.model);
+                preIndex = -1;
+            }
         }
     }
 
