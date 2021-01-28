@@ -79,14 +79,114 @@ public class GameManager : MonoBehaviour
     {
         BaseObject baseObject = new BaseObject();
         baseObject.element = fragment.element + fragment.baseObject.element;
-
+        switch (fragment.name)
+        {
+            case "原、辅料准备":
+                baseObject.name = "原、辅料";
+                break;
+            case "粉碎润料":
+                baseObject.name = "原、辅料（碎）";
+                break;
+            case "蒸煮摊凉":
+                baseObject.name = "原、辅料（煮）";
+                break;
+            case "配料":
+                baseObject.name = "原、辅料（配）";
+                break;
+            case "修窖":
+                baseObject.name = "原、辅料（窖）";
+                break;
+            case "制曲、入曲":
+                baseObject.name = "原、辅料（加曲）";
+                break;
+            case "发酵":
+                baseObject.name = "酒醅";
+                break;
+            case "加原/辅料":
+                baseObject.name = "酒醅（加料）";
+                break;
+            case "上甑":
+                baseObject.name = "蒸馏产物（初）";
+                break;
+            case "蒸馏":
+                baseObject.name = "蒸馏产物";
+                break;
+            case "看花摘酒":
+                baseObject.name = "蒸馏产物（改）";
+                break;
+            case "陈酿":
+                baseObject.name = "原酒";
+                break;
+            case "勾调":
+                baseObject.name = "酒";
+                break;
+            case "灌装":
+                baseObject.name = "酒（产物）";
+                break;
+            case "鉴酒":
+                WineTasting(baseObject);
+                break;
+            default:
+                Debug.LogError("碎片转物品错误");
+                break;
+        }
         return baseObject;
     }
     private BaseFragment ObjectToFragment(BaseObject baseObject)
     {
         BaseFragment fragment = new BaseFragment();
-        string name;
+        List<string> name = new List<string>();
+        switch (baseObject.name)
+        {
+            case "原、辅料":
+                name.Add("");
+                break;
+            case "原、辅料（碎）":
+                name.Add("");
+                break;
+            case "原、辅料（煮）":
+                name.Add("");
+                break;
+            case "原、辅料（配）":
+                name.Add("");
+                break;
+            case "原、辅料（窖）":
+                name.Add("");
+                break;
+            case "原、辅料（加曲）":
+                name.Add("");
+                break;
+            case "酒醅":
+                name.Add("");
+                break;
+            case "酒醅（加料）":
+                name.Add("");
+                break;
+            case "蒸馏产物（初）":
+                name.Add("");
+                break;
+            case "蒸馏产物":
+                name.Add("");
+                break;
+            case "蒸馏产物（改）":
+                name.Add("");
+                break;
+            case "原酒":
+                name.Add("");
+                break;
+            case "酒":
+                name.Add("");
+                break;
+            case "酒（产物）":
+                name.Add("");
+                break;
+        }
 
+
+        foreach(var a in name)
+        {
+            fragmentDic.TryGetValue(a,out fragment);
+        }
         fragment.baseObject = baseObject;
         return fragment;
     }
@@ -124,7 +224,8 @@ public class GameManager : MonoBehaviour
         fragmentList.Clear();//清除碎片队列
         foreach (var a in baseList)
         {
-            fragmentList.Add(ObjectToFragment(a));//添加碎片队列
+            BaseFragment fragment = ObjectToFragment(a);
+            fragmentList.Add(fragment);//添加碎片队列
         }
     }
 
