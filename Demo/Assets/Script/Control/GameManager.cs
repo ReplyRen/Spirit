@@ -75,6 +75,33 @@ public class GameManager : MonoBehaviour
         WeatherData();
         UpdateFragment();
     }
+
+
+    /// <summary>
+    /// 更新仓库
+    /// </summary>
+    private void UpdateObject()
+    {
+        foreach (var a in fragmentOnDisc)//遍历圆盘上的碎片
+        {
+            a.DurationDecrease();//时间自减
+            if (a.finished)//如果完成了
+            {
+                if (a.name == "鉴酒")
+                {
+                    WineTasting(a.baseObject);
+                }
+                else
+                {
+                    if (a.baseObject != null)//移除仓库中此碎片的酒基
+                        baseList.Remove(a.baseObject);
+                    baseList.Add(FragmentToObject(a));//添加新酒基
+                }
+
+                fragmentOnDisc.Remove(a);//移除圆盘上此碎片
+            }
+        }
+    } 
     private BaseObject FragmentToObject(BaseFragment fragment)
     {
         BaseObject baseObject = new BaseObject();
@@ -132,90 +159,6 @@ public class GameManager : MonoBehaviour
         }
         return baseObject;
     }
-    private BaseFragment ObjectToFragment(BaseObject baseObject)
-    {
-        BaseFragment fragment = new BaseFragment();
-        List<string> name = new List<string>();
-        switch (baseObject.name)
-        {
-            case "原、辅料":
-                name.Add("");
-                break;
-            case "原、辅料（碎）":
-                name.Add("");
-                break;
-            case "原、辅料（煮）":
-                name.Add("");
-                break;
-            case "原、辅料（配）":
-                name.Add("");
-                break;
-            case "原、辅料（窖）":
-                name.Add("");
-                break;
-            case "原、辅料（加曲）":
-                name.Add("");
-                break;
-            case "酒醅":
-                name.Add("");
-                break;
-            case "酒醅（加料）":
-                name.Add("");
-                break;
-            case "蒸馏产物（初）":
-                name.Add("");
-                break;
-            case "蒸馏产物":
-                name.Add("");
-                break;
-            case "蒸馏产物（改）":
-                name.Add("");
-                break;
-            case "原酒":
-                name.Add("");
-                break;
-            case "酒":
-                name.Add("");
-                break;
-            case "酒（产物）":
-                name.Add("");
-                break;
-        }
-
-
-        foreach(var a in name)
-        {
-            fragmentDic.TryGetValue(a,out fragment);
-        }
-        fragment.baseObject = baseObject;
-        return fragment;
-    }
-
-    /// <summary>
-    /// 更新仓库
-    /// </summary>
-    private void UpdateObject()
-    {
-        foreach (var a in fragmentOnDisc)//遍历圆盘上的碎片
-        {
-            a.DurationDecrease();//时间自减
-            if (a.finished)//如果完成了
-            {
-                if (a.name == "鉴酒")
-                {
-                    WineTasting(a.baseObject);
-                }
-                else
-                {
-                    if (a.baseObject != null)//移除仓库中此碎片的酒基
-                        baseList.Remove(a.baseObject);
-                    baseList.Add(FragmentToObject(a));//添加新酒基
-                }
-
-                fragmentOnDisc.Remove(a);//移除圆盘上此碎片
-            }
-        }
-    }
     /// <summary>
     /// 仓检
     /// </summary>
@@ -228,6 +171,64 @@ public class GameManager : MonoBehaviour
             fragmentList.Add(fragment);//添加碎片队列
         }
     }
+    private BaseFragment ObjectToFragment(BaseObject baseObject)
+    {
+        BaseFragment fragment = new BaseFragment();
+        List<string> name = new List<string>();
+        switch (baseObject.name)
+        {
+            case "原、辅料":
+                name.Add("粉碎润料");
+                name.Add("蒸煮摊凉");
+                name.Add("配料");
+                break;
+            case "原、辅料（碎）":
+            case "原、辅料（煮）":
+            case "原、辅料（配）":
+                name.Add("修窖");
+                break;
+            case "原、辅料（窖）":
+                name.Add("制曲、入曲");
+                break;
+            case "原、辅料（加曲）":
+                name.Add("发酵");
+                break;
+            case "酒醅":
+                name.Add("加原/辅料");
+                name.Add("上甑");
+                name.Add("蒸馏");
+                break;
+            case "酒醅（加料）":
+            case "蒸馏产物（初）":
+                name.Add("蒸馏");
+                break;
+            case "蒸馏产物":
+                name.Add("看花摘酒");
+                name.Add("陈酿");
+                break;
+            case "蒸馏产物（改）":
+                name.Add("陈酿");
+                break;
+            case "原酒":
+                name.Add("勾调");
+                break;
+            case "酒":
+                name.Add("灌装");
+                break;
+            case "酒（产物）":
+                name.Add("鉴酒");
+                break;
+            default:
+                Debug.LogError("产物转碎片错误");
+                break;
+        }
+        foreach (var a in name)
+        {
+            fragmentDic.TryGetValue(a, out fragment);
+        }
+        fragment.baseObject = baseObject;
+        return fragment;
+    }
 
     /// <summary>
     /// 鉴酒
@@ -235,7 +236,7 @@ public class GameManager : MonoBehaviour
     /// <param name="baseObject"></param>
     private void WineTasting(BaseObject baseObject)
     {
-
+        Debug.Log("品酒会");
     }
 
     #endregion
