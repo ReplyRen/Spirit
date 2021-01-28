@@ -17,20 +17,26 @@ public class StoragePanel : MonoBehaviour
             card.description = i.ToString();
             storage.Add(card);
         }
-        for(int j=0;j<i;j++)
-        {
-            Debug.Log(storage[j].description);
-        }
     }
-    public void Add()
+    public void UpdateObjects()
     {
         panel.SetActive(true);
+        Debug.Log(storage.Count);
         for(int i=0;i<storage.Count;i++)
         {
-            GameObject a = new GameObject();
-            Text text = a.AddComponent(typeof(Text)) as Text;
-            text.text = storage[i].description;
-            
+            //GameObject storageObject = storage[i].gameObject;
+            GameObject storageObject = new GameObject();
+            GameObject temp = GameObject.Find("StoragePanel").transform.Find("Objects").gameObject;
+            storageObject.transform.SetParent(temp.transform);
+            //storageObject.sprite = storage[i].sprite;
+            //storageObject.name = storage[i].name;
+            //Text text;
+            SpriteRenderer sprite = storageObject.AddComponent<SpriteRenderer>();
+            Button btn = storageObject.AddComponent<Button>();
+            sprite.sprite = Resources.Load<Sprite>("Sprite/30");
+            storageObject.AddComponent<RectTransform>();
+            storageObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+            //text.text = storage[i].description;
             //text.text = i.ToString();
         }
     }
