@@ -4,40 +4,40 @@ using UnityEngine;
 
 public class ChangeData
 {
-    public static void Acid(ref BaseFragment fragment)
+    public static float Acid(ref BaseFragment fragment, float valueChange)
     {
-
+        return fragment.element.acid;
     }
-    public static void Ester(ref BaseFragment fragment)
+    public static float Ester(ref BaseFragment fragment, float valueChange)
     {
-
+        return fragment.element.ester;
     }
-    public static void Alcohol(ref BaseFragment fragment)
+    public static float Alcohol(ref BaseFragment fragment, float valueChange)
     {
-
+        return fragment.element.alcohol;
     }
-    public static void Microbe(ref BaseFragment fragment)
+    public static float Microbe(ref BaseFragment fragment, float valueChange)
     {
-
+        return fragment.element.microbe;
     }
-    public static void Yield(ref BaseFragment fragment)
+    public static float Yield(ref BaseFragment fragment, float valueChange)
     {
-
+        return fragment.element.yield;
     }
-    public static void Taste(ref BaseFragment fragment)
+    public static float Taste(ref BaseFragment fragment, float valueChange)
     {
-
+        return fragment.element.taste;
     }
-    public static void AdvancedAcid(ref BaseFragment fragment)
+    public static float AdvancedAcid(ref BaseFragment fragment, float valueChange)
     {
-
+        return fragment.element.advancedAcid;
     }
-    public static void AdvancedEster(ref BaseFragment fragment)
+    public static float AdvancedEster(ref BaseFragment fragment, float valueChange)
     {
-
+        return fragment.element.advancedEster;
     }
-    public static void AdvancedAlcohol(ref BaseFragment fragment)
+    public static float AdvancedAlcohol(ref BaseFragment fragment, float valueChange)
     {
-
+        return fragment.element.advancedAlcohol;
     }
 }
