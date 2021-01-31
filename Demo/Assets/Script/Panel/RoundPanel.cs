@@ -7,7 +7,6 @@ public class RoundPanel : BasePanel
     private bool ifFirstTime = true;
     /// <summary>
     /// 流程里面把Start隐藏掉直接调用下面两个就行了
-    /// 把testFragments也隐藏掉把
     /// </summary>
     void Start()
     {
@@ -19,7 +18,7 @@ public class RoundPanel : BasePanel
     /// <param name="newFragments">传fragmentList就行了</param>
     public void InitialRoundPanel(List<BaseFragment> newFragments)
     {
-        if (FragmentsManager.fragmentsOnRound.Count != 0 && FragmentsManager.fragmentsOnRound != null)
+        if (FragmentsManager.fragmentsOnRound != null && FragmentsManager.fragmentsOnRound.Count != 0) 
         {
             for (int i = FragmentsManager.fragmentsOnRound.Count - 1; i >= 0; i--)
             {
