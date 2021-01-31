@@ -254,6 +254,7 @@ public class UIManager : MonoBehaviour
         //ResetState();
         ResetOutline();
         temp = null;
+        gameObject.SetActive(false);
     }
     void Update()
     {

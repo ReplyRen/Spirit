@@ -54,7 +54,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        roundPanel.InitialRoundPanel(fragmentList);
+        InitGame();
+        Debug.Log(fragmentList.Count);
     }
 
     /// <summary>
@@ -65,6 +66,8 @@ public class GameManager : MonoBehaviour
         roundCount = 0;
         experience = 0;
         level = 1;
+        StartRound();
+        roundPanel.InitialRoundPanel(fragmentList);
     }
     /// <summary>
     /// 加载游戏
@@ -84,6 +87,8 @@ public class GameManager : MonoBehaviour
     public void SwitchClick()
     {
         fragmentOnDisc = roundPanel.HideRoundPanel();
+        uiManager.gameObject.SetActive(true);
+        uiManager.InitializeFactory(fragmentOnDisc);
     }
 
     #region 流程逻辑
@@ -201,11 +206,10 @@ public class GameManager : MonoBehaviour
             {
                 fragmentList.Add(f);//添加碎片队列
             }
-            BaseFragment fragment = new BaseFragment();
-            fragmentDic.TryGetValue("原、辅料准备", out fragment);
-            fragmentList.Add(fragment);
-
         }
+        BaseFragment fragment = new BaseFragment();
+        fragmentDic.TryGetValue("原、辅料准备", out fragment);
+            fragmentList.Add(fragment);
     }
     private List<BaseFragment> ObjectToFragment(BaseObject baseObject)
     {
