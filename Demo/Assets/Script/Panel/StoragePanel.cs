@@ -5,43 +5,51 @@ using UnityEngine.UI;
 
 public class StoragePanel : MonoBehaviour
 {
-    public List<BaseObject> storage = new List<BaseObject>();
-    //BaseObject card=new BaseObject();
+    public List<BaseObject> storageUI = new List<BaseObject>();
+    GameObject temp;
     public GameObject panel;
-    void Start()
+    //更新物品list
+    public void UpdateList()
     {
-        int i;
-        for (i = 0; i < 10; i++)
+        storageUI.Clear();
+        //storageUI = GameObject.Find("GameManager").GetComponent<GameManager>().baseList;
+        temp = GameObject.Find("FactoryPanel").transform.Find("StoragePanel/Objects").gameObject;
+        for (int i = 0; i < 10/*storageUI。count*/; i++)
         {
             BaseObject card = new BaseObject();
             card.description = i.ToString();
-            storage.Add(card);
+            storageUI.Add(card);
+            card.storageObject.name = card.description;
+            storageUI[i].storageObject.transform.SetParent(temp.transform);
         }
     }
+    //更新物品
     public void UpdateObjects()
     {
-        panel.SetActive(true);
-        Debug.Log(storage.Count);
-        for(int i=0;i<storage.Count;i++)
+        for(int i=0;i<storageUI.Count;i++)
         {
-            //GameObject storageObject = storage[i].gameObject;
-            GameObject storageObject = new GameObject();
-            GameObject temp = GameObject.Find("StoragePanel").transform.Find("Objects").gameObject;
-            storageObject.transform.SetParent(temp.transform);
-            //storageObject.sprite = storage[i].sprite;
-            //storageObject.name = storage[i].name;
-            //Text text;
-            SpriteRenderer sprite = storageObject.AddComponent<SpriteRenderer>();
-            Button btn = storageObject.AddComponent<Button>();
-            sprite.sprite = Resources.Load<Sprite>("Sprite/30");
-            storageObject.AddComponent<RectTransform>();
-            storageObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-            //text.text = storage[i].description;
-            //text.text = i.ToString();
+            Image img = storageUI[i].storageObject.AddComponent<Image>();
+            img.sprite = Resources.Load<Sprite>("Sprite/30");
+            Button btn = storageUI[i].storageObject.AddComponent<Button>();
+            btn.onClick.AddListener(ShowDescription);
+            btn.targetGraphic = img;
+            storageUI[i].storageObject.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         }
     }
-    void Update()
+    //显示描述
+    public void ShowDescription()
     {
-        //Debug.Log(storage.Count);
+        var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+        Text text = GameObject.Find("StoragePanel/Description").GetComponent<Text>();
+        text.text = storageUI[btn.transform.GetSiblingIndex()].description;
+    }
+    public void Show()
+    {
+        panel.SetActive(true);
+    }
+    void Start()
+    {
+        UpdateList();
+        UpdateObjects();
     }
 }
