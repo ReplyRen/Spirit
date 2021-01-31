@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    
     /// <summary>
     /// 已过回合数
     /// </summary>
@@ -34,10 +35,26 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public List<BaseObject> baseList = new List<BaseObject>();
 
-    private void Start()
+    /// <summary>
+    /// 圆盘
+    /// </summary>
+    public RoundPanel roundPanel;
+
+    /// <summary>
+    /// 工厂
+    /// </summary>
+    public UIManager uiManager;
+
+    private void Awake()
     {
+        roundPanel = GameObject.FindWithTag("RoundPanel").GetComponent<RoundPanel>();
+        uiManager = GameObject.FindWithTag("FactoryPanel").GetComponent<UIManager>();
         LoadData();
         InitGame();
+    }
+    private void Start()
+    {
+        roundPanel.InitialRoundPanel(fragmentList);
     }
 
     /// <summary>
@@ -57,11 +74,23 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void NextRoundClick()
+    {
+        EndRound();
+        StartRound();
+        roundPanel.InitialRoundPanel(fragmentList);
+    }
+
+    public void SwitchClick()
+    {
+        fragmentOnDisc = roundPanel.HideRoundPanel();
+    }
+
     #region 流程逻辑
     /// <summary>
     /// 下一回合
     /// </summary>
-    private void NextRound()
+    public void EndRound()
     {
         UpdateObject();
     }
@@ -167,13 +196,20 @@ public class GameManager : MonoBehaviour
         fragmentList.Clear();//清除碎片队列
         foreach (var a in baseList)
         {
-            BaseFragment fragment = ObjectToFragment(a);
-            fragmentList.Add(fragment);//添加碎片队列
+            List<BaseFragment> fragments = ObjectToFragment(a);
+            foreach(var f in fragments)
+            {
+                fragmentList.Add(f);//添加碎片队列
+            }
+            BaseFragment fragment = new BaseFragment();
+            fragmentDic.TryGetValue("原、辅料准备", out fragment);
+            fragmentList.Add(fragment);
+
         }
     }
-    private BaseFragment ObjectToFragment(BaseObject baseObject)
+    private List<BaseFragment> ObjectToFragment(BaseObject baseObject)
     {
-        BaseFragment fragment = new BaseFragment();
+        List<BaseFragment> fragments = new List<BaseFragment>();
         List<string> name = new List<string>();
         switch (baseObject.name)
         {
@@ -224,10 +260,12 @@ public class GameManager : MonoBehaviour
         }
         foreach (var a in name)
         {
+            BaseFragment fragment = new BaseFragment();
             fragmentDic.TryGetValue(a, out fragment);
+            fragment.baseObject = baseObject;
+            fragments.Add(fragment);
         }
-        fragment.baseObject = baseObject;
-        return fragment;
+        return fragments;
     }
 
     /// <summary>

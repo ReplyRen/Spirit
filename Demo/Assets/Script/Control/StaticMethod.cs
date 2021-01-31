@@ -15,7 +15,7 @@ public class StaticMethod : MonoBehaviour
         obj.transform.SetParent(GameObject.FindWithTag("Canvas").transform,false);
         obj.GetComponent<TipPanel>().Show(str);
     }
-
+    
     /// <summary>
     /// 加载图片
     /// </summary>

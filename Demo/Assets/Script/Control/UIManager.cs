@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     public List<GameObject> buttonList = new List<GameObject>();
     public List<GameObject> panelList = new List<GameObject>();
     public List<Image> gridList = new List<Image>();
-    public List<BaseFragment> fragmentsOnDisc = GameObject.Find("Main Camera").GetComponent<GameManager>().fragmentOnDisc;
+    public List<BaseFragment> fragmentsOnDisc;
     public GameObject temp;
     public Slider status;
     public Slider statusSet;
@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
             Destroy(this);
         instance = this;
     }
+   
     public void SetState(string name)
     {
         temp = GameObject.Find(name);
@@ -241,6 +242,7 @@ public class UIManager : MonoBehaviour
     //
     void Start()
     {
+        fragmentsOnDisc = GameObject.Find("Main Camera").GetComponent<GameManager>().fragmentOnDisc;
         int i;
         for (i = 1; i < num+1; i++)/// 初始化list
         {
