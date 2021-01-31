@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public List<GameObject> buttonList = new List<GameObject>();
     public List<GameObject> panelList = new List<GameObject>();
     public List<Image> gridList = new List<Image>();
+    public List<BaseFragment> fragmentsOnDisc = GameObject.Find("Main Camera").GetComponent<GameManager>().fragmentOnDisc;
     public GameObject temp;
     public Slider status;
     public Slider statusSet;
@@ -27,6 +28,14 @@ public class UIManager : MonoBehaviour
             Destroy(this);
         instance = this;
     }
+    public void SetState(string name)
+    {
+        temp = GameObject.Find(name);
+        temp.GetComponent<UIObject>().isUse = true;
+        temp = null;
+    }
+
+
     //打开/关闭panel
     public void OpenUI()
     {
@@ -98,6 +107,8 @@ public class UIManager : MonoBehaviour
         buttonList[currentUI].GetComponent<Outline>().enabled = false;
         temp = GameObject.Find(panelList[currentUI].name + "/Confirm");
         temp.SetActive(false);
+        temp = GameObject.Find(panelList[currentUI].name + "/QuickSet");
+        temp.SetActive(false);
         CloseUI();
         for(int i=0;i<num;i++)
         {
@@ -141,17 +152,59 @@ public class UIManager : MonoBehaviour
         }
         OpenUI();
     }
-    //
-    //重置相关
-    public void ResetState()
+    
+    #region 初始化相关
+    public void ResetState()///初始化工厂
     {
         for(int i=0;i<num;i++)
         {
             buttonList[i].GetComponent<UIObject>().isUse = false;
             buttonList[i].GetComponent<UIObject>().isConfirm = false;
         }
+        for(int i=0;i< fragmentsOnDisc.Count; i++)
+        {
+            switch (fragmentsOnDisc[i].name)
+            {
+                case "原、辅料准备": 
+                    SetState("Purchase");
+                    break;
+                case "粉碎、润料":
+                    SetState("Smash");
+                    break;
+                case "配料":
+                    SetState("Store");
+                    break;
+                case "蒸煮、摊凉":
+                    SetState("Cook");
+                    break;
+                case "修窖": case "制曲、入曲": case "发酵":case "加原/辅料":
+                    SetState("Pits");
+                    break;
+                case "上甑":
+                    SetState("Steamer");
+                    break;
+                case "蒸馏": case "看花摘酒":
+                    SetState("Distillation");
+                    break;
+                case "陈酿":
+                    SetState("Cellar");
+                    break;
+                case "勾兑/勾调":
+                    SetState("Mix");
+                    break;
+                case "离心杀菌":
+                    SetState("Centrifugation");
+                    break;
+                case "灌装":
+                    SetState("Bottle");
+                    break;
+                case "鉴酒":
+                    SetState("Show");
+                    break;
+            }
+        }
     }
-    public void ResetOutline()
+    public void ResetOutline()///初始化高亮
     {
         for(int i=0;i<num;i++)
         {
@@ -159,8 +212,15 @@ public class UIManager : MonoBehaviour
             else buttonList[i].GetComponent<Outline>().enabled = false;
         }
     }
+    #endregion
+    
+    //快速设置
+    public void QuickSet()
+    {
+
+    }
     //
-    public void NerxtDay()
+    public void NextDay()
     {
         ResetState();
         ResetOutline();
@@ -171,9 +231,8 @@ public class UIManager : MonoBehaviour
     //
     void Start()
     {
-        
         int i;
-        for (i = 2; i < num+2; i++)/// 初始化list
+        for (i = 1; i < num+1; i++)/// 初始化list
         {
             temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
             temp.GetComponent<UIObject>().isConfirm = false;
