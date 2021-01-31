@@ -107,19 +107,6 @@ public class UIManager : MonoBehaviour
         temp = GameObject.FindWithTag("QuickSet");
         temp.SetActive(false);
         CloseUI();
-        for(int i=0;i<num;i++)
-        {
-            if (buttonList[i].transform.GetComponent<UIObject>().isUse && !buttonList[i].transform.GetComponent<UIObject>().isConfirm) 
-            {
-                break;
-            }
-            if (i == 11)
-                isLast = true;
-        }
-        if(isLast)
-        {
-            buttonList[13].SetActive(true);
-        }
     }
     //
     //上一个/下一个panel
@@ -127,7 +114,7 @@ public class UIManager : MonoBehaviour
     {
         panelList[currentUI].SetActive(false);
         currentUI++;
-        if (currentUI > 11)
+        if (currentUI > num - 1) 
             currentUI = 0;
         while (!buttonList[currentUI].transform.GetComponent<UIObject>().isUse)
         {
@@ -154,6 +141,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void InitializeFactory(List<BaseFragment> newList)
     {
+        panelList[13].SetActive(true);
         fragmentsOnDisc = newList;
         ResetState();
         ResetOutline();
@@ -226,35 +214,30 @@ public class UIManager : MonoBehaviour
     //
     public void NextDay()
     {
-        ResetState();
-        ResetOutline();
-        buttonList[13].SetActive(false);
+        panelList[13].SetActive(false);
     }
     //
     void Start()
     {
         GameObject temp;
         int i;
-        for (i = 1; i < num+2; i++)/// 初始化list
+        for (i = 1; i < num + 2; i++) /// 初始化list
         {
             temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
             var text = temp.transform.Find("Text");
             text.GetComponent<Text>().text = temp.name;
             buttonList.Add(temp);
             //
-            temp = GameObject.Find("FactoryPanel").transform.GetChild(i + num +2).gameObject;
+            temp = GameObject.Find("FactoryPanel").transform.GetChild(i + num +1).gameObject;
             text = temp.transform.Find("Title");
             text.GetComponent<Text>().text = temp.name;
             panelList.Add(temp);
         }
-        temp = GameObject.Find("FactoryPanel").transform.Find("NextDay").gameObject;
-        buttonList.Add(temp);///将nextday加入buttonlist
         temp = GameObject.Find("FactoryPanel");
         panelList.Add(temp);
         //ResetState();
         ResetOutline();
         temp = null;
-        gameObject.SetActive(false);
     }
     void Update()
     {
