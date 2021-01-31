@@ -9,7 +9,7 @@ public class FragmentsUpdate : MonoBehaviour
     public GameObject information;
     private void OnEnable()
     {
-        Invoke("InitialFragments", 0.1f);
+        Invoke("InitialFragments", 0.01f);
     }
     public void InitialFragments()
     {

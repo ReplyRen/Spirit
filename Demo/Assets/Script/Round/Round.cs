@@ -5,7 +5,7 @@ using UnityEngine;
 public class Round
 {
     /// <summary>
-    /// 60个格子的状态
+    /// 120个格子的状态
     /// 0--无
     /// 1--满
     /// 2--边缘1
@@ -15,8 +15,8 @@ public class Round
 
     public static void InitialAngle()
     {
-        angleState = new int[60];
-        for (int i = 0; i < 60; i++)
+        angleState = new int[120];
+        for (int i = 0; i < 120; i++)
             angleState[i] = 0;
     }
     /// <summary>
@@ -29,10 +29,10 @@ public class Round
     /// <returns></returns>
     public static int PlaceRight(int index,FragmentModel fragmentModel)
     {
-        int totalAngle = ((int)fragmentModel + 1) * 5;
+        int totalAngle = ((int)fragmentModel + 1) * 10;
         for (int i = 0; i <= totalAngle; i++) 
         {
-            if (angleState[(index - totalAngle / 2 + i + 60) % 60] == 1) 
+            if (angleState[(index - totalAngle / 2 + i + 120) % 120] == 1) 
                 return 0;
         }
         return 1;
@@ -44,12 +44,12 @@ public class Round
     /// <param name="fragmentModel"></param>
     public static void PutFragment(int index, FragmentModel fragmentModel)
     {
-        int totalAngle = ((int)fragmentModel + 1) * 5;
+        int totalAngle = ((int)fragmentModel + 1) * 10;
         for (int i = 0; i <= totalAngle; i++)
         {
-            angleState[(index - totalAngle / 2 + i + 60) % 60] = 1;
+            angleState[(index - totalAngle / 2 + i + 120) % 120] = 1;
             if (i == 0 || i == totalAngle)
-                angleState[(index - totalAngle / 2 + i + 60) % 60] = 2;
+                angleState[(index - totalAngle / 2 + i + 120) % 120] = 2;
         }
     }
     /// <summary>
@@ -59,10 +59,10 @@ public class Round
     /// <param name="fragmentModel"></param>
     public static void RemoveFragment(int index, FragmentModel fragmentModel)
     {
-        int totalAngle = ((int)fragmentModel + 1) * 5;
+        int totalAngle = ((int)fragmentModel + 1) * 10;
         for (int i = 0; i <= totalAngle; i++)
         {
-            angleState[(index - totalAngle / 2 + i + 60) % 60] = 0;
+            angleState[(index - totalAngle / 2 + i + 120) % 120] = 0;
         }
     }
 }

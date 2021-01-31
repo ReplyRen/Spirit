@@ -5,6 +5,7 @@ using UnityEngine;
 public class FragmentsManager
 {
     private static List<BaseFragment> fragments;
+    public static List<BaseFragment> fragmentsOnRound;
     /// <summary>
     /// 清零碎片列
     /// </summary>
@@ -15,6 +16,7 @@ public class FragmentsManager
     public static void InitialFragments()
     {
         fragments = new List<BaseFragment>();
+        fragmentsOnRound = new List<BaseFragment>();
     }
     /// <summary>
     /// 获得碎片列

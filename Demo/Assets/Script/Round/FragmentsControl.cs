@@ -118,7 +118,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             //计算图片中心和鼠标点的差值
             offset = imgRect.anchoredPosition - mouseUguiPos;
         }
-        Debug.Log(offset);
+        //Debug.Log(offset);
     }
 
     /// <summary>
@@ -168,9 +168,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 else
                     imgRect.localEulerAngles = new Vector3(0, 0, angle);
                 inRound = true;
-                int index = (int)(imgRect.localEulerAngles.z + 3) / 6;
-                lineRect.localEulerAngles = new Vector3(0, 0, index * 6);
-                angleTipRect.localEulerAngles = new Vector3(0, 0, index * 6);
+                int index = (int)(imgRect.localEulerAngles.z + 1.5) / 3;
+                lineRect.localEulerAngles = new Vector3(0, 0, index * 3);
+                angleTipRect.localEulerAngles = new Vector3(0, 0, index * 3);
                 if(endDrag)
                     imgRect.localScale = imgMovingScale;
                 if(Round.PlaceRight(index,fragmentInformation.model)==0)
@@ -218,7 +218,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnEndDrag(PointerEventData eventData)
     {
-        int index = (int)imgRect.localEulerAngles.z / 6;
+        int index = (int)(imgRect.localEulerAngles.z + 1.5) / 3;
         offset = Vector2.zero;
         if (firstTime[1])
         {
@@ -228,8 +228,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         endDrag = true;
         if (inRound && Round.PlaceRight(index, fragmentInformation.model) == 1) 
         {
-            imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 6 * exp), (float)Math.Cos(index * 6 * exp)) * 200f;
-            imgRect.localEulerAngles = new Vector3(0, 0, index * 6);
+            imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 200f;
+            imgRect.localEulerAngles = new Vector3(0, 0, index * 3);
             imgRect.localScale = imgReduceScale;
             if (preIndex != -1)
             {
@@ -242,6 +242,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 Round.PutFragment(index, fragmentInformation.model);
                 preIndex = index;
             }
+            FragmentsManager.fragmentsOnRound.Add(fragmentInformation);
         }
         else
         {
@@ -256,8 +257,11 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             {
                 Round.RemoveFragment(preIndex, fragmentInformation.model);
                 preIndex = -1;
+                FragmentsManager.fragmentsOnRound.Remove(fragmentInformation);
             }
         }
+        foreach (var fragment in FragmentsManager.fragmentsOnRound)
+            Debug.Log(fragment.name);
     }
 
     /// <summary>
