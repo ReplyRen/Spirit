@@ -34,8 +34,18 @@ public class UIManager : MonoBehaviour
         temp.GetComponent<UIObject>().isUse = true;
         temp = null;
     }
-
-
+    public void CloseFactory()//关闭工厂panel
+    {
+        temp = GameObject.Find("Canvas").transform.Find("Factorypanel").gameObject;
+        temp.SetActive(false);
+        temp = null;
+    }
+    public void OpenFactory()//打开工厂panel
+    {
+        temp = GameObject.Find("Canvas").transform.Find("Factorypanel").gameObject;
+        temp.SetActive(false);
+        temp = null;
+    }
     //打开/关闭panel
     public void OpenUI()
     {
