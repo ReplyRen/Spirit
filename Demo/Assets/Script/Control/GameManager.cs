@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
     public void NextRoundClick()
     {
         EndRound();
+        uiManager.NextDay();
         StartRound();
         roundPanel.InitialRoundPanel(fragmentList);
     }
@@ -116,30 +117,33 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void UpdateObject()
     {
-        foreach (var a in fragmentOnDisc)//遍历圆盘上的碎片
+        for (int i= 0;i < fragmentOnDisc.Count;i++)//遍历圆盘上的碎片
         {
-            a.DurationDecrease();//时间自减
-            if (a.finished)//如果完成了
+            fragmentOnDisc[i].DurationDecrease();//时间自减
+            if (fragmentOnDisc[i].finished)//如果完成了
             {
-                if (a.name == "鉴酒")
+                if (fragmentOnDisc[i].name == "鉴酒")
                 {
-                    WineTasting(a.baseObject);
+                    WineTasting(fragmentOnDisc[i].baseObject);
                 }
                 else
                 {
-                    if (a.baseObject != null)//移除仓库中此碎片的酒基
-                        baseList.Remove(a.baseObject);
-                    baseList.Add(FragmentToObject(a));//添加新酒基
+                    if (fragmentOnDisc[i].baseObject != null)//移除仓库中此碎片的酒基
+                        baseList.Remove(fragmentOnDisc[i].baseObject);
+                    baseList.Add(FragmentToObject(fragmentOnDisc[i]));//添加新酒基
                 }
 
-                fragmentOnDisc.Remove(a);//移除圆盘上此碎片
+                fragmentOnDisc.Remove(fragmentOnDisc[i]);//移除圆盘上此碎片
             }
         }
     } 
     private BaseObject FragmentToObject(BaseFragment fragment)
     {
         BaseObject baseObject = new BaseObject();
-        baseObject.element = fragment.element + fragment.baseObject.element;
+        if (fragment.name != "原、辅料准备")
+            baseObject.element = fragment.element + fragment.baseObject.element;
+        else
+            baseObject.element = fragment.element;
         switch (fragment.name)
         {
             case "原、辅料准备":
