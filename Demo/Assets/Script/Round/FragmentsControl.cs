@@ -242,7 +242,12 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 Round.PutFragment(index, fragmentInformation.model);
                 preIndex = index;
             }
-            FragmentsManager.fragmentsOnRound.Add(fragmentInformation);
+            int i = 0;
+            for (i = 0; i < FragmentsManager.fragmentsOnRound.Count; i++)
+                if (FragmentsManager.fragmentsOnRound[i].baseObject == fragmentInformation.baseObject)
+                    break;
+            if (i == FragmentsManager.fragmentsOnRound.Count) 
+                FragmentsManager.fragmentsOnRound.Add(fragmentInformation);
         }
         else
         {
@@ -252,7 +257,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             imgRect = rectTransform;
             firstTime[1] = true;
             endDrag = true;
-            imgRect.localScale = imgReduceScale;
+            imgRect.localScale = imgNormalScale;
             if (preIndex != -1)
             {
                 Round.RemoveFragment(preIndex, fragmentInformation.model);
