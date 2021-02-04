@@ -13,4 +13,8 @@ public class UIObject:MonoBehaviour
     /// “是否确认”属性
     /// </summary>
     public bool isConfirm;
+    /// <summary>
+    /// 索引
+    /// </summary>
+    public int index;
 }
