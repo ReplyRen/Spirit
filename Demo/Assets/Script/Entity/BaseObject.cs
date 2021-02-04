@@ -20,10 +20,6 @@ public class BaseObject
     public string description;
 
     /// <summary>
-    /// 物品的物品
-    /// </summary>
-    public GameObject storageObject = new GameObject();
-    /// <summary>
     /// 属性数据
     /// </summary>
     public Element element;
