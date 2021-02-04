@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIObject:MonoBehaviour
+public class UIObject : MonoBehaviour
 {
     /// <summary>
     /// “是否使用”属性
