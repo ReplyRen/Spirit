@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
             panelList[currentUI].SetActive(true);
         }
         ///若参数未确认，则设置参数初值
-        if (!buttonList[currentUI].GetComponent<UIObject>().isConfirm)
+        if (!buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[12].activeSelf)
         {
             status = GameObject.FindWithTag("Status").GetComponent<Slider>();
             statusSet = GameObject.FindWithTag("StatusSet").GetComponent<Slider>();
@@ -270,12 +270,12 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) CloseUI();
-        if (status != null && !buttonList[currentUI].GetComponent<UIObject>().isConfirm) //连续变化
+        if (status != null && !buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[12].activeSelf) //连续变化
         {
             valueChange = statusSet.value - setValue;
             status.value = statusValue + parameter * valueChange;
         }
-        if (gridList.Count > 1 && !buttonList[currentUI].GetComponent<UIObject>().isConfirm)//离散变化
+        if (gridList.Count > 1 && !buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[12].activeSelf)//离散变化
         {
             valueChange = statusSet.value - setValue2;
             for (int i = 0; i < 10; i++)
