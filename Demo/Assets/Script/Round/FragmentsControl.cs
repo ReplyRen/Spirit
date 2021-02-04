@@ -258,6 +258,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             firstTime[1] = true;
             endDrag = true;
             imgRect.localScale = imgNormalScale;
+            imgRect.localEulerAngles = new Vector3(0, 0, 0);
             if (preIndex != -1)
             {
                 Round.RemoveFragment(preIndex, fragmentInformation.model);
