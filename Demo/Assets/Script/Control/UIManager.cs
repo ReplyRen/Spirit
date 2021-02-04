@@ -7,11 +7,13 @@ public class UIManager : MonoBehaviour
 {
     public List<GameObject> buttonList = new List<GameObject>();
     public List<GameObject> panelList = new List<GameObject>();
+    public List<GameObject> confirmList = new List<GameObject>();
+    public List<GameObject> quickSetList = new List<GameObject>();
     public List<Image> gridList = new List<Image>();
     public List<BaseFragment> fragmentsOnDisc;
     public Slider status;
     public Slider statusSet;
-    public float statusValue,setValue;//参数/调整初值（连续变化）
+    public float statusValue, setValue;//参数/调整初值（连续变化）
     public float setValue2;//调整数值（离散）
     public float parameter;//倍数（连续变化）
     float valueChange;
@@ -44,7 +46,7 @@ public class UIManager : MonoBehaviour
             var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
             if (btn.name == "Overview")
                 panelList[currentUI].SetActive(true);
-            else if(btn.name=="Storage")
+            else if (btn.name == "Storage")
             {
                 panelList[12].SetActive(true);
             }
@@ -57,7 +59,7 @@ public class UIManager : MonoBehaviour
                         panelList[i].SetActive(true);
                         currentUI = i;
                     }
-                } 
+                }
             }
             isOpen = true;
             btn = null;
@@ -87,7 +89,7 @@ public class UIManager : MonoBehaviour
     }
     public void CloseUI()
     {
-        if(panelList[currentUI].activeSelf)
+        if (panelList[currentUI].activeSelf)
             panelList[currentUI].SetActive(false);
         else
         {
@@ -99,13 +101,11 @@ public class UIManager : MonoBehaviour
     //确认并检查是否完成设置
     public void Confirm()
     {
-        GameObject temp;
+
         buttonList[currentUI].transform.GetComponent<UIObject>().isConfirm = true;
         buttonList[currentUI].GetComponent<Outline>().enabled = false;
-        temp = GameObject.FindWithTag("Confirm");
-        temp.SetActive(false);
-        temp = GameObject.FindWithTag("QuickSet");
-        temp.SetActive(false);
+        confirmList[currentUI].SetActive(false);
+        quickSetList[currentUI].SetActive(false);
         CloseUI();
     }
     //
@@ -114,11 +114,13 @@ public class UIManager : MonoBehaviour
     {
         panelList[currentUI].SetActive(false);
         currentUI++;
-        if (currentUI > num - 1) 
+        if (currentUI > num - 1)
             currentUI = 0;
         while (!buttonList[currentUI].transform.GetComponent<UIObject>().isUse)
         {
             currentUI++;
+            if (currentUI > num - 1)
+                currentUI = 0;
         }
         OpenUI();
     }
@@ -131,6 +133,8 @@ public class UIManager : MonoBehaviour
         while (!buttonList[currentUI].transform.GetComponent<UIObject>().isUse)
         {
             currentUI--;
+            if (currentUI < 0)
+                currentUI = 11;
         }
         OpenUI();
     }
@@ -148,12 +152,17 @@ public class UIManager : MonoBehaviour
     }
     public void ResetState()///初始化工厂
     {
-        for (int i=0;i<num;i++)
+        for (int i = 0; i < num; i++)
         {
             buttonList[i].GetComponent<UIObject>().isUse = false;
             buttonList[i].GetComponent<UIObject>().isConfirm = false;
         }
-        for(int i=0;i< fragmentsOnDisc.Count; i++)
+        for (int i = 0; i < num - 1; i++)
+        {
+            confirmList[i].SetActive(true);
+            quickSetList[i].SetActive(true);
+        }
+        for (int i = 0; i < fragmentsOnDisc.Count; i++)
         {
             switch (fragmentsOnDisc[i].name)
             {
@@ -169,13 +178,17 @@ public class UIManager : MonoBehaviour
                 case "蒸煮、摊凉":
                     buttonList[3].GetComponent<UIObject>().isUse = true;
                     break;
-                case "修窖": case "制曲、入曲": case "发酵":case "加原/辅料":
+                case "修窖":
+                case "制曲、入曲":
+                case "发酵":
+                case "加原/辅料":
                     buttonList[4].GetComponent<UIObject>().isUse = true;
                     break;
                 case "上甑":
                     buttonList[5].GetComponent<UIObject>().isUse = true;
                     break;
-                case "蒸馏": case "看花摘酒":
+                case "蒸馏":
+                case "看花摘酒":
                     buttonList[6].GetComponent<UIObject>().isUse = true;
                     break;
                 case "陈酿":
@@ -198,14 +211,14 @@ public class UIManager : MonoBehaviour
     }
     public void ResetOutline()///初始化高亮
     {
-        for(int i=0;i<num;i++)
+        for (int i = 0; i < num; i++)
         {
             if (buttonList[i].GetComponent<UIObject>().isUse) buttonList[i].GetComponent<Outline>().enabled = true;
             else buttonList[i].GetComponent<Outline>().enabled = false;
         }
     }
     #endregion
-    
+
     //快速设置
     public void QuickSet()
     {
@@ -221,24 +234,37 @@ public class UIManager : MonoBehaviour
     {
         GameObject temp;
         int i;
-        for (i = 1; i < num + 2; i++) /// 初始化list
+        temp = GameObject.Find("FactoryPanel").transform.GetChild(1).gameObject;
+        var text = temp.transform.Find("Text");
+        text.GetComponent<Text>().text = temp.name;
+        buttonList.Add(temp);
+        //
+        temp = GameObject.Find("FactoryPanel").transform.GetChild(1 + num + 1).gameObject;
+        text = temp.transform.Find("Title");
+        text.GetComponent<Text>().text = temp.name;
+        panelList.Add(temp);
+        for (i = 2; i < num + 2; i++) /// 初始化list
         {
             temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
-            var text = temp.transform.Find("Text");
+            text = temp.transform.Find("Text");
             text.GetComponent<Text>().text = temp.name;
             buttonList.Add(temp);
             //
-            temp = GameObject.Find("FactoryPanel").transform.GetChild(i + num +1).gameObject;
+            temp = GameObject.Find("FactoryPanel").transform.GetChild(i + num + 1).gameObject;
             text = temp.transform.Find("Title");
             text.GetComponent<Text>().text = temp.name;
             panelList.Add(temp);
+            //
+            temp = panelList[i - 2].transform.Find("Confirm").gameObject;
+            confirmList.Add(temp);
+            temp = panelList[i - 2].transform.Find("QuickSet").gameObject;
+            quickSetList.Add(temp);
         }
         temp = GameObject.Find("FactoryPanel");
         panelList.Add(temp);
         //ResetState();
         ResetOutline();
         temp = null;
-        gameObject.SetActive(false);
     }
     void Update()
     {
@@ -248,14 +274,14 @@ public class UIManager : MonoBehaviour
             valueChange = statusSet.value - setValue;
             status.value = statusValue + parameter * valueChange;
         }
-        if(gridList.Count>1 && !buttonList[currentUI].GetComponent<UIObject>().isConfirm)//离散变化
+        if (gridList.Count > 1 && !buttonList[currentUI].GetComponent<UIObject>().isConfirm)//离散变化
         {
             valueChange = statusSet.value - setValue2;
-            for(int i=0;i<10;i++)
+            for (int i = 0; i < 10; i++)
             {
                 gridList[i].color = new Color(255, 255, 255);
             }
-            for(int i=0;i<5+10*valueChange*0.4;i++)
+            for (int i = 0; i < 5 + 10 * valueChange * 0.4; i++)
             {
                 gridList[i].color = new Color(0, 0, 0);
             }
