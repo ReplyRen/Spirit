@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
     public void OpenUI()
     {
         ///获取当前button并打开相应panel/打开总览
-        if (!isOpen)
+        if (!isOpen) 
         {
             var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
             if (btn.name == "Overview")
@@ -169,13 +169,13 @@ public class UIManager : MonoBehaviour
                 case "原、辅料准备":
                     buttonList[0].GetComponent<UIObject>().isUse = true;
                     break;
-                case "粉碎、润料":
+                case "粉碎润料":
                     buttonList[1].GetComponent<UIObject>().isUse = true;
                     break;
                 case "配料":
                     buttonList[2].GetComponent<UIObject>().isUse = true;
                     break;
-                case "蒸煮、摊凉":
+                case "蒸煮摊凉":
                     buttonList[3].GetComponent<UIObject>().isUse = true;
                     break;
                 case "修窖":
