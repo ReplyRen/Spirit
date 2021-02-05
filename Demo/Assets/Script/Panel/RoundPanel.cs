@@ -18,6 +18,7 @@ public class RoundPanel : BasePanel
     /// <param name="newFragments">传fragmentList就行了</param>
     public void InitialRoundPanel(List<BaseFragment> newFragments)
     {
+        
         if (FragmentsManager.fragmentsOnRound != null && FragmentsManager.fragmentsOnRound.Count != 0) 
         {
             for (int i = FragmentsManager.fragmentsOnRound.Count - 1; i >= 0; i--)
@@ -25,12 +26,15 @@ public class RoundPanel : BasePanel
                 BaseFragment fragment = FragmentsManager.fragmentsOnRound[i];
                 fragment.DurationDecrease();
                 if (fragment.finished)
+                {
                     Destroy(fragment.obj);
-                FragmentsManager.fragmentsOnRound.RemoveAt(i);
+                    FragmentsManager.fragmentsOnRound.RemoveAt(i);
+                    fragment.obj.GetComponent<FragmentsControl>().ReMoveFragment();
+                }                    
             }
         }
         gameObject.SetActive(true);
-        if(ifFirstTime)
+        if (ifFirstTime)
         {
             ifFirstTime = false;
             Round.InitialAngle();

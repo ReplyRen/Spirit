@@ -130,6 +130,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         if (preIndex != -1)
         {
             Round.RemoveFragment(preIndex, fragmentInformation.model);
+            FragmentsManager.fragmentsOnRound.Remove(fragmentInformation);
         }
         //if (offset.x < -618.0f && offset.x > -775f && offset.y < -474.0f && offset.y > -622.1f) 
         {
@@ -228,6 +229,31 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         endDrag = true;
         if (inRound && Round.PlaceRight(index, fragmentInformation.model) == 1) 
         {
+            int i = 0;
+            for (i = 0; i < FragmentsManager.fragmentsOnRound.Count; i++)
+                if (FragmentsManager.fragmentsOnRound[i].baseObject == fragmentInformation.baseObject)
+                {
+                    RectTransform rectTransform = imgRect;
+                    transform.SetParent(parent);
+                    ChangeChildOrder();
+                    imgRect = rectTransform;
+                    firstTime[1] = true;
+                    endDrag = true;
+                    imgRect.localScale = imgNormalScale;
+                    imgRect.localEulerAngles = new Vector3(0, 0, 0);
+                    if (preIndex != -1)
+                    {
+                        Round.RemoveFragment(preIndex, fragmentInformation.model);
+                        preIndex = -1;
+                        FragmentsManager.fragmentsOnRound.Remove(fragmentInformation);
+                    }
+                    foreach (var fragment in FragmentsManager.fragmentsOnRound)
+                        Debug.Log(fragment.name);
+                    Debug.LogWarning("来自同一个base,替换这个地方为产生tips");
+                    return;
+                }
+            if (i == FragmentsManager.fragmentsOnRound.Count)
+                FragmentsManager.fragmentsOnRound.Add(fragmentInformation);
             imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 200f;
             imgRect.localEulerAngles = new Vector3(0, 0, index * 3);
             imgRect.localScale = imgReduceScale;
@@ -242,12 +268,6 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 Round.PutFragment(index, fragmentInformation.model);
                 preIndex = index;
             }
-            int i = 0;
-            for (i = 0; i < FragmentsManager.fragmentsOnRound.Count; i++)
-                if (FragmentsManager.fragmentsOnRound[i].baseObject == fragmentInformation.baseObject)
-                    break;
-            if (i == FragmentsManager.fragmentsOnRound.Count) 
-                FragmentsManager.fragmentsOnRound.Add(fragmentInformation);
         }
         else
         {
@@ -263,11 +283,11 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             {
                 Round.RemoveFragment(preIndex, fragmentInformation.model);
                 preIndex = -1;
-                FragmentsManager.fragmentsOnRound.Remove(fragmentInformation);
+                //FragmentsManager.fragmentsOnRound.Remove(fragmentInformation);
             }
         }
-        foreach (var fragment in FragmentsManager.fragmentsOnRound)
-            Debug.Log(fragment.name);
+        //foreach (var fragment in FragmentsManager.fragmentsOnRound)
+            //Debug.Log(fragment.name);
     }
 
     /// <summary>
@@ -343,5 +363,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             angleTip.SetActive(false);
             lineActive = false;
         }
+    }
+    public void ReMoveFragment()
+    {
+        Round.RemoveFragment(preIndex, fragmentInformation.model);
     }
 }

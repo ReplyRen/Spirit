@@ -87,7 +87,8 @@ public class GameManager : MonoBehaviour
 
     public void SwitchClick()
     {
-        fragmentOnDisc = roundPanel.HideRoundPanel();
+        foreach (var fragment in roundPanel.HideRoundPanel())
+            fragmentOnDisc.Add(fragment);
         uiManager.gameObject.SetActive(true);
         uiManager.InitializeFactory(fragmentOnDisc);
     }
