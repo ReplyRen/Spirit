@@ -44,12 +44,12 @@ public class UIManager : MonoBehaviour
         if (!isOpen)
         {
             var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-            if (btn.name == "Overview")
+            if (btn.name == "总览")
             {
                 panelList[currentUI].SetActive(true);
                 isOpen = true;
             }
-            else if (btn.name == "Storage")
+            else if (btn.name == "仓库")
             {
                 panelList[12].SetActive(true);
             }
@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
                 status.value = statusValue;
                 statusSet.value = setValue;
             }
-            catch { Debug.Log("0"); }
+            catch {}
         }
         Debug.Log(isOpen);
     }
@@ -245,19 +245,10 @@ public class UIManager : MonoBehaviour
     {
         GameObject temp;
         int i;
-        temp = GameObject.Find("FactoryPanel").transform.GetChild(1).gameObject;
-        var text = temp.transform.Find("Text");
-        text.GetComponent<Text>().text = temp.name;
-        buttonList.Add(temp);
-        //
-        temp = GameObject.Find("FactoryPanel").transform.GetChild(1 + num + 1).gameObject;
-        text = temp.transform.Find("Title");
-        text.GetComponent<Text>().text = temp.name;
-        panelList.Add(temp);
-        for (i = 2; i < num + 2; i++) /// 初始化list
+        for (i = 1; i < num + 2; i++) /// 初始化list
         {
             temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
-            text = temp.transform.Find("Text");
+            var text = temp.transform.Find("Text");
             text.GetComponent<Text>().text = temp.name;
             buttonList.Add(temp);
             //
@@ -268,14 +259,18 @@ public class UIManager : MonoBehaviour
             //
             try
             {
-                temp = panelList[i - 1].transform.Find("Confirm").gameObject;
+                temp = panelList[i - 1].transform.Find("确认").gameObject;
+                var text1 = temp.transform.Find("Text");
+                text1.GetComponent<Text>().text = temp.name;
                 confirmList.Add(temp);
-                temp = panelList[i - 1].transform.Find("QuickSet").gameObject;
+                temp = panelList[i - 1].transform.Find("快速设置").gameObject;
+                text1 = temp.transform.Find("Text");
+                text1.GetComponent<Text>().text = temp.name;
                 quickSetList.Add(temp);
             }
-            catch { Debug.Log("0"); }
+            catch { }
         }
-        temp = GameObject.Find("FactoryPanel").transform.Find("PurchasePanel/Buy").gameObject;
+        temp = GameObject.Find("FactoryPanel").transform.Find("采购部Panel/Buy").gameObject;
         confirmList.Add(temp);
         temp = GameObject.Find("FactoryPanel");
         panelList.Add(temp);
