@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 760077006754162859}
   - component: {fileID: 4743653427523179047}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 2620035685407737275}
   - component: {fileID: 8815935930865936932}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,7 +754,7 @@ GameObject:
   - component: {fileID: 4768145083876129050}
   - component: {fileID: 1842316517053480351}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 8200931230425046139}
   - component: {fileID: 6026398383893114974}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,7 +1092,7 @@ GameObject:
   - component: {fileID: 5134203938467489616}
   - component: {fileID: 446290573598074167}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1378,7 +1378,7 @@ GameObject:
   - component: {fileID: 2671769383141817177}
   - component: {fileID: 1835153771836475439}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1510,7 +1510,7 @@ GameObject:
   - component: {fileID: 4240853813339408197}
   - component: {fileID: 4240853813339408196}
   m_Layer: 5
-  m_Name: Store
+  m_Name: "\u50A8\u85CF\u5BA4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1955,7 +1955,7 @@ GameObject:
   - component: {fileID: 4240853813366393874}
   - component: {fileID: 4240853813366393875}
   m_Layer: 5
-  m_Name: MixPanel
+  m_Name: "\u8C03\u9152\u5BA4Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2116,7 +2116,7 @@ GameObject:
   - component: {fileID: 4240853813404611170}
   - component: {fileID: 4240853813404611171}
   m_Layer: 5
-  m_Name: SmashPanel
+  m_Name: "\u7C89\u788E\u673APanel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2200,7 +2200,7 @@ GameObject:
   - component: {fileID: 4240853813410444461}
   - component: {fileID: 4240853813410444462}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2928,7 +2928,7 @@ GameObject:
   - component: {fileID: 4240853813620414693}
   - component: {fileID: 4240853813620414694}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3136,7 +3136,7 @@ GameObject:
   - component: {fileID: 4240853813655439014}
   - component: {fileID: 4240853813655439015}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3525,7 +3525,7 @@ GameObject:
   - component: {fileID: 4240853813695573998}
   - component: {fileID: 4240853813695573999}
   m_Layer: 5
-  m_Name: StorePanel
+  m_Name: "\u50A8\u85CF\u5BA4Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4365,7 +4365,7 @@ GameObject:
   - component: {fileID: 4240853813775338085}
   - component: {fileID: 4240853813775338084}
   m_Layer: 5
-  m_Name: Pits
+  m_Name: "\u7A96\u6C60"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4993,7 +4993,7 @@ GameObject:
   - component: {fileID: 4240853813840829996}
   - component: {fileID: 1496763288933157176}
   m_Layer: 5
-  m_Name: PurchasePanel
+  m_Name: "\u91C7\u8D2D\u90E8Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5220,7 +5220,7 @@ GameObject:
   - component: {fileID: 4240853813846901710}
   - component: {fileID: 4444391673529524393}
   m_Layer: 5
-  m_Name: StoragePanel
+  m_Name: "\u4ED3\u5E93Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5443,7 +5443,7 @@ GameObject:
   - component: {fileID: 4240853813890878957}
   - component: {fileID: 4240853813890878958}
   m_Layer: 5
-  m_Name: CookPanel
+  m_Name: "\u84B8\u716E\u9505Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5527,7 +5527,7 @@ GameObject:
   - component: {fileID: 4240853813893123530}
   - component: {fileID: 4240853813893123531}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5815,7 +5815,7 @@ GameObject:
   - component: {fileID: 4240853813906688884}
   - component: {fileID: 4240853813906688883}
   m_Layer: 5
-  m_Name: Bottle
+  m_Name: "\u704C\u88C5\u8BBE\u5907"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6169,7 +6169,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy
+  m_Text: "\u8D2D\u4E70"
 --- !u!1 &4240853813949520469
 GameObject:
   m_ObjectHideFlags: 0
@@ -6809,7 +6809,7 @@ GameObject:
   - component: {fileID: 4240853814029677275}
   - component: {fileID: 4240853814029677274}
   m_Layer: 5
-  m_Name: Cellar
+  m_Name: "\u9152\u7A96"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7179,7 +7179,7 @@ GameObject:
   - component: {fileID: 4240853814047532010}
   - component: {fileID: 4240853814047532009}
   m_Layer: 5
-  m_Name: Smash
+  m_Name: "\u7C89\u788E\u673A"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7417,7 +7417,7 @@ GameObject:
   - component: {fileID: 4240853814078357194}
   - component: {fileID: 4240853814078357195}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7546,7 +7546,7 @@ GameObject:
   - component: {fileID: 4240853814092408247}
   - component: {fileID: 4240853814092408248}
   m_Layer: 5
-  m_Name: CentrifugationPanel
+  m_Name: "\u79BB\u5FC3\u6740\u83CC\u8BBE\u5907Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7762,7 +7762,7 @@ GameObject:
   - component: {fileID: 4240853814098083467}
   - component: {fileID: 4240853814098083466}
   m_Layer: 5
-  m_Name: Distillation
+  m_Name: "\u84B8\u998F\u8BBE\u5907"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7924,7 +7924,7 @@ GameObject:
   - component: {fileID: 4240853814150807396}
   - component: {fileID: 4240853814150807395}
   m_Layer: 5
-  m_Name: Mix
+  m_Name: "\u8C03\u9152\u5BA4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8084,7 +8084,7 @@ GameObject:
   - component: {fileID: 4240853814162835101}
   - component: {fileID: 4240853814162835102}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8812,7 +8812,7 @@ GameObject:
   - component: {fileID: 4240853814225004124}
   - component: {fileID: 4240853814225004125}
   m_Layer: 5
-  m_Name: Storage
+  m_Name: "\u4ED3\u5E93"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9525,7 +9525,7 @@ GameObject:
   - component: {fileID: 4240853814305602479}
   - component: {fileID: 4240853814305602512}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9943,7 +9943,7 @@ GameObject:
   - component: {fileID: 4240853814356869954}
   - component: {fileID: 4240853814356869953}
   m_Layer: 5
-  m_Name: Steamer
+  m_Name: "\u7511\u5B50"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10102,7 +10102,7 @@ GameObject:
   - component: {fileID: 4240853814363930481}
   - component: {fileID: 4240853814363930482}
   m_Layer: 5
-  m_Name: ShowPanel
+  m_Name: "\u9274\u9152\u4E2D\u5FC3Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10264,7 +10264,7 @@ GameObject:
   - component: {fileID: 4240853814373057020}
   - component: {fileID: 4240853814373057021}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10550,7 +10550,7 @@ GameObject:
   - component: {fileID: 4240853814456695534}
   - component: {fileID: 4240853814456695535}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12344,7 +12344,7 @@ GameObject:
   - component: {fileID: 4240853814669500046}
   - component: {fileID: 4240853814669500047}
   m_Layer: 5
-  m_Name: SteamerPanel
+  m_Name: "\u7511\u5B50Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12921,7 +12921,7 @@ GameObject:
   - component: {fileID: 4240853814794170808}
   - component: {fileID: 4240853814794170809}
   m_Layer: 5
-  m_Name: DistillationPanel
+  m_Name: "\u84B8\u998F\u8BBE\u5907Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13241,7 +13241,7 @@ GameObject:
   - component: {fileID: 4240853814824512669}
   - component: {fileID: 4240853814824512668}
   m_Layer: 5
-  m_Name: Cook
+  m_Name: "\u84B8\u716E\u9505"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14024,7 +14024,7 @@ GameObject:
   - component: {fileID: 4240853814999781347}
   - component: {fileID: 4240853814999781348}
   m_Layer: 5
-  m_Name: PitsPanel
+  m_Name: "\u7A96\u6C60Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15200,7 +15200,7 @@ GameObject:
   - component: {fileID: 4240853815157731930}
   - component: {fileID: 4240853815157731931}
   m_Layer: 5
-  m_Name: Overview
+  m_Name: "\u603B\u89C8"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15332,7 +15332,7 @@ GameObject:
   - component: {fileID: 4240853815210750226}
   - component: {fileID: 4240853815210750225}
   m_Layer: 5
-  m_Name: Purchase
+  m_Name: "\u91C7\u8D2D\u90E8"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15583,7 +15583,7 @@ GameObject:
   - component: {fileID: 4240853815244860883}
   - component: {fileID: 4240853815244860882}
   m_Layer: 5
-  m_Name: Centrifugation
+  m_Name: "\u79BB\u5FC3\u6740\u83CC\u8BBE\u5907"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15743,7 +15743,7 @@ GameObject:
   - component: {fileID: 4240853815252305388}
   - component: {fileID: 4240853815252305389}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16031,7 +16031,7 @@ GameObject:
   - component: {fileID: 4240853815325099677}
   - component: {fileID: 4240853815325099676}
   m_Layer: 5
-  m_Name: Show
+  m_Name: "\u9274\u9152\u4E2D\u5FC3"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16580,7 +16580,7 @@ GameObject:
   - component: {fileID: 4240853815375004210}
   - component: {fileID: 4240853815375004211}
   m_Layer: 5
-  m_Name: CellarPanel
+  m_Name: "\u9152\u7A96Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16872,7 +16872,7 @@ GameObject:
   - component: {fileID: 4240853815394114455}
   - component: {fileID: 4240853815394114456}
   m_Layer: 5
-  m_Name: Confirm
+  m_Name: "\u786E\u8BA4"
   m_TagString: Confirm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17079,7 +17079,7 @@ GameObject:
   - component: {fileID: 4240853815475341394}
   - component: {fileID: 4240853815475341395}
   m_Layer: 5
-  m_Name: BottlePanel
+  m_Name: "\u704C\u88C5\u8BBE\u5907Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17319,7 +17319,7 @@ GameObject:
   - component: {fileID: 8361141588983433981}
   - component: {fileID: 9143019754346764973}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17899,7 +17899,7 @@ GameObject:
   - component: {fileID: 1351004204631117653}
   - component: {fileID: 2021252660706922970}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18029,7 +18029,7 @@ GameObject:
   - component: {fileID: 1864088753823023319}
   - component: {fileID: 4862739553373967389}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18315,7 +18315,7 @@ GameObject:
   - component: {fileID: 829837362515357766}
   - component: {fileID: 7980033620588470921}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18445,7 +18445,7 @@ GameObject:
   - component: {fileID: 3149796801985662664}
   - component: {fileID: 6011464898669792615}
   m_Layer: 5
-  m_Name: QuickSet
+  m_Name: "\u5FEB\u901F\u8BBE\u7F6E"
   m_TagString: QuickSet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
