@@ -12,7 +12,7 @@ public class StoragePanel : MonoBehaviour
     //更新物品list
     public void UpdateList()
     {
-        storageObject.Clear();
+        /*storageObject.Clear();
         for (int i = 0; i < 10; i++)
         {
             BaseObject card = new BaseObject();
@@ -20,10 +20,8 @@ public class StoragePanel : MonoBehaviour
             card.name = i.ToString();
             card.sprite = Resources.Load<Sprite>("Sprite/30");
             storageObject.Add(card);
-        }
-       /* List<BaseObject> newList = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
-        foreach (var element in newList)
-            storageObject.Add(element);*/
+        }*/
+        storageObject = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
     }
     public void InstantiateObj(Sprite sprite,string name)
     {
@@ -59,13 +57,13 @@ public class StoragePanel : MonoBehaviour
     public void ShowDescription()
     {
         var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-        text.text = storageObject[btn.transform.GetSiblingIndex()].description;
+        text.text = storageObject[btn.transform.GetSiblingIndex()].name;
     }
     void Start()
     {
-        text = GameObject.Find("FactoryPanel").transform.Find("StoragePanel/Description").GetComponent<Text>();
-        UpdateList();
-        UpdateObjects();
+        text = GameObject.Find("FactoryPanel").transform.Find("仓库Panel/Description").GetComponent<Text>();
+        //UpdateList();
+       //UpdateObjects();
         gameObject.SetActive(false);
     }
     private void Update()

@@ -18,7 +18,7 @@ public class PurchasePanel : MonoBehaviour
         {
             BaseObject card = new BaseObject();
             card.description = i.ToString();
-            card.name = i.ToString();
+            card.name = "原、辅料";
             card.sprite = Resources.Load<Sprite>("Sprite/120");
             purchaseObject.Add(card);
         }
@@ -33,13 +33,10 @@ public class PurchasePanel : MonoBehaviour
     }
     public void UpdateObjects()
     {
-        if (!buy.GetComponent<UIObject>().isConfirm)
+        Clear();
+        for (int i = 0; i < purchaseObject.Count; i++)
         {
-            Clear();
-            for (int i = 0; i < purchaseObject.Count; i++)
-            {
-                InstantiateObj(purchaseObject[i].sprite, purchaseObject[i].name);
-            }
+            InstantiateObj(purchaseObject[i].sprite, purchaseObject[i].name);
         }
     }
     public void Purchase()
@@ -82,7 +79,7 @@ public class PurchasePanel : MonoBehaviour
 
     void Start()
     {
-        storageObject = GameObject.Find("FactoryPanel").transform.Find("StoragePanel").GetComponent<StoragePanel>().storageObject;
+        storageObject = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
         UpdateList();
         UpdateObjects();
         gameObject.SetActive(false);
