@@ -45,7 +45,10 @@ public class FragmentsManager
         if (fragments != null || fragments.Count != 0)  
             ClearFragments();
         foreach (var fragment in newFragments)
+        {
             fragments.Add(fragment);
+        }
+            
     }
     /// <summary>
     /// 返回确认时候圆盘上的碎片

@@ -72,7 +72,11 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         lineActive = false;
         preIndex = -1;
 
-        switch(fragmentInformation.model)
+        GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+                    fragmentInformation.name + "_xiao");
+        GetComponent<Image>().SetNativeSize();
+
+        switch (fragmentInformation.model)
         {
             case FragmentModel.thirty:
                 angleTip = round.transform.GetChild(1).gameObject;
@@ -146,6 +150,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 imgRect = rectTransform;
                 firstTime[1] = false;
                 imgRect.localScale = imgMovingScale;
+                GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+                    fragmentInformation.name + "_yuanpian");
+                GetComponent<Image>().SetNativeSize();
             }
             if (!firstTime[1] && Math.Abs(prePosition.x - imgRect.anchoredPosition.x) < 100f)
             {
@@ -156,6 +163,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 firstTime[1] = true;
                 endDrag = true;
                 imgRect.localScale = imgReduceScale;
+                GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+                    fragmentInformation.name + "_xiao");
+                GetComponent<Image>().SetNativeSize();
             }
 
             //与round的交互
@@ -236,6 +246,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                     RectTransform rectTransform = imgRect;
                     transform.SetParent(parent);
                     ChangeChildOrder();
+                    GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+                    fragmentInformation.name + "_xiao");
+                    GetComponent<Image>().SetNativeSize();
                     imgRect = rectTransform;
                     firstTime[1] = true;
                     endDrag = true;
@@ -254,7 +267,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 }
             if (i == FragmentsManager.fragmentsOnRound.Count)
                 FragmentsManager.fragmentsOnRound.Add(fragmentInformation);
-            imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 200f;
+            imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 300f;
             imgRect.localEulerAngles = new Vector3(0, 0, index * 3);
             imgRect.localScale = imgReduceScale;
             if (preIndex != -1)
@@ -274,6 +287,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             RectTransform rectTransform = imgRect;
             transform.SetParent(parent);
             ChangeChildOrder();
+            GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+                    fragmentInformation.name + "_xiao");
+            GetComponent<Image>().SetNativeSize();
             imgRect = rectTransform;
             firstTime[1] = true;
             endDrag = true;
@@ -337,12 +353,19 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     private void ShowInformation()
     {
         information.SetActive(true);
+        information.transform.GetChild((int)fragmentInformation.model).gameObject.SetActive(true);
+        information.transform.GetChild((int)fragmentInformation.model).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+            fragmentInformation.name + "_fangda");
+        information.transform.GetChild(4).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+            fragmentInformation.name + "_xiao");
         //根据name改变信息版内容
+        //Debug.Log(fragmentInformation.name + ":" + fragmentInformation.model);
         ifClose = false;
     }
     private void HideInformation()
     {
         information.SetActive(false);
+        information.transform.GetChild((int)fragmentInformation.model).gameObject.SetActive(false);
         ifClose = true;
     }
     private void ShowLine()

@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
         experience = 0;
         level = 1;
         StartRound();
+        foreach (var fragment in fragmentList)
+            Debug.Log(fragment.name + ":" + fragment.model);
         roundPanel.InitialRoundPanel(fragmentList);
     }
     /// <summary>
