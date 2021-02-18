@@ -44,12 +44,12 @@ public class UIManager : MonoBehaviour
         if (!isOpen)
         {
             var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-            if (btn.name == "Overview")
+            if (btn.name == "总览")
             {
                 panelList[currentUI].SetActive(true);
                 isOpen = true;
             }
-            else if (btn.name == "Storage")
+            else if (btn.name == "仓库")
             {
                 panelList[12].SetActive(true);
             }
