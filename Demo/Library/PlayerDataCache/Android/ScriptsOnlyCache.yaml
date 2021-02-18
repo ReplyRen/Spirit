@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - IrregularButton
     - PurchasePanel
     - RoundPanel
+    - StartScene
     - StoragePanel
     - TipPanel
     - UIManager
@@ -54,6 +55,81 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11254}
+    - Class: 114
+      Script: {instanceID: 11256}
+    - Class: 114
+      Script: {instanceID: 11258}
+    - Class: 114
+      Script: {instanceID: 11282}
+    - Class: 114
+      Script: {instanceID: 11576}
+    - Class: 114
+      Script: {instanceID: 11580}
+    - Class: 114
+      Script: {instanceID: 11632}
+    - Class: 114
+      Script: {instanceID: 12128}
+    - Class: 114
+      Script: {instanceID: 12300}
+    - Class: 114
+      Script: {instanceID: 12638}
+    - Class: 114
+      Script: {instanceID: 12658}
+    - Class: 114
+      Script: {instanceID: 13042}
+    - Class: 114
+      Script: {instanceID: 13146}
+    - Class: 114
+      Script: {instanceID: 13166}
+    - Class: 114
+      Script: {instanceID: 13570}
+    - Class: 114
+      Script: {instanceID: 13616}
+    - Class: 114
+      Script: {instanceID: 13802}
+    - Class: 114
+      Script: {instanceID: 13862}
+    - Class: 114
+      Script: {instanceID: 14300}
+    - Class: 114
+      Script: {instanceID: 14318}
+    - Class: 114
+      Script: {instanceID: 14420}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Start.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
     - Class: 81
@@ -67,47 +143,47 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11258}
     - Class: 114
-      Script: {instanceID: 11296}
+      Script: {instanceID: 11282}
     - Class: 114
-      Script: {instanceID: 11352}
+      Script: {instanceID: 11338}
     - Class: 114
-      Script: {instanceID: 11590}
+      Script: {instanceID: 11576}
     - Class: 114
-      Script: {instanceID: 11594}
+      Script: {instanceID: 11580}
     - Class: 114
-      Script: {instanceID: 11646}
+      Script: {instanceID: 11632}
     - Class: 114
-      Script: {instanceID: 12142}
+      Script: {instanceID: 12128}
     - Class: 114
-      Script: {instanceID: 12314}
+      Script: {instanceID: 12300}
     - Class: 114
-      Script: {instanceID: 12640}
+      Script: {instanceID: 12626}
     - Class: 114
-      Script: {instanceID: 12652}
+      Script: {instanceID: 12638}
     - Class: 114
-      Script: {instanceID: 12672}
+      Script: {instanceID: 12658}
     - Class: 114
-      Script: {instanceID: 13056}
+      Script: {instanceID: 13042}
     - Class: 114
-      Script: {instanceID: 13160}
+      Script: {instanceID: 13146}
     - Class: 114
-      Script: {instanceID: 13180}
+      Script: {instanceID: 13166}
+    - Class: 114
+      Script: {instanceID: 13556}
     - Class: 114
       Script: {instanceID: 13570}
     - Class: 114
-      Script: {instanceID: 13584}
+      Script: {instanceID: 13616}
     - Class: 114
-      Script: {instanceID: 13630}
+      Script: {instanceID: 13802}
     - Class: 114
-      Script: {instanceID: 13816}
+      Script: {instanceID: 13862}
     - Class: 114
-      Script: {instanceID: 13876}
+      Script: {instanceID: 14318}
     - Class: 114
-      Script: {instanceID: 14314}
+      Script: {instanceID: 14420}
     - Class: 114
-      Script: {instanceID: 14332}
-    - Class: 114
-      Script: {instanceID: 14434}
+      Script: {instanceID: 18814}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -743,7 +819,14 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StartScene
   platform: 13
   scenePathNames:
+  - Assets/Scenes/Start.unity
   - Assets/Scenes/SampleScene.unity
   playerPath: C:/Users/95438/Desktop/1/demo.apk
