@@ -49,7 +49,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     Vector2 offset = new Vector3();    //用来得到鼠标和图片的差值
     Vector3 imgReduceScale = new Vector3(1f, 1f, 1);   //设置图片缩放
     Vector3 imgMovingScale = new Vector3(0.6f, 0.6f, 1);
-    Vector3 imgNormalScale = new Vector3(0.4f, 0.4f, 1);   //正常大小
+    Vector3 imgNormalScale = new Vector3(0.3f, 0.3f, 1);   //正常大小
 
     private int preIndex;           //纪录之前的序号，-1代表未在圆盘上
     // Use this for initialization
@@ -72,7 +72,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         lineActive = false;
         preIndex = -1;
 
-        GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+        GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
         GetComponent<Image>().SetNativeSize();
 
@@ -150,7 +150,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 imgRect = rectTransform;
                 firstTime[1] = false;
                 imgRect.localScale = imgMovingScale;
-                GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+                GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_yuanpian");
                 GetComponent<Image>().SetNativeSize();
             }
@@ -163,7 +163,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 firstTime[1] = true;
                 endDrag = true;
                 imgRect.localScale = imgReduceScale;
-                GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+                GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
                 GetComponent<Image>().SetNativeSize();
             }
@@ -246,7 +246,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                     RectTransform rectTransform = imgRect;
                     transform.SetParent(parent);
                     ChangeChildOrder();
-                    GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+                    GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
                     GetComponent<Image>().SetNativeSize();
                     imgRect = rectTransform;
@@ -267,7 +267,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 }
             if (i == FragmentsManager.fragmentsOnRound.Count)
                 FragmentsManager.fragmentsOnRound.Add(fragmentInformation);
-            imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 300f;
+            imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 270f;
             imgRect.localEulerAngles = new Vector3(0, 0, index * 3);
             imgRect.localScale = imgReduceScale;
             if (preIndex != -1)
@@ -287,7 +287,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             RectTransform rectTransform = imgRect;
             transform.SetParent(parent);
             ChangeChildOrder();
-            GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+            GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
             GetComponent<Image>().SetNativeSize();
             imgRect = rectTransform;
@@ -354,9 +354,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
         information.SetActive(true);
         information.transform.GetChild((int)fragmentInformation.model).gameObject.SetActive(true);
-        information.transform.GetChild((int)fragmentInformation.model).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+        information.transform.GetChild((int)fragmentInformation.model).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
             fragmentInformation.name + "_fangda");
-        information.transform.GetChild(4).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/" +
+        information.transform.GetChild(4).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
             fragmentInformation.name + "_xiao");
         //根据name改变信息版内容
         //Debug.Log(fragmentInformation.name + ":" + fragmentInformation.model);
