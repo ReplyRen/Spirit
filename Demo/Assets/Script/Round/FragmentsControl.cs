@@ -162,7 +162,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 imgRect = rectTransform;
                 firstTime[1] = true;
                 endDrag = true;
-                imgRect.localScale = imgReduceScale;
+                imgRect.localScale = imgMovingScale;
                 GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
                 GetComponent<Image>().SetNativeSize();
@@ -179,7 +179,15 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 else
                     imgRect.localEulerAngles = new Vector3(0, 0, angle);
                 inRound = true;
-                int index = (int)(imgRect.localEulerAngles.z + 1.5) / 3;
+                int index;
+                if (fragmentInformation.model == FragmentModel.thirty || fragmentInformation.model == FragmentModel.ninety)
+                {
+                    index = (int)(imgRect.localEulerAngles.z + 15) / 30 * 10;
+                }
+                else
+                {
+                    index = (int)(imgRect.localEulerAngles.z + 30) / 30 * 10 - 5;
+                }
                 lineRect.localEulerAngles = new Vector3(0, 0, index * 3);
                 angleTipRect.localEulerAngles = new Vector3(0, 0, index * 3);
                 if(endDrag)
@@ -229,7 +237,15 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnEndDrag(PointerEventData eventData)
     {
-        int index = (int)(imgRect.localEulerAngles.z + 1.5) / 3;
+        int index;
+        if (fragmentInformation.model == FragmentModel.thirty || fragmentInformation.model == FragmentModel.ninety)
+        {
+            index = (int)(imgRect.localEulerAngles.z + 15) / 30 * 10;
+        }
+        else
+        {
+            index = (int)(imgRect.localEulerAngles.z + 30) / 30 * 10 - 5;
+        }
         offset = Vector2.zero;
         if (firstTime[1])
         {
