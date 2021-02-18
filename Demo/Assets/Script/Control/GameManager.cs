@@ -170,7 +170,7 @@ public class GameManager : MonoBehaviour
             case "发酵":
                 baseObject.name = "酒醅";
                 break;
-            case "加原/辅料":
+            case "加原辅料":
                 baseObject.name = "酒醅（加料）";
                 break;
             case "上甑":
@@ -241,7 +241,7 @@ public class GameManager : MonoBehaviour
                 name.Add("发酵");
                 break;
             case "酒醅":
-                name.Add("加原/辅料");
+                name.Add("加原辅料");
                 name.Add("上甑");
                 name.Add("蒸馏");
                 break;
