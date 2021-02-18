@@ -278,7 +278,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                     }
                     foreach (var fragment in FragmentsManager.fragmentsOnRound)
                         Debug.Log(fragment.name);
-                    Debug.LogWarning("来自同一个base,替换这个地方为产生tips");
+                    StaticMethod.Tips("同一个酒基只能进行一种操作");
                     return;
                 }
             if (i == FragmentsManager.fragmentsOnRound.Count)
