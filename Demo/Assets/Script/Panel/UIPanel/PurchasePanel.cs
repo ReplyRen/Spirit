@@ -19,7 +19,7 @@ public class PurchasePanel : MonoBehaviour
             BaseObject card = new BaseObject();
             card.description = i.ToString();
             card.name = i.ToString();
-            card.sprite = Resources.Load<Sprite>("Sprite/120");
+            card.sprite = Resources.Load<Sprite>("Sprite/圆盘/60");
             purchaseObject.Add(card);
         }
         /* List<BaseObject> newList = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
@@ -47,7 +47,10 @@ public class PurchasePanel : MonoBehaviour
         for(int i=0;i<purchaseObject.Count;i++)
         {
             if (fatherObj.transform.GetChild(i).GetComponent<UIObject>().isUse)
+            {
                 storageObject.Add(purchaseObject[i]);
+                Destroy(fatherObj.transform.GetChild(i).gameObject);
+            }
         }
         buy.GetComponent<UIObject>().isConfirm = true;
         buy.SetActive(false);
@@ -79,10 +82,15 @@ public class PurchasePanel : MonoBehaviour
         btn.onClick.AddListener(Select);
         obj.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
     }
-
+    public void NextDay()
+    {
+        buy.GetComponent<UIObject>().isConfirm = false;
+        UpdateList();
+        UpdateObjects();
+    }
     void Start()
     {
-        storageObject = GameObject.Find("FactoryPanel").transform.Find("StoragePanel").GetComponent<StoragePanel>().storageObject;
+        storageObject = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
         UpdateList();
         UpdateObjects();
         gameObject.SetActive(false);
