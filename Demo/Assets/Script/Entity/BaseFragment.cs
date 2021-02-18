@@ -45,6 +45,11 @@ public class BaseFragment
     public Element element;
 
     /// <summary>
+    /// 评价数据
+    /// </summary>
+    public Evaluation evaluation;
+
+    /// <summary>
     /// 对应酒基
     /// </summary>
     public BaseObject baseObject;

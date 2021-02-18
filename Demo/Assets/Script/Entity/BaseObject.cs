@@ -23,4 +23,9 @@ public class BaseObject
     /// 属性数据
     /// </summary>
     public Element element;
+
+    /// <summary>
+    /// 评价数据
+    /// </summary>
+    public Evaluation evaluation;
 }

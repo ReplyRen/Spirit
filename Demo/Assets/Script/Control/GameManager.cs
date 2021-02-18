@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         InitGame();
-        Debug.Log(fragmentList.Count);
     }
 
     /// <summary>
@@ -67,8 +66,6 @@ public class GameManager : MonoBehaviour
         experience = 0;
         level = 1;
         StartRound();
-        foreach (var fragment in fragmentList)
-            Debug.Log(fragment.name + ":" + fragment.model);
         roundPanel.InitialRoundPanel(fragmentList);
     }
     /// <summary>
@@ -349,16 +346,17 @@ public class GameManager : MonoBehaviour
         string[] ss = str.Split('|');
         BaseFragment fragment = new BaseFragment();
         Element element = new Element(ElementKind.Fragment);
-        element.acid = int.Parse(ss[1]);
-        element.ester = int.Parse(ss[2]);
-        element.alcohol = int.Parse(ss[3]);
-        element.microbe = int.Parse(ss[4]);
-        element.yield = int.Parse(ss[5]);
-        element.taste = int.Parse(ss[6]);
-        element.advancedAcid = int.Parse(ss[7]);
-        element.advancedEster = int.Parse(ss[8]);
-        element.advancedAlcohol = int.Parse(ss[9]);
-        element.unnamed = int.Parse(ss[10]);
+        element.acid = float.Parse(ss[1]);
+        element.ester = float.Parse(ss[2]);
+        element.alcohol = float.Parse(ss[3]);
+        element.microbe = float.Parse(ss[4]);
+        element.yield = float.Parse(ss[5]);
+        element.taste = float.Parse(ss[6]);
+        element.advancedAcid = float.Parse(ss[7]);
+        element.advancedEster = float.Parse(ss[8]);
+        element.advancedAlcohol = float.Parse(ss[9]);
+        element.unnamed = float.Parse(ss[10]);
+
         fragment.name = ss[0];
         fragment.element = element;
         fragment.description = ss[11];
@@ -377,6 +375,14 @@ public class GameManager : MonoBehaviour
                 fragment.model = FragmentModel.oneHundredAndTwenty;
                 break;
         }
+
+        Evaluation evaluation = new Evaluation();
+        evaluation.intensity = float.Parse(ss[13]);
+        evaluation.rich = float.Parse(ss[14]);
+        evaluation.continuity = float.Parse(ss[15]);
+        evaluation.fineness = float.Parse(ss[16]);
+        evaluation.flavor = float.Parse(ss[17]);
+        fragment.evaluation = evaluation;
         return fragment;
     }
     #endregion
