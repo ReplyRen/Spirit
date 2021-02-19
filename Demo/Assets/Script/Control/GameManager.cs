@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
     {
         InitGame();
     }
-
     /// <summary>
     /// 初始化游戏
     /// </summary>
@@ -197,6 +196,14 @@ public class GameManager : MonoBehaviour
         }
         return baseObject;
     }
+    private BaseFragment SetFragment(BaseFragment fragment)
+    {
+        BaseFragment baseFragment = new BaseFragment();
+        baseFragment.name = fragment.name;
+        baseFragment.element = fragment.element;
+        baseFragment.evaluation = fragment.evaluation;
+        return baseFragment;
+    }
     /// <summary>
     /// 仓检
     /// </summary>
@@ -211,9 +218,8 @@ public class GameManager : MonoBehaviour
                 fragmentList.Add(f);//添加碎片队列
             }
         }
-        BaseFragment fragment = new BaseFragment();
-        fragmentDic.TryGetValue("原、辅料准备", out fragment);
-            fragmentList.Add(fragment);
+        BaseFragment fragment = SetFragment(fragmentDic["原、辅料准备"]);
+        fragmentList.Add(fragment);
     }
     private List<BaseFragment> ObjectToFragment(BaseObject baseObject)
     {
@@ -268,8 +274,7 @@ public class GameManager : MonoBehaviour
         }
         foreach (var a in name)
         {
-            BaseFragment fragment = new BaseFragment();
-            fragmentDic.TryGetValue(a, out fragment);
+            BaseFragment fragment = SetFragment(fragmentDic[a]);
             fragment.baseObject = baseObject;
             fragments.Add(fragment);
         }
