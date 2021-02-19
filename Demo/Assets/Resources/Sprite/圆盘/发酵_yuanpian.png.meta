@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8e5707542d657da4485f78e270f1817c
+guid: 8a679ab0da0351f4696e8e43dc196207
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2880130389652337378
-    second: "\u9274\u9152_yuanpian_0"
+      213: 7355854782021576131
+    second: "\u53D1\u9175_yuanpian_0"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -92,13 +92,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u9274\u9152_yuanpian_0"
+      name: "\u53D1\u9175_yuanpian_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 7
-        width: 421
-        height: 414
+        x: 20
+        y: 4
+        width: 580
+        height: 402
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -106,8 +106,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e2f80e645748f720800000000000000
-      internalID: 2880130389652337378
+      spriteID: 3c521c583fe351660800000000000000
+      internalID: 7355854782021576131
       vertices: []
       indices: 
       edges: []

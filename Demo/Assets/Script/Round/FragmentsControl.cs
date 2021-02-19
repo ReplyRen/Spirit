@@ -71,7 +71,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         ifClose = true;
         lineActive = false;
         preIndex = -1;
-
+        transform.GetChild(0).GetComponent<Text>().text = fragmentInformation.name;
+        transform.GetChild(0).GetComponent<Text>().fontSize = 60;
         GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
         GetComponent<Image>().SetNativeSize();
@@ -278,12 +279,12 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                     }
                     foreach (var fragment in FragmentsManager.fragmentsOnRound)
                         Debug.Log(fragment.name);
-                    StaticMethod.Tips("同一个酒基只能进行一种操作");
+                    Debug.LogWarning("来自同一个base,替换这个地方为产生tips");
                     return;
                 }
             if (i == FragmentsManager.fragmentsOnRound.Count)
                 FragmentsManager.fragmentsOnRound.Add(fragmentInformation);
-            imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 270f;
+            imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 195f;
             imgRect.localEulerAngles = new Vector3(0, 0, index * 3);
             imgRect.localScale = imgReduceScale;
             if (preIndex != -1)

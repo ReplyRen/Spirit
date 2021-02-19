@@ -21,18 +21,20 @@ public class RoundPanel : BasePanel
         
         if (FragmentsManager.fragmentsOnRound != null && FragmentsManager.fragmentsOnRound.Count != 0) 
         {
+            foreach (var fragment in FragmentsManager.fragmentsOnRound)
+                Debug.Log(fragment.name + ":" + fragment.duration+"+"+fragment.finished);
             for (int i = FragmentsManager.fragmentsOnRound.Count - 1; i >= 0; i--)
             {
-                BaseFragment fragment = FragmentsManager.fragmentsOnRound[i];
-                fragment.DurationDecrease();
-                if (fragment.finished)
+                //FragmentsManager.fragmentsOnRound[i].DurationDecrease();
+                if (FragmentsManager.fragmentsOnRound[i].finished)
                 {
-                    Destroy(fragment.obj);
+                    Destroy(FragmentsManager.fragmentsOnRound[i].obj);
+                    FragmentsManager.fragmentsOnRound[i].obj.GetComponent<FragmentsControl>().ReMoveFragment();
                     FragmentsManager.fragmentsOnRound.RemoveAt(i);
-                    fragment.obj.GetComponent<FragmentsControl>().ReMoveFragment();
                 }                    
             }
         }
+            
         gameObject.SetActive(true);
         if (ifFirstTime)
         {
