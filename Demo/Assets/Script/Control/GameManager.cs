@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
+
     /// <summary>
     /// 已过回合数
     /// </summary>
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         roundPanel = GameObject.FindWithTag("RoundPanel").GetComponent<RoundPanel>();
         uiManager = GameObject.FindWithTag("FactoryPanel").GetComponent<UIManager>();
         LoadData();
-        InitGame();
+
     }
     private void Start()
     {
@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour
         roundCount++;
         WeatherData();
         UpdateFragment();
+        StaticMethod.Tips(month.ToString() + "  " + weather.ToString() + " 温度：" + temperature + " 湿度: " + humidity);
     }
 
 
@@ -116,7 +117,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void UpdateObject()
     {
-        for (int i= 0;i < fragmentOnDisc.Count;i++)//遍历圆盘上的碎片
+        for (int i = 0; i < fragmentOnDisc.Count; i++)//遍历圆盘上的碎片
         {
             fragmentOnDisc[i].DurationDecrease();//时间自减
             if (fragmentOnDisc[i].finished)//如果完成了
@@ -135,7 +136,7 @@ public class GameManager : MonoBehaviour
                 fragmentOnDisc.Remove(fragmentOnDisc[i]);//移除圆盘上此碎片
             }
         }
-    } 
+    }
     private BaseObject FragmentToObject(BaseFragment fragment)
     {
         BaseObject baseObject = new BaseObject();
@@ -215,7 +216,7 @@ public class GameManager : MonoBehaviour
         foreach (var a in baseList)
         {
             List<BaseFragment> fragments = ObjectToFragment(a);
-            foreach(var f in fragments)
+            foreach (var f in fragments)
             {
                 fragmentList.Add(f);//添加碎片队列
             }
@@ -306,6 +307,11 @@ public class GameManager : MonoBehaviour
     public float temperature;
 
     /// <summary>
+    /// 月份
+    /// </summary>
+    public Month month = Month.建寅;
+
+    /// <summary>
     /// 湿度
     /// </summary>
     public float humidity;
@@ -315,8 +321,125 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void WeatherData()
     {
-
+        MonthPast();
+        float temp = SetHumidity();
+        SetTemperature(temp);
     }
+
+    private void MonthPast()
+    {
+        if (month == Month.建子)
+            month = Month.建丑;
+        else
+            month++;
+    }
+    private void SetTemperature(float htp)
+    {
+        float normal = 0;
+        switch (month)
+        {
+            case Month.建丑:
+                normal = 5f;
+                break;
+            case Month.建寅:
+                normal = 7f;
+                break;
+            case Month.建卯:
+                normal = 12f;
+                break;
+            case Month.建辰:
+                normal = 17f;
+                break;
+            case Month.建巳:
+                normal = 20f;
+                break;
+            case Month.建午:
+                normal = 23f;
+                break;
+            case Month.建未:
+                normal = 26f;
+                break;
+            case Month.建申:
+                normal = 22f;
+                break;
+            case Month.建酉:
+                normal = 19f;
+                break;
+            case Month.建戌:
+                normal = 15f;
+                break;
+            case Month.建亥:
+                normal = 10f;
+                break;
+            case Month.建子:
+                normal = 5f;
+                break;
+        }
+        float temp = Random.Range(-3, 5);
+        temperature = normal + temp - htp / 3;
+    }
+    private float SetHumidity()
+    {
+        float normal = 0f;
+        switch (month)
+        {
+            case Month.建丑:
+                normal = 79f;
+                break;
+            case Month.建寅:
+                normal = 78f;
+                break;
+            case Month.建卯:
+                normal = 77f;
+                break;
+            case Month.建辰:
+                normal = 77f;
+                break;
+            case Month.建巳:
+                normal = 76f;
+                break;
+            case Month.建午:
+                normal = 80f;
+                break;
+            case Month.建未:
+                normal = 72f;
+                break;
+            case Month.建申:
+                normal = 70f;
+                break;
+            case Month.建酉:
+                normal = 75f;
+                break;
+            case Month.建戌:
+                normal = 81f;
+                break;
+            case Month.建亥:
+                normal = 82f;
+                break;
+            case Month.建子:
+                normal = 79f;
+                break;
+        }
+        float temp = Random.Range(-15f, 15f);
+        if (temp > 6)
+            weather = Weather.雨;
+        else if (temp > 0 && temp <= 6)
+            weather = Weather.阴;
+        else
+            weather = Weather.晴;
+        humidity = normal + temp;
+        return temp;
+    }
+
+    public enum Weather
+    {
+        晴, 阴, 雨
+    }
+    public enum Month
+    {
+        建丑, 建寅, 建卯, 建辰, 建巳, 建午, 建未, 建申, 建酉, 建戌, 建亥, 建子
+    }
+
     #endregion
 
     #region 数据相关
@@ -393,8 +516,4 @@ public class GameManager : MonoBehaviour
         return fragment;
     }
     #endregion
-}
-public enum Weather
-{
-
 }

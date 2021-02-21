@@ -38,6 +38,10 @@ public class PieChart : MonoBehaviour
     {
         SetCount(total, inclusions);
     }
+    public void UpdateChart(float total, params Inclusion[] inclusions)
+    {
+        SetCount(total, inclusions);
+    }
     private void SetCount(float total, params Inclusion[] inclusions)
     {
         List<int> list = new List<int>();
