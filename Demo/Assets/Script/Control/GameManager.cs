@@ -202,6 +202,8 @@ public class GameManager : MonoBehaviour
         baseFragment.name = fragment.name;
         baseFragment.element = fragment.element;
         baseFragment.evaluation = fragment.evaluation;
+        baseFragment.description = fragment.description;
+        baseFragment.model = fragment.model;
         return baseFragment;
     }
     /// <summary>
@@ -388,7 +390,6 @@ public class GameManager : MonoBehaviour
         evaluation.fineness = float.Parse(ss[16]);
         evaluation.flavor = float.Parse(ss[17]);
         fragment.evaluation = evaluation;
-        Debug.Log(fragment.name + fragment.model.ToString());
         return fragment;
     }
     #endregion
