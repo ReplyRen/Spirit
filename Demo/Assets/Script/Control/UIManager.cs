@@ -252,7 +252,7 @@ public class UIManager : MonoBehaviour
         //
         temp = GameObject.Find("FactoryPanel").transform.GetChild(1 + num + 1).gameObject;
         text = temp.transform.Find("Title");
-        text.GetComponent<Text>().text = temp.name;
+        text.GetComponent<Text>().text = temp.name.Replace("Panel", "");
         panelList.Add(temp);
         for (i = 2; i < num + 2; i++) /// 初始化list
         {
@@ -263,7 +263,7 @@ public class UIManager : MonoBehaviour
             //
             temp = GameObject.Find("FactoryPanel").transform.GetChild(i + num + 1).gameObject;
             text = temp.transform.Find("Title");
-            text.GetComponent<Text>().text = temp.name;
+            text.GetComponent<Text>().text = temp.name.Replace("Panel","");
             panelList.Add(temp);
             //
             try
@@ -275,7 +275,7 @@ public class UIManager : MonoBehaviour
             }
             catch { Debug.Log("0"); }
         }
-        temp = GameObject.Find("FactoryPanel").transform.Find("PurchasePanel/Buy").gameObject;
+        temp = GameObject.Find("FactoryPanel").transform.Find("采购部Panel/Buy").gameObject;
         confirmList.Add(temp);
         temp = GameObject.Find("FactoryPanel");
         panelList.Add(temp);
@@ -304,5 +304,27 @@ public class UIManager : MonoBehaviour
                 gridList[i].color = new Color(0, 0, 0);
             }
         }
+        /*if(isOpen&&!panelList[12].activeSelf)
+        {
+            switch(panelList[currentUI].name)
+            {
+                case "采购部Panel":
+                    
+                case "粉碎机Panel":
+                case "储藏室Panel":
+                case "蒸煮锅Panel":
+                case "":
+                case "":
+                case "":
+                case "":
+                case "":
+                case "":
+                case "":
+                case "":
+                case "":
+                case "":
+                case "":
+            }
+        }*/
     }
 }
