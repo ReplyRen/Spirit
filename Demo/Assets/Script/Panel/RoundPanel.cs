@@ -26,9 +26,11 @@ public class RoundPanel : BasePanel
             for (int i = FragmentsManager.fragmentsOnRound.Count - 1; i >= 0; i--)
             {
                 //FragmentsManager.fragmentsOnRound[i].DurationDecrease();
+                FragmentsManager.fragmentsOnRound[i].obj.GetComponent<FragmentsControl>().enabled = false;
                 if (FragmentsManager.fragmentsOnRound[i].finished)
                 {
                     Destroy(FragmentsManager.fragmentsOnRound[i].obj);
+                    FragmentsManager.fragmentsOnRound[i].obj.GetComponent<FragmentsControl>().enabled = true;
                     FragmentsManager.fragmentsOnRound[i].obj.GetComponent<FragmentsControl>().ReMoveFragment();
                     FragmentsManager.fragmentsOnRound.RemoveAt(i);
                 }                    
