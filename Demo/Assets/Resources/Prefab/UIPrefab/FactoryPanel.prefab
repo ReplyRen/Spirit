@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 360102934439112456}
   - component: {fileID: 360102934439112457}
   m_Layer: 5
-  m_Name: CellarPanel
+  m_Name: "\u9152\u7A96Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2259,7 +2259,7 @@ GameObject:
   - component: {fileID: 360102934623484598}
   - component: {fileID: 360102934623484599}
   m_Layer: 5
-  m_Name: MixPanel
+  m_Name: "\u8C03\u9152\u5BA4Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6199,7 +6199,7 @@ GameObject:
   - component: {fileID: 360102935081722902}
   - component: {fileID: 360102935081722903}
   m_Layer: 5
-  m_Name: CentrifugationPanel
+  m_Name: "\u79BB\u5FC3\u6740\u83CC\u8BBE\u5907Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8025,7 +8025,7 @@ GameObject:
   - component: {fileID: 360102935249164708}
   - component: {fileID: 360102935249164709}
   m_Layer: 5
-  m_Name: StorePanel
+  m_Name: "\u50A8\u85CF\u5BA4Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8108,7 +8108,7 @@ GameObject:
   - component: {fileID: 360102935280132612}
   - component: {fileID: 360102935280132613}
   m_Layer: 5
-  m_Name: ShowPanel
+  m_Name: "\u9274\u9152\u4F1APanel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8526,7 +8526,7 @@ GameObject:
   - component: {fileID: 360102935314020712}
   - component: {fileID: 360102935314020713}
   m_Layer: 5
-  m_Name: PitsPanel
+  m_Name: "\u7A96\u6C60Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9473,7 +9473,7 @@ GameObject:
   - component: {fileID: 360102935443309473}
   - component: {fileID: 360102935443309474}
   m_Layer: 5
-  m_Name: DistillationPanel
+  m_Name: "\u84B8\u998F\u8BBE\u5907Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9764,7 +9764,7 @@ GameObject:
   - component: {fileID: 360102935486768442}
   - component: {fileID: 360102935486768443}
   m_Layer: 5
-  m_Name: SmashPanel
+  m_Name: "\u7C89\u788E\u673APanel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10004,7 +10004,7 @@ GameObject:
   - component: {fileID: 360102935512042773}
   - component: {fileID: 360102935512042774}
   m_Layer: 5
-  m_Name: PurchasePanel
+  m_Name: "\u91C7\u8D2D\u90E8Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10262,7 +10262,7 @@ GameObject:
   - component: {fileID: 360102935546255818}
   - component: {fileID: 360102935546255819}
   m_Layer: 5
-  m_Name: SteamerPanel
+  m_Name: "\u7511\u5B50Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14114,7 +14114,7 @@ GameObject:
   - component: {fileID: 360102936061266411}
   - component: {fileID: 360102936061266404}
   m_Layer: 5
-  m_Name: CookPanel
+  m_Name: "\u84B8\u716E\u9505Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17138,7 +17138,7 @@ GameObject:
   - component: {fileID: 360102936482049576}
   - component: {fileID: 360102936482049577}
   m_Layer: 5
-  m_Name: BottlePanel
+  m_Name: "\u704C\u88C5\u8BBE\u5907Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17635,12 +17635,12 @@ GameObject:
   - component: {fileID: 360102936506438286}
   - component: {fileID: 360102936506438287}
   m_Layer: 5
-  m_Name: StoragePanel
+  m_Name: "\u4ED3\u5E93Panel"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &360102936506438280
 RectTransform:
   m_ObjectHideFlags: 0
