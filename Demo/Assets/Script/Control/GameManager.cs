@@ -388,6 +388,7 @@ public class GameManager : MonoBehaviour
         evaluation.fineness = float.Parse(ss[16]);
         evaluation.flavor = float.Parse(ss[17]);
         fragment.evaluation = evaluation;
+        Debug.Log(fragment.name + fragment.model.ToString());
         return fragment;
     }
     #endregion
