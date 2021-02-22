@@ -212,7 +212,10 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             if (isRect && !endDrag)
             {
                 //设置图片的ugui坐标与鼠标的ugui坐标保持不变
-                imgRect.anchoredPosition = offset + uguiPos;
+                if (firstTime[1] && Mathf.Abs((imgRect.anchoredPosition - offset - uguiPos).y) > Mathf.Abs((imgRect.anchoredPosition - offset - uguiPos).x))
+                { }
+                else
+                    imgRect.anchoredPosition = offset + uguiPos;
                 //Debug.Log(offset + "+" + uguiPos);
             }
             if (!ifClose)
