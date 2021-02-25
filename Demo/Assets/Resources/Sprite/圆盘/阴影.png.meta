@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: f2d605d14314f8f4caae9e58b9bc34ab
+guid: 3334b7def3162084f892ab2d118f3385
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4178713609805722204
-    second: "\u52FE\u5151\u52FE\u8C03_yuanpian_0"
+      213: -1316587977721620106
+    second: "\u9634\u5F71_0"
+  - first:
+      213: 2993665581388304854
+    second: "\u9634\u5F71_1"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -23,7 +26,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -92,13 +95,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u52FE\u5151\u52FE\u8C03_yuanpian_0"
+      name: "\u9634\u5F71_0"
       rect:
         serializedVersion: 2
-        x: 82
-        y: 11
-        width: 580
-        height: 405
+        x: 0
+        y: 0
+        width: 144
+        height: 453
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -106,8 +109,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c527f8a63e5cdf930800000000000000
-      internalID: 4178713609805722204
+      spriteID: 6795a58b53a8abde0800000000000000
+      internalID: -1316587977721620106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u9634\u5F71_1"
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 623
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d196f23cf2ab8920800000000000000
+      internalID: 2993665581388304854
       vertices: []
       indices: 
       edges: []

@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -3996376649581578474
     second: "\u539F\u3001\u8F85\u6599\u51C6\u5907_yuanpian_0"
+  - first:
+      213: 6472070760904794633
+    second: "\u539F\u3001\u8F85\u6599\u51C6\u5907_yuanpian_0"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,8 +109,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61736056c940a88c0800000000000000
-      internalID: -3996376649581578474
+      spriteID: 9022ce8011a61d950800000000000000
+      internalID: 6472070760904794633
       vertices: []
       indices: 
       edges: []
