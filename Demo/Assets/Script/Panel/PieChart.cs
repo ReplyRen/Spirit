@@ -19,11 +19,10 @@ public class PieChart : MonoBehaviour
         legend.SetActive(false);
         fillings.Add(filling);
         InitFilling();
-        Test();
     }
     public void Test() 
     {
-        Inclusion a = new Inclusion("1", 0.5f);
+        Inclusion a = new Inclusion("醇含量", 0.5f);
         Inclusion b = new Inclusion("2", 0.5f);
         Inclusion c = new Inclusion("3", 0.5f);
         Init(1.5f, a, b, c);

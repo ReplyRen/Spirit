@@ -28,4 +28,6 @@ public class BaseObject
     /// 评价数据
     /// </summary>
     public Evaluation evaluation;
+
+    public Queue<float> alcoholQueue = new Queue<float>();
 }

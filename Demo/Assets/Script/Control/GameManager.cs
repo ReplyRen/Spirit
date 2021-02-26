@@ -72,6 +72,13 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadGame()
     {
+        BaseFragment fragment1 = new BaseFragment();
+        BaseFragment fragment2 = new BaseFragment();
+        BaseFragment fragment3 = new BaseFragment();
+        BaseFragment returnF = new BaseFragment();
+        returnF.element = fragment1.element + fragment2.element + fragment3.element;
+
+
 
     }
 

@@ -10,7 +10,6 @@ public class LineChart : MonoBehaviour
     {
         point = GameObject.Find("Point");
         point.SetActive(false);
-        Test();
     }
     private void Test()
     {

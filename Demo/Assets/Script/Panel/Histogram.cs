@@ -10,7 +10,6 @@ public class Histogram : MonoBehaviour
     {
         pillar = GameObject.Find("Pillar");
         pillar.SetActive(false);
-        Test();
     }
     private void Test()
     {
@@ -21,6 +20,12 @@ public class Histogram : MonoBehaviour
     }
     public void Init(params Inclusion[] inclusions)
     {
+        SetLength(inclusions);
+    }
+    public void Init(Transform parent,Vector3 localPos, params Inclusion[] inclusions)
+    {
+        gameObject.transform.SetParent(parent);
+        gameObject.transform.localPosition = localPos;
         SetLength(inclusions);
     }
     private void SetLength(params Inclusion[] inclusions)
