@@ -72,13 +72,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadGame()
     {
-        BaseFragment fragment1 = new BaseFragment();
-        BaseFragment fragment2 = new BaseFragment();
-        BaseFragment fragment3 = new BaseFragment();
-        BaseFragment returnF = new BaseFragment();
-        returnF.element = fragment1.element + fragment2.element + fragment3.element;
-
-
 
     }
 
@@ -189,7 +182,7 @@ public class GameManager : MonoBehaviour
             case "陈酿":
                 baseObject.name = "原酒";
                 break;
-            case "勾调":
+            case "勾兑勾调":
                 baseObject.name = "酒";
                 break;
             case "灌装":
@@ -270,7 +263,7 @@ public class GameManager : MonoBehaviour
                 name.Add("陈酿");
                 break;
             case "原酒":
-                name.Add("勾调");
+                name.Add("勾兑勾调");
                 break;
             case "酒":
                 name.Add("灌装");
@@ -469,6 +462,7 @@ public class GameManager : MonoBehaviour
         {
             BaseFragment fragment = DataDecode(str[i]);
             fragmentDic.Add(fragment.name, fragment);
+            Debug.Log(fragment.name);
         }
 
     }
