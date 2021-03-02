@@ -6,10 +6,26 @@ public class LineChart : MonoBehaviour
 {
     GameObject point;
     List<Vector3> pointPos = new List<Vector3>();
+    List<GameObject> points = new List<GameObject>();
     private void Start()
     {
         point = GameObject.Find("Point");
         point.SetActive(false);
+        Test();
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Queue<float> que = new Queue<float>();
+            que.Enqueue(0.6f);
+            que.Enqueue(1f);
+            que.Enqueue(0f);
+            que.Enqueue(0.51f);
+            que.Enqueue(0.16f);
+            que.Enqueue(1f);
+            UpdateLine(que);
+        }
     }
     private void Test()
     {
@@ -34,6 +50,21 @@ public class LineChart : MonoBehaviour
         SetPoint(nums);
         DrawLine();
     }
+    public void UpdateLine(Queue<float> nums)
+    {
+        Clear();
+        SetPoint(nums);
+        DrawLine();
+    }
+    private void Clear()
+    {
+        foreach(var a in points)
+        {
+            Destroy(a);
+        }
+        points.Clear();
+        pointPos.Clear();
+    }
     private void SetPoint(Queue<float> nums)
     {
         int count = nums.Count;
@@ -43,6 +74,7 @@ public class LineChart : MonoBehaviour
             obj.SetActive(true);
             obj.transform.localPosition = new Vector2(-145 + 60 * i, -188 + 362 * nums.Dequeue());
             pointPos.Add(obj.transform.localPosition);
+            points.Add(obj);
         }
     }
     private void DrawLine()

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Histogram : MonoBehaviour
 {
     GameObject pillar;
+    List<GameObject> objs = new List<GameObject>();
     private void Start()
     {
         pillar = GameObject.Find("Pillar");
@@ -17,6 +18,14 @@ public class Histogram : MonoBehaviour
         Inclusion b = new Inclusion("2", 0.5f);
         Inclusion c = new Inclusion("3", 0.01f);
         Init(a, b, c);
+    }
+    private void Clear()
+    {
+        foreach (var a in objs)
+        {
+            Destroy(a);
+        }
+        objs.Clear();
     }
     public void Init(params Inclusion[] inclusions)
     {
@@ -37,11 +46,13 @@ public class Histogram : MonoBehaviour
             obj.transform.localPosition = new Vector2(-145 + 60 * i, -190f);
             obj.GetComponent<RectTransform>().sizeDelta = new Vector2(12, 365 * inclusions[i].value);
             obj.GetComponentInChildren<Text>().text = inclusions[i].name;
+            objs.Add(obj);
 
         }
     }
     public void UpdateLength(params Inclusion[] inclusions)
     {
+        Clear();
         SetLength(inclusions);
     }
 }

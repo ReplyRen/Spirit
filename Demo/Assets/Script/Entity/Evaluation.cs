@@ -7,27 +7,27 @@ public class Evaluation
     /// <summary>
     /// 强度
     /// </summary>
-    public float intensity;
+    public float intensity=0;
 
     /// <summary>
     /// 浓郁度
     /// </summary>
-    public float rich;
+    public float rich = 0;
 
     /// <summary>
     /// 连绵度
     /// </summary>
-    public float continuity;
+    public float continuity = 0;
 
     /// <summary>
     /// 陈敛细腻度
     /// </summary>
-    public float fineness;
+    public float fineness = 0;
 
     /// <summary>
     /// 风味
     /// </summary>
-    public float flavor;
+    public float flavor = 0;
 
     public static Evaluation operator +(Evaluation a,Evaluation b)
     {

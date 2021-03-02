@@ -9,6 +9,7 @@ public class PieChart : MonoBehaviour
     GameObject filling;
     List<GameObject> fillings=new List<GameObject>();
     GameObject legend;
+    List<GameObject> lengeds = new List<GameObject>();
     private void Start()
     {
         colors.Add(new Color32(0,0,255,255));
@@ -19,6 +20,11 @@ public class PieChart : MonoBehaviour
         legend.SetActive(false);
         fillings.Add(filling);
         InitFilling();
+        
+    }
+    private void Update()
+    {
+
     }
     public void Test() 
     {
@@ -39,6 +45,7 @@ public class PieChart : MonoBehaviour
     }
     public void UpdateChart(float total, params Inclusion[] inclusions)
     {
+        Clear();
         SetCount(total, inclusions);
     }
     private void SetCount(float total, params Inclusion[] inclusions)
@@ -66,6 +73,7 @@ public class PieChart : MonoBehaviour
                     obj.transform.localPosition = new Vector3(-180 + 150 * j, -200);
                     obj.GetComponent<Image>().color = colors[j];
                     obj.GetComponentInChildren<Text>().text = inclusions[j].name;
+                    lengeds.Add(obj);
                 }
             }
         }
@@ -74,6 +82,7 @@ public class PieChart : MonoBehaviour
         obj1.transform.localPosition = new Vector3(-180 + 150 * (list.Count-1), -200);
         obj1.GetComponent<Image>().color = colors[list.Count - 1];
         obj1.GetComponentInChildren<Text>().text = inclusions[list.Count - 1].name;
+        lengeds.Add(obj1);
     }
     private void InitFilling()
     {
@@ -84,5 +93,13 @@ public class PieChart : MonoBehaviour
             obj.transform.localEulerAngles = new Vector3(0, 0, -15 * i);
             fillings.Add(obj);
         }
+    }
+    private void Clear()
+    {
+        foreach(var a in lengeds)
+        {
+            Destroy(a);
+        }
+        lengeds.Clear();
     }
 }

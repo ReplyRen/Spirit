@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour
         roundCount++;
         WeatherData();
         UpdateFragment();
-        StaticMethod.Tips(month.ToString() + "  " + weather.ToString() + " 温度：" + temperature + " 湿度: " + humidity);
     }
 
 
@@ -124,7 +123,7 @@ public class GameManager : MonoBehaviour
             {
                 if (fragmentOnDisc[i].name == "鉴酒")
                 {
-                    WineTasting(fragmentOnDisc[i].baseObject);
+
                 }
                 else
                 {
@@ -140,10 +139,22 @@ public class GameManager : MonoBehaviour
     private BaseObject FragmentToObject(BaseFragment fragment)
     {
         BaseObject baseObject = new BaseObject();
-        if (fragment.name != "原、辅料准备")
-            baseObject.element = fragment.element + fragment.baseObject.element;
-        else
+        if (fragment.name == "原、辅料准备")
+        {
             baseObject.element = fragment.element;
+        }
+        else
+        {
+            baseObject.element = fragment.element + fragment.baseObject.element;
+            baseObject.evaluation = fragment.evaluation + fragment.baseObject.evaluation;
+            baseObject.alcoholQueue = fragment.baseObject.alcoholQueue;
+            if (baseObject.alcoholQueue.Count >= 6)
+            {
+                baseObject.alcoholQueue.Dequeue();
+            }
+            baseObject.alcoholQueue.Enqueue(baseObject.element.alcohol);
+        }
+
         switch (fragment.name)
         {
             case "原、辅料准备":
@@ -189,7 +200,6 @@ public class GameManager : MonoBehaviour
                 baseObject.name = "酒（产物）";
                 break;
             case "鉴酒":
-                WineTasting(baseObject);
                 break;
             default:
                 Debug.LogError("碎片转物品错误");
@@ -272,7 +282,7 @@ public class GameManager : MonoBehaviour
                 name.Add("鉴酒");
                 break;
             default:
-                Debug.LogError("产物转碎片错误");
+                Debug.LogError("产物转碎片错误 :" + baseObject.name);
                 break;
         }
         foreach (var a in name)
@@ -282,15 +292,6 @@ public class GameManager : MonoBehaviour
             fragments.Add(fragment);
         }
         return fragments;
-    }
-
-    /// <summary>
-    /// 鉴酒
-    /// </summary>
-    /// <param name="baseObject"></param>
-    private void WineTasting(BaseObject baseObject)
-    {
-        Debug.Log("品酒会");
     }
 
     #endregion
@@ -462,7 +463,6 @@ public class GameManager : MonoBehaviour
         {
             BaseFragment fragment = DataDecode(str[i]);
             fragmentDic.Add(fragment.name, fragment);
-            Debug.Log(fragment.name);
         }
 
     }
@@ -476,7 +476,7 @@ public class GameManager : MonoBehaviour
     {
         string[] ss = str.Split('|');
         BaseFragment fragment = new BaseFragment();
-        Element element = new Element(ElementKind.Fragment);
+        Element element = new Element();
         element.acid = float.Parse(ss[1]);
         element.ester = float.Parse(ss[2]);
         element.alcohol = float.Parse(ss[3]);
