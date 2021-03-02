@@ -43,6 +43,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     private bool inRound;
     private const float exp = (float)Math.PI * 2 / 360;
     private bool lineActive;
+    private bool switchPicture;         //换图片
     /// <summary>
     /// 偏移量与缩放
     /// </summary>
@@ -73,6 +74,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         inRound = false;
         ifClose = true;
         lineActive = false;
+        switchPicture = false;
+
         preIndex = -1;
         GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
@@ -109,7 +112,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
         Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
         Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
-        if(firstTime[0])
+        if (preIndex != -1)
+            ShowInformation();
+        if (firstTime[0])
         {
             prePosition = imgRect.anchoredPosition;
             firstTime[0] = false;
@@ -135,6 +140,12 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnDrag(PointerEventData eventData)
     {
+        if(switchPicture)
+        {
+            switchPicture = false;
+            return;
+        }
+        
         if (preIndex != -1)
         {
             Round.RemoveFragment(preIndex, fragmentInformation.model);
@@ -288,7 +299,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                     }
                     foreach (var fragment in FragmentsManager.fragmentsOnRound)
                         Debug.Log(fragment.name);
-                    Debug.LogWarning("来自同一个base,替换这个地方为产生tips");
+                    //Debug.LogWarning("来自同一个base,替换这个地方为产生tips");
+                    StaticMethod.Tips("来自同一个酒基,无法同时安置！");
                     return;
                 }
             if (i == FragmentsManager.fragmentsOnRound.Count)
@@ -357,6 +369,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             imgRect.localScale = imgNormalScale;   //恢复图片
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
+            switchPicture = true;
         }   
         HideInformation();
     }
