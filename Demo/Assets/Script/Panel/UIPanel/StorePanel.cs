@@ -1,18 +1,82 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StorePanel : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Inclusion a = new Inclusion("酸含量", 0.5f);
+    Inclusion b = new Inclusion("酯含量", 0.5f);
+    Inclusion c = new Inclusion("醇含量", 0.5f);
+    Inclusion d = new Inclusion("微生物含量", 0);
+    Inclusion e = new Inclusion("产量", 0);
+    Inclusion f = new Inclusion("质感", 0);
+    Inclusion g = new Inclusion("高级酸", 0);
+    Inclusion h = new Inclusion("高级酯", 0);
+    Inclusion i = new Inclusion("高级醇", 0);
+    BaseFragment fragment = new BaseFragment();
+    GameManager instance;
+    List<BaseFragment> fragmentsOnDisc;
+    Slider valueSet;
+    GameObject barChart;
+    GameObject pieChart;
+    float valueChange;
+    int index;
     void Start()
     {
-        
+        instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
+        fragmentsOnDisc = instance.fragmentOnDisc;
+        valueSet = GameObject.FindWithTag("StatusSet").GetComponent<Slider>();
+        valueSet.value = 0;
+        barChart = GameObject.Find("Histogram");
+        pieChart = GameObject.Find("PieChart");
+        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
+        pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
+        for (int i = 0; i < fragmentsOnDisc.Count; i++)
+        {
+            if (fragmentsOnDisc[i].name == "配料")
+            {
+                index = i;
+            }
+        }
     }
-
-    // Update is called once per frame
+    void SetEvaluation(string name)
+    {
+        fragment = instance.fragmentDic[name];
+        fragmentsOnDisc[index].element = fragment.element;
+        fragmentsOnDisc[index].evaluation = fragment.evaluation;
+    }
     void Update()
     {
-        
+        if (valueSet.value <= 0.333f)
+        {
+            valueChange = valueSet.value / 0.333f;
+            a.value = valueChange * 0.9f;
+            b.value = valueChange * 0.9f;
+            c.value = valueChange * 0.6f;
+            e.value = valueChange * 0.6f;
+            SetEvaluation("原、辅料配比（低）");
+        }
+        else if (valueSet.value <= 0.666f)
+        {
+            valueChange = (valueSet.value - 0.333f) / 0.333f;
+            a.value = 0.9f + valueChange * 0.1f;
+            b.value = 0.9f + valueChange * 0;
+            c.value = 0.6f + valueChange * 0.2f;
+            e.value = 0.6f + valueChange * 0.2f;
+            SetEvaluation("原、辅料配比（中）");
+        }
+        else
+        {
+            valueChange = (valueSet.value - 0.666f) / 0.333f;
+            a.value = 1 - valueChange * 0.3f;
+            b.value = 0.9f + valueChange * 0.1f;
+            c.value = 0.8f + valueChange * 0.2f;
+            e.value = 0.8f + valueChange * 0.2f;
+            SetEvaluation("原、辅料配比（高）");
+        }
+        float sum = a.value + b.value + c.value;
+        barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
+        pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
     }
 }

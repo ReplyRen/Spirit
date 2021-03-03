@@ -18,7 +18,7 @@ public class PurchasePanel : MonoBehaviour
         {
             BaseObject card = new BaseObject();
             card.description = i.ToString();
-            card.name = "原、辅料";
+            card.name = i.ToString();
             card.sprite = Resources.Load<Sprite>("Sprite/圆盘/60");
             purchaseObject.Add(card);
         }
