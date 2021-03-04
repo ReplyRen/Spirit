@@ -12,15 +12,18 @@ public class PieChart : MonoBehaviour
     List<GameObject> lengeds = new List<GameObject>();
     private void Start()
     {
-        colors.Add(new Color32(0,0,255,255));
-        colors.Add(new Color32(0, 255, 0, 255));
-        colors.Add(new Color32(255, 0, 0, 255));
+        colors.Add(new Color32(170, 190, 137, 255));
+        colors.Add(new Color32(189, 188, 137, 255));
+        colors.Add(new Color32(190, 177, 136, 255));
+        colors.Add(new Color32(190, 168, 137, 255));
+        colors.Add(new Color32(189, 159, 137, 255));
+        colors.Add(new Color32(190, 147, 136, 255));
         filling = GameObject.Find("Filling");
         legend = GameObject.Find("Legend");
         legend.SetActive(false);
         fillings.Add(filling);
         InitFilling();
-        
+        Test();
     }
     private void Update()
     {

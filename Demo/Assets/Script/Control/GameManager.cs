@@ -45,10 +45,13 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public UIManager uiManager;
 
+    private Calendar calendar;
+
     private void Awake()
     {
         roundPanel = GameObject.FindWithTag("RoundPanel").GetComponent<RoundPanel>();
         uiManager = GameObject.FindWithTag("FactoryPanel").GetComponent<UIManager>();
+        calendar = GameObject.FindWithTag("Calendar").GetComponent<Calendar>();
         LoadData();
 
     }
@@ -332,6 +335,7 @@ public class GameManager : MonoBehaviour
         SetSeason();
         float temp = SetHumidity();
         SetTemperature(temp);
+        calendar.Set(season, weather, temperature, humidity);
     }
 
     private void MonthPast()

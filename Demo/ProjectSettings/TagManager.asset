@@ -7,6 +7,12 @@ TagManager:
   - Canvas
   - RoundPanel
   - FactoryPanel
+  - StatusSet
+  - Confirm
+  - QuickSet
+  - Grid
+  - Status
+  - Calendar
   layers:
   - Default
   - TransparentFX
