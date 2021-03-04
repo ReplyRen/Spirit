@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
         if (fragment.name == "原、辅料准备")
         {
             baseObject.element = fragment.element;
+            baseObject.evaluation = fragment.evaluation;
         }
         else
         {

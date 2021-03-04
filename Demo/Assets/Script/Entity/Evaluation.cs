@@ -7,7 +7,7 @@ public class Evaluation
     /// <summary>
     /// 强度
     /// </summary>
-    public float intensity=0;
+    public float intensity = 0;
 
     /// <summary>
     /// 浓郁度
