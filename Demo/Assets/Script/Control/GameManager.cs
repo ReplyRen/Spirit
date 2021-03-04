@@ -311,7 +311,12 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 月份
     /// </summary>
-    public Month month = Month.建寅;
+    public Month month = Month.建卯;
+
+    /// <summary>
+    /// 季节
+    /// </summary>
+    public Season season;
 
     /// <summary>
     /// 湿度
@@ -324,6 +329,7 @@ public class GameManager : MonoBehaviour
     private void WeatherData()
     {
         MonthPast();
+        SetSeason();
         float temp = SetHumidity();
         SetTemperature(temp);
     }
@@ -334,6 +340,26 @@ public class GameManager : MonoBehaviour
             month = Month.建丑;
         else
             month++;
+    }
+    private void SetSeason()
+    {
+        int num = roundCount % 12;
+        if (0 < num && num <= 3)
+        {
+            season = Season.春;
+        }
+        else if (num > 3 && num <= 6)
+        {
+            season = Season.夏;
+        }
+        else if (num > 6 && num <= 9)
+        {
+            season = Season.秋;
+        }
+        else if ((num > 9 && num <= 11)||num==0)
+        {
+            season = Season.冬;
+        }
     }
     private void SetTemperature(float htp)
     {
@@ -433,14 +459,7 @@ public class GameManager : MonoBehaviour
         return temp;
     }
 
-    public enum Weather
-    {
-        晴, 阴, 雨
-    }
-    public enum Month
-    {
-        建丑, 建寅, 建卯, 建辰, 建巳, 建午, 建未, 建申, 建酉, 建戌, 建亥, 建子
-    }
+
 
     #endregion
 
@@ -518,4 +537,17 @@ public class GameManager : MonoBehaviour
         return fragment;
     }
     #endregion
+}
+public enum Weather
+{
+    晴, 阴, 雨
+}
+public enum Month
+{
+    建丑, 建寅, 建卯, 建辰, 建巳, 建午, 建未, 建申, 建酉, 建戌, 建亥, 建子
+}
+
+public enum Season
+{
+    春, 夏, 秋, 冬
 }
