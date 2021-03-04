@@ -21,8 +21,6 @@ public class RoundPanel : BasePanel
         
         if (FragmentsManager.fragmentsOnRound != null && FragmentsManager.fragmentsOnRound.Count != 0) 
         {
-            foreach (var fragment in FragmentsManager.fragmentsOnRound)
-                Debug.Log(fragment.name + ":" + fragment.duration+"+"+fragment.finished);
             for (int i = FragmentsManager.fragmentsOnRound.Count - 1; i >= 0; i--)
             {
                 //FragmentsManager.fragmentsOnRound[i].DurationDecrease();

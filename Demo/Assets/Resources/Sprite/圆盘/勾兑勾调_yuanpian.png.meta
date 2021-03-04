@@ -95,12 +95,12 @@ TextureImporter:
       name: "\u52FE\u5151\u52FE\u8C03_yuanpian_0"
       rect:
         serializedVersion: 2
-        x: 82
-        y: 11
-        width: 580
-        height: 405
+        x: 9
+        y: 6
+        width: 581
+        height: 398
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

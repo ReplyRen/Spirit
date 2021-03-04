@@ -98,10 +98,10 @@ TextureImporter:
       name: "\u539F\u3001\u8F85\u6599\u51C6\u5907_yuanpian_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 17
-        width: 577
-        height: 403
+        x: 7
+        y: 6
+        width: 578
+        height: 404
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

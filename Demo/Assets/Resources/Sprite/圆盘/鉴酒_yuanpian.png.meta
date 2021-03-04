@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 2880130389652337378
     second: "\u9274\u9152_yuanpian_0"
+  - first:
+      213: -7346695438276353406
+    second: "\u9274\u9152_yuanpian_0"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +100,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 7
-        width: 421
+        width: 422
         height: 414
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -106,8 +109,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e2f80e645748f720800000000000000
-      internalID: 2880130389652337378
+      spriteID: 2822e806c6b4b0a90800000000000000
+      internalID: -7346695438276353406
       vertices: []
       indices: 
       edges: []

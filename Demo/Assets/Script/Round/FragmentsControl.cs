@@ -33,6 +33,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// </summary>
     private bool [] firstTime;         
     private bool endDrag;
+    private bool pointDown;
     /// <summary>
     /// 判断信息版状态
     /// </summary>
@@ -75,6 +76,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         ifClose = true;
         lineActive = false;
         switchPicture = false;
+        pointDown = false;
 
         preIndex = -1;
         GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
@@ -110,6 +112,12 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnPointerDown(PointerEventData eventData)
     {
+        pointDown = true;
+
+        imgRect.localScale = imgMovingScale;   //变化图片
+        LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
+        ShowInformation();
+
         Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
         Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
         if (preIndex != -1)
@@ -234,7 +242,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                     imgRect.anchoredPosition = offset + uguiPos;
                 //Debug.Log(offset + "+" + uguiPos);
             }
-            if (!ifClose)
+            if (!ifClose && !firstTime[1]) 
                 HideInformation();
             if(endDrag)
                 endDrag = false;
@@ -248,7 +256,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         offset = Vector2.zero;
+        pointDown = false;
         HideLine();
+        HideInformation();
     }
 
     /// <summary>
@@ -324,7 +334,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             RectTransform rectTransform = imgRect;
             transform.SetParent(parent);
-            ChangeChildOrder();
+            if(!firstTime[1])
+                ChangeChildOrder();
             GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
             ShowBlack();
@@ -351,7 +362,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(firstTime[1])
+        if (firstTime[1] && pointDown) 
         {
             imgRect.localScale = imgMovingScale;   //变化图片
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
@@ -365,13 +376,13 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (firstTime[1])
+        if (firstTime[1] && !pointDown) 
         {
             imgRect.localScale = imgNormalScale;   //恢复图片
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
             switchPicture = true;
-        }   
-        HideInformation();
+        }
+        //HideInformation();
     }
     /// <summary>
     /// 用于重新归队时根据位置调整次序
@@ -396,8 +407,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         information.transform.GetChild((int)fragmentInformation.model).gameObject.SetActive(true);
         information.transform.GetChild((int)fragmentInformation.model).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
             fragmentInformation.name + "_fangda");
-        information.transform.GetChild(4).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
-            fragmentInformation.name + "_xiao");
+        //information.transform.GetChild(4).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
+            //fragmentInformation.name + "_xiao");
         //根据name改变信息版内容
         //Debug.Log(fragmentInformation.name + ":" + fragmentInformation.model);
         ifClose = false;
