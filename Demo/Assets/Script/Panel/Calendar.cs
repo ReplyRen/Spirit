@@ -24,18 +24,36 @@ public class Calendar : MonoBehaviour
     Sprite rainText;
     Sprite cloudyText;
 
-    Image season;
-    Image seasonText;
+    public Image season;
+    public Image seasonText;
 
-    Image weather;
-    Image weatherText;
+    public Image weather;
+    public Image weatherText;
 
-    Text temperature;
-    Text humidity;
+    public Text temperature;
+    public Text humidity;
 
     private void Start()
     {
-        
+        spring = StaticMethod.LoadSprite("Sprite/日历/spring");
+        summer = StaticMethod.LoadSprite("Sprite/日历/summer");
+        fall = StaticMethod.LoadSprite("Sprite/日历/fall");
+        winter = StaticMethod.LoadSprite("Sprite/日历/winter");
+
+        springText = StaticMethod.LoadSprite("Sprite/日历/springText");
+        summerText = StaticMethod.LoadSprite("Sprite/日历/summerText");
+        fallText = StaticMethod.LoadSprite("Sprite/日历/fallText");
+        winterText = StaticMethod.LoadSprite("Sprite/日历/winterText");
+
+        sunny = StaticMethod.LoadSprite("Sprite/日历/sunny");
+        rain = StaticMethod.LoadSprite("Sprite/日历/rain");
+        cloudy = StaticMethod.LoadSprite("Sprite/日历/cloudy");
+
+        sunnyText = StaticMethod.LoadSprite("Sprite/日历/sunnyText");
+        rainText = StaticMethod.LoadSprite("Sprite/日历/rainText");
+        cloudyText = StaticMethod.LoadSprite("Sprite/日历/cloudyText");
+
+        Set(Season.冬, Weather.阴, 20, 20);
     }
     public void Set(Season season,Weather weather,float temperature, float humidity)
     {
@@ -59,6 +77,39 @@ public class Calendar : MonoBehaviour
                 seasonSpr = winter;
                 seasonText = winterText;
                 break;
+            default:
+                seasonSpr = null;
+                seasonText = null;
+                break;
         }
+        this.season.sprite = seasonSpr;
+        this.seasonText.sprite = seasonText;
+
+        Sprite weatherSpr;
+        Sprite weatherText;
+        switch (weather)
+        {
+            case Weather.晴:
+                weatherSpr = sunny;
+                weatherText = sunnyText;
+                break;
+            case Weather.阴:
+                weatherSpr = cloudy;
+                weatherText = cloudyText;
+                break;
+            case Weather.雨:
+                weatherSpr = rain;
+                weatherText = rainText;
+                break;
+            default:
+                weatherSpr = null;
+                weatherText = null;
+                break;
+        }
+        this.weather.sprite = weatherSpr;
+        this.weatherText.sprite = weatherText;
+
+        this.temperature.text = temperature.ToString();
+        this.humidity.text = humidity.ToString();
     }
 }
