@@ -94,16 +94,16 @@ public class PitsPanel : MonoBehaviour
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
-        valueSet = GameObject.Find("StatusSet").GetComponent<Slider>();
-        valueSet1 = GameObject.Find("StatusSet1").GetComponent<Slider>();
-        valueSet2 = GameObject.Find("StatusSet2").GetComponent<Slider>();
-        valueSet3 = GameObject.Find("StatusSet3").GetComponent<Slider>();
+        valueSet = GameObject.Find("窖池Panel").transform.Find("StatusSet").GetComponent<Slider>();
+        valueSet1 = GameObject.Find("窖池Panel").transform.Find("StatusSet1").GetComponent<Slider>();
+        valueSet2 = GameObject.Find("窖池Panel").transform.Find("StatusSet2").GetComponent<Slider>();
+        valueSet3 = GameObject.Find("窖池Panel").transform.Find("StatusSet3").GetComponent<Slider>();
         valueSet.value = 0;
         valueSet1.value = 0;
         valueSet2.value = 0;
         valueSet3.value = 0;
-        barChart = GameObject.Find("Histogram");
-        pieChart = GameObject.Find("PieChart");
+        barChart = GameObject.Find("窖池Panel").transform.Find("Histogram").gameObject;
+        pieChart = GameObject.Find("窖池Panel").transform.Find("PieChart").gameObject;
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
         pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
         gameObject.SetActive(false);

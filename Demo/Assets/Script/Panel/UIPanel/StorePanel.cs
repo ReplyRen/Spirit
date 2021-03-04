@@ -26,10 +26,10 @@ public class StorePanel : MonoBehaviour
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
-        valueSet = GameObject.FindWithTag("StatusSet").GetComponent<Slider>();
+        valueSet = GameObject.Find("储藏室Panel").transform.Find("StatusSet").GetComponent<Slider>();
         valueSet.value = 0;
-        barChart = GameObject.Find("Histogram");
-        pieChart = GameObject.Find("PieChart");
+        barChart = GameObject.Find("储藏室Panel").transform.Find("Histogram").gameObject;
+        pieChart = GameObject.Find("储藏室Panel").transform.Find("PieChart").gameObject;
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
         pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
         for (int i = 0; i < fragmentsOnDisc.Count; i++)
@@ -39,6 +39,7 @@ public class StorePanel : MonoBehaviour
                 index = i;
             }
         }
+        gameObject.SetActive(false);
     }
     void SetEvaluation(string name)
     {

@@ -10,11 +10,13 @@ public class PurchasePanel : MonoBehaviour
     public GameObject buy;
     public GameObject panel;
     public GameObject fatherObj;
+    List<GameObject> objects = new List<GameObject>();
+    int num = 10;
     //更新物品list
     public void UpdateList()
     {
         purchaseObject.Clear();
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < num; i++)
         {
             BaseObject card = new BaseObject();
             card.description = i.ToString();
@@ -48,7 +50,6 @@ public class PurchasePanel : MonoBehaviour
         {
             if (fatherObj.transform.GetChild(i).GetComponent<UIObject>().isUse)
             {
-                storageObject.Add(purchaseObject[i]);
                 Destroy(fatherObj.transform.GetChild(i).gameObject);
             }
         }
@@ -60,6 +61,11 @@ public class PurchasePanel : MonoBehaviour
     {
         if (!buy.GetComponent<UIObject>().isConfirm)
         {
+            for(int i=0;i<num;i++)
+            {
+                objects[i].GetComponent<Outline>().enabled = false;
+                objects[i].GetComponent<UIObject>().isUse = false;
+            }
             var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
             btn.GetComponent<UIObject>().isUse = !btn.GetComponent<UIObject>().isUse;
             btn.GetComponent<Outline>().enabled = !btn.GetComponent<Outline>().enabled;
@@ -93,6 +99,11 @@ public class PurchasePanel : MonoBehaviour
         storageObject = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
         UpdateList();
         UpdateObjects();
+        for(int i=0;i<num;i++)
+        {
+            GameObject temp = fatherObj.transform.GetChild(i).gameObject;
+            objects.Add(temp);
+        }
         gameObject.SetActive(false);
     }
 

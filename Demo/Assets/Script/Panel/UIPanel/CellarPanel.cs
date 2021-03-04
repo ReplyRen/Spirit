@@ -33,14 +33,14 @@ public class CellarPanel : MonoBehaviour
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
-        valueSet1 = GameObject.Find("StatusSet1").GetComponent<Slider>();
-        valueSet2 = GameObject.Find("StatusSet2").GetComponent<Slider>();
-        valueSet3 = GameObject.Find("StatusSet3").GetComponent<Slider>();
+        valueSet1 = GameObject.Find("酒窖Panel").transform.Find("StatusSet1").GetComponent<Slider>();
+        valueSet2 = GameObject.Find("酒窖Panel").transform.Find("StatusSet2").GetComponent<Slider>();
+        valueSet3 = GameObject.Find("酒窖Panel").transform.Find("StatusSet3").GetComponent<Slider>();
         valueSet1.value = 0;
         valueSet2.value = 0;
         valueSet3.value = 0;
-        barChart = GameObject.Find("Histogram");
-        pieChart = GameObject.Find("PieChart");
+        barChart = GameObject.Find("酒窖Panel").transform.Find("Histogram").gameObject;
+        pieChart = GameObject.Find("酒窖Panel").transform.Find("PieChart").gameObject;
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
         pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
         for(int i=0;i<fragmentsOnDisc.Count;i++)
@@ -50,6 +50,7 @@ public class CellarPanel : MonoBehaviour
                 index = i;
             }
         }
+        gameObject.SetActive(false);
     }
     void Update()
     {
