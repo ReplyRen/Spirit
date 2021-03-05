@@ -410,8 +410,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         information.transform.GetChild((int)fragmentInformation.model).gameObject.SetActive(true);
         information.transform.GetChild((int)fragmentInformation.model).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
             fragmentInformation.name + "_fangda");
-        //information.transform.GetChild(4).GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
-            //fragmentInformation.name + "_xiao");
+        information.transform.GetChild(4).GetChild(0).gameObject.GetComponent<Text>().text = fragmentInformation.name;
+        information.transform.GetChild(4).GetChild(1).gameObject.GetComponent<Text>().text = "\u3000\u3000"+fragmentInformation.description;
         //根据name改变信息版内容
         //Debug.Log(fragmentInformation.name + ":" + fragmentInformation.model);
         ifClose = false;
