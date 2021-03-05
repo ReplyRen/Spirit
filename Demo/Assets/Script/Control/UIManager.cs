@@ -97,7 +97,6 @@ public class UIManager : MonoBehaviour
             panelList[12].SetActive(false);
         }
         isOpen = false;
-        Debug.Log(isOpen);
     }
     //
     //确认并检查是否完成设置
@@ -111,7 +110,6 @@ public class UIManager : MonoBehaviour
             confirmList[currentUI - 1].SetActive(false);
             quickSetList[currentUI - 1].SetActive(false);
         }
-        CloseUI();
     }
     //
     //上一个/下一个panel
@@ -241,7 +239,7 @@ public class UIManager : MonoBehaviour
     {
         GameObject temp;
         int i;
-        for (i = 6; i < num + 7; i++) /// 初始化list
+        for (i = 7; i < num + 8; i++) /// 初始化list
         {
             temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
             var text = temp.transform.Find("Text");
@@ -273,27 +271,6 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        for(int i=0;i<fragmentsOnDisc.Count;i++)
-        {
-            Debug.Log(fragmentsOnDisc[i].evaluation.flavor);
-        }
         if (Input.GetKeyDown(KeyCode.Escape)) CloseUI();
-        if (status != null && !buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[12].activeSelf) //连续变化
-        {
-            valueChange = statusSet.value - setValue;
-            status.value = statusValue + parameter * valueChange;
-        }
-        if (gridList.Count > 1 && !buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[12].activeSelf)//离散变化
-        {
-            valueChange = statusSet.value - setValue2;
-            for (int i = 0; i < 10; i++)
-            {
-                gridList[i].color = new Color(255, 255, 255);
-            }
-            for (int i = 0; i < 5 + 10 * valueChange * 0.4; i++)
-            {
-                gridList[i].color = new Color(0, 0, 0);
-            }
-        }
     }
 }
