@@ -27,8 +27,8 @@ public class SmashPanel : MonoBehaviour
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         valueSet = GameObject.Find("粉碎机Panel").transform.Find("StatusSet").GetComponent<Slider>();
         fragmentsOnDisc = instance.fragmentOnDisc;
-        barChart = GameObject.Find("储藏室Panel").transform.Find("Histogram").gameObject;
-        pieChart = GameObject.Find("储藏室Panel").transform.Find("PieChart").gameObject;
+        barChart = GameObject.Find("粉碎机Panel").transform.Find("Histogram").gameObject;
+        pieChart = GameObject.Find("粉碎机Panel").transform.Find("PieChart").gameObject;
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
         pieChart.GetComponent<PieChart>().Init(1, b, c);
         valueSet.value = 0;
@@ -39,6 +39,7 @@ public class SmashPanel : MonoBehaviour
                 index = i;
             }
         }
+        gameObject.SetActive(false);
     }
     void SetEvaluation(string name)
     {

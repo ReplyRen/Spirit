@@ -11,7 +11,7 @@ public class PurchasePanel : MonoBehaviour
     public GameObject panel;
     public GameObject fatherObj;
     List<GameObject> objects = new List<GameObject>();
-    int num = 10;
+    int num = 3;
     //更新物品list
     public void UpdateList()
     {
