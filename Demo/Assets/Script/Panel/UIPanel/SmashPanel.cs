@@ -5,16 +5,32 @@ using UnityEngine.UI;
 
 public class SmashPanel : MonoBehaviour
 {
+    Inclusion a = new Inclusion("酸含量", 0.5f);
+    Inclusion b = new Inclusion("酯含量", 0.5f);
+    Inclusion c = new Inclusion("醇含量", 0.5f);
+    Inclusion d = new Inclusion("微生物含量", 0);
+    Inclusion e = new Inclusion("产量", 0);
+    Inclusion f = new Inclusion("质感", 0);
+    Inclusion g = new Inclusion("高级酸", 0);
+    Inclusion h = new Inclusion("高级酯", 0);
+    Inclusion i = new Inclusion("高级醇", 0);
     GameManager instance;
     BaseFragment fragment = new BaseFragment();
     List<BaseFragment> fragmentsOnDisc = new List<BaseFragment>();
+    GameObject barChart;
+    GameObject pieChart;
     Slider valueSet;
+    float valueChange;
     int index;
     void Start()
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
-        valueSet = GameObject.FindWithTag("StatusSet").GetComponent<Slider>();
-        fragmentsOnDisc = GameObject.Find("Main Camera").GetComponent<GameManager>().fragmentOnDisc;
+        valueSet = GameObject.Find("粉碎机Panel").transform.Find("StatusSet").GetComponent<Slider>();
+        fragmentsOnDisc = instance.fragmentOnDisc;
+        barChart = GameObject.Find("储藏室Panel").transform.Find("Histogram").gameObject;
+        pieChart = GameObject.Find("储藏室Panel").transform.Find("PieChart").gameObject;
+        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
+        pieChart.GetComponent<PieChart>().Init(1, b, c);
         valueSet.value = 0;
         for(int i=0;i<fragmentsOnDisc.Count;i++)
         {
@@ -34,15 +50,30 @@ public class SmashPanel : MonoBehaviour
     {   
         if(valueSet.value<=0.333f)
         {
+            valueChange = valueSet.value / 0.333f;
+            b.value = 0.5f + valueChange * 0.4f;
+            c.value = 0.5f + valueChange * 0.7f;
+            d.value = valueChange * 0.4f;
             SetEvaluation("粉碎强度（低）");
         }
         else if(valueSet.value<=0.666f)
         {
+            valueChange = (valueSet.value - 0.333f) / 0.333f;
+            b.value = 0.5f + 0.4f + valueChange * 0.2f;
+            c.value = 0.5f + 0.7f + valueChange * 0.3f;
+            d.value = 0.4f + valueChange * 0.2f;
             SetEvaluation("粉碎强度（中）");
         }
         else
         {
+            valueChange = (valueSet.value - 0.666f) / 0.333f;
+            b.value = 0.5f + 0.6f + valueChange * 0.4f;
+            c.value = 0.5f + 1 - valueChange * 0.2f;
+            d.value = 0.6f + valueChange * 0.4f;
             SetEvaluation("粉碎强度（高）");
         }
+        float sum = b.value + c.value;
+        barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
+        pieChart.GetComponent<PieChart>().UpdateChart(sum, b, c);
     }
 }
