@@ -114,9 +114,13 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
         pointDown = true;
 
-        imgRect.localScale = imgMovingScale;   //变化图片
-        LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
-        ShowInformation();
+        if(firstTime[1])
+        {
+            imgRect.localScale = imgMovingScale;   //变化图片
+            LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
+            ShowInformation();
+        }
+        
 
         Vector2 mouseDown = eventData.position;    //记录鼠标按下时的屏幕坐标
         Vector2 mouseUguiPos = new Vector2();   //定义一个接收返回的ugui坐标
@@ -259,6 +263,12 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         pointDown = false;
         HideLine();
         HideInformation();
+        if (firstTime[1])
+        {
+            imgRect.localScale = imgNormalScale;   //恢复图片
+            LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
+            switchPicture = true;
+        }
     }
 
     /// <summary>
