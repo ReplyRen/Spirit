@@ -65,7 +65,7 @@ public class UIManager : MonoBehaviour
             panelList[currentUI].SetActive(true);
         }
         ///若参数未确认，则设置参数初值
-        if (!buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[12].activeSelf)
+        /*if (!buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[12].activeSelf)
         {
             try
             {
@@ -86,7 +86,7 @@ public class UIManager : MonoBehaviour
             }
             catch { Debug.Log("0"); }
         }
-        Debug.Log(isOpen);
+        Debug.Log(isOpen);*/
     }
     public void CloseUI()
     {
@@ -102,14 +102,15 @@ public class UIManager : MonoBehaviour
     //确认并检查是否完成设置
     public void Confirm()
     {
-
+        var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         buttonList[currentUI].transform.GetComponent<UIObject>().isConfirm = true;
         buttonList[currentUI].GetComponent<Outline>().enabled = false;
-        if (currentUI > 0)
+        btn.SetActive(false);
+        /*if (currentUI > 0)
         {
             confirmList[currentUI - 1].SetActive(false);
             quickSetList[currentUI - 1].SetActive(false);
-        }
+        }*/
     }
     //
     //上一个/下一个panel
@@ -152,6 +153,36 @@ public class UIManager : MonoBehaviour
         fragmentsOnDisc = newList;
         ResetState();
         ResetOutline();
+        for (int i = 0; i < fragmentsOnDisc.Count; i++)
+        {
+            switch (fragmentsOnDisc[i].name)
+            {
+                case "配料":
+                    buttonList[2].SetActive(true);
+                    buttonList[4].SetActive(false);
+                    break;
+                case "修窖":
+                    buttonList[2].SetActive(false);
+                    buttonList[4].SetActive(true);
+                    break;
+                case "看花摘酒":
+                case "陈酿":
+                    buttonList[7].SetActive(true);
+                    buttonList[8].SetActive(false);
+                    buttonList[9].SetActive(false);
+                    break;
+                case "勾兑勾调":
+                    buttonList[7].SetActive(false);
+                    buttonList[8].SetActive(true);
+                    buttonList[9].SetActive(false);
+                    break;
+                case "灌装":
+                    buttonList[7].SetActive(false);
+                    buttonList[8].SetActive(false);
+                    buttonList[9].SetActive(true);
+                    break;
+            }
+        }
     }
     public void ResetState()///初始化工厂
     {
@@ -160,7 +191,7 @@ public class UIManager : MonoBehaviour
             buttonList[i].GetComponent<UIObject>().isUse = false;
             buttonList[i].GetComponent<UIObject>().isConfirm = false;
         }
-        for (int i = 0; i < num; i++)
+        for (int i = 0; i < confirmList.Count; i++)
         {
             confirmList[i].SetActive(true);
             try
@@ -169,7 +200,7 @@ public class UIManager : MonoBehaviour
             }
             catch { }
         }
-        confirmList[10].GetComponent<UIObject>().isConfirm = false;
+        confirmList[6].GetComponent<UIObject>().isConfirm = false;
         for (int i = 0; i < fragmentsOnDisc.Count; i++)
         {
             switch (fragmentsOnDisc[i].name)
@@ -232,14 +263,16 @@ public class UIManager : MonoBehaviour
     //
     public void NextDay()
     {
+        
         panelList[12].SetActive(false);
     }
     //
     void Start()
     {
+        fragmentsOnDisc = GameObject.Find("Main Camera").GetComponent<GameManager>().fragmentOnDisc;
         GameObject temp;
         int i;
-        for (i = 7; i < num + 8; i++) /// 初始化list
+        for (i = 8; i < num + 9; i++) /// 初始化list
         {
             temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
             var text = temp.transform.Find("Text");
@@ -253,9 +286,9 @@ public class UIManager : MonoBehaviour
             //
             try
             {
-                temp = panelList[i - 6].transform.Find("Confirm").gameObject;
+                temp = panelList[i - 8].transform.Find("Confirm").gameObject;
                 confirmList.Add(temp);
-                temp = panelList[i - 6].transform.Find("QuickSet").gameObject;
+                temp = panelList[i - 8].transform.Find("QuickSet").gameObject;
                 quickSetList.Add(temp);
             }
             catch { }
