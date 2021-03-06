@@ -98,12 +98,6 @@ public class PitsPanel : MonoBehaviour
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
         pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
     }
-    public void Con()
-    {
-        valueSet.interactable = false;
-        valueSet1.interactable = false;
-        valueSet2.interactable = false;
-    }
     void Start()
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
