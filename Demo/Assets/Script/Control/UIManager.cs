@@ -11,12 +11,6 @@ public class UIManager : MonoBehaviour
     public List<GameObject> quickSetList = new List<GameObject>();
     public List<Image> gridList = new List<Image>();
     public List<BaseFragment> fragmentsOnDisc;
-    public Slider status;
-    public Slider statusSet;
-    public float statusValue, setValue;//参数/调整初值（连续变化）
-    public float setValue2;//调整数值（离散）
-    public float parameter;//倍数（连续变化）
-    float valueChange;
     int currentUI;//当前打开UI在list中的序号
     int num = 11;//UI总数
     public static bool isOpen = false;
@@ -39,6 +33,7 @@ public class UIManager : MonoBehaviour
     //打开/关闭panel
     public void OpenUI()
     {
+        Slider slider;
         ///获取当前button并打开相应panel/打开总览
         if (!isOpen)
         {
@@ -50,7 +45,7 @@ public class UIManager : MonoBehaviour
             }
             else if (btn.name == "仓库")
             {
-                panelList[12].SetActive(true);
+                panelList[11].SetActive(true);
             }
             else if (btn.GetComponent<UIObject>().isUse)
             {
@@ -65,28 +60,36 @@ public class UIManager : MonoBehaviour
             panelList[currentUI].SetActive(true);
         }
         ///若参数未确认，则设置参数初值
-        /*if (!buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[12].activeSelf)
+        if (!buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[11].activeSelf)
         {
-            try
+            switch(buttonList[currentUI].name)
             {
-                status = GameObject.FindWithTag("Status").GetComponent<Slider>();
-                statusSet = GameObject.FindWithTag("StatusSet").GetComponent<Slider>();
-                gridList.Clear();
-                for (int i = 0; i < 10; i++)
-                {
-                    Image tempImage = GameObject.FindWithTag("Grid").transform.GetChild(i).GetComponent<Image>();
-                    gridList.Add(tempImage);
-                    if (i < setValue2 * 10)
-                    {
-                        gridList[i].color = new Color(0, 0, 0);
-                    }
-                }
-                status.value = statusValue;
-                statusSet.value = setValue;
+                case "粉碎机":
+                    panelList[currentUI].GetComponent<SmashPanel>().Init();
+                    break;
+                case "储藏室":
+                    panelList[currentUI].GetComponent<StorePanel>().Init();
+                    break;
+                case "窖池":
+                    panelList[currentUI].GetComponent<PitsPanel>().Init();
+                    break;
+                case "蒸馏设备":
+                    panelList[currentUI].GetComponent<DistillationPanel>().Init();
+                    break;
+                case "酒窖":
+                    panelList[currentUI].GetComponent<CellarPanel>().Init();
+                    break;
             }
-            catch { Debug.Log("0"); }
+            for (int i = 0; i < panelList[currentUI].transform.childCount; i++)
+            {
+                try
+                {
+                    slider = GameObject.Find(panelList[currentUI].name).transform.GetChild(i).GetComponent<Slider>();
+                    slider.interactable = true;
+                }
+                catch { }
+            }
         }
-        Debug.Log(isOpen);*/
     }
     public void CloseUI()
     {
@@ -102,6 +105,7 @@ public class UIManager : MonoBehaviour
     //确认并检查是否完成设置
     public void Confirm()
     {
+        Slider slider;
         var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         buttonList[currentUI].transform.GetComponent<UIObject>().isConfirm = true;
         buttonList[currentUI].GetComponent<Outline>().enabled = false;
@@ -111,6 +115,15 @@ public class UIManager : MonoBehaviour
             confirmList[currentUI - 1].SetActive(false);
             quickSetList[currentUI - 1].SetActive(false);
         }*/
+        for(int i=0;i<panelList[currentUI].transform.childCount;i++)
+        {
+            try
+            {
+                slider = GameObject.Find(panelList[currentUI].name).transform.GetChild(i).GetComponent<Slider>();
+                slider.interactable = false;
+            }
+            catch {}
+        }
     }
     //
     //上一个/下一个panel
@@ -200,47 +213,58 @@ public class UIManager : MonoBehaviour
             }
             catch { }
         }
-        confirmList[6].GetComponent<UIObject>().isConfirm = false;
+        confirmList[10].GetComponent<UIObject>().isConfirm = false;
         for (int i = 0; i < fragmentsOnDisc.Count; i++)
         {
             switch (fragmentsOnDisc[i].name)
             {
                 case "原、辅料准备":
                     buttonList[0].GetComponent<UIObject>().isUse = true;
+                    currentUI = 0;
                     break;
                 case "粉碎润料":
                     buttonList[1].GetComponent<UIObject>().isUse = true;
+                    currentUI = 1;
                     break;
                 case "配料":
                     buttonList[2].GetComponent<UIObject>().isUse = true;
+                    currentUI = 2;
                     break;
                 case "蒸煮摊凉":
                     buttonList[3].GetComponent<UIObject>().isUse = true;
+                    currentUI = 3;
                     break;
                 case "修窖":
                 case "制曲、入曲":
                 case "发酵":
                 case "加原辅料":
                     buttonList[4].GetComponent<UIObject>().isUse = true;
+                    currentUI = 4;
                     break;
                 case "上甑":
                     buttonList[5].GetComponent<UIObject>().isUse = true;
+                    currentUI = 5;
                     break;
                 case "蒸馏":
                 case "看花摘酒":
                     buttonList[6].GetComponent<UIObject>().isUse = true;
+                    currentUI = 6;
                     break;
                 case "陈酿":
                     buttonList[7].GetComponent<UIObject>().isUse = true;
+                    currentUI = 7;
                     break;
                 case "勾兑勾调":
                     buttonList[8].GetComponent<UIObject>().isUse = true;
+                    currentUI = 8;
                     break;
                 case "灌装":
                     buttonList[9].GetComponent<UIObject>().isUse = true;
+                    currentUI = 9;
                     break;
                 case "鉴酒":
                     buttonList[10].GetComponent<UIObject>().isUse = true;
+                    currentUI = 10;
                     break;
             }
         }
@@ -305,5 +329,9 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) CloseUI();
+        for(int i=0;i<fragmentsOnDisc.Count;i++)
+        {
+            Debug.Log(fragmentsOnDisc[i].name);
+        }
     }
 }
