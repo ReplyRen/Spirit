@@ -12,15 +12,6 @@ public class StoragePanel : MonoBehaviour
     //更新物品list
     public void UpdateList()
     {
-        //storageObject.Clear();
-        /*for (int i = 0; i < 10; i++)
-        {
-            BaseObject card = new BaseObject();
-            card.description = i.ToString();
-            card.name = i.ToString();
-            card.sprite = Resources.Load<Sprite>("Sprite/30");
-            storageObject.Add(card);
-        }*/
         storageObject = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
     }
     public void InstantiateObj(Sprite sprite,string name)

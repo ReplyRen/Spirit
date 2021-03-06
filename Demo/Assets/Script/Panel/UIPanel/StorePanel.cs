@@ -22,16 +22,20 @@ public class StorePanel : MonoBehaviour
     GameObject pieChart;
     float valueChange;
     int index;
+    public void Init()
+    {
+        valueSet.value = 0;
+        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
+        pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
+    }
     void Start()
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
         valueSet = GameObject.Find("储藏室Panel").transform.Find("StatusSet").GetComponent<Slider>();
-        valueSet.value = 0;
         barChart = GameObject.Find("储藏室Panel").transform.Find("Histogram").gameObject;
         pieChart = GameObject.Find("储藏室Panel").transform.Find("PieChart").gameObject;
-        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
-        pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
+        Init();
         for (int i = 0; i < fragmentsOnDisc.Count; i++)
         {
             if (fragmentsOnDisc[i].name == "配料")

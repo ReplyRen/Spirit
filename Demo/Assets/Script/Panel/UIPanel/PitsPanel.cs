@@ -78,9 +78,9 @@ public class PitsPanel : MonoBehaviour
                     barChart.SetActive(false);
                     pieChart.SetActive(false);
                     valueSet.gameObject.SetActive(false);
-                    valueSet1.gameObject.SetActive(true);
-                    valueSet2.gameObject.SetActive(true);
-                    valueSet3.gameObject.SetActive(true);
+                    valueSet1.gameObject.SetActive(false);
+                    valueSet2.gameObject.SetActive(false);
+                    valueSet3.gameObject.SetActive(false);
                     status = 4;
                     index = i;
                     break;
@@ -89,7 +89,21 @@ public class PitsPanel : MonoBehaviour
             }
         }
     }
-
+    public void Init()
+    {
+        valueSet.value = 0;
+        valueSet1.value = 0;
+        valueSet2.value = 0;
+        valueSet3.value = 0;
+        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
+        pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
+    }
+    public void Con()
+    {
+        valueSet.interactable = false;
+        valueSet1.interactable = false;
+        valueSet2.interactable = false;
+    }
     void Start()
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
@@ -98,14 +112,9 @@ public class PitsPanel : MonoBehaviour
         valueSet1 = GameObject.Find("窖池Panel").transform.Find("StatusSet1").GetComponent<Slider>();
         valueSet2 = GameObject.Find("窖池Panel").transform.Find("StatusSet2").GetComponent<Slider>();
         valueSet3 = GameObject.Find("窖池Panel").transform.Find("StatusSet3").GetComponent<Slider>();
-        valueSet.value = 0;
-        valueSet1.value = 0;
-        valueSet2.value = 0;
-        valueSet3.value = 0;
         barChart = GameObject.Find("窖池Panel").transform.Find("Histogram").gameObject;
         pieChart = GameObject.Find("窖池Panel").transform.Find("PieChart").gameObject;
-        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
-        pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
+        Init();
         gameObject.SetActive(false);
     }
     void Update()

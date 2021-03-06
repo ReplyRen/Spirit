@@ -22,6 +22,12 @@ public class SmashPanel : MonoBehaviour
     Slider valueSet;
     float valueChange;
     int index;
+    public void Init()
+    {
+        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
+        pieChart.GetComponent<PieChart>().Init(1, b, c);
+        valueSet.value = 0;
+    }
     void Start()
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
@@ -29,9 +35,7 @@ public class SmashPanel : MonoBehaviour
         fragmentsOnDisc = instance.fragmentOnDisc;
         barChart = GameObject.Find("粉碎机Panel").transform.Find("Histogram").gameObject;
         pieChart = GameObject.Find("粉碎机Panel").transform.Find("PieChart").gameObject;
-        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
-        pieChart.GetComponent<PieChart>().Init(1, b, c);
-        valueSet.value = 0;
+        Init();
         for(int i=0;i<fragmentsOnDisc.Count;i++)
         {
             if(fragmentsOnDisc[i].name== "粉碎润料")

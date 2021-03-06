@@ -60,18 +60,22 @@ public class DistillationPanel : MonoBehaviour
             }
         }
     }
+    public void Init()
+    {
+        valueSet1.value = 0;
+        valueSet2.value = 0;
+        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
+        pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
+    }
     void Start()
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
         valueSet1 = GameObject.Find("蒸馏设备Panel").transform.Find("StatusSet1").GetComponent<Slider>();
         valueSet2 = GameObject.Find("蒸馏设备Panel").transform.Find("StatusSet2").GetComponent<Slider>();
-        valueSet1.value = 0;
-        valueSet2.value = 0;
         barChart = GameObject.Find("蒸馏设备Panel").transform.Find("Histogram").gameObject;
         pieChart = GameObject.Find("蒸馏设备Panel").transform.Find("PieChart").gameObject;
-        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
-        pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
+        Init();
         gameObject.SetActive(false);
     }
     void Update()
