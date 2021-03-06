@@ -45,6 +45,8 @@ public class PieChart : MonoBehaviour
     }
     private void SetCount(float total, params Inclusion[] inclusions)
     {
+        if (fillings.Count == 0)
+            return;
         List<int> list = new List<int>();
         int add = 0;
         foreach (var a in inclusions)
@@ -58,6 +60,7 @@ public class PieChart : MonoBehaviour
             {
                 if (i < list[j])
                 {
+
                     fillings[i].GetComponent<Image>().color = colors[j];
                     break;
                 }

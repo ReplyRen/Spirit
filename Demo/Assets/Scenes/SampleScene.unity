@@ -540,10 +540,63 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1147054231, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 741.2822
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147054231, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 393.2856
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147054231, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147054231, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147054232, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147054232, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1747867966, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 2145523521, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 871.3062
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145523521, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 102.62734
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145523521, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145523521, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145523522, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145523522, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469114774506329050, guid: 54082c06da22f964792d3be3cc13a161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5689392023297311111, guid: 54082c06da22f964792d3be3cc13a161,
         type: 3}
       propertyPath: m_Name
@@ -653,6 +706,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275547446437317944, guid: 54082c06da22f964792d3be3cc13a161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
@@ -838,6 +896,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FactoryPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 360102936323371483, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 409087658460023341, guid: f5a18e6d4daa05a46aa81a5600c73814,
         type: 3}
