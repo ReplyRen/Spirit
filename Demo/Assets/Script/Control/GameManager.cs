@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void UpdateObject()
     {
-        for (int i = 0; i < fragmentOnDisc.Count; i++)//遍历圆盘上的碎片
+        for (int i = fragmentOnDisc.Count - 1; i >= 0; i--) //遍历圆盘上的碎片
         {
             fragmentOnDisc[i].DurationDecrease();//时间自减
             if (fragmentOnDisc[i].finished)//如果完成了
