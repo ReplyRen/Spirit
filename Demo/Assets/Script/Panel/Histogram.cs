@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class Histogram : MonoBehaviour
 {
-    GameObject pillar;
+    public GameObject pillar;
     List<GameObject> objs = new List<GameObject>();
     private void Start()
     {
-        pillar = GameObject.Find("Pillar");
         pillar.SetActive(false);
     }
     private void Test()

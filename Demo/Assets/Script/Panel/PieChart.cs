@@ -5,21 +5,13 @@ using UnityEngine.UI;
 
 public class PieChart : MonoBehaviour
 {
-    List<Color32> colors = new List<Color32>();
-    GameObject filling;
+    public List<Color32> colors = new List<Color32>();
+    public GameObject filling;
     List<GameObject> fillings=new List<GameObject>();
-    GameObject legend;
+    public GameObject legend;
     List<GameObject> lengeds = new List<GameObject>();
     private void Start()
     {
-        colors.Add(new Color32(195, 244, 115, 255));
-        colors.Add(new Color32(236, 232, 109, 255));
-        colors.Add(new Color32(251, 207, 122, 255));
-        colors.Add(new Color32(247, 214, 117, 255));
-        colors.Add(new Color32(255, 186, 131, 255));
-        colors.Add(new Color32(255, 166, 141, 255));
-        filling = GameObject.Find("Filling");
-        legend = GameObject.Find("Legend");
         legend.SetActive(false);
         fillings.Add(filling);
         InitFilling();

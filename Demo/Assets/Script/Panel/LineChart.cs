@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class LineChart : MonoBehaviour
 {
-    GameObject point;
+    public GameObject point;
     List<Vector3> pointPos = new List<Vector3>();
     List<GameObject> points = new List<GameObject>();
     private void Start()
     {
-        point = GameObject.Find("Point");
         point.SetActive(false);
         Test();
     }
