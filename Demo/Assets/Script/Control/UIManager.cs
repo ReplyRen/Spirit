@@ -97,7 +97,7 @@ public class UIManager : MonoBehaviour
             panelList[currentUI].SetActive(false);
         else
         {
-            panelList[12].SetActive(false);
+            panelList[11].SetActive(false);
         }
         isOpen = false;
     }
