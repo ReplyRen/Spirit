@@ -42,7 +42,6 @@ public class StoragePanel : MonoBehaviour
         {
             InstantiateObj(storageObject[i].sprite, storageObject[i].name);
         }
-        Debug.Log(storageObject.Count);
     }
     //显示描述
     public void ShowDescription()
