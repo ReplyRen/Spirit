@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     private bool ensmall = false;
 
     private bool large = false;
-    private bool small = true;
+    public bool small = true;
 
     private Vector3 normalPos;
     private Vector3 targetPos;

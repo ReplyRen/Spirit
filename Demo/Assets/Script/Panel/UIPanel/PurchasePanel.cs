@@ -6,50 +6,65 @@ using UnityEngine.UI;
 public class PurchasePanel : MonoBehaviour
 {
     public List<BaseObject> storageObject = new List<BaseObject>();
-    public List<BaseObject> purchaseObject = new List<BaseObject>();
+    public List<BaseObject> purchaseObject1 = new List<BaseObject>();
+    public List<BaseObject> purchaseObject2 = new List<BaseObject>();
     public GameObject buy;
     public GameObject panel;
-    public GameObject fatherObj;
+    public GameObject fatherObj1;
+    public GameObject fatherObj2;
+    Text text;
     int num = 3;
+    public void Switch()
+    {
+        if(fatherObj1.activeSelf)
+        {
+            fatherObj1.SetActive(false);
+            fatherObj2.SetActive(true);
+            text.text = "查看主料";
+        }
+        else
+        {
+            fatherObj1.SetActive(true);
+            fatherObj2.SetActive(false);
+            text.text = "查看辅料";
+        }
+    }
     //更新物品list
     public void UpdateList()
     {
-        purchaseObject.Clear();
+        purchaseObject1.Clear();
         for (int i = 0; i < num; i++)
         {
             BaseObject card = new BaseObject();
             card.description = i.ToString();
             card.name = i.ToString();
             card.sprite = Resources.Load<Sprite>("Sprite/圆盘/60");
-            purchaseObject.Add(card);
+            purchaseObject1.Add(card);
         }
-        /* List<BaseObject> newList = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
-         foreach (var element in newList)
-             storageObject.Add(element);*/
     }
     public void Clear()
     {
-        for (int i = 0; i < fatherObj.transform.childCount; i++)
-            Destroy(fatherObj.transform.GetChild(i).gameObject);
+        for (int i = 0; i < fatherObj1.transform.childCount; i++)
+            Destroy(fatherObj1.transform.GetChild(i).gameObject);
     }
     public void UpdateObjects()
     {
         if (!buy.GetComponent<UIObject>().isConfirm)
         {
             Clear();
-            for (int i = 0; i < purchaseObject.Count; i++)
+            for (int i = 0; i < purchaseObject1.Count; i++)
             {
-                InstantiateObj(purchaseObject[i].sprite, purchaseObject[i].name);
+                InstantiateObj(purchaseObject1[i].sprite, purchaseObject1[i].name, fatherObj1);
             }
         }
     }
     public void Purchase()
     {
-        for(int i=0;i<purchaseObject.Count;i++)
+        for(int i=0;i<purchaseObject1.Count;i++)
         {
-            if (fatherObj.transform.GetChild(i).GetComponent<UIObject>().isUse)
+            if (fatherObj1.transform.GetChild(i).GetComponent<UIObject>().isUse)
             {
-                Destroy(fatherObj.transform.GetChild(i).gameObject);
+                Destroy(fatherObj1.transform.GetChild(i).gameObject);
             }
         }
         buy.GetComponent<UIObject>().isConfirm = true;
@@ -62,7 +77,7 @@ public class PurchasePanel : MonoBehaviour
         {
             for(int i=0;i<num;i++)
             {
-                GameObject temp = fatherObj.transform.GetChild(i).gameObject;
+                GameObject temp = fatherObj1.transform.GetChild(i).gameObject;
                 temp.GetComponent<Outline>().enabled = false;
                 temp.GetComponent<UIObject>().isUse = false;
             }
@@ -71,7 +86,7 @@ public class PurchasePanel : MonoBehaviour
             btn.GetComponent<Outline>().enabled = !btn.GetComponent<Outline>().enabled;
         }
     }
-    public void InstantiateObj(Sprite sprite, string name)
+    public void InstantiateObj(Sprite sprite, string name, GameObject fatherObj)
     {
         GameObject obj = new GameObject();
         obj.AddComponent<UIObject>();
@@ -79,8 +94,8 @@ public class PurchasePanel : MonoBehaviour
         Image img = obj.AddComponent<Image>();
         Outline outLine = obj.AddComponent<Outline>();
         outLine.enabled = false;
-        outLine.effectDistance = new Vector2(5, -5);
-        outLine.effectColor = new Color(0, 0, 0, 1);
+        outLine.OutlineWidth = 5f;
+        outLine.OutlineColor = Color.yellow;
         img.sprite = sprite;
         obj.name = name;
         obj.transform.SetParent(fatherObj.transform);
@@ -96,6 +111,7 @@ public class PurchasePanel : MonoBehaviour
     }
     void Start()
     {
+        text = GameObject.Find("Switch").transform.GetChild(0).GetComponent<Text>();
         storageObject = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
         UpdateList();
         UpdateObjects();

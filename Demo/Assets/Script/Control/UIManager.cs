@@ -11,10 +11,11 @@ public class UIManager : MonoBehaviour
     public List<GameObject> quickSetList = new List<GameObject>();
     public List<Image> gridList = new List<Image>();
     public List<BaseFragment> fragmentsOnDisc;
+    CameraController cameraController;
+    GameObject blur;
     int currentUI;//当前打开UI在list中的序号
     int num = 11;//UI总数
     public static bool isOpen = false;
-
     UIManager instance = null;
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class UIManager : MonoBehaviour
     public void OpenUI()
     {
         Slider slider;
+        blur.SetActive(true);
         ///获取当前button并打开相应panel/打开总览
         if (!isOpen)
         {
@@ -47,7 +49,7 @@ public class UIManager : MonoBehaviour
             {
                 panelList[11].SetActive(true);
             }
-            else if (btn.GetComponent<UIObject>().isUse)
+            else if (btn.GetComponent<UIObject>().isUse && !cameraController.small)
             {
                 panelList[btn.GetComponent<UIObject>().index].SetActive(true);
                 currentUI = btn.GetComponent<UIObject>().index;
@@ -62,7 +64,7 @@ public class UIManager : MonoBehaviour
         ///若参数未确认，则设置参数初值
         if (!buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[11].activeSelf)
         {
-            switch(buttonList[currentUI].name)
+            switch (buttonList[currentUI].name)
             {
                 case "粉碎机":
                     panelList[currentUI].GetComponent<SmashPanel>().Init();
@@ -100,6 +102,7 @@ public class UIManager : MonoBehaviour
             panelList[11].SetActive(false);
         }
         isOpen = false;
+        blur.SetActive(false);
     }
     //
     //确认并检查是否完成设置
@@ -273,8 +276,8 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < num; i++)
         {
-            if (buttonList[i].GetComponent<UIObject>().isUse) buttonList[i].GetComponent<Outline>().enabled = true;
-            else buttonList[i].GetComponent<Outline>().enabled = false;
+            /*if (buttonList[i].GetComponent<UIObject>().isUse) buttonList[i].GetComponent<Outline>().enabled = true;
+            else buttonList[i].GetComponent<Outline>().enabled = false;*/
         }
     }
     #endregion
@@ -293,6 +296,8 @@ public class UIManager : MonoBehaviour
     //
     void Start()
     {
+        blur = GameObject.Find("FactoryPanel").transform.Find("采购部Panel").transform.Find("Blur").gameObject;
+        cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
         fragmentsOnDisc = GameObject.Find("Main Camera").GetComponent<GameManager>().fragmentOnDisc;
         GameObject temp;
         int i;
@@ -303,7 +308,7 @@ public class UIManager : MonoBehaviour
             text.GetComponent<Text>().text = temp.name;
             buttonList.Add(temp);
             //
-            temp = GameObject.Find("FactoryPanel").transform.GetChild(i + num + 1).gameObject;
+            temp = GameObject.Find("FactoryPanel").transform.GetChild(i + num + 2).gameObject;
             text = temp.transform.Find("Title");
             text.GetComponent<Text>().text = temp.name.Replace("Panel","");
             panelList.Add(temp);
@@ -324,6 +329,7 @@ public class UIManager : MonoBehaviour
         //ResetState();
         ResetOutline();
         temp = null;
+        blur.SetActive(false);
         gameObject.SetActive(false);
     }
     void Update()
