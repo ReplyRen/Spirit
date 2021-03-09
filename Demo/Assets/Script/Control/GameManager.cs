@@ -146,12 +146,16 @@ public class GameManager : MonoBehaviour
         {
             baseObject.element = fragment.element;
             baseObject.evaluation = fragment.evaluation;
+            baseObject.mains = fragment.mains;
+            baseObject.minors = fragment.minors;
         }
         else
         {
             baseObject.element = fragment.element + fragment.baseObject.element;
             baseObject.evaluation = fragment.evaluation + fragment.baseObject.evaluation;
             baseObject.alcoholQueue = fragment.baseObject.alcoholQueue;
+            baseObject.mains = fragment.baseObject.mains;
+            baseObject.minors = fragment.baseObject.minors;
             if (baseObject.alcoholQueue.Count >= 6)
             {
                 baseObject.alcoholQueue.Dequeue();

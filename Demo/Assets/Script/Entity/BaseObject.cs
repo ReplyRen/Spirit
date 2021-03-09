@@ -30,8 +30,23 @@ public class BaseObject
     public Evaluation evaluation;
 
     public Queue<float> alcoholQueue = new Queue<float>();
+
+    /// <summary>
+    /// 主料
+    /// </summary>
+    public List<主料> mains = new List<主料>();
+
+    /// <summary>
+    /// 辅料
+    /// </summary>
+    public List<辅料> minors = new List<辅料>();
 }
-public enum Ingredient
+public enum 主料
 {
-    糯性高梁普通高粱小麦大米
+    糯性高梁,高粱,小麦,大米,麸皮
 }
+public enum 辅料
+{
+    高粱皮,豌豆,大米,稻壳,猪肉,草药,糯米,小麦,玉米
+}
+

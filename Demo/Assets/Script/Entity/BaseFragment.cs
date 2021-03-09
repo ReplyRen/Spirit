@@ -58,6 +58,17 @@ public class BaseFragment
     /// 是否完成
     /// </summary>
     public bool finished = false;
+
+    /// <summary>
+    /// 主料(仅在原辅料准备使用)
+    /// </summary>
+    public List<主料> mains = new List<主料>();
+
+    /// <summary>
+    /// 辅料(仅在原辅料准备使用)
+    /// </summary>
+    public List<辅料> minors = new List<辅料>();
+
     public void DurationDecrease()
     {
         duration--;
@@ -66,5 +77,6 @@ public class BaseFragment
             finished = true;
         }
     }
+
 
 }
