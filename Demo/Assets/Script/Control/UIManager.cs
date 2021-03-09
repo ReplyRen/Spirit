@@ -329,9 +329,5 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) CloseUI();
-        for(int i=0;i<fragmentsOnDisc.Count;i++)
-        {
-            Debug.Log(fragmentsOnDisc[i].name);
-        }
     }
 }

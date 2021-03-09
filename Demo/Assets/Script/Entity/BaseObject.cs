@@ -31,3 +31,7 @@ public class BaseObject
 
     public Queue<float> alcoholQueue = new Queue<float>();
 }
+public enum Ingredient
+{
+    糯性高梁普通高粱小麦大米
+}
