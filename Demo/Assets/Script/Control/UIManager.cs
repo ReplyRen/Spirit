@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     public List<GameObject> quickSetList = new List<GameObject>();
     public List<Image> gridList = new List<Image>();
     public List<BaseFragment> fragmentsOnDisc;
+    public List<Material> mats;
+    public Shader shader;
+    public Material mt;
     CameraController cameraController;
     GameObject blur;
     int currentUI;//当前打开UI在list中的序号
@@ -111,7 +114,7 @@ public class UIManager : MonoBehaviour
         Slider slider;
         var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         buttonList[currentUI].transform.GetComponent<UIObject>().isConfirm = true;
-        buttonList[currentUI].GetComponent<Outline>().enabled = false;
+        mats[currentUI].SetFloat("_Flag", 1);
         btn.SetActive(false);
         /*if (currentUI > 0)
         {
@@ -276,8 +279,8 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < num; i++)
         {
-            /*if (buttonList[i].GetComponent<UIObject>().isUse) buttonList[i].GetComponent<Outline>().enabled = true;
-            else buttonList[i].GetComponent<Outline>().enabled = false;*/
+            if (buttonList[i].GetComponent<UIObject>().isUse) mats[i].SetFloat("_Flag", 0);
+            else mats[i].SetFloat("_Flag", 1);
         }
     }
     #endregion
@@ -296,33 +299,44 @@ public class UIManager : MonoBehaviour
     //
     void Start()
     {
-        blur = GameObject.Find("FactoryPanel").transform.Find("采购部Panel").transform.Find("Blur").gameObject;
+        blur = GameObject.Find("PanelCanvas").transform.Find("采购部Panel").transform.Find("Blur").gameObject;
         cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
         fragmentsOnDisc = GameObject.Find("Main Camera").GetComponent<GameManager>().fragmentOnDisc;
         GameObject temp;
         int i;
-        for (i = 8; i < num + 9; i++) /// 初始化list
+        for (i = 7; i < num + 8; i++) /// 初始化list
         {
-            temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
-            var text = temp.transform.Find("Text");
-            text.GetComponent<Text>().text = temp.name;
-            buttonList.Add(temp);
+            Transform text;
+            try
+            {
+                temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
+                text = temp.transform.Find("Text");
+                text.GetComponent<Text>().text = temp.name;
+                buttonList.Add(temp);
+                Material mat = Instantiate(mt);
+                mat.SetFloat("_Flag", 0);
+                mat.SetFloat("_MinOffset", 8f);
+                mat.SetColor("_OutLineCol", Color.yellow);
+                temp.GetComponent<Image>().material = mat;
+                mats.Add(temp.GetComponent<Image>().material);
+            }
+            catch { }
             //
-            temp = GameObject.Find("FactoryPanel").transform.GetChild(i + num + 2).gameObject;
+            temp = GameObject.Find("PanelCanvas").transform.GetChild(i - 3).gameObject;
             text = temp.transform.Find("Title");
             text.GetComponent<Text>().text = temp.name.Replace("Panel","");
             panelList.Add(temp);
             //
             try
             {
-                temp = panelList[i - 8].transform.Find("Confirm").gameObject;
+                temp = panelList[i - 7].transform.Find("Confirm").gameObject;
                 confirmList.Add(temp);
-                temp = panelList[i - 8].transform.Find("QuickSet").gameObject;
+                temp = panelList[i - 7].transform.Find("QuickSet").gameObject;
                 quickSetList.Add(temp);
             }
             catch { }
         }
-        temp = GameObject.Find("FactoryPanel").transform.Find("采购部Panel/Buy").gameObject;
+        temp = GameObject.Find("PanelCanvas").transform.Find("采购部Panel/Buy").gameObject;
         confirmList.Add(temp);
         temp = GameObject.Find("FactoryPanel");
         panelList.Add(temp);

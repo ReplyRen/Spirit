@@ -94,8 +94,8 @@ public class PurchasePanel : MonoBehaviour
         Image img = obj.AddComponent<Image>();
         Outline outLine = obj.AddComponent<Outline>();
         outLine.enabled = false;
-        outLine.OutlineWidth = 5f;
-        outLine.OutlineColor = Color.yellow;
+       // outLine.
+        //outLine.OutlineColor = Color.yellow;
         img.sprite = sprite;
         obj.name = name;
         obj.transform.SetParent(fatherObj.transform);
