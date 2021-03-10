@@ -31,9 +31,9 @@ public class SmashPanel : MonoBehaviour
     void Start()
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
-        valueSet = GameObject.Find("粉碎机Panel").transform.Find("StatusSet").GetComponent<Slider>();
         fragmentsOnDisc = instance.fragmentOnDisc;
-        barChart = GameObject.Find("粉碎机Panel").transform.Find("Histogram").gameObject;
+        valueSet = gameObject.transform.Find("StatusSet").GetComponent<Slider>();
+        barChart = gameObject.transform.Find("Histogram").gameObject;
         pieChart = GameObject.Find("粉碎机Panel").transform.Find("PieChart").gameObject;
         Init();
         for(int i=0;i<fragmentsOnDisc.Count;i++)

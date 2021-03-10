@@ -17,6 +17,7 @@ public class PurchasePanel : MonoBehaviour
     public List<Material> mats2;
     Text text;
     int num = 3;
+    bool isMain = true;
     public void Switch()
     {
         if(fatherObj1.activeSelf)
@@ -24,12 +25,14 @@ public class PurchasePanel : MonoBehaviour
             fatherObj1.SetActive(false);
             fatherObj2.SetActive(true);
             text.text = "查看主料";
+            isMain = false;
         }
         else
         {
             fatherObj1.SetActive(true);
             fatherObj2.SetActive(false);
             text.text = "查看辅料";
+            isMain = true;
         }
     }
     //更新物品list
@@ -66,15 +69,16 @@ public class PurchasePanel : MonoBehaviour
     {
         if (!buy.GetComponent<UIObject>().isConfirm)
         {
-            for(int i=0;i<num;i++)
+            if (isMain)
             {
-                GameObject temp = fatherObj1.transform.GetChild(i).gameObject;
-                temp.GetComponent<Outline>().enabled = false;
-                temp.GetComponent<UIObject>().isUse = false;
+                var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+                btn.GetComponent<UIObject>().isUse = !btn.GetComponent<UIObject>().isUse;
+                btn.GetComponent<Outline>().enabled = !btn.GetComponent<Outline>().enabled;
             }
-            var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-            btn.GetComponent<UIObject>().isUse = !btn.GetComponent<UIObject>().isUse;
-            btn.GetComponent<Outline>().enabled = !btn.GetComponent<Outline>().enabled;
+            else
+            {
+
+            }
         }
     }
     public void InstantiateObj(Sprite sprite, string name, GameObject fatherObj)
@@ -99,7 +103,7 @@ public class PurchasePanel : MonoBehaviour
         for(int i=0;i<fatherObj2.transform.childCount;i++)
         {
             Material mat = Instantiate(mt);
-            mat.SetFloat("_Flag", 0);
+            mat.SetFloat("_Flag", 1);
             mat.SetFloat("_MinOffset", 8f);
             mat.SetColor("_OutLineCol", Color.yellow);
             try

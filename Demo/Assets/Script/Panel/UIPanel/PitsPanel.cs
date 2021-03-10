@@ -163,9 +163,9 @@ public class PitsPanel : MonoBehaviour
                 if (valueSet1.value <= 0.333f)
                 {
                     valueChange = valueSet1.value / 0.333f;
-                    aa = valueChange * 1;
-                    bb = valueChange * 0.8f;
-                    cc = valueChange * 0.5f;
+                    aa = 0.5f + valueChange * 1;
+                    bb = 0.5f + valueChange * 0.8f;
+                    cc = 0.5f + valueChange * 0.5f;
                     gg = valueChange * 0.3f;
                     hh = valueChange * 0.5f;
                     ii = valueChange * 0.3f;
@@ -175,9 +175,9 @@ public class PitsPanel : MonoBehaviour
                 else if (valueSet1.value <= 0.666f)
                 {
                     valueChange = (valueSet1.value - 0.333f) / 0.333f;
-                    aa = 1 - valueChange * 0.3f;
-                    bb = 0.8f + valueChange * 0.2f;
-                    cc = 0.5f + valueChange * 0.3f;
+                    aa = 0.5f + 1 - valueChange * 0.3f;
+                    bb = 0.5f + 0.8f + valueChange * 0.2f;
+                    cc = 0.5f + 0.5f + valueChange * 0.3f;
                     gg = 0.3f + valueChange * 0.7f;
                     hh = 0.5f + valueChange * 0.5f;
                     ii = 0.3f + valueChange * 0.2f;
@@ -187,9 +187,9 @@ public class PitsPanel : MonoBehaviour
                 else
                 {
                     valueChange = (valueSet1.value - 0.666f) / 0.333f;
-                    aa = 0.7f - valueChange * 0.2f;
-                    bb = 1 - valueChange * 0.3f;
-                    cc = 0.8f + valueChange * 0.2f;
+                    aa = 0.5f + 0.7f - valueChange * 0.2f;
+                    bb = 0.5f + 1 - valueChange * 0.3f;
+                    cc = 0.5f + 0.8f + valueChange * 0.2f;
                     gg = 1 - valueChange * 0.2f;
                     hh = 1 - valueChange * 0.3f;
                     ii = 0.5f + valueChange * 0.5f;
@@ -200,9 +200,9 @@ public class PitsPanel : MonoBehaviour
                 if (valueSet2.value <= 0.333f)
                 {
                     valueChange = valueSet2.value / 0.333f;
-                    aa2 = valueChange * 0.3f;
-                    bb2 = valueChange * 0.7f;
-                    cc2 = valueChange * 1;
+                    aa2 = 0.5f + valueChange * 0.3f;
+                    bb2 = 0.5f + valueChange * 0.7f;
+                    cc2 = 0.5f + valueChange * 1;
                     ff = valueChange * 0.3f;
                     fragment2.element = SetEvaluations("发酵酸度（低）").element;
                     fragment2.evaluation = SetEvaluations("发酵酸度（低）").evaluation;
@@ -210,9 +210,9 @@ public class PitsPanel : MonoBehaviour
                 else if (valueSet2.value <= 0.666f)
                 {
                     valueChange = (valueSet2.value - 0.333f) / 0.333f;
-                    aa2 = 0.3f + valueChange * 0.4f;
-                    bb2 = 0.7f + valueChange * 0.3f;
-                    cc2 = 1 - valueChange * 0.2f;
+                    aa2 = 0.5f + 0.3f + valueChange * 0.4f;
+                    bb2 = 0.5f + 0.7f + valueChange * 0.3f;
+                    cc2 = 0.5f + 1 - valueChange * 0.2f;
                     ff = 0.3f + valueChange * 0.7f;
                     fragment2.element = SetEvaluations("发酵酸度（中）").element;
                     fragment2.evaluation = SetEvaluations("发酵酸度（中）").evaluation;
@@ -220,9 +220,9 @@ public class PitsPanel : MonoBehaviour
                 else
                 {
                     valueChange = (valueSet2.value - 0.666f) / 0.333f;
-                    aa2 = 0.7f + valueChange * 0.3f;
-                    bb2 = 1 - valueChange * 0.2f;
-                    cc2 = 0.8f - valueChange * 0.3f;
+                    aa2 = 0.5f + 0.7f + valueChange * 0.3f;
+                    bb2 = 0.5f + 1 - valueChange * 0.2f;
+                    cc2 = 0.5f + 0.8f - valueChange * 0.3f;
                     ff = 1 - valueChange * 0.3f;
                     fragment2.element = SetEvaluations("发酵酸度（高）").element;
                     fragment2.evaluation = SetEvaluations("发酵酸度（高）").evaluation;
@@ -231,9 +231,9 @@ public class PitsPanel : MonoBehaviour
                 if (valueSet3.value <= 0.333f)
                 {
                     valueChange = valueSet3.value / 0.333f;
-                    aa3 = valueChange * 0.4f;
-                    bb3 = valueChange * 0.9f;
-                    cc3 = valueChange * 0.4f;
+                    aa3 = 0.5f + valueChange * 0.4f;
+                    bb3 = 0.5f + valueChange * 0.9f;
+                    cc3 = 0.5f + valueChange * 0.4f;
                     gg3 = valueChange * 0.3f;
                     hh3 = valueChange * 0.5f;
                     ii3 = valueChange * 0.3f;
@@ -244,9 +244,9 @@ public class PitsPanel : MonoBehaviour
                 else if (valueSet3.value <= 0.666f)
                 {
                     valueChange = (valueSet3.value - 0.333f) / 0.333f;
-                    aa3 = 0.4f - valueChange * 0.6f;
-                    bb3 = 0.9f + valueChange * 0.1f;
-                    cc3 = 0.4f + valueChange * 0.4f;
+                    aa3 = 0.5f + 0.4f - valueChange * 0.6f;
+                    bb3 = 0.5f + 0.9f + valueChange * 0.1f;
+                    cc3 = 0.5f + 0.4f + valueChange * 0.4f;
                     gg3 = 0.3f + valueChange * 0.7f;
                     hh3 = 0.5f + valueChange * 0.5f;
                     ii3 = 0.3f + valueChange * 0.2f;
@@ -256,9 +256,9 @@ public class PitsPanel : MonoBehaviour
                 else
                 {
                     valueChange = (valueSet3.value - 0.666f) / 0.333f;
-                    aa3 = 1 - valueChange * 0.3f;
-                    bb3 = 1 - valueChange * 0.2f;
-                    cc3 = 0.8f + valueChange * 0.2f;
+                    aa3 = 0.5f + 1 - valueChange * 0.3f;
+                    bb3 = 0.5f + 1 - valueChange * 0.2f;
+                    cc3 = 0.5f + 0.8f + valueChange * 0.2f;
                     gg3 = 1 - valueChange * 0.2f;
                     hh3 = 1 - valueChange * 0.3f;
                     ii3 = 0.5f + valueChange * 0.5f;

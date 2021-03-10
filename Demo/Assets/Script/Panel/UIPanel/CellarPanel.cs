@@ -41,10 +41,10 @@ public class CellarPanel : MonoBehaviour
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
-        valueSet1 = GameObject.Find("酒窖Panel").transform.Find("StatusSet1").GetComponent<Slider>();
-        valueSet2 = GameObject.Find("酒窖Panel").transform.Find("StatusSet2").GetComponent<Slider>();
-        valueSet3 = GameObject.Find("酒窖Panel").transform.Find("StatusSet3").GetComponent<Slider>();
-        barChart = GameObject.Find("酒窖Panel").transform.Find("Histogram").gameObject;
+        valueSet1 = gameObject.transform.Find("StatusSet1").GetComponent<Slider>();
+        valueSet2 = gameObject.transform.Find("StatusSet2").GetComponent<Slider>();
+        valueSet3 = gameObject.transform.Find("StatusSet3").GetComponent<Slider>();
+        barChart = gameObject.transform.Find("Histogram").gameObject;
         pieChart = GameObject.Find("酒窖Panel").transform.Find("PieChart").gameObject;
         Init();
         for(int i=0;i<fragmentsOnDisc.Count;i++)
@@ -67,9 +67,9 @@ public class CellarPanel : MonoBehaviour
         if (valueSet1.value <= 0.333f)
         {
             valueChange = valueSet1.value / 0.333f;
-            aa = valueChange * 0.9f;
-            bb = valueChange * 0.7f;
-            cc = valueChange * 1;
+            aa = 0.5f + valueChange * 0.9f;
+            bb = 0.5f + valueChange * 0.7f;
+            cc = 0.5f + valueChange * 1;
             ee = valueChange * 0.6f;
             fragment1.element = SetEvaluations("陈酿温度（低）").element;
             fragment1.evaluation = SetEvaluations("陈酿温度（低）").evaluation;
@@ -77,9 +77,9 @@ public class CellarPanel : MonoBehaviour
         else if (valueSet1.value <= 0.666f)
         {
             valueChange = (valueSet1.value - 0.333f) / 0.333f;
-            aa = 0.9f - valueChange * 0;
-            bb = 0.7f + valueChange * 0.3f;
-            cc = 1 - valueChange * 0.1f;
+            aa = 0.5f + 0.9f - valueChange * 0;
+            bb = 0.5f + 0.7f + valueChange * 0.3f;
+            cc = 0.5f + 1 - valueChange * 0.1f;
             ee = 0.6f + valueChange * 0.2f;
             fragment1.element = SetEvaluations("陈酿温度（中）").element;
             fragment1.evaluation = SetEvaluations("陈酿温度（中）").evaluation;
@@ -87,9 +87,9 @@ public class CellarPanel : MonoBehaviour
         else
         {
             valueChange = (valueSet1.value - 0.666f) / 0.333f;
-            aa = 0.9f + valueChange * 0.1f;
-            bb = 1 - valueChange * 0.2f;
-            cc = 0.9f - valueChange * 0.2f;
+            aa = 0.5f + 0.9f + valueChange * 0.1f;
+            bb = 0.5f + 1 - valueChange * 0.2f;
+            cc = 0.5f + 0.9f - valueChange * 0.2f;
             ee = 0.8f + valueChange * 0.2f;
             fragment1.element = SetEvaluations("陈酿温度（高）").element;
             fragment1.evaluation = SetEvaluations("陈酿温度（高）").evaluation;
@@ -98,9 +98,9 @@ public class CellarPanel : MonoBehaviour
         if (valueSet2.value <= 0.333f)
         {
             valueChange = valueSet2.value / 0.333f;
-            aa2 = valueChange * 0.7f;
-            bb2 = valueChange * 0.9f;
-            cc2 = valueChange * 1;
+            aa2 = 0.5f + valueChange * 0.7f;
+            bb2 = 0.5f + valueChange * 0.9f;
+            cc2 = 0.5f + valueChange * 1;
             ee2 = valueChange * 0.6f;
             gg = valueChange * 0.5f;
             hh = valueChange * 0.3f;
@@ -111,9 +111,9 @@ public class CellarPanel : MonoBehaviour
         else if (valueSet2.value <= 0.666f)
         {
             valueChange = (valueSet2.value - 0.333f) / 0.333f;
-            aa2 = 0.7f + valueChange * 0.3f;
-            bb2 = 0.9f + valueChange * 0.1f;
-            cc2 = 1 - valueChange * 0.3f;
+            aa2 = 0.5f + 0.7f + valueChange * 0.3f;
+            bb2 = 0.5f + 0.9f + valueChange * 0.1f;
+            cc2 = 0.5f + 1 - valueChange * 0.3f;
             ee2 = 0.6f + valueChange * 0.2f;
             gg = 0.5f + valueChange * 0;
             hh = 0.3f + valueChange * 0;
@@ -124,9 +124,9 @@ public class CellarPanel : MonoBehaviour
         else
         {
             valueChange = (valueSet2.value - 0.666f) / 0.333f;
-            aa2 = 1 - valueChange * 0.2f;
-            bb2 = 1 - valueChange * 0.1f;
-            cc2 = 0.7f + valueChange * 0.2f;
+            aa2 = 0.5f + 1 - valueChange * 0.2f;
+            bb2 = 0.5f + 1 - valueChange * 0.1f;
+            cc2 = 0.5f + 0.7f + valueChange * 0.2f;
             ee2 = 0.8f + valueChange * 0.2f;
             gg = 0.5f + valueChange * 0.5f;
             hh = 0.3f + valueChange * 0.7f;

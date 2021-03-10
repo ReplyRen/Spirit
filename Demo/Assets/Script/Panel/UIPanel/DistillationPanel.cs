@@ -71,9 +71,9 @@ public class DistillationPanel : MonoBehaviour
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
-        valueSet1 = GameObject.Find("蒸馏设备Panel").transform.Find("StatusSet1").GetComponent<Slider>();
-        valueSet2 = GameObject.Find("蒸馏设备Panel").transform.Find("StatusSet2").GetComponent<Slider>();
-        barChart = GameObject.Find("蒸馏设备Panel").transform.Find("Histogram").gameObject;
+        valueSet1 = gameObject.transform.Find("StatusSet1").GetComponent<Slider>();
+        valueSet2 = gameObject.transform.Find("StatusSet2").GetComponent<Slider>();
+        barChart = gameObject.transform.Find("Histogram").gameObject;
         pieChart = GameObject.Find("蒸馏设备Panel").transform.Find("PieChart").gameObject;
         Init();
         gameObject.SetActive(false);
@@ -90,9 +90,9 @@ public class DistillationPanel : MonoBehaviour
                 if (valueSet1.value <= 0.333f)
                 {
                     valueChange = valueSet1.value / 0.333f;
-                    aa = valueChange * 0.3f;
-                    bb = valueChange * 0.7f;
-                    cc = valueChange * 1;
+                    aa = 0.5f + valueChange * 0.3f;
+                    bb = 0.5f + valueChange * 0.7f;
+                    cc = 0.5f + valueChange * 1;
                     gg = valueChange * 1;
                     hh = valueChange * 1;
                     ii = valueChange * 1;
@@ -102,8 +102,8 @@ public class DistillationPanel : MonoBehaviour
                 else if (valueSet1.value <= 0.666f)
                 {
                     valueChange = (valueSet1.value - 0.333f) / 0.333f;
-                    aa = 0.3f + valueChange * 0.4f;
-                    bb = 0.7f + valueChange * 0.3f;
+                    aa = 0.5f + 0.3f + valueChange * 0.4f;
+                    bb = 0.5f + 0.7f + valueChange * 0.3f;
                     cc = 1 - valueChange * 0.2f;
                     gg = 1 - valueChange * 0.4f;
                     hh = 1 - valueChange * 0.5f;
@@ -114,9 +114,9 @@ public class DistillationPanel : MonoBehaviour
                 else
                 {
                     valueChange = (valueSet1.value - 0.666f) / 0.333f;
-                    aa = 0.7f + valueChange * 0.3f;
-                    bb = 1 - valueChange * 0.2f;
-                    cc = 0.8f - valueChange * 0.3f;
+                    aa = 0.5f + 0.7f + valueChange * 0.3f;
+                    bb = 0.5f + 1 - valueChange * 0.2f;
+                    cc = 0.5f + 0.8f - valueChange * 0.3f;
                     gg = 0.6f - valueChange * 0.3f;
                     hh = 0.5f - valueChange * 0.2f;
                     ii = 0.7f - valueChange * 0.3f;
@@ -127,9 +127,9 @@ public class DistillationPanel : MonoBehaviour
                 if (valueSet2.value <= 0.333f)
                 {
                     valueChange = valueSet2.value / 0.333f;
-                    aa2 = valueChange * 0.4f;
-                    bb2 = valueChange * 0.9f;
-                    cc2 = valueChange * 0.4f;
+                    aa2 = 0.5f + valueChange * 0.4f;
+                    bb2 = 0.5f + valueChange * 0.9f;
+                    cc2 = 0.5f + valueChange * 0.4f;
                     gg2 = valueChange * 1;
                     hh2 = valueChange * 1;
                     ii2 = valueChange * 1;
@@ -139,9 +139,9 @@ public class DistillationPanel : MonoBehaviour
                 else if (valueSet2.value <= 0.666f)
                 {
                     valueChange = (valueSet2.value - 0.333f) / 0.333f;
-                    aa2 = 0.4f + valueChange * 0.6f;
-                    bb2 = 0.9f + valueChange * 0.1f;
-                    cc2 = 0.4f + valueChange * 0.4f;
+                    aa2 = 0.5f + 0.4f + valueChange * 0.6f;
+                    bb2 = 0.5f + 0.9f + valueChange * 0.1f;
+                    cc2 = 0.5f + 0.4f + valueChange * 0.4f;
                     gg2 = 1 - valueChange * 0.4f;
                     hh2 = 1 - valueChange * 0.5f;
                     ii2 = 1 - valueChange * 0.3f;
@@ -151,9 +151,9 @@ public class DistillationPanel : MonoBehaviour
                 else
                 {
                     valueChange = (valueSet2.value - 0.666f) / 0.333f;
-                    aa2 = 1 - valueChange * 0.3f;
-                    bb2 = 1 - valueChange * 0.2f;
-                    cc2 = 0.8f + valueChange * 0.2f;
+                    aa2 = 0.5f + 1 - valueChange * 0.3f;
+                    bb2 = 0.5f + 1 - valueChange * 0.2f;
+                    cc2 = 0.5f + 0.8f + valueChange * 0.2f;
                     gg2 = 0.6f - valueChange * 0.3f;
                     hh2 = 0.5f - valueChange * 0.2f;
                     ii2 = 0.7f - valueChange * 0.3f;
