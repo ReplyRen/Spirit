@@ -9,13 +9,13 @@ public class UIManager : MonoBehaviour
     public List<GameObject> panelList = new List<GameObject>();
     public List<GameObject> confirmList = new List<GameObject>();
     public List<GameObject> quickSetList = new List<GameObject>();
-    public List<Image> gridList = new List<Image>();
     public List<BaseFragment> fragmentsOnDisc;
-    public List<Material> mats;
     public Shader shader;
     public Material mt;
+    public List<Material> mats;
     CameraController cameraController;
     GameObject blur;
+    GameObject panelCanvas;
     int currentUI;//当前打开UI在list中的序号
     int num = 11;//UI总数
     public static bool isOpen = false;
@@ -172,13 +172,18 @@ public class UIManager : MonoBehaviour
         fragmentsOnDisc = newList;
         ResetState();
         ResetOutline();
+        panelCanvas.SetActive(true);
         for (int i = 0; i < fragmentsOnDisc.Count; i++)
         {
             switch (fragmentsOnDisc[i].name)
             {
                 case "配料":
                     buttonList[2].SetActive(true);
-                    buttonList[4].SetActive(false);
+                    buttonList[3].SetActive(false);
+                    break;
+                case "蒸煮摊凉":
+                    buttonList[2].SetActive(false);
+                    buttonList[3].SetActive(true);
                     break;
                 case "修窖":
                     buttonList[2].SetActive(false);
@@ -299,7 +304,8 @@ public class UIManager : MonoBehaviour
     //
     void Start()
     {
-        blur = GameObject.Find("PanelCanvas").transform.Find("采购部Panel").transform.Find("Blur").gameObject;
+        panelCanvas = GameObject.Find("PanelCanvas");
+        blur = panelCanvas.transform.Find("采购部Panel").transform.Find("Blur").gameObject;
         cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
         fragmentsOnDisc = GameObject.Find("Main Camera").GetComponent<GameManager>().fragmentOnDisc;
         GameObject temp;
@@ -322,7 +328,7 @@ public class UIManager : MonoBehaviour
             }
             catch { }
             //
-            temp = GameObject.Find("PanelCanvas").transform.GetChild(i - 3).gameObject;
+            temp = panelCanvas.transform.GetChild(i - 3).gameObject;
             text = temp.transform.Find("Title");
             text.GetComponent<Text>().text = temp.name.Replace("Panel","");
             panelList.Add(temp);
@@ -336,7 +342,7 @@ public class UIManager : MonoBehaviour
             }
             catch { }
         }
-        temp = GameObject.Find("PanelCanvas").transform.Find("采购部Panel/Buy").gameObject;
+        temp = panelCanvas.transform.Find("采购部Panel/Buy").gameObject;
         confirmList.Add(temp);
         temp = GameObject.Find("FactoryPanel");
         panelList.Add(temp);
@@ -344,6 +350,7 @@ public class UIManager : MonoBehaviour
         ResetOutline();
         temp = null;
         blur.SetActive(false);
+        panelCanvas.SetActive(false);
         gameObject.SetActive(false);
     }
     void Update()
