@@ -346,9 +346,7 @@ public class UIManager : MonoBehaviour
         confirmList.Add(temp);
         temp = GameObject.Find("FactoryPanel");
         panelList.Add(temp);
-        //ResetState();
         ResetOutline();
-        temp = null;
         blur.SetActive(false);
         panelCanvas.SetActive(false);
         gameObject.SetActive(false);

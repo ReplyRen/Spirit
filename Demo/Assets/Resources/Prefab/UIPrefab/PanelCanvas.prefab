@@ -1244,7 +1244,7 @@ GameObject:
   - component: {fileID: 8845031537518112238}
   - component: {fileID: 8845031537518112239}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: "\u732A\u8089"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1296,8 +1296,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 17d8718b398866247ab610ed05351c9d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2056,7 +2056,7 @@ GameObject:
   - component: {fileID: 8845031537681073317}
   - component: {fileID: 8845031537681073314}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: "\u5C0F\u9EA6"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2108,8 +2108,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9185cd660cc428743977c97d55f37ee0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5411,7 +5411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8845031538246340867
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6161,7 +6161,7 @@ GameObject:
   - component: {fileID: 8845031538448390354}
   - component: {fileID: 8845031538448390355}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: "\u7389\u7C73"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6213,8 +6213,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 315e95673b4036745ad679f67bf0d7fb, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8176,7 +8176,7 @@ GameObject:
   - component: {fileID: 8845031538695336159}
   - component: {fileID: 8845031538695336156}
   m_Layer: 5
-  m_Name: Button
+  m_Name: "\u9AD8\u7CB1\u76AE"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8228,8 +8228,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 961a1e4ad526f5742a89590b9fd88332, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8528,7 +8528,7 @@ GameObject:
   - component: {fileID: 8845031538753647627}
   - component: {fileID: 8845031538753647624}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: "\u7A3B\u58F3"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8580,8 +8580,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9512dbe2ef62a3141a36d9251bafb275, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8701,10 +8701,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e98b7b14387464ea3a4d9424937289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  purchaseObject1: []
+  purchaseObject2: []
   buy: {fileID: 8845031537834524811}
   panel: {fileID: 8845031538774675806}
   fatherObj1: {fileID: 8845031539003660965}
   fatherObj2: {fileID: 8845031538101296043}
+  shader: {fileID: 4800000, guid: 3bf6973e8e36a384b84bcf6d54836f4a, type: 3}
+  mt: {fileID: 2100000, guid: 1b7b8dda9e72d4449a9b78f9174fc85c, type: 2}
+  mats1: []
+  mats2: []
 --- !u!1 &8845031538783852221
 GameObject:
   m_ObjectHideFlags: 0
@@ -8948,7 +8954,7 @@ GameObject:
   - component: {fileID: 8845031538796395894}
   - component: {fileID: 8845031538796395895}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: "\u8C4C\u8C46"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9000,8 +9006,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 22facc0eb4c620d4f941954abd6ba9e5, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9066,7 +9072,7 @@ GameObject:
   - component: {fileID: 8845031538798525103}
   - component: {fileID: 8845031538798525100}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: "\u5927\u7C73"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9118,8 +9124,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 654e5416c8b1fdc42ba4234c05fa5810, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9781,7 +9787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8845031538904163050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9976,7 +9982,7 @@ GameObject:
   - component: {fileID: 8845031538954504372}
   - component: {fileID: 8845031538954504373}
   m_Layer: 5
-  m_Name: Button
+  m_Name: "\u7CEF\u6027\u9AD8\u6881"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10028,9 +10034,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: 3ee0d6ba675326d4a9a3106482df50d1, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10455,8 +10461,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000022888, y: 116.87}
-  m_SizeDelta: {x: 724.1345, y: 233.73236}
+  m_AnchoredPosition: {x: 36.323, y: 116.87}
+  m_SizeDelta: {x: 1145.3531, y: 233.73236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8845031539003660964
 MonoBehaviour:
@@ -10478,7 +10484,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 160, y: 250}
+  m_CellSize: {x: 170, y: 242}
   m_Spacing: {x: 40, y: 40}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -10569,7 +10575,7 @@ GameObject:
   - component: {fileID: 8845031539031120506}
   - component: {fileID: 8845031539031120507}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: "\u9AD8\u6881"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10621,8 +10627,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 376c5ab2321c66546b59ce47b8ab5411, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10999,7 +11005,7 @@ GameObject:
   - component: {fileID: 8845031539069525417}
   - component: {fileID: 8845031539069525462}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: "\u8349\u836F"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11051,8 +11057,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b3e8701ee337a8f4295437f2cdb1de92, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -11421,7 +11427,7 @@ GameObject:
   - component: {fileID: 8845031539182771905}
   - component: {fileID: 8845031539182771918}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: "\u9EB8\u76AE"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11473,8 +11479,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 7ef142962512bec44bcba830d22cba12, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -11539,7 +11545,7 @@ GameObject:
   - component: {fileID: 8845031539191572697}
   - component: {fileID: 8845031539191572678}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: "\u7CEF\u7C73"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11591,8 +11597,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: c3839e16d5531ca48ba39d49bdce78f8, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -13605,7 +13611,7 @@ GameObject:
   - component: {fileID: 8845031539546118623}
   - component: {fileID: 8845031539546118620}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: "\u5927\u7C73"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13657,8 +13663,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 654e5416c8b1fdc42ba4234c05fa5810, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -13723,7 +13729,7 @@ GameObject:
   - component: {fileID: 8845031539568923803}
   - component: {fileID: 8845031539568923800}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: "\u5C0F\u9EA6"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13775,8 +13781,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 9185cd660cc428743977c97d55f37ee0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -13963,7 +13969,7 @@ PrefabInstance:
     - target: {fileID: 273342981119604004, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7558549909231665679, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
@@ -14098,7 +14104,7 @@ PrefabInstance:
     - target: {fileID: 8855778118434448541, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8855778118434448541, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
@@ -15343,7 +15349,7 @@ PrefabInstance:
     - target: {fileID: 273342981119604004, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7558549909231665679, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
@@ -15478,7 +15484,7 @@ PrefabInstance:
     - target: {fileID: 8855778118434448541, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8855778118434448541, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
@@ -16873,7 +16879,7 @@ PrefabInstance:
     - target: {fileID: 273342981119604004, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7558549909231665679, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
@@ -17008,7 +17014,7 @@ PrefabInstance:
     - target: {fileID: 8855778118434448541, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8855778118434448541, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
@@ -18262,7 +18268,7 @@ PrefabInstance:
     - target: {fileID: 273342981119604004, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7558549909231665679, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
@@ -18397,7 +18403,7 @@ PrefabInstance:
     - target: {fileID: 8855778118434448541, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8855778118434448541, guid: 33c01015a54bc684188bdcd8e63f5b7b,
         type: 3}

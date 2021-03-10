@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class PurchasePanel : MonoBehaviour
 {
-    public List<BaseObject> storageObject = new List<BaseObject>();
-    public List<BaseObject> purchaseObject1 = new List<BaseObject>();
-    public List<BaseObject> purchaseObject2 = new List<BaseObject>();
+    public List<GameObject> purchaseObject1 = new List<GameObject>();
+    public List<GameObject> purchaseObject2 = new List<GameObject>();
     public GameObject buy;
     public GameObject panel;
     public GameObject fatherObj1;
     public GameObject fatherObj2;
+    public Shader shader;
+    public Material mt;
+    public List<Material> mats1;
+    public List<Material> mats2;
     Text text;
     int num = 3;
     public void Switch()
@@ -32,15 +35,7 @@ public class PurchasePanel : MonoBehaviour
     //更新物品list
     public void UpdateList()
     {
-        purchaseObject1.Clear();
-        for (int i = 0; i < num; i++)
-        {
-            BaseObject card = new BaseObject();
-            card.description = i.ToString();
-            card.name = i.ToString();
-            card.sprite = Resources.Load<Sprite>("Sprite/圆盘/60");
-            purchaseObject1.Add(card);
-        }
+        //purchaseObject1.Clear();
     }
     public void Clear()
     {
@@ -51,11 +46,8 @@ public class PurchasePanel : MonoBehaviour
     {
         if (!buy.GetComponent<UIObject>().isConfirm)
         {
-            Clear();
-            for (int i = 0; i < purchaseObject1.Count; i++)
-            {
-                InstantiateObj(purchaseObject1[i].sprite, purchaseObject1[i].name, fatherObj1);
-            }
+            //Clear();
+            
         }
     }
     public void Purchase()
@@ -70,7 +62,6 @@ public class PurchasePanel : MonoBehaviour
         buy.GetComponent<UIObject>().isConfirm = true;
         buy.SetActive(false);
     }
-
     public void Select()
     {
         if (!buy.GetComponent<UIObject>().isConfirm)
@@ -103,16 +94,31 @@ public class PurchasePanel : MonoBehaviour
         btn.onClick.AddListener(Select);
         obj.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
     }
-    public void NextDay()
+    void Instance()
     {
-        buy.GetComponent<UIObject>().isConfirm = false;
-        UpdateList();
-        UpdateObjects();
+        for(int i=0;i<fatherObj2.transform.childCount;i++)
+        {
+            Material mat = Instantiate(mt);
+            mat.SetFloat("_Flag", 0);
+            mat.SetFloat("_MinOffset", 8f);
+            mat.SetColor("_OutLineCol", Color.yellow);
+            try
+            {
+                purchaseObject1.Add(fatherObj1.transform.GetChild(i).gameObject);
+                purchaseObject1[i].AddComponent<UIObject>();
+                purchaseObject1[i].GetComponent<Image>().material = mat;
+                mats1.Add(purchaseObject1[i].GetComponent<Image>().material);
+            }
+            catch { }
+            purchaseObject2.Add(fatherObj2.transform.GetChild(i).gameObject);
+            purchaseObject2[i].AddComponent<UIObject>();
+            purchaseObject2[i].GetComponent<Image>().material = mat;
+            mats2.Add(purchaseObject1[i].GetComponent<Image>().material);
+        }
     }
     void Start()
     {
         text = GameObject.Find("Switch").transform.GetChild(0).GetComponent<Text>();
-        storageObject = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
         UpdateList();
         UpdateObjects();
         gameObject.SetActive(false);
