@@ -4,21 +4,75 @@ using UnityEngine;
 
 public class EvaluationPanel : MonoBehaviour
 {
-    private float Evaluate(BaseObject obj)
+    private void Start()
+    {
+        Debug.Log(Test());
+    }
+    private float Test()
+    {
+        BaseObject obj = new BaseObject();
+        obj.evaluation = new Evaluation();
+        obj.evaluation.intensity = 80;
+        obj.evaluation.rich = 90;
+        obj.evaluation.continuity = 80;
+        obj.evaluation.fineness = 70;
+        obj.evaluation.flavor = 55;
+        obj.mains.Add(主料.麸皮);
+        return GetScore(obj);
+    }
+    private void Evaluate(BaseObject obj)
+    {
+        float score = GetScore(obj);
+
+
+    }
+    private float GetScore(BaseObject obj)
     {
         float res = -1;
-        string kind;
+        string kind = "";
         Evaluation normal = new Evaluation();
         float normalScore = 0;
         int errorCount = 0;
 
         if (obj.mains.Contains(主料.麸皮))
         {
-            kind = "";
+            kind = "芝麻香型";
+        }
+        else if (obj.mains.Contains(主料.大米))
+        {
+            if (obj.mains.Count == 1)
+            {
+                kind = "米香型";
+            }
+            else
+            {
+                kind = "特香型";
+            }
+        }
+        else if (obj.mains.Contains(主料.小麦))
+        {
+            kind = "兼香型";
+        }
+        else if (obj.mains.Contains(主料.糯性高梁))
+        {
+            kind = "酱香型";
+            kind = "浓香型";
         }
         else
         {
-            kind = null;
+            if (obj.minors.Contains(辅料.猪肉))
+                kind = "豉香型";
+            else if (obj.minors.Contains(辅料.草药))
+                kind = "药香型";
+            else if (obj.minors.Count > 4)
+                kind = "馥郁香型";
+            else if (obj.minors.Contains(辅料.稻壳))
+                kind = "凤香型";
+            else
+            {
+                kind = "老白干香型";
+                kind = "清香型";
+            }
         }
 
         switch (kind)
@@ -119,12 +173,13 @@ public class EvaluationPanel : MonoBehaviour
                 normal.fineness = 70;
                 normal.flavor = 60;
                 break;
+            default:
+                Debug.LogError("酒类型为空");
+                break;
         }
 
         res = ReturnScore(obj.evaluation, normal, normalScore, errorCount);
         return res;
-
-
     }
 
     private float ReturnScore(Evaluation obj, Evaluation normal, float normalScore, int errorCount)
@@ -134,7 +189,7 @@ public class EvaluationPanel : MonoBehaviour
         float P3 = ReturnScore(obj.fineness, normal.fineness);
         float P4 = ReturnScore(obj.intensity, normal.intensity);
         float P5 = ReturnScore(obj.flavor, normal.flavor);
-        return (normalScore - 3 * errorCount) / 100 * (P1 + P2 + P3 + P4) / 4 * Mathf.Sqrt(P5);
+        return (normalScore - 3 * errorCount) / normalScore * (P1 + P2 + P3 + P4) / 4 * Mathf.Sqrt(P5);
 
     }
     private float ReturnScore(float a, float normal)
@@ -143,6 +198,11 @@ public class EvaluationPanel : MonoBehaviour
         float x = 0.63f * a / normal;
         P = 2.1f * (-x * x * x + 1) * x;
         return P;
+    }
+    private int Difference(List<辅料> real, params 辅料[] normal)
+    {
+        int res = 0;
+        return res;
     }
 
 
