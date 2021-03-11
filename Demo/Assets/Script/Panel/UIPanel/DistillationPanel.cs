@@ -19,6 +19,7 @@ public class DistillationPanel : MonoBehaviour
     GameManager instance;
     Slider valueSet1;
     Slider valueSet2;
+    Slider valueSet;
     GameObject barChart;
     GameObject pieChart;
     float valueChange;
@@ -44,6 +45,7 @@ public class DistillationPanel : MonoBehaviour
                 case "蒸馏":
                     valueSet1.gameObject.SetActive(true);
                     valueSet2.gameObject.SetActive(true);
+                    valueSet.gameObject.SetActive(false);
                     barChart.SetActive(true);
                     pieChart.SetActive(true);
                     status = 1;
@@ -52,7 +54,8 @@ public class DistillationPanel : MonoBehaviour
                 case "看花摘酒":
                     valueSet1.gameObject.SetActive(false);
                     valueSet2.gameObject.SetActive(false);
-                    barChart.SetActive(false);
+                    valueSet.gameObject.SetActive(true);
+                    barChart.SetActive(true);
                     pieChart.SetActive(false);
                     status = 2;
                     index = i;
@@ -64,6 +67,7 @@ public class DistillationPanel : MonoBehaviour
     {
         valueSet1.value = 0;
         valueSet2.value = 0;
+        valueSet.value = 0;
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
         pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
     }
@@ -73,6 +77,7 @@ public class DistillationPanel : MonoBehaviour
         fragmentsOnDisc = instance.fragmentOnDisc;
         valueSet1 = gameObject.transform.Find("StatusSet1").GetComponent<Slider>();
         valueSet2 = gameObject.transform.Find("StatusSet2").GetComponent<Slider>();
+        valueSet = gameObject.transform.Find("StatusSet").GetComponent<Slider>();
         barChart = gameObject.transform.Find("Histogram").gameObject;
         pieChart = GameObject.Find("蒸馏设备Panel").transform.Find("PieChart").gameObject;
         Init();
@@ -173,6 +178,31 @@ public class DistillationPanel : MonoBehaviour
                 fragmentsOnDisc[index].evaluation = fragment1.evaluation + fragment2.evaluation;
                 break;
             case 2:
+                if (valueSet.value <= 0.25f)
+                {
+                    valueChange = valueSet.value / 0.25f;
+                    e.value = valueChange * 0.5f;
+                    f.value = valueChange * 0.3f;
+                }
+                else if (valueSet.value <= 0.5f)
+                {
+                    valueChange = (valueSet.value - 0.25f) / 0.25f;
+                    e.value = 0.5f + valueChange * 0.5f;
+                    f.value = 0.3f + valueChange * 0.3f;
+                }
+                else if(valueSet.value <= 0.75f)
+                {
+                    valueChange = (valueSet.value - 0.5f) / 0.25f;
+                    e.value = 1 - valueChange * 0.3f;
+                    f.value = 0.6f + valueChange * 0.4f;
+                }
+                else
+                {
+                    valueChange = (valueSet.value - 0.75f) / 0.25f;
+                    e.value = 0.7f - valueChange * 0.1f;
+                    f.value = 1 - valueChange * 0.2f;
+                }
+                barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
                 SetEvaluation("看花摘酒");
                 break;
         }

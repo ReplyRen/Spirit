@@ -5,19 +5,14 @@ using UnityEngine.UI;
 
 public class PurchasePanel : MonoBehaviour
 {
-    public List<GameObject> purchaseObject1 = new List<GameObject>();
-    public List<GameObject> purchaseObject2 = new List<GameObject>();
+    public List<GameObject> purchaseObject = new List<GameObject>();
     public GameObject buy;
     public GameObject panel;
     public GameObject fatherObj1;
     public GameObject fatherObj2;
-    public Shader shader;
-    public Material mt;
-    public List<Material> mats1;
-    public List<Material> mats2;
+    public List<Image> images; 
     Text text;
-    int num = 3;
-    bool isMain = true;
+    int status = 0;
     public void Switch()
     {
         if(fatherObj1.activeSelf)
@@ -25,20 +20,20 @@ public class PurchasePanel : MonoBehaviour
             fatherObj1.SetActive(false);
             fatherObj2.SetActive(true);
             text.text = "查看主料";
-            isMain = false;
+            if (status == 1) buy.SetActive(!buy.activeSelf);
         }
         else
         {
             fatherObj1.SetActive(true);
             fatherObj2.SetActive(false);
             text.text = "查看辅料";
-            isMain = true;
+            if (status == 1) buy.SetActive(!buy.activeSelf);
         }
     }
     //更新物品list
     public void UpdateList()
     {
-        //purchaseObject1.Clear();
+
     }
     public void Clear()
     {
@@ -49,80 +44,63 @@ public class PurchasePanel : MonoBehaviour
     {
         if (!buy.GetComponent<UIObject>().isConfirm)
         {
-            //Clear();
-            
+            for(int i=0;i<images.Count;i++)
+            {
+                images[i].enabled = false;
+                purchaseObject[i].GetComponent<UIObject>().isUse = false;
+            }
         }
+        status = 0;
     }
     public void Purchase()
     {
-        for(int i=0;i<purchaseObject1.Count;i++)
+        for(int i=0;i<purchaseObject.Count;i++)
         {
-            if (fatherObj1.transform.GetChild(i).GetComponent<UIObject>().isUse)
+            if (purchaseObject[i].GetComponent<UIObject>().isUse)
             {
-                Destroy(fatherObj1.transform.GetChild(i).gameObject);
+                purchaseObject[i].SetActive(false);
             }
         }
+        status++;
         buy.GetComponent<UIObject>().isConfirm = true;
         buy.SetActive(false);
+        //Switch();
     }
     public void Select()
     {
-        if (!buy.GetComponent<UIObject>().isConfirm)
+        if (status!=2)
         {
-            if (isMain)
-            {
-                var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-                btn.GetComponent<UIObject>().isUse = !btn.GetComponent<UIObject>().isUse;
-                btn.GetComponent<Outline>().enabled = !btn.GetComponent<Outline>().enabled;
-            }
-            else
-            {
-
-            }
+            var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+            images[btn.GetComponent<UIObject>().index].enabled = !images[btn.GetComponent<UIObject>().index].enabled;
+            purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse = !purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse;
         }
-    }
-    public void InstantiateObj(Sprite sprite, string name, GameObject fatherObj)
-    {
-        GameObject obj = new GameObject();
-        obj.AddComponent<UIObject>();
-        Button btn = obj.AddComponent<Button>();
-        Image img = obj.AddComponent<Image>();
-        Outline outLine = obj.AddComponent<Outline>();
-        outLine.enabled = false;
-       // outLine.
-        //outLine.OutlineColor = Color.yellow;
-        img.sprite = sprite;
-        obj.name = name;
-        obj.transform.SetParent(fatherObj.transform);
-        btn.targetGraphic = img;
-        btn.onClick.AddListener(Select);
-        obj.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
     }
     void Instance()
     {
-        for(int i=0;i<fatherObj2.transform.childCount;i++)
+        for (int i = 0; i < fatherObj1.transform.childCount; i++)
         {
-            Material mat = Instantiate(mt);
-            mat.SetFloat("_Flag", 1);
-            mat.SetFloat("_MinOffset", 8f);
-            mat.SetColor("_OutLineCol", Color.yellow);
-            try
-            {
-                purchaseObject1.Add(fatherObj1.transform.GetChild(i).gameObject);
-                purchaseObject1[i].AddComponent<UIObject>();
-                purchaseObject1[i].GetComponent<Image>().material = mat;
-                mats1.Add(purchaseObject1[i].GetComponent<Image>().material);
-            }
-            catch { }
-            purchaseObject2.Add(fatherObj2.transform.GetChild(i).gameObject);
-            purchaseObject2[i].AddComponent<UIObject>();
-            purchaseObject2[i].GetComponent<Image>().material = mat;
-            mats2.Add(purchaseObject1[i].GetComponent<Image>().material);
+            purchaseObject.Add(fatherObj1.transform.GetChild(i).gameObject);
+            purchaseObject[i].AddComponent<UIObject>();
+            purchaseObject[i].GetComponent<UIObject>().index = i;
+            images.Add(fatherObj1.transform.GetChild(i).gameObject.transform.GetChild(0).GetComponent<Image>());
+        }
+        for (int i = fatherObj1.transform.childCount; i < fatherObj2.transform.childCount + fatherObj1.transform.childCount; i++) 
+        {
+            purchaseObject.Add(fatherObj2.transform.GetChild(i - fatherObj1.transform.childCount).gameObject);
+            purchaseObject[i].AddComponent<UIObject>();
+            purchaseObject[i].GetComponent<UIObject>().index = i;
+            images.Add(fatherObj2.transform.GetChild(i - fatherObj1.transform.childCount).gameObject.transform.GetChild(0).GetComponent<Image>());
+        }
+        for(int i = 0; i < fatherObj2.transform.childCount + fatherObj1.transform.childCount; i++)
+        {
+            var btn = purchaseObject[i].GetComponent<Button>();
+            btn.onClick.AddListener(Select);
         }
     }
     void Start()
     {
         text = GameObject.Find("Switch").transform.GetChild(0).GetComponent<Text>();
+        Instance();
         UpdateList();
         UpdateObjects();
         gameObject.SetActive(false);

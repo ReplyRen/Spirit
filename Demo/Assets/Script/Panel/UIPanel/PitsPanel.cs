@@ -18,9 +18,11 @@ public class PitsPanel : MonoBehaviour
     GameManager instance;
     List<BaseFragment> fragmentsOnDisc;
     Slider valueSet;
+    Slider valueSet0;
     Slider valueSet1;
     Slider valueSet2;
     Slider valueSet3;
+    Slider valueSet4;
     GameObject barChart;
     GameObject pieChart;
     float valueChange;
@@ -45,12 +47,14 @@ public class PitsPanel : MonoBehaviour
             switch (fragmentsOnDisc[i].name)
             {
                 case "修窖":
-                    barChart.SetActive(false);
-                    pieChart.SetActive(false);
+                    barChart.SetActive(true);
+                    pieChart.SetActive(true);
                     valueSet.gameObject.SetActive(false);
+                    valueSet0.gameObject.SetActive(true);
                     valueSet1.gameObject.SetActive(false);
                     valueSet2.gameObject.SetActive(false);
                     valueSet3.gameObject.SetActive(false);
+                    valueSet4.gameObject.SetActive(false);
                     status = 1;
                     index = i;
                     break;
@@ -58,9 +62,11 @@ public class PitsPanel : MonoBehaviour
                     barChart.SetActive(true);
                     pieChart.SetActive(false);
                     valueSet.gameObject.SetActive(true);
+                    valueSet0.gameObject.SetActive(false);
                     valueSet1.gameObject.SetActive(false);
                     valueSet2.gameObject.SetActive(false);
                     valueSet3.gameObject.SetActive(false);
+                    valueSet4.gameObject.SetActive(false);
                     status = 2;
                     index = i;
                     break;
@@ -68,19 +74,23 @@ public class PitsPanel : MonoBehaviour
                     barChart.SetActive(true);
                     pieChart.SetActive(true);
                     valueSet.gameObject.SetActive(false);
+                    valueSet0.gameObject.SetActive(false);
                     valueSet1.gameObject.SetActive(true);
                     valueSet2.gameObject.SetActive(true);
                     valueSet3.gameObject.SetActive(true);
+                    valueSet4.gameObject.SetActive(false);
                     status = 3;
                     index = i;
                     break;
                 case "加原辅料":
-                    barChart.SetActive(false);
+                    barChart.SetActive(true);
                     pieChart.SetActive(false);
                     valueSet.gameObject.SetActive(false);
+                    valueSet0.gameObject.SetActive(false);
                     valueSet1.gameObject.SetActive(false);
                     valueSet2.gameObject.SetActive(false);
                     valueSet3.gameObject.SetActive(false);
+                    valueSet4.gameObject.SetActive(true);
                     status = 4;
                     index = i;
                     break;
@@ -92,9 +102,11 @@ public class PitsPanel : MonoBehaviour
     public void Init()
     {
         valueSet.value = 0;
+        valueSet0.value = 0;
         valueSet1.value = 0;
         valueSet2.value = 0;
         valueSet3.value = 0;
+        valueSet4.value = 0;
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
         pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
     }
@@ -103,9 +115,11 @@ public class PitsPanel : MonoBehaviour
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
         valueSet = gameObject.transform.Find("StatusSet").GetComponent<Slider>();
+        valueSet0 = gameObject.transform.Find("StatusSet0").GetComponent<Slider>();
         valueSet1 = gameObject.transform.Find("StatusSet1").GetComponent<Slider>();
         valueSet2 = gameObject.transform.Find("StatusSet2").GetComponent<Slider>();
         valueSet3 = gameObject.transform.Find("StatusSet3").GetComponent<Slider>();
+        valueSet4 = gameObject.transform.Find("StatusSet4").GetComponent<Slider>();
         barChart = gameObject.transform.Find("Histogram").gameObject;
         pieChart = gameObject.transform.Find("PieChart").gameObject;
         Init();
@@ -116,6 +130,33 @@ public class PitsPanel : MonoBehaviour
         switch (status)
         {
             case 1:
+                if (valueSet0.value <= 0.333f)
+                {
+                    valueChange = valueSet0.value / 0.333f;
+                    a.value = 0.5f + valueChange * 0.1f;
+                    b.value = 0.5f + valueChange * 0.3f;
+                    c.value = 0.5f + valueChange * 0.3f;
+                    d.value = valueChange * 0.4f;
+                }
+                else if (valueSet0.value <= 0.666f)
+                {
+                    valueChange = (valueSet0.value - 0.333f) / 0.333f;
+                    a.value = 0.5f + 0.1f + valueChange * 0.1f;
+                    b.value = 0.5f + 0.3f + valueChange * 0.3f;
+                    c.value = 0.5f + 0.3f + valueChange * 0.1f;
+                    d.value = 0.4f + valueChange * 0.3f;
+                }
+                else
+                {
+                    valueChange = (valueSet0.value - 0.666f) / 0.333f;
+                    a.value = 0.5f + 0.2f + valueChange * 0.2f;
+                    b.value = 0.5f + 0.6f + valueChange * 0.4f;
+                    c.value = 0.5f + 0.4f + valueChange * 0.6f;
+                    d.value = 0.7f + valueChange * 0.3f;
+                }
+                float sum = a.value + b.value + c.value;
+                barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
+                pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
                 SetEvaluation("修窖");
                 break;
             case 2:
@@ -147,7 +188,7 @@ public class PitsPanel : MonoBehaviour
                     i.value = 0.5f + valueChange * 0.5f;
                     SetEvaluation("加曲量（高）");
                 }
-                float sum = a.value + b.value + c.value;
+                sum = a.value + b.value + c.value;
                 barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
                 G = g.value;
                 H = h.value;
@@ -279,6 +320,22 @@ public class PitsPanel : MonoBehaviour
                 fragmentsOnDisc[index].evaluation = fragment1.evaluation + fragment2.evaluation + fragment3.evaluation;
                 break;
             case 4:
+                if (valueSet4.value <= 0.333f)
+                {
+                    valueChange = valueSet4.value / 0.333f;
+                    e.value = valueChange * 0.4f;
+                }
+                else if (valueSet4.value <= 0.666f)
+                {
+                    valueChange = (valueSet4.value - 0.333f) / 0.333f;
+                    e.value = 0.4f + valueChange * 0.6f;
+                }
+                else
+                {
+                    valueChange = (valueSet4.value - 0.666f) / 0.333f;
+                    e.value = 1 - valueChange * 0.7f;
+                }
+                barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
                 SetEvaluation("加原辅料");
                 break;
         }

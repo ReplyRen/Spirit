@@ -50,7 +50,6 @@ public class UIManager : MonoBehaviour
             }
             else if (btn.name == "仓库")
             {
-                Debug.Log("isia");
                 panelList[11].SetActive(true);
                 panelCanvas[3].SetActive(true);
                 cameraController.locked = true;
@@ -82,14 +81,23 @@ public class UIManager : MonoBehaviour
                 case "储藏室":
                     panelList[currentUI].GetComponent<StorePanel>().Init();
                     break;
+                case "蒸煮锅":
+                    panelList[currentUI].GetComponent<CookPanel>().Init();
+                    break;
                 case "窖池":
                     panelList[currentUI].GetComponent<PitsPanel>().Init();
+                    break;
+                case "甑子":
+                    panelList[currentUI].GetComponent<SteamerPanel>().Init();
                     break;
                 case "蒸馏设备":
                     panelList[currentUI].GetComponent<DistillationPanel>().Init();
                     break;
                 case "酒窖":
                     panelList[currentUI].GetComponent<CellarPanel>().Init();
+                    break;
+                case "调酒室":
+                    panelList[currentUI].GetComponent<MixPanel>().Init();
                     break;
             }
             for (int i = 0; i < panelList[currentUI].transform.childCount; i++)
@@ -124,7 +132,7 @@ public class UIManager : MonoBehaviour
         var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         buttonList[currentUI].transform.GetComponent<UIObject>().isConfirm = true;
         mats[currentUI].SetFloat("_Flag", 1);
-        btn.SetActive(false);
+        if (panelList[currentUI].name != "采购部Panel") btn.SetActive(false);
         /*if (currentUI > 0)
         {
             confirmList[currentUI - 1].SetActive(false);

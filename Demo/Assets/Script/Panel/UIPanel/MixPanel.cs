@@ -18,14 +18,12 @@ public class MixPanel : MonoBehaviour
     BaseFragment fragment = new BaseFragment();
     List<BaseFragment> fragmentsOnDisc = new List<BaseFragment>();
     GameObject barChart;
-    GameObject pieChart;
     Slider valueSet;
     float valueChange;
     int index = -1;
-    void Init()
+    public void Init()
     {
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
-        pieChart.GetComponent<PieChart>().Init(1, b, c);
         valueSet.value = 0;
     }
     void Start()
@@ -34,7 +32,6 @@ public class MixPanel : MonoBehaviour
         fragmentsOnDisc = instance.fragmentOnDisc;
         valueSet = gameObject.transform.Find("StatusSet").GetComponent<Slider>();
         barChart = gameObject.transform.Find("Histogram").gameObject;
-        pieChart = GameObject.Find("调酒室Panel").transform.Find("PieChart").gameObject;
         Init();
         for (int i = 0; i < fragmentsOnDisc.Count; i++)
         {
@@ -54,29 +51,31 @@ public class MixPanel : MonoBehaviour
     }
     void Update()
     {
-        if (valueSet.value <= 0.333f)
+        if (valueSet.value <= 0.2f)
         {
-            valueChange = valueSet.value / 0.333f;
-            b.value = 0.5f + valueChange * 0.5f;
-            c.value = 0.5f + valueChange * 0.4f;
-            d.value = valueChange * 0.3f;
+            valueChange = valueSet.value / 0.2f;
+            f.value = valueChange * 0.2f;
         }
-        else if (valueSet.value <= 0.666f)
+        else if (valueSet.value <= 0.4f)
         {
-            valueChange = (valueSet.value - 0.333f) / 0.333f;
-            b.value = 0.5f + 0.5f + valueChange * 0.2f;
-            c.value = 0.5f + 0.4f + valueChange * 0.3f;
-            d.value = 0.3f + valueChange * 0.2f;
+            valueChange = (valueSet.value - 0.2f) / 0.2f;
+            f.value = 0.2f + valueChange * 0.5f;
+        }
+        else if (valueSet.value <= 0.6f)
+        {
+            valueChange = (valueSet.value - 0.5f) / 0.2f;
+            f.value = 0.7f - valueChange * 0.1f;
+        }
+        else if (valueSet.value <= 0.8f) 
+        {
+            valueChange = (valueSet.value - 0.75f) / 0.2f;
+            f.value = 0.6f + valueChange * 0.4f;
         }
         else
         {
-            valueChange = (valueSet.value - 0.666f) / 0.333f;
-            b.value = 0.5f + 0.7f + valueChange * 0.3f;
-            c.value = 0.5f + 0.7f - valueChange * 0.2f;
-            d.value = 0.5f + valueChange * 0.4f;
+            valueChange = (valueSet.value - 0.75f) / 0.2f;
+            f.value = 1 - valueChange * 0.6f;
         }
-        float sum = b.value + c.value;
         barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
-        pieChart.GetComponent<PieChart>().UpdateChart(sum, b, c);
     }
 }
