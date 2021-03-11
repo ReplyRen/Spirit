@@ -223,6 +223,7 @@ public class GameManager : MonoBehaviour
         baseFragment.evaluation = fragment.evaluation;
         baseFragment.description = fragment.description;
         baseFragment.model = fragment.model;
+        baseFragment.facility = fragment.facility;
         return baseFragment;
     }
     /// <summary>
@@ -534,6 +535,7 @@ public class GameManager : MonoBehaviour
                 fragment.model = FragmentModel.oneHundredAndTwenty;
                 break;
         }
+        fragment.facility = ss[18];          
 
         Evaluation evaluation = new Evaluation();
         evaluation.intensity = float.Parse(ss[13]);
@@ -541,6 +543,7 @@ public class GameManager : MonoBehaviour
         evaluation.continuity = float.Parse(ss[15]);
         evaluation.fineness = float.Parse(ss[16]);
         evaluation.flavor = float.Parse(ss[17]);
+
         fragment.evaluation = evaluation;
         return fragment;
     }

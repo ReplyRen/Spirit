@@ -317,10 +317,32 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                         preIndex = -1;
                         FragmentsManager.fragmentsOnRound.Remove(fragmentInformation);
                     }
-                    foreach (var fragment in FragmentsManager.fragmentsOnRound)
-                        Debug.Log(fragment.name);
                     //Debug.LogWarning("来自同一个base,替换这个地方为产生tips");
-                    StaticMethod.Tips("来自同一个酒基,无法同时安置！");
+                    StaticMethod.Tips("来自同一个酒基,无法同时放置！");
+                    return;
+                }
+                else if (FragmentsManager.fragmentsOnRound[i].facility == fragmentInformation.facility)
+                {
+                    RectTransform rectTransform = imgRect;
+                    transform.SetParent(parent);
+                    ChangeChildOrder();
+                    GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
+                    fragmentInformation.name + "_xiao");
+                    ShowBlack();
+                    GetComponent<Image>().SetNativeSize();
+                    imgRect = rectTransform;
+                    firstTime[1] = true;
+                    endDrag = true;
+                    imgRect.localScale = imgNormalScale;
+                    imgRect.localEulerAngles = imgChangeRotate;
+                    if (preIndex != -1)
+                    {
+                        Round.RemoveFragment(preIndex, fragmentInformation.model);
+                        preIndex = -1;
+                        FragmentsManager.fragmentsOnRound.Remove(fragmentInformation);
+                    }
+                    //Debug.LogWarning("来自同一个base,替换这个地方为产生tips");
+                    StaticMethod.Tips("占用同一个设备,无法同时放置！");
                     return;
                 }
             if (i == FragmentsManager.fragmentsOnRound.Count)

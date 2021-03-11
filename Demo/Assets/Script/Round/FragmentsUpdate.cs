@@ -24,6 +24,7 @@ public class FragmentsUpdate : MonoBehaviour
             fragment.obj.GetComponent<FragmentsControl>().round = round;
             fragment.obj.GetComponent<FragmentsControl>().information = information;
             fragment.obj.GetComponent<RectTransform>().localScale = new Vector3(0.3f, 0.3f, 1);
+            //Debug.Log(fragment.name + "+" + fragment.facility);
         }
     }
     private void ClearFragments()
