@@ -10,7 +10,7 @@ public class LineChart : MonoBehaviour
     private void Start()
     {
         point.SetActive(false);
-        Test();
+
     }
     private void Update()
     {
