@@ -7,7 +7,7 @@ public class BottlePanel : MonoBehaviour
     BaseFragment fragment = new BaseFragment();
     GameManager instance;
     List<BaseFragment> fragmentsOnDisc;
-    int index;
+    int index=-1;
     void Start()
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
@@ -19,7 +19,7 @@ public class BottlePanel : MonoBehaviour
                 index = i;
             }
         }
-        SetEvaluation("灌装");
+        if(index>=0)SetEvaluation("灌装");
     }
     void SetEvaluation(string name)
     {
