@@ -53,7 +53,7 @@ public class StoragePanel : MonoBehaviour
     void Start()
     {
         storageObject = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
-        text = GameObject.Find("FactoryPanel").transform.Find("仓库Panel/Description").GetComponent<Text>();
+        text = GameObject.Find("PanelCanvas").transform.Find("仓库Panel/Description").GetComponent<Text>();
         UpdateList();
         UpdateObjects();
         gameObject.SetActive(false);

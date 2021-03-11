@@ -266,8 +266,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSize: 1.5
   sizeSpeed: 3
-  small: 1
+  large: 0
   smoothTime: 0.4
+  locked: 0
 --- !u!114 &1179436600 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8845031539285846225, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
@@ -1339,6 +1340,46 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4403159389210509966, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1740914617}
+    - target: {fileID: 4403159389210509966, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 215372678}
+    - target: {fileID: 4403159389210509966, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1740914617}
+    - target: {fileID: 4403159389210509966, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 519420030}
+    - target: {fileID: 4403159389210509966, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateObjects
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403159389210509966, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: UpdateList
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403159389210509966, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: UpdateObjects
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403159389210509966, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: NextRoundClick
+      objectReference: {fileID: 0}
     - target: {fileID: 4705347413779366107, guid: f5a18e6d4daa05a46aa81a5600c73814,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2174,6 +2215,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 52301835}
+    - target: {fileID: 8845031538054200685, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8845031538075228045, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2379,6 +2425,11 @@ PrefabInstance:
       propertyPath: shader
       value: 
       objectReference: {fileID: 4800000, guid: 3bf6973e8e36a384b84bcf6d54836f4a, type: 3}
+    - target: {fileID: 8845031538774675806, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8845031538783852223, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2439,6 +2490,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 52301835}
+    - target: {fileID: 8845031539003660965, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8845031539031120504, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
         type: 3}
       propertyPath: m_AnchorMax.y
