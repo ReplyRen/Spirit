@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
             {
                 panelList[11].SetActive(true);
             }
-            else if (btn.GetComponent<UIObject>().isUse && !cameraController.small)
+            else if (btn.GetComponent<UIObject>().isUse && cameraController.large)
             {
                 panelList[btn.GetComponent<UIObject>().index].SetActive(true);
                 currentUI = btn.GetComponent<UIObject>().index;
