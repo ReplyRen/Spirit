@@ -25,6 +25,8 @@ public class CameraController : MonoBehaviour
     float maxSpeed = 10f;    // 选择允许你限制的最大速度
     public float smoothTime = 0.4f;      // 达到目标大约花费的时间。 一个较小的值将更快达到目标。
 
+    public bool locked = false;
+
     private void Start()
     {
         normalPos = gameObject.transform.position;
@@ -68,7 +70,7 @@ public class CameraController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (enlarge && !large)
+        if (enlarge && !large&&!locked)
         {
             ensmall = false;
             gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, targetSize, Time.fixedDeltaTime * sizeSpeed);
@@ -79,7 +81,7 @@ public class CameraController : MonoBehaviour
                 large = true;
             }
         }
-        if (ensmall && large)
+        if (ensmall && large&&!locked)
         {
             enlarge = false;
             gameObject.GetComponent<Camera>().orthographicSize = Mathf.Lerp(gameObject.GetComponent<Camera>().orthographicSize, normalSize, Time.fixedDeltaTime * sizeSpeed);
