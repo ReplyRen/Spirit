@@ -102,12 +102,12 @@ public class PitsPanel : MonoBehaviour
     {
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
-        valueSet = GameObject.Find("窖池Panel").transform.Find("StatusSet").GetComponent<Slider>();
-        valueSet1 = GameObject.Find("窖池Panel").transform.Find("StatusSet1").GetComponent<Slider>();
-        valueSet2 = GameObject.Find("窖池Panel").transform.Find("StatusSet2").GetComponent<Slider>();
-        valueSet3 = GameObject.Find("窖池Panel").transform.Find("StatusSet3").GetComponent<Slider>();
-        barChart = GameObject.Find("窖池Panel").transform.Find("Histogram").gameObject;
-        pieChart = GameObject.Find("窖池Panel").transform.Find("PieChart").gameObject;
+        valueSet = gameObject.transform.Find("StatusSet").GetComponent<Slider>();
+        valueSet1 = gameObject.transform.Find("StatusSet1").GetComponent<Slider>();
+        valueSet2 = gameObject.transform.Find("StatusSet2").GetComponent<Slider>();
+        valueSet3 = gameObject.transform.Find("StatusSet3").GetComponent<Slider>();
+        barChart = gameObject.transform.Find("Histogram").gameObject;
+        pieChart = gameObject.transform.Find("PieChart").gameObject;
         Init();
         gameObject.SetActive(false);
     }

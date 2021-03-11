@@ -36,7 +36,6 @@ public class UIManager : MonoBehaviour
     //打开/关闭panel
     public void OpenUI()
     {
-        cameraController.locked = true;
         Slider slider;
         ///获取当前button并打开相应panel/打开总览
         if (!isOpen)
@@ -47,12 +46,14 @@ public class UIManager : MonoBehaviour
                 panelList[currentUI].SetActive(true);
                 isOpen = true;
                 panelCanvas[3].SetActive(true);
+                cameraController.locked = true;
             }
             else if (btn.name == "仓库")
             {
                 Debug.Log("isia");
                 panelList[11].SetActive(true);
                 panelCanvas[3].SetActive(true);
+                cameraController.locked = true;
             }
             else if (btn.GetComponent<UIObject>().isUse && cameraController.large)
             {
@@ -60,6 +61,7 @@ public class UIManager : MonoBehaviour
                 currentUI = btn.GetComponent<UIObject>().index;
                 isOpen = true;
                 panelCanvas[3].SetActive(true);
+                cameraController.locked = true;
             }
             btn = null;
         }
@@ -67,6 +69,7 @@ public class UIManager : MonoBehaviour
         {
             panelList[currentUI].SetActive(true);
             panelCanvas[3].SetActive(true);
+            cameraController.locked = true;
         }
         ///若参数未确认，则设置参数初值
         if (!buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[11].activeSelf)
