@@ -63,6 +63,8 @@ public class BaseFragment
     /// 主料(仅在原辅料准备使用)
     /// </summary>
     public List<主料> mains = new List<主料>();
+    
+    public string facility;
 
     /// <summary>
     /// 辅料(仅在原辅料准备使用)
