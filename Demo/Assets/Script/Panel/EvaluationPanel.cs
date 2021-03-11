@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EvaluationPanel : MonoBehaviour
 {
+    public Text scoreText;
+
+
     private void Start()
     {
-        Debug.Log(Test());
+        Test();
     }
-    private float Test()
+    private void Test()
     {
         BaseObject obj = new BaseObject();
         obj.evaluation = new Evaluation();
@@ -18,12 +22,13 @@ public class EvaluationPanel : MonoBehaviour
         obj.evaluation.fineness = 70;
         obj.evaluation.flavor = 55;
         obj.mains.Add(主料.麸皮);
-        return GetScore(obj);
+        Evaluate(obj);
     }
     private void Evaluate(BaseObject obj)
     {
-        float score = GetScore(obj);
-
+        float score = GetScore(obj)*100f;
+        scoreText.text = score.ToString();
+        gameObject.GetComponentInChildren<EvaluationChart>().Init(obj.evaluation);
 
     }
     private float GetScore(BaseObject obj)

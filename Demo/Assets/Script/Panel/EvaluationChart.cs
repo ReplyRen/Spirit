@@ -13,15 +13,9 @@ public class EvaluationChart : MonoBehaviour
     Vector2 downRight = new Vector2(136.9f,-184.2f);
     private void Start()
     {
-        Evaluation obj = new Evaluation();
-        obj.continuity = 90;
-        obj.fineness = 50;
-        obj.flavor = 30;
-        obj.intensity = 60;
-        obj.rich = 70;
-        Init(obj);
+        
     }
-    private void Init(Evaluation obj)
+    public void Init(Evaluation obj)
     {
         points.Add(SetPoint(obj.flavor, left));
         points.Add(SetPoint(obj.rich, up));
@@ -40,11 +34,10 @@ public class EvaluationChart : MonoBehaviour
     {
         LineRenderer lineRenderer = gameObject.GetComponentInChildren<LineRenderer>();
         lineRenderer.useWorldSpace = false;
-        lineRenderer.startWidth = 0.05f;
-        lineRenderer.endWidth = 0.05f;
+        lineRenderer.startWidth = 0.03f;
+        lineRenderer.endWidth = 0.03f;
         lineRenderer.startColor = Color.black;
         lineRenderer.endColor = Color.black;
-        Debug.Log(points.Count);
         for (int i = 0; i < points.Count; i++)
         {
             lineRenderer.SetPosition(i, points[i]);
