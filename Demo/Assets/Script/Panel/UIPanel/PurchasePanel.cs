@@ -10,7 +10,8 @@ public class PurchasePanel : MonoBehaviour
     public GameObject panel;
     public GameObject fatherObj1;
     public GameObject fatherObj2;
-    public List<Image> images; 
+    public List<Image> images;
+    List<string> names = new List<string>();
     Text text;
     int status = 0;
     public void Switch()
@@ -66,6 +67,25 @@ public class PurchasePanel : MonoBehaviour
         buy.SetActive(false);
         //Switch();
     }
+    void Change(bool a,params int[] index)
+    {
+        if (!a)
+        {
+            for (int i = 0; i < index.Length; i++)
+            {
+                purchaseObject[index[i]].GetComponent<Button>().interactable = false;
+                purchaseObject[index[i]].GetComponent<Image>().color = new Color(0.35f, 0.35f, 0.35f, 1);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < index.Length; i++)
+            {
+                purchaseObject[index[i]].GetComponent<Button>().interactable = true;
+                purchaseObject[index[i]].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            }
+        }
+    }
     public void Select()
     {
         if (status!=2)
@@ -73,6 +93,40 @@ public class PurchasePanel : MonoBehaviour
             var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
             images[btn.GetComponent<UIObject>().index].enabled = !images[btn.GetComponent<UIObject>().index].enabled;
             purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse = !purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse;
+            if (btn.GetComponent<UIObject>().isUse)
+            {
+                names.Add(btn.name);
+            }
+            else
+            {
+                for(int i=0;i<names.Count;i++)
+                {
+                    if (names[i] == btn.name)
+                        names.Remove(names[i]);
+                }
+            }
+            Change(true, 0, 1, 2, 3, 4);
+            for(int i=0;i< names.Count; i++)
+            {
+                switch(names[i])
+                {
+                    case "麸皮":
+                        Change(false, 1, 3);
+                        break;
+                    case "大米":
+                        Change(false, 2, 0, 4);
+                        break;
+                    case "糯性高梁":
+                        Change(false, 1, 3);
+                        break;
+                    case "小麦":
+                        Change(false, 3);
+                        break;
+                    case "高梁":
+                        Change(false, 0, 4);
+                        break;
+                }
+            }
         }
     }
     void Instance()
