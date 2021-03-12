@@ -311,10 +311,17 @@ public class UIManager : MonoBehaviour
 
     }
     //
-    public void NextDay()
+    IEnumerator WaitFor()
     {
+        yield return new WaitForSeconds(1.5f);
         SetStatus(false);
         panelList[11].SetActive(false);
+    }
+    public void NextDay()
+    {
+        StartCoroutine(WaitFor());
+        //SetStatus(false);
+       // panelList[11].SetActive(false);
     }
     //
     void Start()
