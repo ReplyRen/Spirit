@@ -40,6 +40,8 @@ public class BaseObject
     /// 辅料
     /// </summary>
     public List<辅料> minors = new List<辅料>();
+
+    public int mainStep = 1;
 }
 public enum 主料
 {
