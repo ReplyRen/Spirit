@@ -70,6 +70,14 @@ public class PurchasePanel : MonoBehaviour
         }
         buy.GetComponent<UIObject>().isConfirm = true;
         buy.SetActive(false);
+        for(int i=0;i<5;i++)
+        {
+            try
+            {
+                Change(true, i);
+            }
+            catch { }
+        }
     }
     void Change(bool a,params int[] index)
     {
@@ -92,60 +100,66 @@ public class PurchasePanel : MonoBehaviour
     }
     void Check()
     {
-        for (int i = 0; i < names.Count; i++)
+        if (!buy.GetComponent<UIObject>().isConfirm)
         {
-            if (names[i] < 5) a=true;
-            else
+            for (int i = 0; i < names.Count; i++)
             {
-                b = true;
-                if(a) break;
+                if (names[i] < 5) a = true;
+                else
+                {
+                    b = true;
+                    if (a) break;
+                }
             }
+            if (a && b) buy.SetActive(true);
+            else buy.SetActive(false);
+            a = false;
+            b = false;
         }
-        if (a && b) buy.SetActive(true);
-        else buy.SetActive(false);
-        a = false;
-        b = false;
     }
     public void Select()
     {
-        var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-        images[btn.GetComponent<UIObject>().index].enabled = !images[btn.GetComponent<UIObject>().index].enabled;
-        purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse = !purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse;
-        if (btn.GetComponent<UIObject>().isUse)
+        if (!buy.GetComponent<UIObject>().isConfirm)
         {
-            names.Add(btn.GetComponent<UIObject>().index);
-        }
-        else
-        {
-            for(int i=0;i<names.Count;i++)
+            var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+            images[btn.GetComponent<UIObject>().index].enabled = !images[btn.GetComponent<UIObject>().index].enabled;
+            purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse = !purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse;
+            if (btn.GetComponent<UIObject>().isUse)
             {
-                if (names[i] == btn.GetComponent<UIObject>().index)
-                    names.Remove(names[i]);
+                names.Add(btn.GetComponent<UIObject>().index);
             }
-        }
-        Change(true, 0, 1, 2, 3, 4);
-        for(int i=0;i< names.Count; i++)
-        {
-            switch(names[i])
+            else
             {
-                case 4:
-                    Change(false, 1, 3);
-                    break;
-                case 3:
-                    Change(false, 2, 0, 4);
-                    break;
-                case 0:
-                    Change(false, 1, 3);
-                    break;
-                case 2:
-                    Change(false, 3);
-                    break;
-                case 1:
-                    Change(false, 0, 4);
-                    break;
+                for (int i = 0; i < names.Count; i++)
+                {
+                    if (names[i] == btn.GetComponent<UIObject>().index)
+                        names.Remove(names[i]);
+                }
             }
+            Change(true, 0, 1, 2, 3, 4);
+            for (int i = 0; i < names.Count; i++)
+            {
+                switch (names[i])
+                {
+                    case 4:
+                        Change(false, 1, 3);
+                        break;
+                    case 3:
+                        Change(false, 2, 0, 4);
+                        break;
+                    case 0:
+                        Change(false, 1, 3);
+                        break;
+                    case 2:
+                        Change(false, 3);
+                        break;
+                    case 1:
+                        Change(false, 0, 4);
+                        break;
+                }
+            }
+            Check();
         }
-        Check();
     }
     void Instance()
     {
