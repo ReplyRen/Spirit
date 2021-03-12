@@ -8,7 +8,7 @@ public class PitsPanel : MonoBehaviour
     Inclusion a = new Inclusion("酸含量", 0.5f);
     Inclusion b = new Inclusion("酯含量", 0.5f);
     Inclusion c = new Inclusion("醇含量", 0.5f);
-    Inclusion d = new Inclusion("微生物含量", 0);
+    Inclusion d = new Inclusion("微生物", 0);
     Inclusion e = new Inclusion("产量", 0);
     Inclusion f = new Inclusion("质感", 0);
     Inclusion g = new Inclusion("高级酸", 0);

@@ -44,20 +44,19 @@ public class PurchasePanel : MonoBehaviour
     }
     public void UpdateObjects()
     {
-        if (!buy.GetComponent<UIObject>().isConfirm)
+        for(int i=0;i<images.Count;i++)
         {
-            for(int i=0;i<images.Count;i++)
-            {
-                images[i].enabled = false;
-                purchaseObject[i].GetComponent<UIObject>().isUse = false;
-            }
-            for(int i=0;i<purchaseObject.Count;i++)
-            {
-                purchaseObject[i].SetActive(true);
-            }
-            Change(true, 0, 1, 2, 3, 4);
-            names.Clear();
+            images[i].enabled = false;
+            purchaseObject[i].GetComponent<UIObject>().isUse = false;
         }
+        for(int i=0;i<purchaseObject.Count;i++)
+        {
+            purchaseObject[i].SetActive(true);
+        }
+        Change(true, 0, 1, 2, 3, 4);
+        names.Clear();
+        a = false;
+        b = false;
     }
     public void Purchase()
     {
@@ -104,8 +103,8 @@ public class PurchasePanel : MonoBehaviour
         {
             for (int i = 0; i < names.Count; i++)
             {
-                if (names[i] < 5) a = true;
-                else
+                if (names[i] < 3) a = true;
+                else if (names[i] >= 5) 
                 {
                     b = true;
                     if (a) break;
@@ -142,16 +141,16 @@ public class PurchasePanel : MonoBehaviour
                 switch (names[i])
                 {
                     case 4:
-                        Change(false, 1, 3);
-                        break;
-                    case 3:
-                        Change(false, 2, 0, 4);
-                        break;
-                    case 0:
-                        Change(false, 1, 3);
+                        Change(false, 1, 2);
                         break;
                     case 2:
-                        Change(false, 3);
+                        Change(false, 3, 0, 4);
+                        break;
+                    case 0:
+                        Change(false, 1, 2);
+                        break;
+                    case 3:
+                        Change(false, 2);
                         break;
                     case 1:
                         Change(false, 0, 4);
@@ -187,7 +186,6 @@ public class PurchasePanel : MonoBehaviour
     {
         text = GameObject.Find("Switch").transform.GetChild(0).GetComponent<Text>();
         Instance();
-        UpdateList();
         UpdateObjects();
         buy.SetActive(false);
         gameObject.SetActive(false);
