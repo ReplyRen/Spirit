@@ -236,7 +236,7 @@ public class UIManager : MonoBehaviour
             buttonList[i].GetComponent<UIObject>().isUse = false;
             buttonList[i].GetComponent<UIObject>().isConfirm = false;
         }
-        for (int i = 0; i < confirmList.Count; i++)
+        for (int i = 0; i < confirmList.Count - 1; i++)
         {
             confirmList[i].SetActive(true);
             try

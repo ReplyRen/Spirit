@@ -11,9 +11,10 @@ public class PurchasePanel : MonoBehaviour
     public GameObject fatherObj1;
     public GameObject fatherObj2;
     public List<Image> images;
-    List<string> names = new List<string>();
+    List<int> names = new List<int>();
     Text text;
-    int status = 0;
+    bool a = false;
+    bool b = false;
     public void Switch()
     {
         if(fatherObj1.activeSelf)
@@ -21,14 +22,14 @@ public class PurchasePanel : MonoBehaviour
             fatherObj1.SetActive(false);
             fatherObj2.SetActive(true);
             text.text = "查看主料";
-            if (status == 1) buy.SetActive(!buy.activeSelf);
+            Check();
         }
         else
         {
             fatherObj1.SetActive(true);
             fatherObj2.SetActive(false);
             text.text = "查看辅料";
-            if (status == 1) buy.SetActive(!buy.activeSelf);
+            Check();
         }
     }
     //更新物品list
@@ -50,8 +51,13 @@ public class PurchasePanel : MonoBehaviour
                 images[i].enabled = false;
                 purchaseObject[i].GetComponent<UIObject>().isUse = false;
             }
+            for(int i=0;i<purchaseObject.Count;i++)
+            {
+                purchaseObject[i].SetActive(true);
+            }
+            Change(true, 0, 1, 2, 3, 4);
+            names.Clear();
         }
-        status = 0;
     }
     public void Purchase()
     {
@@ -62,10 +68,8 @@ public class PurchasePanel : MonoBehaviour
                 purchaseObject[i].SetActive(false);
             }
         }
-        status++;
         buy.GetComponent<UIObject>().isConfirm = true;
         buy.SetActive(false);
-        //Switch();
     }
     void Change(bool a,params int[] index)
     {
@@ -86,48 +90,62 @@ public class PurchasePanel : MonoBehaviour
             }
         }
     }
-    public void Select()
+    void Check()
     {
-        if (status!=2)
+        for (int i = 0; i < names.Count; i++)
         {
-            var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-            images[btn.GetComponent<UIObject>().index].enabled = !images[btn.GetComponent<UIObject>().index].enabled;
-            purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse = !purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse;
-            if (btn.GetComponent<UIObject>().isUse)
-            {
-                names.Add(btn.name);
-            }
+            if (names[i] < 5) a=true;
             else
             {
-                for(int i=0;i<names.Count;i++)
-                {
-                    if (names[i] == btn.name)
-                        names.Remove(names[i]);
-                }
-            }
-            Change(true, 0, 1, 2, 3, 4);
-            for(int i=0;i< names.Count; i++)
-            {
-                switch(names[i])
-                {
-                    case "麸皮":
-                        Change(false, 1, 3);
-                        break;
-                    case "大米":
-                        Change(false, 2, 0, 4);
-                        break;
-                    case "糯性高梁":
-                        Change(false, 1, 3);
-                        break;
-                    case "小麦":
-                        Change(false, 3);
-                        break;
-                    case "高梁":
-                        Change(false, 0, 4);
-                        break;
-                }
+                b = true;
+                if(a) break;
             }
         }
+        if (a && b) buy.SetActive(true);
+        else buy.SetActive(false);
+        a = false;
+        b = false;
+    }
+    public void Select()
+    {
+        var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+        images[btn.GetComponent<UIObject>().index].enabled = !images[btn.GetComponent<UIObject>().index].enabled;
+        purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse = !purchaseObject[btn.GetComponent<UIObject>().index].GetComponent<UIObject>().isUse;
+        if (btn.GetComponent<UIObject>().isUse)
+        {
+            names.Add(btn.GetComponent<UIObject>().index);
+        }
+        else
+        {
+            for(int i=0;i<names.Count;i++)
+            {
+                if (names[i] == btn.GetComponent<UIObject>().index)
+                    names.Remove(names[i]);
+            }
+        }
+        Change(true, 0, 1, 2, 3, 4);
+        for(int i=0;i< names.Count; i++)
+        {
+            switch(names[i])
+            {
+                case 4:
+                    Change(false, 1, 3);
+                    break;
+                case 3:
+                    Change(false, 2, 0, 4);
+                    break;
+                case 0:
+                    Change(false, 1, 3);
+                    break;
+                case 2:
+                    Change(false, 3);
+                    break;
+                case 1:
+                    Change(false, 0, 4);
+                    break;
+            }
+        }
+        Check();
     }
     void Instance()
     {
@@ -157,6 +175,7 @@ public class PurchasePanel : MonoBehaviour
         Instance();
         UpdateList();
         UpdateObjects();
+        buy.SetActive(false);
         gameObject.SetActive(false);
     }
 
