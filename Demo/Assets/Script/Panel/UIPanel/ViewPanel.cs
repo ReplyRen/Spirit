@@ -42,8 +42,17 @@ public class ViewPanel : MonoBehaviour
         BaseObject a = new BaseObject();
         a.mains.Add(主料.麸皮);
         a.mainStep = 3;
-        a.name = "酒";
+        BaseObject b = new BaseObject();
+        b.mains.Add(主料.麸皮);
+        b.mainStep = 3;
+        b.name = "酒";
+        BaseObject c = new BaseObject();
+        c.mains.Add(主料.大米);
+        c.mainStep = 3;
+        c.name = "酒";
+        baseObjs.Add(c);
         baseObjs.Add(a);
+        baseObjs.Add(b);
         Init(baseObjs);
     }
 

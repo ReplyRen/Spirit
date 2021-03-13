@@ -147,7 +147,8 @@ public class GameManager : MonoBehaviour
             {
                 if (fragmentOnDisc[i].name == "鉴酒")
                 {
-
+                    if (fragmentOnDisc[i].baseObject != null)//移除仓库中此碎片的酒基
+                        baseList.Remove(fragmentOnDisc[i].baseObject);
                 }
                 else
                 {
@@ -203,9 +204,11 @@ public class GameManager : MonoBehaviour
                 break;
             case "制曲、入曲":
                 baseObject.name = "原、辅料（加曲）";
+                baseObject.mainStep++;
                 break;
             case "发酵":
                 baseObject.name = "酒醅";
+                baseObject.mainStep++;
                 break;
             case "加原辅料":
                 baseObject.name = "酒醅（加料）";
@@ -215,18 +218,22 @@ public class GameManager : MonoBehaviour
                 break;
             case "蒸馏":
                 baseObject.name = "蒸馏产物";
+                baseObject.mainStep++;
                 break;
             case "看花摘酒":
                 baseObject.name = "蒸馏产物（改）";
                 break;
             case "陈酿":
                 baseObject.name = "原酒";
+                baseObject.mainStep++;
                 break;
             case "勾兑勾调":
                 baseObject.name = "酒";
+                baseObject.mainStep++;
                 break;
             case "灌装":
                 baseObject.name = "酒（产物）";
+                baseObject.mainStep++;
                 break;
             case "鉴酒":
                 break;

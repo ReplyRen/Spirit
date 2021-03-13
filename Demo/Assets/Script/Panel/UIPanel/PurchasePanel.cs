@@ -55,8 +55,7 @@ public class PurchasePanel : MonoBehaviour
         {
             purchaseObject[i].SetActive(true);
         }
-        fatherObj1.SetActive(true);
-        fatherObj2.SetActive(false);
+        if (!fatherObj1.activeSelf) Switch();
         Change(true, 0, 1, 2, 3, 4);
         names.Clear();
         a = false;
