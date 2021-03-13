@@ -23,12 +23,19 @@ public class ViewPanel : MonoBehaviour
 
     private Dictionary<GameObject, BaseObject> pairs = new Dictionary<GameObject, BaseObject>();
 
+    [SerializeField]
+    private GameObject acidChart;
+
+    [SerializeField]
+    private GameObject sugerChart;
+
+    [SerializeField]
+    private GameObject alcoholChart;
+
+    private PanelEnum panelEnum = PanelEnum.酒精含量;
+
     private BaseObject currentObj;
 
-    private void Start()
-    {
-        Test();
-    }
     private void Test()
     {
         List<BaseObject> baseObjs = new List<BaseObject>();
@@ -84,15 +91,95 @@ public class ViewPanel : MonoBehaviour
     }
     public void Close()
     {
+        pairs.Clear();
+        currentObj = null;
+        acidChart.SetActive(false);
+        alcoholChart.SetActive(false);
+        sugerChart.SetActive(false);
+
         gameObject.SetActive(false);
     }
     public void OnClickCard()
     {
         currentObj = pairs[EventSystem.current.currentSelectedGameObject];
-        Debug.Log(currentObj.name);
+        UpdateChart(currentObj);
+
+
+    }
+    public void OnClickTag()
+    {
+        if (currentObj == null)
+            return;
+        ChoosePanel(EventSystem.current.currentSelectedGameObject);
+    }
+    private void ChoosePanel(GameObject obj)
+    {
+        switch (obj.name)
+        {
+            case "acid":
+                panelEnum = PanelEnum.有机酸;
+                break;
+            case "suger":
+                panelEnum = PanelEnum.糖醇;
+                break;
+            case "alcohol":
+                panelEnum = PanelEnum.酒精含量;
+                break;
+            case "status":
+                panelEnum = PanelEnum.状态;
+                break;
+        }
+        switch (panelEnum)
+        {
+            case PanelEnum.有机酸:
+                acidChart.SetActive(true);
+                alcoholChart.SetActive(false);
+                sugerChart.SetActive(false);
+                acidBtn.GetComponent<Image>().color = new Color32(252, 255, 127, 255);
+                alcoholBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                sugerBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                statusBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                break;
+            case PanelEnum.糖醇:
+                acidChart.SetActive(false);
+                alcoholChart.SetActive(false);
+                sugerChart.SetActive(true);
+                acidBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                alcoholBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                sugerBtn.GetComponent<Image>().color = new Color32(252, 255, 127, 255);
+                statusBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                break;
+            case PanelEnum.酒精含量:
+                acidChart.SetActive(false);
+                alcoholChart.SetActive(true);
+                sugerChart.SetActive(false);
+                acidBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                alcoholBtn.GetComponent<Image>().color = new Color32(252, 255, 127, 255);
+                sugerBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                statusBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                break;
+            case PanelEnum.状态:
+                acidChart.SetActive(false);
+                alcoholChart.SetActive(false);
+                sugerChart.SetActive(false);
+                acidBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                alcoholBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                sugerBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                statusBtn.GetComponent<Image>().color = new Color32(252, 255, 127, 255);
+                break;
+            default:
+                Debug.LogError("面板状态error");
+                break;
+        }
     }
     enum PanelEnum
     {
-        酸,酯,醇,状态
+        糖醇,有机酸, 酒精含量, 状态
+    }
+    private void UpdateChart(BaseObject obj)
+    {
+        alcoholChart.GetComponent<LineChart>().UpdateLine(obj.alcoholQueue);
+        //switch
+        //acidChart.GetComponent<PieChart>().UpdateChart()
     }
 }

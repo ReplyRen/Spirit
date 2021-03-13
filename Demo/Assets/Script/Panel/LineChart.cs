@@ -12,20 +12,6 @@ public class LineChart : MonoBehaviour
         point.SetActive(false);
 
     }
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Queue<float> que = new Queue<float>();
-            que.Enqueue(0.6f);
-            que.Enqueue(1f);
-            que.Enqueue(0f);
-            que.Enqueue(0.51f);
-            que.Enqueue(0.16f);
-            que.Enqueue(1f);
-            UpdateLine(que);
-        }
-    }
     private void Test()
     {
         Queue<float> que = new Queue<float>();
@@ -84,7 +70,6 @@ public class LineChart : MonoBehaviour
         lineRenderer.endWidth = 0.05f;
         lineRenderer.startColor = Color.black;
         lineRenderer.endColor = Color.black;
-        Debug.Log(pointPos.Count);
         for (int i = 0; i < pointPos.Count; i++) 
         {
             lineRenderer.SetPosition(i, pointPos[i]);

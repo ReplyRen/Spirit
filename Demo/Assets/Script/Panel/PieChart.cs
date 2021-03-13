@@ -15,11 +15,6 @@ public class PieChart : MonoBehaviour
         legend.SetActive(false);
         fillings.Add(filling);
         InitFilling();
-        Test();
-    }
-    private void Update()
-    {
-
     }
     public void Test() 
     {
