@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
         if (!isOpen)
         {
             var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-            if (btn.name == "总览" && cameraController.large) 
+            if (btn.name == "总览") 
             {
                 panelList[currentUI].SetActive(true);
                 isOpen = true;
