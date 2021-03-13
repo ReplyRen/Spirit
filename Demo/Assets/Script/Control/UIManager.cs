@@ -199,6 +199,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void InitializeFactory(List<BaseFragment> newList)
     {
+        buttonList[buttonList.Count - 1].SetActive(false);
         panelList[11].SetActive(true);
         fragmentsOnDisc = newList;
         ResetState();
