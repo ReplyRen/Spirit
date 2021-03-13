@@ -49,6 +49,7 @@ public class ViewPanel : MonoBehaviour
 
     public void Init(List<BaseObject> baseObjs)
     {
+        Debug.Log(baseObjs.Count);
         gameObject.SetActive(true);
         int i = 0;
         for (; i < baseObjs.Count; i++)

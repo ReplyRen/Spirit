@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     int currentUI;//当前打开UI在list中的序号
     int num = 10;//UI总数
     public static bool isOpen = false;
+    bool isConfirm = false;
     UIManager instance = null;
     private void Awake()
     {
@@ -150,6 +151,12 @@ public class UIManager : MonoBehaviour
             }
             catch {}
         }
+        isConfirm = true;
+        for(int i=0;i<buttonList.Count-1;i++)
+        {
+            if (buttonList[i].GetComponent<UIObject>().isUse && !buttonList[i].GetComponent<UIObject>().isConfirm) isConfirm = false;
+        }
+        if (isConfirm) buttonList[buttonList.Count - 1].SetActive(true);
     }
     //
     //上一个/下一个panel
@@ -314,17 +321,11 @@ public class UIManager : MonoBehaviour
 
     }
     //
-    IEnumerator WaitFor()
-    {
-        yield return new WaitForSeconds(1.2f);
-        SetStatus(false);
-        panelList[11].SetActive(false);
-    }
+
     public void NextDay()
     {
-        StartCoroutine(WaitFor());
-        //SetStatus(false);
-       // panelList[11].SetActive(false);
+        SetStatus(false);
+        panelList[11].SetActive(false);
     }
     //
     void Start()
@@ -378,6 +379,7 @@ public class UIManager : MonoBehaviour
         confirmList.Add(temp);
         temp = GameObject.Find("FactoryPanel");
         panelList.Add(temp);
+        buttonList.Add(temp.transform.Find("Next").gameObject);
         for (i = 0; i < 4; i++)
         {
             temp = GameObject.Find("PanelCanvas").transform.GetChild(i).gameObject;

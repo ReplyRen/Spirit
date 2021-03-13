@@ -58,6 +58,5 @@ public class Fade : MonoBehaviour
         if (isFadeIn && !isFadeOut && isFirst) FadeIn();
         if (isFadeIn && !isFadeOut&&!isFirst) StartCoroutine(Waitfor());
         if (isFadeOut && !isFadeIn) FadeOut();
-        Debug.Log(isFadeIn+"    "+ isFadeOut);
     }
 }

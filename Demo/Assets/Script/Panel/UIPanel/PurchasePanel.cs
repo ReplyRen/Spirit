@@ -11,7 +11,7 @@ public class PurchasePanel : MonoBehaviour
     public GameObject fatherObj1;
     public GameObject fatherObj2;
     public List<Image> images;
-    List<BaseObject> baseObjects = new List<BaseObject>();
+    List<BaseFragment> purChase = new List<BaseFragment>();
     List<int> names = new List<int>();
     Text text;
     ViewPanel viewPanel;
@@ -62,8 +62,12 @@ public class PurchasePanel : MonoBehaviour
     }
     public void Purchase()
     {
-        BaseObject temp = new BaseObject();
-        baseObjects.Add(temp);
+        int index = 0;
+        for(int i=0;i<purChase.Count;i++)
+        {
+            if (purChase[i].name == "原、辅料准备")
+                index = i;
+        }
         for(int i=0;i<purchaseObject.Count;i++)
         {
             if (purchaseObject[i].GetComponent<UIObject>().isUse)
@@ -73,8 +77,8 @@ public class PurchasePanel : MonoBehaviour
         }
         for (int i = 0; i < names.Count; i++)
         {
-            if (names[i] < 5) baseObjects[baseObjects.Count - 1].mains.Add((主料)names[i]);
-            else baseObjects[baseObjects.Count - 1].minors.Add((辅料)(names[i] - 5));
+            if (names[i] < 5) purChase[index].mains.Add((主料)names[i]);
+            else purChase[index].minors.Add((辅料)(names[i] - 5));
         }
         buy.GetComponent<UIObject>().isConfirm = true;
         buy.SetActive(false);
@@ -194,7 +198,7 @@ public class PurchasePanel : MonoBehaviour
     void Start()
     {
         viewPanel = GameObject.Find("PanelCanvas").transform.Find("检视Panel").GetComponent<ViewPanel>();
-        baseObjects = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
+        purChase = GameObject.Find("Main Camera").GetComponent<GameManager>().fragmentOnDisc;
         text = GameObject.Find("Switch").transform.GetChild(0).GetComponent<Text>();
         Instance();
         UpdateObjects();
