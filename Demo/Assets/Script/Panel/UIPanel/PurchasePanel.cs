@@ -11,8 +11,10 @@ public class PurchasePanel : MonoBehaviour
     public GameObject fatherObj1;
     public GameObject fatherObj2;
     public List<Image> images;
+    List<BaseObject> baseObjects = new List<BaseObject>();
     List<int> names = new List<int>();
     Text text;
+    ViewPanel viewPanel;
     bool a = false;
     bool b = false;
     public void Switch()
@@ -60,12 +62,19 @@ public class PurchasePanel : MonoBehaviour
     }
     public void Purchase()
     {
+        BaseObject temp = new BaseObject();
+        baseObjects.Add(temp);
         for(int i=0;i<purchaseObject.Count;i++)
         {
             if (purchaseObject[i].GetComponent<UIObject>().isUse)
             {
                 purchaseObject[i].SetActive(false);
             }
+        }
+        for (int i = 0; i < names.Count; i++)
+        {
+            if (names[i] < 5) baseObjects[baseObjects.Count - 1].mains.Add((主料)names[i]);
+            else baseObjects[baseObjects.Count - 1].minors.Add((辅料)(names[i] - 5));
         }
         buy.GetComponent<UIObject>().isConfirm = true;
         buy.SetActive(false);
@@ -184,6 +193,8 @@ public class PurchasePanel : MonoBehaviour
     }
     void Start()
     {
+        viewPanel = GameObject.Find("PanelCanvas").transform.Find("检视Panel").GetComponent<ViewPanel>();
+        baseObjects = GameObject.Find("Main Camera").GetComponent<GameManager>().baseList;
         text = GameObject.Find("Switch").transform.GetChild(0).GetComponent<Text>();
         Instance();
         UpdateObjects();

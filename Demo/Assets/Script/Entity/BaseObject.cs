@@ -45,7 +45,7 @@ public class BaseObject
 }
 public enum 主料
 {
-    糯性高梁,高粱,小麦,大米,麸皮
+    糯性高梁,高粱,大米,小麦,麸皮
 }
 public enum 辅料
 {

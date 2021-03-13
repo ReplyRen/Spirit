@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     public Shader shader;
     public Material mt;
     public List<Material> mats;
+    ViewPanel viewPanel;
+    GameManager gameManager;
     CameraController cameraController;
     List<GameObject> panelCanvas = new List<GameObject>();
     int currentUI;//当前打开UI在list中的序号
@@ -50,7 +52,8 @@ public class UIManager : MonoBehaviour
             }
             else if (btn.name == "仓库")
             {
-                panelList[10].SetActive(true);
+                viewPanel.Init(gameManager.baseList);
+                //panelList[10].SetActive(true);
                 panelCanvas[3].SetActive(true);
                 cameraController.locked = true;
             }
@@ -326,8 +329,10 @@ public class UIManager : MonoBehaviour
     //
     void Start()
     {
+        gameManager= GameObject.Find("Main Camera").GetComponent<GameManager>();
+        viewPanel = GameObject.Find("PanelCanvas").transform.Find("检视Panel").GetComponent<ViewPanel>();
         cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
-        fragmentsOnDisc = GameObject.Find("Main Camera").GetComponent<GameManager>().fragmentOnDisc;
+        fragmentsOnDisc = gameManager.fragmentOnDisc;
         GameObject temp;
         int i;
         for (i = 7; i < num + 8; i++) /// 初始化list
@@ -352,8 +357,12 @@ public class UIManager : MonoBehaviour
             catch { }
             //
             temp = GameObject.Find("PanelCanvas").transform.GetChild(i - 3).gameObject;
-            text = temp.transform.Find("Title");
-            text.GetComponent<Text>().text = temp.name.Replace("Panel","");
+            try
+            {
+                text = temp.transform.Find("Title");
+                text.GetComponent<Text>().text = temp.name.Replace("Panel", "");
+            }
+            catch { }
             panelList.Add(temp);
             //
             try
