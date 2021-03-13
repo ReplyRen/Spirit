@@ -80,13 +80,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator WaitFor()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
         foreach (var fragment in roundPanel.HideRoundPanel())
             fragmentOnDisc.Add(fragment);
         uiManager.gameObject.SetActive(true);
         uiManager.InitializeFactory(fragmentOnDisc);
     }
-
     public void NextRoundClick()
     {
         EndRound();
@@ -97,11 +96,11 @@ public class GameManager : MonoBehaviour
 
     public void SwitchClick()
     {
-        //foreach (var fragment in roundPanel.HideRoundPanel())
-           // fragmentOnDisc.Add(fragment);
+        /*foreach (var fragment in roundPanel.HideRoundPanel())
+            fragmentOnDisc.Add(fragment);
+        uiManager.gameObject.SetActive(true);
+        uiManager.InitializeFactory(fragmentOnDisc);*/
         StartCoroutine(WaitFor());
-        //uiManager.gameObject.SetActive(true);
-        //uiManager.InitializeFactory(fragmentOnDisc);
     }
 
     #region 流程逻辑

@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e028ebf4f96e0094a99c0244b5903024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.7
+  speed: 1
 --- !u!114 &1179436600 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8845031539285846225, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,

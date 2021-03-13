@@ -10,7 +10,7 @@ public class Fade : MonoBehaviour
     static public bool isFadeOut = false;
     Color fadeIn = new Color(0, 0, 0, 0);
     Color fadeOut = new Color(0, 0, 0, 1);
-    public float speed = 0.7f;
+    public float speed = 1f;
     bool isFirst = true;
     void Start()
     {
@@ -20,7 +20,7 @@ public class Fade : MonoBehaviour
     }
     IEnumerator Waitfor()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
         FadeIn();
     }
     void FadeIn()
