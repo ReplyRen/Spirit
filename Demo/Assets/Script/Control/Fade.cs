@@ -36,11 +36,11 @@ public class Fade : MonoBehaviour
     }
     void FadeOut()
     {
+        fade.raycastTarget = true;
         isFadeOut = true;
         fade.color = new Color(0, 0, 0, fade.color.a + speed * Time.deltaTime);
         if (fade.color.a >= 0.99f)
         {
-            fade.raycastTarget = true;
             fade.color = fadeOut;
             isFadeIn = true;
             isFadeOut = false;
