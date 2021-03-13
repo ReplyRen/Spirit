@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         level = 1;
         StartRound();
         roundPanel.InitialRoundPanel(fragmentList);
+        AudioManager.Init();
     }
     /// <summary>
     /// 加载游戏
