@@ -44,7 +44,6 @@ public class CameraController : MonoBehaviour
     {
         targetPos = GetCenter(img);
         enlarge = true;
-        Debug.Log(0);
     }
     private void Update()
     {
