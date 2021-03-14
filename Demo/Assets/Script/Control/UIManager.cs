@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     int currentUI;//当前打开UI在list中的序号
     int num = 10;//UI总数
     public static bool isOpen = false;
-    bool isConfirm = false;
+    //bool isConfirm = false;
     UIManager instance = null;
     private void Awake()
     {
@@ -151,12 +151,12 @@ public class UIManager : MonoBehaviour
             }
             catch {}
         }
-        isConfirm = true;
-        for(int i=0;i<buttonList.Count-1;i++)
+        //isConfirm = true;
+        /*for(int i=0;i<buttonList.Count-1;i++)
         {
             if (buttonList[i].GetComponent<UIObject>().isUse && !buttonList[i].GetComponent<UIObject>().isConfirm) isConfirm = false;
-        }
-        if (isConfirm) buttonList[buttonList.Count - 1].SetActive(true);
+        }*/
+        if (currentUI == 0) buttonList[buttonList.Count - 1].SetActive(true);
     }
     //
     //上一个/下一个panel
@@ -199,7 +199,6 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void InitializeFactory(List<BaseFragment> newList)
     {
-        buttonList[buttonList.Count - 1].SetActive(false);
         panelList[11].SetActive(true);
         fragmentsOnDisc = newList;
         ResetState();
@@ -257,6 +256,7 @@ public class UIManager : MonoBehaviour
             {
                 case "原、辅料准备":
                     buttonList[0].GetComponent<UIObject>().isUse = true;
+                    buttonList[buttonList.Count - 1].SetActive(false);
                     currentUI = 0;
                     break;
                 case "粉碎润料":
