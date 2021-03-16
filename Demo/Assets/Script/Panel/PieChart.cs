@@ -15,6 +15,7 @@ public class PieChart : MonoBehaviour
         legend.SetActive(false);
         fillings.Add(filling);
         InitFilling();
+        //Test();
     }
     public void Test() 
     {
@@ -59,7 +60,7 @@ public class PieChart : MonoBehaviour
                     fillings[i].GetComponent<Image>().color = colors[j];
                     break;
                 }
-                else if (i == list[j])
+                else if (i == list[j] && i != 23) 
                 {
                     GameObject obj = Instantiate(legend, gameObject.transform);
                     obj.SetActive(true);
