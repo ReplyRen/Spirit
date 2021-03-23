@@ -86,6 +86,17 @@ public class GameManager : MonoBehaviour
             fragmentOnDisc.Add(fragment);
         uiManager.gameObject.SetActive(true);
         uiManager.InitializeFactory(fragmentOnDisc);
+        if (GuideControl.id == 2)
+        {
+            GuideControl.id = 201;
+            gameObject.GetComponent<GuideManager>().AddMaskEventDelay();
+            gameObject.GetComponent<GuideControl>().Run();
+        }
+        if (GuideControl.id == 11)
+        {
+            GuideControl.id = 301;
+            gameObject.GetComponent<GuideControl>().Run();
+        }
     }
 
     IEnumerator WaitFor2()

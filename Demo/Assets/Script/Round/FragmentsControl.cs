@@ -57,6 +57,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     Vector3 imgChangeRotate = new Vector3(0, 0, 25);
 
     private int preIndex;           //纪录之前的序号，-1代表未在圆盘上
+    public GameObject myCamera;
     // Use this for initialization
     void Start()
     {
@@ -84,6 +85,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         GetComponent<Image>().SetNativeSize();
 
         imgRect.localEulerAngles = imgChangeRotate;
+        myCamera = GameObject.Find("Main Camera");
 
         switch (fragmentInformation.model)
         {
@@ -152,6 +154,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnDrag(PointerEventData eventData)
     {
+        if (GuideControl.id == 0 && fragmentInformation.name == "原、辅料准备")
+            return;
         if(switchPicture)
         {
             switchPicture = false;
@@ -259,6 +263,12 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// <param name="eventData"></param>
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (GuideControl.id == 0 && fragmentInformation.name == "原、辅料准备") 
+        {
+            GuideControl.id = 108;
+            myCamera.GetComponent<GuideControl>().Run();
+        }
+
         offset = Vector2.zero;
         pointDown = false;
         HideLine();
@@ -363,6 +373,11 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             {
                 Round.PutFragment(index, fragmentInformation.model);
                 preIndex = index;
+            }
+            if (GuideControl.id == 1 && fragmentInformation.name == "原、辅料准备")
+            {
+                GuideControl.id = 110;
+                myCamera.GetComponent<GuideControl>().Run();
             }
         }
         else

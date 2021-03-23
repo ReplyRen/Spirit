@@ -82,7 +82,7 @@ public class RectGuidanceController : MonoBehaviour
         //_eventPenetrate = GetComponent<GuidanceEventPenetrate>();
         //if(_eventPenetrate != null)
         //_eventPenetrate.SetTargetImage(Target);
-        canvas = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<Canvas>();
+        canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
         //获取高亮区域四个顶点的世界坐标
         target.GetWorldCorners(_corners);
         //计算高亮显示区域咋画布中的范围

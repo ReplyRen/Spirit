@@ -44,6 +44,11 @@ public class CameraController : MonoBehaviour
     {
         targetPos = GetCenter(img);
         enlarge = true;
+        if(img.name== "蒸煮室" && GuideControl.id==3)
+        {
+            GuideControl.id = 203;
+            gameObject.GetComponent<GuideControl>().Run();
+        }
     }
     private void Update()
     {
@@ -56,6 +61,11 @@ public class CameraController : MonoBehaviour
                 if (IsEnsmall(oldPos1, oldPos2, tempPos1, tempPos2))
                 {
                     ensmall = true;
+                    if(GuideControl.id==10)
+                    {
+                        GuideControl.id = 228;
+                        GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                    }
                 }
                 oldPos1 = tempPos1;
                 oldPos2 = tempPos2;
@@ -64,6 +74,11 @@ public class CameraController : MonoBehaviour
         else if (Input.GetMouseButtonDown(1))
         {
             ensmall = true;
+            if (GuideControl.id == 10)
+            {
+                GuideControl.id = 228;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
         }
 
     }

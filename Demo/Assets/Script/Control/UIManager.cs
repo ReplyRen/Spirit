@@ -65,6 +65,24 @@ public class UIManager : MonoBehaviour
                 isOpen = true;
                 panelCanvas[3].SetActive(true);
                 cameraController.locked = true;
+                //Debug.Log(GuideControl.id + "+" + currentUI);
+
+            }
+            if (GuideControl.id == 4 && currentUI == 0)
+            {
+                //Debug.Log("dadada");
+                GuideControl.id = 221;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
+            if (GuideControl.id == 12 && currentUI == 1)
+            {
+                GuideControl.id = 308;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
+            if (GuideControl.id == 14 && btn.name == "仓库")
+            {
+                GuideControl.id = 401;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
             }
             btn = null;
         }
@@ -73,8 +91,29 @@ public class UIManager : MonoBehaviour
             panelList[currentUI].SetActive(true);
             panelCanvas[3].SetActive(true);
             cameraController.locked = true;
+            if (GuideControl.id == 4 && currentUI == 0)
+            {
+                //Debug.Log("dadada");
+                GuideControl.id = 221;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
+            if (GuideControl.id == 12 && currentUI == 1)
+            {
+                GuideControl.id = 308;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
+            if (GuideControl.id == 14)
+            {
+                GuideControl.id = 401;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
+            if (GuideControl.id == 18)
+            {
+                GuideControl.id = 508;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
         }
-        ///若参数未确认，则设置参数初值
+            ///若参数未确认，则设置参数初值
         if (!buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[10].activeSelf)
         {
             switch (buttonList[currentUI].name)
@@ -127,6 +166,11 @@ public class UIManager : MonoBehaviour
         cameraController.locked = false;
         isOpen = false;
         panelCanvas[3].SetActive(false);
+        if (GuideControl.id == 9 && currentUI == 0) 
+        {
+            GuideControl.id = 227;
+            GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+        }
     }
     //
     //确认并检查是否完成设置
@@ -157,6 +201,11 @@ public class UIManager : MonoBehaviour
             if (buttonList[i].GetComponent<UIObject>().isUse && !buttonList[i].GetComponent<UIObject>().isConfirm) isConfirm = false;
         }*/
         if (currentUI == 0) buttonList[buttonList.Count - 1].SetActive(true);
+        if (GuideControl.id == 13 && currentUI == 1)
+        {
+            GuideControl.id = 314;
+            GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+        }
     }
     //
     //上一个/下一个panel
@@ -173,6 +222,7 @@ public class UIManager : MonoBehaviour
                 currentUI = 0;
         }
         OpenUI();
+
     }
     public void Previous()
     {

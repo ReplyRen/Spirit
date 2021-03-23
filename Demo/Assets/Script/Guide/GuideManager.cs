@@ -2,25 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XNode;
 
 public class GuideManager : MonoBehaviour
 {
     public Dictionary<int, GuideInfo> guideInfoDict = new Dictionary<int, GuideInfo>();
-    private GameObject[] guides = GameObject.FindGameObjectsWithTag("Guide");
-    public GameObject guideCanvas=GameObject.Find("GuideCanvas");
-    public GameObject mask;
-    public GameObject rectMask;
-    public GameObject circleMask;
-    public GameObject dialogImage;
-    public GameObject dialog;
-    public GameObject character;
-    public GameObject character1;
-    public GameObject character2;
-    public GameObject mainCharacter;
+    private GameObject guideCanvas;
+    private GameObject mask;
+    private GameObject rectMask;
+    private GameObject circleMask;
+    private GameObject dialogImage;
+    private GameObject dialog;
+    private GameObject character;
+    private GameObject character1;
+    private GameObject character2;
+    private GameObject mainCharacter;
+    private GameObject Image;
+    public DialogGraph dialogGraph;
+    private GameObject round;
+    public GameObject next;
+    public GameObject zhuObject;
+    public GameObject fuObject;
+    public GameObject mySwitch;
+    public GameObject buy;
+    public GameObject close;
+    public GameObject Status;
+    public GameObject card1;
+    public GameObject acid;
+    public GameObject next1;
     public void Start()
     {
+        guideCanvas = GameObject.Find("GuideCanvas");
+        round = GameObject.Find("圆盘");
         LoadData();
         disfObject();
+        AddMaskEvent();
     }
     #region 数据处理
     /// <summary>
@@ -28,55 +44,56 @@ public class GuideManager : MonoBehaviour
     /// </summary>
     private void LoadData()
     {
-        TextAsset data = Resources.Load("Data/FragmentData") as TextAsset;
-
-        string[] str = data.text.Split('\n');
-
-        for (int i = 1; i < str.Length - 1; i++)
+        var nodeList = dialogGraph.nodes;
+        for (int i = 0; i < nodeList.Count; i++)
         {
-            GuideInfo guideInfo = DataDecode(str[i]);
+            Guidenode node = (Guidenode)nodeList[i];
+            GuideInfo guideInfo = new GuideInfo();
+            guideInfo.guideID = node.guideID;
+            //Debug.Log(node.guideID);
+            if (node.dialogNeed)
+                guideInfo.dialogNeed = 1;
+            else
+                guideInfo.dialogNeed = 0;
+            guideInfo.dialogText = node.dialogText;
+            guideInfo.dialogCharacter = node.dialogCharacter;
+            if (node.mainCharacter)
+                guideInfo.mainCharacter = 1;
+            else
+                guideInfo.mainCharacter = 0;
+            guideInfo.maskType = node.maskType;
+
             guideInfoDict.Add(guideInfo.guideID, guideInfo);
         }
 
     }
-
-    /// <summary>
-    /// 数据解码
-    /// </summary>
-    /// <param name="str"></param>
-    /// <returns></returns>
-    private GuideInfo DataDecode(string str)
+    public void AddMaskEvent()
     {
-        string[] ss = str.Split('|');
-        GuideInfo guideInfo = new GuideInfo();
-
-        guideInfo.guideID = int.Parse(ss[0]);
-        guideInfo.dialogNeed = int.Parse(ss[1]);
-        guideInfo.dialogText = ss[2];
-        //guideInfo.dialogRect = null;
-
-        guideInfo.dialogCharacter = int.Parse(ss[4]);
-        guideInfo.mainCharacter = int.Parse(ss[5]);
-
-        guideInfo.maskType = int.Parse(ss[6]);
-        guideInfo.itemName = ss[7];
-        if(guideInfo.maskType!=0)
-            foreach(var guideItem in guides)
-            {
-                if(guideItem.name==ss[7])
-                {
-                    if (guideInfo.maskType == 1)
-                        guideInfo.rectMask = guideItem.GetComponent<Rect>();
-                    else
-                        guideInfo.circleMask = guideItem.GetComponent<Rect>();
-                }
-            }
-        guideInfo.NextID = int.Parse(ss[8]);
-
-
-        
-        return guideInfo;
+        guideInfoDict[109].circleMask = round.GetComponent<RectTransform>();
+        guideInfoDict[111].rectMask = GameObject.Find("完成").GetComponent<RectTransform>();
+        guideInfoDict[201].rectMask = GameObject.Find("替身201").GetComponent<RectTransform>();
     }
+    public void AddMaskEventDelay()
+    {
+        guideInfoDict[220].rectMask = GameObject.Find("采购部").GetComponent<RectTransform>();
+        guideInfoDict[222].rectMask = zhuObject.GetComponent<RectTransform>(); 
+        guideInfoDict[223].rectMask = mySwitch.GetComponent<RectTransform>();
+        guideInfoDict[224].rectMask = fuObject.GetComponent<RectTransform>();
+        guideInfoDict[225].rectMask = buy.GetComponent<RectTransform>();
+        guideInfoDict[226].rectMask = close.GetComponent<RectTransform>();
+        guideInfoDict[228].rectMask = next.GetComponent<RectTransform>();
+        guideInfoDict[229].rectMask = next.GetComponent<RectTransform>();
+        guideInfoDict[301].circleMask = GameObject.Find("总览").GetComponent<RectTransform>();
+        guideInfoDict[302].rectMask = GameObject.Find("粉碎机").GetComponent<RectTransform>();
+        guideInfoDict[307].rectMask = GameObject.Find("粉碎机").GetComponent<RectTransform>();
+        guideInfoDict[311].rectMask = Status.GetComponent<RectTransform>();
+        guideInfoDict[312].rectMask = Status.GetComponent<RectTransform>();
+        guideInfoDict[313].rectMask = Status.GetComponent<RectTransform>();
+        guideInfoDict[410].rectMask = card1.GetComponent<RectTransform>();
+        guideInfoDict[413].circleMask = acid.GetComponent<RectTransform>();
+        guideInfoDict[507].circleMask = next1.GetComponent<RectTransform>();
+    }
+   
     #endregion
     #region 操作
     private void disfObject()
@@ -92,22 +109,39 @@ public class GuideManager : MonoBehaviour
         character1 = character.transform.GetChild(0).gameObject;
         character2 = character.transform.GetChild(1).gameObject;
         mainCharacter = character.transform.GetChild(2).gameObject;
+        Image = guideCanvas.transform.GetChild(3).gameObject;
     }
     public void Show(int GuideID)
     {
+        if (!guideCanvas.activeInHierarchy)
+            guideCanvas.SetActive(true);
         GuideInfo guideInfo = new GuideInfo();
         guideInfoDict.TryGetValue(GuideID, out guideInfo);
         if (guideInfo.maskType == 0)
+        {
             mask.SetActive(false);
+            Image.SetActive(true);
+        }
         else if (guideInfo.maskType == 1)
         {
+            Image.SetActive(false);
             mask.SetActive(true);
-            rectMask.GetComponent<RectGuidanceController>().SetTarget(rectMask.GetComponent<RectTransform>());
+            rectMask.SetActive(true);
+            rectMask.GetComponent<RectGuidanceController>().SetTarget(guideInfo.rectMask);
+            circleMask.SetActive(false);
         }   
         else if (guideInfo.maskType == 2)
         {
+            Image.SetActive(false);
             mask.SetActive(true);
-            circleMask.GetComponent<CircleGuidanceController>().SetTarget(circleMask.GetComponent<RectTransform>());
+            rectMask.SetActive(false);
+            circleMask.SetActive(true);
+            circleMask.GetComponent<CircleGuidanceController>().SetTarget(guideInfo.circleMask);
+        }
+        else if(guideInfo.maskType==3)
+        {
+            Image.SetActive(false);
+            mask.SetActive(true);
         }
         dialog.GetComponent<Text>().text = guideInfo.dialogText;
         if (guideInfo.dialogNeed == 0)
@@ -134,6 +168,10 @@ public class GuideManager : MonoBehaviour
         else
             mainCharacter.SetActive(true);
     }
-
+    public void Hide()
+    {
+        if(guideCanvas.activeInHierarchy)
+            guideCanvas.SetActive(false);
+    }
     #endregion
 }

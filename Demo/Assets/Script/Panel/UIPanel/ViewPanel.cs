@@ -113,7 +113,11 @@ public class ViewPanel : MonoBehaviour
     {
         currentObj = pairs[EventSystem.current.currentSelectedGameObject];
         UpdateChart(currentObj);
-
+        if(GuideControl.id==15)
+        {
+            GuideControl.id = 411;
+            GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+        }
 
     }
     public void OnClickTag()
@@ -121,6 +125,11 @@ public class ViewPanel : MonoBehaviour
         if (currentObj == null)
             return;
         ChoosePanel(EventSystem.current.currentSelectedGameObject);
+        if(GuideControl.id==16)
+        {
+            GuideControl.id = 414;
+            GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+        }
     }
     private void ChoosePanel(GameObject obj)
     {

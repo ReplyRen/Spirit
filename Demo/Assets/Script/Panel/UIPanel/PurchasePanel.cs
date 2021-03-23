@@ -33,6 +33,16 @@ public class PurchasePanel : MonoBehaviour
             text.text = "查看辅料";
             Check();
         }
+        if (GuideControl.id == 6)
+        {
+            GuideControl.id = 224;
+            GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+        }
+        if (GuideControl.id == 8)
+        {
+            GuideControl.id = 226;
+            GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+        }
     }
     //更新物品list
     public void UpdateList()
@@ -90,6 +100,11 @@ public class PurchasePanel : MonoBehaviour
                 Change(true, i);
             }
             catch { }
+        }
+        if (GuideControl.id == 8) 
+        {
+            GuideControl.id = 226;
+            GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
         }
     }
     void Change(bool a,params int[] index)
@@ -172,6 +187,16 @@ public class PurchasePanel : MonoBehaviour
                 }
             }
             Check();
+            if (GuideControl.id == 5 && btn.GetComponent<UIObject>().index != 4)
+            {
+                GuideControl.id = 223;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
+            if (GuideControl.id == 7)
+            {
+                GuideControl.id = 225;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
         }
     }
     void Instance()
