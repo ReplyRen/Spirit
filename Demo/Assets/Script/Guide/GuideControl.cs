@@ -19,6 +19,9 @@ public class GuideControl : MonoBehaviour
     }
     public void Run()
     {
+        Debug.Log(id);
+        if (id <= 18 && id >= 2) 
+            return;
         if(gameObject.GetComponent<GuideManager>().guideInfoDict.ContainsKey(id))
         {
             gameObject.GetComponent<GuideManager>().Show(id);

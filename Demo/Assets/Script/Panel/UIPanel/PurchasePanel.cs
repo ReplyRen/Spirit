@@ -25,6 +25,7 @@ public class PurchasePanel : MonoBehaviour
             fatherObj2.SetActive(true);
             text.text = "查看主料";
             Check();
+            Debug.Log("hjuhk1");
         }
         else
         {
@@ -33,6 +34,7 @@ public class PurchasePanel : MonoBehaviour
             text.text = "查看辅料";
             Check();
         }
+        Debug.Log("hjuhk222");
         if (GuideControl.id == 6)
         {
             GuideControl.id = 224;
@@ -218,7 +220,7 @@ public class PurchasePanel : MonoBehaviour
         for(int i = 0; i < fatherObj2.transform.childCount + fatherObj1.transform.childCount; i++)
         {
             var btn = purchaseObject[i].GetComponent<Button>();
-            btn.onClick.AddListener(Select);
+            //btn.onClick.AddListener(Select);
         }
     }
     void Start()

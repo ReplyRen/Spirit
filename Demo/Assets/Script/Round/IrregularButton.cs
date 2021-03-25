@@ -9,5 +9,6 @@ public class IrregularButton : MonoBehaviour
     {
         Image image = GetComponent<Image>();
         image.alphaHitTestMinimumThreshold = 0.1f;
+        
     }
 }

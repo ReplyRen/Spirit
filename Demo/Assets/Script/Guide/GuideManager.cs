@@ -7,6 +7,7 @@ using XNode;
 public class GuideManager : MonoBehaviour
 {
     public Dictionary<int, GuideInfo> guideInfoDict = new Dictionary<int, GuideInfo>();
+    private Dictionary<int, GameObject> guideObject = new Dictionary<int, GameObject>();
     private GameObject guideCanvas;
     private GameObject mask;
     private GameObject rectMask;
@@ -20,7 +21,11 @@ public class GuideManager : MonoBehaviour
     private GameObject Image;
     public DialogGraph dialogGraph;
     private GameObject round;
+    public GameObject zhengZhu;
+    public GameObject wanChen;
+    public GameObject caiGouBu;
     public GameObject next;
+    public GameObject zongLan;
     public GameObject zhuObject;
     public GameObject fuObject;
     public GameObject mySwitch;
@@ -30,6 +35,7 @@ public class GuideManager : MonoBehaviour
     public GameObject card1;
     public GameObject acid;
     public GameObject next1;
+    public GameObject fenSuiJi;
     public void Start()
     {
         guideCanvas = GameObject.Find("GuideCanvas");
@@ -70,32 +76,61 @@ public class GuideManager : MonoBehaviour
     public void AddMaskEvent()
     {
         guideInfoDict[109].circleMask = round.GetComponent<RectTransform>();
-        guideInfoDict[111].rectMask = GameObject.Find("完成").GetComponent<RectTransform>();
-        guideInfoDict[201].rectMask = GameObject.Find("替身201").GetComponent<RectTransform>();
+        guideInfoDict[111].rectMask = wanChen.GetComponent<RectTransform>();
+        guideObject.Add(111, wanChen);
+        guideInfoDict[201].rectMask = zhengZhu.GetComponent<RectTransform>();
+        guideObject.Add(202, zhengZhu);
     }
     public void AddMaskEventDelay()
     {
-        guideInfoDict[220].rectMask = GameObject.Find("采购部").GetComponent<RectTransform>();
-        guideInfoDict[222].rectMask = zhuObject.GetComponent<RectTransform>(); 
+        guideInfoDict[220].rectMask = caiGouBu.GetComponent<RectTransform>();
+        guideObject.Add(220, caiGouBu);
+        guideInfoDict[222].rectMask = zhuObject.GetComponent<RectTransform>();
+        guideObject.Add(5, zhuObject);
         guideInfoDict[223].rectMask = mySwitch.GetComponent<RectTransform>();
+        guideObject.Add(6, mySwitch);
         guideInfoDict[224].rectMask = fuObject.GetComponent<RectTransform>();
+        guideObject.Add(7, fuObject);
         guideInfoDict[225].rectMask = buy.GetComponent<RectTransform>();
+        guideObject.Add(8, buy);
         guideInfoDict[226].rectMask = close.GetComponent<RectTransform>();
+        guideObject.Add(9, close);
         guideInfoDict[228].rectMask = next.GetComponent<RectTransform>();
+        guideObject.Add(10, next);
         guideInfoDict[229].rectMask = next.GetComponent<RectTransform>();
-        guideInfoDict[301].circleMask = GameObject.Find("总览").GetComponent<RectTransform>();
-        guideInfoDict[302].rectMask = GameObject.Find("粉碎机").GetComponent<RectTransform>();
-        guideInfoDict[307].rectMask = GameObject.Find("粉碎机").GetComponent<RectTransform>();
+        guideObject.Add(11, next);
+        guideInfoDict[301].circleMask = zongLan.GetComponent<RectTransform>();
+        guideObject.Add(301, zongLan);
+        guideInfoDict[302].rectMask = fenSuiJi.GetComponent<RectTransform>();
+        guideObject.Add(304, fenSuiJi);
+        guideInfoDict[307].rectMask = fenSuiJi.GetComponent<RectTransform>();
+        guideObject.Add(307, fenSuiJi);
         guideInfoDict[311].rectMask = Status.GetComponent<RectTransform>();
+        guideObject.Add(311, Status);
         guideInfoDict[312].rectMask = Status.GetComponent<RectTransform>();
+        guideObject.Add(312, Status);
         guideInfoDict[313].rectMask = Status.GetComponent<RectTransform>();
+        guideObject.Add(13, Status);
         guideInfoDict[410].rectMask = card1.GetComponent<RectTransform>();
+        guideObject.Add(410, card1);
         guideInfoDict[413].circleMask = acid.GetComponent<RectTransform>();
+        guideObject.Add(413, acid);
         guideInfoDict[507].circleMask = next1.GetComponent<RectTransform>();
+        guideObject.Add(507, next1);
     }
-   
+
     #endregion
     #region 操作
+    private void Update()
+    {
+        Debug.Log(GuideControl.id + "-");
+        if (guideObject.ContainsKey(GuideControl.id))
+        {
+            Debug.Log(GuideControl.id + "+");
+            rectMask.GetComponent<EventPermeate>().target = guideObject[GuideControl.id];
+            circleMask.GetComponent<EventPermeate>().target = guideObject[GuideControl.id];
+        }
+    }
     private void disfObject()
     {
         mask = guideCanvas.transform.GetChild(0).gameObject;
