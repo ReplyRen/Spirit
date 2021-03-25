@@ -33,7 +33,7 @@ public class EventPermeate : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     public void OnPointerClick(PointerEventData eventData)
     {
         PassEvent(eventData, ExecuteEvents.submitHandler);
-        PassEvent(eventData, ExecuteEvents.pointerClickHandler);
+        //PassEvent(eventData, ExecuteEvents.pointerClickHandler);
     }
 
     // 把事件透下去

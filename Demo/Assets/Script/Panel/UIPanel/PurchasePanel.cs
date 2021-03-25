@@ -25,7 +25,6 @@ public class PurchasePanel : MonoBehaviour
             fatherObj2.SetActive(true);
             text.text = "查看主料";
             Check();
-            Debug.Log("hjuhk1");
         }
         else
         {
@@ -34,7 +33,6 @@ public class PurchasePanel : MonoBehaviour
             text.text = "查看辅料";
             Check();
         }
-        Debug.Log("hjuhk222");
         if (GuideControl.id == 6)
         {
             GuideControl.id = 224;
