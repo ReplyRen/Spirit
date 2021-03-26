@@ -1,13 +1,39 @@
-﻿using System.Collections;
+﻿//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+
+//public class Temp : MonoBehaviour
+//{
+//    GameObject obj = Instantiate(legend, gameObject.transform);
+//    obj.SetActive(true);
+//                    if (j >= 3)
+//                        obj.transform.localPosition = new Vector3(-223 + 223 * (j-3), -250);
+//                    else
+//                        obj.transform.localPosition = new Vector3(-223 + 223 * j, -200);
+//    obj.GetComponent<Image>().color = colors[j];
+//                    obj.GetComponentInChildren<Text>().text = inclusions[j].name;
+//                    lengeds.Add(obj);
+//                }
+//            }
+//        }
+//        GameObject obj1 = Instantiate(legend, gameObject.transform);
+//obj1.SetActive(true);
+//if (list.Count >= 3)
+//    obj1.transform.localPosition = new Vector3(-223 + 223 * (list.Count - 1 - 3), -250);
+//else
+//    obj1.transform.localPosition = new Vector3(-223 + 223 * (list.Count - 1), -200);
+//obj1.GetComponent<Image>().color = colors[list.Count - 1];
+//}
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PieChart : MonoBehaviour
+public class Temp : MonoBehaviour
 {
     public List<Color32> colors = new List<Color32>();
     public GameObject filling;
-    List<GameObject> fillings=new List<GameObject>();
+    List<GameObject> fillings = new List<GameObject>();
     public GameObject legend;
     List<GameObject> lengeds = new List<GameObject>();
     private void Start()
@@ -15,16 +41,15 @@ public class PieChart : MonoBehaviour
         legend.SetActive(false);
         fillings.Add(filling);
         InitFilling();
-        //Test();
     }
-    public void Test() 
+    public void Test()
     {
         Inclusion a = new Inclusion("醇含量", 0.5f);
         Inclusion b = new Inclusion("2", 0.5f);
         Inclusion c = new Inclusion("3", 0.5f);
         Init(1.5f, a, b, c);
     }
-    public void Init(Transform parent,Vector3 localPos,float total,params Inclusion[] inclusions)
+    public void Init(Transform parent, Vector3 localPos, float total, params Inclusion[] inclusions)
     {
         transform.SetParent(parent);
         transform.localPosition = localPos;
@@ -52,7 +77,7 @@ public class PieChart : MonoBehaviour
         }
         for (int i = 0; i < 24; i++)
         {
-            for(int j = 0; j < list.Count; j++)
+            for (int j = 0; j < list.Count; j++)
             {
                 if (i < list[j])
                 {
@@ -60,14 +85,14 @@ public class PieChart : MonoBehaviour
                     fillings[i].GetComponent<Image>().color = colors[j];
                     break;
                 }
-                else if (i == list[j]/* && i != 23*/) 
+                else if (i == list[j])
                 {
                     GameObject obj = Instantiate(legend, gameObject.transform);
                     obj.SetActive(true);
-                    if (j > 2)
-                        obj.transform.localPosition = new Vector3(-250 + 220 * (j-3), -250);
+                    if (j >= 3)
+                        obj.transform.localPosition = new Vector3(-223 + 223 * (j - 3), -250);
                     else
-                        obj.transform.localPosition = new Vector3(-250 + 220 * j, -200);
+                        obj.transform.localPosition = new Vector3(-223 + 223 * j, -200);
                     obj.GetComponent<Image>().color = colors[j];
                     obj.GetComponentInChildren<Text>().text = inclusions[j].name;
                     lengeds.Add(obj);
@@ -76,30 +101,31 @@ public class PieChart : MonoBehaviour
         }
         GameObject obj1 = Instantiate(legend, gameObject.transform);
         obj1.SetActive(true);
-        if (list.Count > 2)
-            obj1.transform.localPosition = new Vector3(-250 + 220 * (list.Count - 4), -250);
+        if (list.Count >= 3)
+            obj1.transform.localPosition = new Vector3(-223 + 223 * (list.Count - 1 - 3), -250);
         else
-            obj1.transform.localPosition = new Vector3(-250 + 220 * list.Count, -200);
+            obj1.transform.localPosition = new Vector3(-223 + 223 * (list.Count - 1), -200);
         obj1.GetComponent<Image>().color = colors[list.Count - 1];
         obj1.GetComponentInChildren<Text>().text = inclusions[list.Count - 1].name;
         lengeds.Add(obj1);
     }
     private void InitFilling()
     {
-        for(int i = 1; i < 24; i++)
+        for (int i = 1; i < 24; i++)
         {
-            GameObject obj = Instantiate(filling,gameObject.transform);
-            obj.transform.localPosition = new Vector2(85f * Mathf.Sin(Mathf.PI * i / 12), 85f * Mathf.Cos(Mathf.PI * i / 12)+3);
+            GameObject obj = Instantiate(filling, gameObject.transform);
+            obj.transform.localPosition = new Vector2(85f * Mathf.Sin(Mathf.PI * i / 12), 85f * Mathf.Cos(Mathf.PI * i / 12) + 3);
             obj.transform.localEulerAngles = new Vector3(0, 0, -15 * i);
             fillings.Add(obj);
         }
     }
     private void Clear()
     {
-        foreach(var a in lengeds)
+        foreach (var a in lengeds)
         {
             Destroy(a);
         }
         lengeds.Clear();
     }
 }
+

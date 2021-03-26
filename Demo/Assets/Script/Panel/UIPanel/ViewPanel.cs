@@ -32,7 +32,16 @@ public class ViewPanel : MonoBehaviour
     [SerializeField]
     private GameObject alcoholChart;
 
-    private PanelEnum panelEnum = PanelEnum.酒精含量;
+    [SerializeField]
+    private Text mainText;
+
+    [SerializeField]
+    private Text minorText;
+
+    [SerializeField]
+    private GameObject statusText;
+
+    private PanelEnum panelEnum = PanelEnum.状态;
 
     private BaseObject currentObj;
 
@@ -55,10 +64,13 @@ public class ViewPanel : MonoBehaviour
         baseObjs.Add(b);
         Init(baseObjs);
     }
+    private void Start()
+    {
+        Test();
+    }
 
     public void Init(List<BaseObject> baseObjs)
     {
-        Debug.Log(baseObjs.Count);
         gameObject.SetActive(true);
         int i = 0;
         for (; i < baseObjs.Count; i++)
@@ -70,8 +82,18 @@ public class ViewPanel : MonoBehaviour
         {
             cards[i].SetActive(false);
         }
+        if (baseObjs != null)
+        {
+            UpdateChart(baseObjs[0]);
+            currentObj = baseObjs[0];
+        }
+        acidChart.SetActive(false);
+        alcoholChart.SetActive(false);
+        sugerChart.SetActive(false);
+        statusText.SetActive(true);
+
     }
-    private void SetCard(GameObject obj,BaseObject baseObj)
+    private void SetCard(GameObject obj, BaseObject baseObj)
     {
         string name = ReturnMain(baseObj);
         obj.transform.Find("Main").GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/检视素材/" + name);
@@ -113,7 +135,7 @@ public class ViewPanel : MonoBehaviour
     {
         currentObj = pairs[EventSystem.current.currentSelectedGameObject];
         UpdateChart(currentObj);
-        if(GuideControl.id==15)
+        if (GuideControl.id == 15)
         {
             GuideControl.id = 411;
             GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
@@ -125,7 +147,7 @@ public class ViewPanel : MonoBehaviour
         if (currentObj == null)
             return;
         ChoosePanel(EventSystem.current.currentSelectedGameObject);
-        if(GuideControl.id==16)
+        if (GuideControl.id == 16)
         {
             GuideControl.id = 414;
             GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
@@ -154,6 +176,7 @@ public class ViewPanel : MonoBehaviour
                 acidChart.SetActive(true);
                 alcoholChart.SetActive(false);
                 sugerChart.SetActive(false);
+                statusText.SetActive(false);
                 acidBtn.GetComponent<Image>().color = new Color32(252, 255, 127, 255);
                 alcoholBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 sugerBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
@@ -163,6 +186,7 @@ public class ViewPanel : MonoBehaviour
                 acidChart.SetActive(false);
                 alcoholChart.SetActive(false);
                 sugerChart.SetActive(true);
+                statusText.SetActive(false);
                 acidBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 alcoholBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 sugerBtn.GetComponent<Image>().color = new Color32(252, 255, 127, 255);
@@ -172,6 +196,7 @@ public class ViewPanel : MonoBehaviour
                 acidChart.SetActive(false);
                 alcoholChart.SetActive(true);
                 sugerChart.SetActive(false);
+                statusText.SetActive(false);
                 acidBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 alcoholBtn.GetComponent<Image>().color = new Color32(252, 255, 127, 255);
                 sugerBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
@@ -181,6 +206,7 @@ public class ViewPanel : MonoBehaviour
                 acidChart.SetActive(false);
                 alcoholChart.SetActive(false);
                 sugerChart.SetActive(false);
+                statusText.SetActive(true);
                 acidBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 alcoholBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 sugerBtn.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
@@ -193,12 +219,138 @@ public class ViewPanel : MonoBehaviour
     }
     enum PanelEnum
     {
-        糖醇,有机酸, 酒精含量, 状态
+        糖醇, 有机酸, 酒精含量, 状态
     }
     private void UpdateChart(BaseObject obj)
     {
         alcoholChart.GetComponent<LineChart>().UpdateLine(obj.alcoholQueue);
-        //switch
-        //acidChart.GetComponent<PieChart>().UpdateChart()
+        var a = GetInclusions(obj);
+        sugerChart.GetComponent<PieChart>().UpdateChart(1, a.Item2[0], a.Item2[1], a.Item2[2], a.Item2[3], a.Item2[4], a.Item2[5]);
+        acidChart.GetComponent<PieChart>().UpdateChart(1, a.Item1[0], a.Item1[1], a.Item1[2], a.Item1[3], a.Item1[4], a.Item1[5]);
+        string main = "主料：";
+        string minor = "辅料：";
+        foreach (var b in obj.mains)
+        {
+            main += b.ToString() + " ";
+        }
+        foreach (var b in obj.minors)
+        {
+            minor += b.ToString() + " ";
+        }
+        mainText.text = main;
+        minorText.text = minor;
+
     }
+    private (List<Inclusion>, List<Inclusion>) GetInclusions(BaseObject obj)
+    {
+        List<Inclusion> res1 = new List<Inclusion>();
+        List<Inclusion> res2 = new List<Inclusion>();
+        float a = 0;
+        float b = 0;
+        float c = 0;
+        float d = 0;
+        float e = 0;
+        switch (obj.GetKind())
+        {
+            case Kind.兼香型:
+                a = 0.8f;
+                b = 0;
+                c = 0.08f;
+                d = 0.1f;
+                e = 0.01f;
+                break;
+            case Kind.凤香型:
+                a = 0.6f;
+                b = 0;
+                c = 0.08f;
+                d = 0.1f;
+                e = 0.1f;
+                break;
+            case Kind.浓香型:
+                a = 0.8f;
+                b = 0;
+                c = 0.08f;
+                d = 0.1f;
+                e = 0.1f;
+                break;
+            case Kind.清香型:
+                a = 0.6f;
+                b = 0;
+                c = 0.08f;
+                d = 0.1f;
+                e = 0.01f;
+                break;
+            case Kind.特香型:
+                a = 0.95f;
+                b = 0;
+                c = 0.08f;
+                d = 0.1f;
+                e = 0.01f;
+                break;
+            case Kind.米香型:
+                a = 0.8f;
+                b = 0;
+                c = 0.08f;
+                d = 0.1f;
+                e = 0.01f;
+                break;
+            case Kind.老白干香型:
+                a = 0.95f;
+                b = 0;
+                c = 0.08f;
+                d = 0.1f;
+                e = 0.01f;
+                break;
+            case Kind.芝麻香型:
+                a = 0.95f;
+                b = 0.03f;
+                c = 0.08f;
+                d = 0.1f;
+                e = 0.01f;
+                break;
+            case Kind.药香型:
+                a = 0.8f;
+                b = 0;
+                c = 0.08f;
+                d = 0.1f;
+                e = 0.01f;
+                break;
+            case Kind.豉香型:
+                a = 0.8f;
+                b = 0;
+                c = 0.7f;
+                d = 0.1f;
+                e = 0.01f;
+                break;
+            case Kind.酱香型:
+                a = 0.95f;
+                b = 0;
+                c = 0.08f;
+                d = 0.5f;
+                e = 0.01f;
+                break;
+            case Kind.馥郁香型:
+                a = 0.8f;
+                b = 0;
+                c = 0.08f;
+                d = 0.1f;
+                e = 0.01f;
+                break;
+        }
+        res1.Add(new Inclusion("乳酸", a));
+        res1.Add(new Inclusion("2-羟基异乙酸", b));
+        res1.Add(new Inclusion("酒石酸", (1 - a - b) / 2));
+        res1.Add(new Inclusion("山梨酸", (1 - a - b) * 0.3f));
+        res1.Add(new Inclusion("苹果酸", (1 - a - b) * 0.2f));
+        res1.Add(new Inclusion("柠檬酸", (1 - a - b) * 0.2f));
+        res2.Add(new Inclusion("甘油", c));
+        res2.Add(new Inclusion("阿拉伯糖醇", d));
+        res2.Add(new Inclusion("山梨糖醇", e));
+        res2.Add(new Inclusion("葡萄糖醇", (1 - c - d - e) / 2));
+        res2.Add(new Inclusion("木糖醇", (1 - c - d - e) / 3));
+        res2.Add(new Inclusion("半乳糖醇", (1 - c - d - e)*1.3f / 6));
+
+        return (res1, res2);
+    }
+
 }
