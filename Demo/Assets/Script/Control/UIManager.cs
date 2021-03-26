@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     GameManager gameManager;
     CameraController cameraController;
     List<GameObject> panelCanvas = new List<GameObject>();
+    GuideControl guideControl;
     int currentUI;//当前打开UI在list中的序号
     int num = 10;//UI总数
     public static bool isOpen = false;
@@ -58,6 +59,11 @@ public class UIManager : MonoBehaviour
                 //panelList[10].SetActive(true);
                 panelCanvas[3].SetActive(true);
                 cameraController.locked = true;
+                if(GuideControl.id>=602)
+                {
+                    GuideControl.id = 901;
+                    guideControl.Run();
+                }
             }
             else if (btn.GetComponent<UIObject>().isUse && cameraController.large)
             {
@@ -66,24 +72,35 @@ public class UIManager : MonoBehaviour
                 isOpen = true;
                 panelCanvas[3].SetActive(true);
                 cameraController.locked = true;
-                //Debug.Log(GuideControl.id + "+" + currentUI);
-
+                if(GuideControl.id>=602&&currentUI==9)
+                {
+                    int a = Random.Range(1, 10);
+                    if(a%2==0)
+                    {
+                        GuideControl.id = 801;
+                        guideControl.Run();
+                    }
+                    else
+                    {
+                        GuideControl.id = 811;
+                        guideControl.Run();
+                    }
+                }
             }
             if (GuideControl.id == 4 && currentUI == 0)
             {
-                //Debug.Log("dadada");
                 GuideControl.id = 221;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                guideControl.Run();
             }
             if (GuideControl.id == 12 && currentUI == 1)
             {
                 GuideControl.id = 310;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                guideControl.Run();
             }
             if (GuideControl.id == 14 && btn.name == "仓库")
             {
                 GuideControl.id = 401;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                guideControl.Run();
             }
             btn = null;
         }
@@ -96,22 +113,22 @@ public class UIManager : MonoBehaviour
             {
                 //Debug.Log("dadada");
                 GuideControl.id = 221;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                guideControl.Run();
             }
             if (GuideControl.id == 12 && currentUI == 1)
             {
                 GuideControl.id = 308;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                guideControl.Run();
             }
             if (GuideControl.id == 14)
             {
                 GuideControl.id = 401;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                guideControl.Run();
             }
             if (GuideControl.id == 18)
             {
                 GuideControl.id = 508;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                guideControl.Run();
             }
         }
             ///若参数未确认，则设置参数初值
@@ -170,7 +187,7 @@ public class UIManager : MonoBehaviour
         if (GuideControl.id == 9 && currentUI == 0) 
         {
             GuideControl.id = 227;
-            GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            guideControl.Run();
         }
     }
     //
@@ -205,7 +222,7 @@ public class UIManager : MonoBehaviour
         if (GuideControl.id == 13 && currentUI == 1)
         {
             GuideControl.id = 314;
-            GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            guideControl.Run();
         }
     }
     //
@@ -282,6 +299,11 @@ public class UIManager : MonoBehaviour
                     buttonList[9].SetActive(true);
                     break;*/
             }
+        }
+        if(GuideControl.id>=602)
+        {
+            GuideControl.id = 701;
+            guideControl.Run();
         }
     }
     public void ResetState()///初始化工厂
@@ -382,7 +404,8 @@ public class UIManager : MonoBehaviour
     //
     void Start()
     {
-        gameManager= GameObject.Find("Main Camera").GetComponent<GameManager>();
+        guideControl = GameObject.Find("Main Camera").GetComponent<GuideControl>();
+        gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
         viewPanel = GameObject.Find("PanelCanvas").transform.Find("检视Panel").GetComponent<ViewPanel>();
         cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
         fragmentsOnDisc = gameManager.fragmentOnDisc;

@@ -92,6 +92,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-8985650978695021191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2021.3868, y: 3326.4824}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -8985650978695021191}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -8985650978695021191}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1033
+  dialogNeed: 0
+  dialogText: "\u662F\u6709\u8FD9\u79CD\u5FD9\u7684\u4E0D\u53EF\u5F00\u4EA4\u7684\u65F6\u5019\u5462....."
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-8960858155374743908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +322,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-8777126598600258477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 872, y: 2472}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -8777126598600258477}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -8777126598600258477}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 813
+  dialogNeed: 0
+  dialogText: "\u54C8\u54C8\uFF0C\u90A3\u662F\u81EA\u7136\u7684"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-8731018935020944455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +506,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-8237552084144605757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -328, y: 2456}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -8237552084144605757}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -8237552084144605757}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 802
+  dialogNeed: 0
+  dialogText: "\u6211\u8BF4\uFF0C\u4F60\u53EA\u662F\u60F3\u559D\u591A\u4E86\u627E\u501F\u53E3\u6478\u9C7C\u5427"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-8036045090564666942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +594,52 @@ MonoBehaviour:
   dialogText: "\u8BF7\u60A8\u8BD5\u7740\u7528\u795E\u6027\u548C\u5B83\u4EEC\u6C9F\u901A\u5427"
   dialogCharacter: 3
   mainCharacter: 1
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-8014870479557368310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -344, y: 2088}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -8014870479557368310}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -8014870479557368310}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 702
+  dialogNeed: 0
+  dialogText: "\u597D\u7684\uFF01"
+  dialogCharacter: 0
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -644,6 +828,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-7611132510912104585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2244.5286, y: 3337.1082}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -7611132510912104585}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -7611132510912104585}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1034
+  dialogNeed: 0
+  dialogText: "\u614E\u91CD\u7684\u8003\u8651\u9700\u8981\u5B8C\u6210\u54EA\u4E9B\u4EFB\u52A1\u5427"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-7505680099722926965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,6 +920,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-7503236670216352547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1608, y: 2904}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -7503236670216352547}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -7503236670216352547}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 922
+  dialogNeed: 0
+  dialogText: "\u8BF7\u591A\u82B1\u65F6\u95F4\u5E38\u6765\u8FD9\u91CC\u5462..."
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-7495634658477747295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,6 +1008,52 @@ MonoBehaviour:
   dialogText: "\u4F46\u603B\u7684\u6765\u8BB2\u771F\u662F\u6BEB\u65E0\u5934\u7EEA"
   dialogCharacter: 0
   mainCharacter: 1
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-7265009600687411300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1016, y: 2888}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -7265009600687411300}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -7265009600687411300}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 913
+  dialogNeed: 0
+  dialogText: "\u804C\u8D23\u4E4B\u4E2D..."
+  dialogCharacter: 0
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -966,6 +1288,98 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-6258146075568230429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 792, y: 2888}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -6258146075568230429}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -6258146075568230429}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 912
+  dialogNeed: 0
+  dialogText: "\u55EF\u55EF\uFF0C\u9EBB\u70E6\u60A8\u5566"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-6015402055432805001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 104, y: 2472}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -6015402055432805001}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -6015402055432805001}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 804
+  dialogNeed: 0
+  dialogText: "\u5F53\u6211\u50BB\u4E48\uFF01\uFF01\uFF01"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-6011050146856571499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1009,6 +1423,52 @@ MonoBehaviour:
   dialogCharacter: 1
   mainCharacter: 0
   maskType: 1
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-5671853898969647239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -70.12348, y: 2885.5112}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -5671853898969647239}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -5671853898969647239}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 903
+  dialogNeed: 0
+  dialogText: "\u770B\u6765\u60A8\u7684\u6280\u672F\u53C8\u6709\u6240\u7CBE\u8FDB\u5462......\u771F\u662F\u592A\u597D\u4E86"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
@@ -1058,6 +1518,144 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-5582705488392213416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 424, y: 2472}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -5582705488392213416}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -5582705488392213416}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 811
+  dialogNeed: 0
+  dialogText: "\u8FD9\u4E2A\u6708\u6709\u9274\u9152\u4F1A....\u5230\u4E86\u6210\u679C\u7684\u65F6\u5019\u4E86\u4E48"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-5580593339242463136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -534.11646, y: 2855.4048}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -5580593339242463136}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -5580593339242463136}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 901
+  dialogNeed: 0
+  dialogText: "\u8FD9\u4E00\u6279\u5B69\u5B50\uFF0C\u72B6\u6001\u4F3C\u4E4E\u90FD\u76F8\u5F53\u597D\u5462......"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-5087698543794292096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -120, y: 2472}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -5087698543794292096}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -5087698543794292096}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 803
+  dialogNeed: 0
+  dialogText: "\u8BF6\u5440\uFF01\u88AB\u770B\u7A7F\u4E86\u4E48\uFF01"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-4960010732768736222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1101,6 +1699,144 @@ MonoBehaviour:
   dialogCharacter: 0
   mainCharacter: 0
   maskType: 3
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-4746155243665553792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 568, y: 2888}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -4746155243665553792}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -4746155243665553792}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 911
+  dialogNeed: 0
+  dialogText: "\u5B69\u5B50\u4EEC\u7684\u72B6\u6001\u90FD\u4E0D\u9519\u5462...\u7A0D\u5FAE\u6CE8\u610F\u4E00\u4E0B_____\u3001_____\u5C31\u597D\u4E86"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-4671395804078718716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1816, y: 2904}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -4671395804078718716}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -4671395804078718716}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 923
+  dialogNeed: 0
+  dialogText: "\u545C......"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-4562600562600281341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2024, y: 2904}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -4562600562600281341}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -4562600562600281341}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 924
+  dialogNeed: 0
+  dialogText: "\u660E\u767D\u4E86......"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
@@ -1374,6 +2110,52 @@ MonoBehaviour:
   guideID: 601
   dialogNeed: 1
   dialogText: "\u6839\u636E\u4E0A\u4E00\u56DE\u5408\u7684\u64CD\u4F5C\u4EA7\u751F\u4E86\u65B0\u7684\u788E\u7247"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-3371282759921190731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -528.8035, y: 3206.0562}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -3371282759921190731}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -3371282759921190731}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1001
+  dialogNeed: 0
+  dialogText: "\u8FD9\u4E2A\u6708\u9700\u8981\u505A\u7684\u4E8B\u60C5\u4E0D\u591A\u5462..."
   dialogCharacter: 0
   mainCharacter: 0
   maskType: 0
@@ -1656,6 +2438,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-2386715868371111485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 648, y: 2472}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -2386715868371111485}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -2386715868371111485}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 812
+  dialogNeed: 0
+  dialogText: "\u62FF\u7ED9\u9644\u8FD1\u7684\u7236\u8001\u4E61\u4EB2\u4E5F\u5C1D\u4E00\u5C1D\u5427"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-2095662060666534021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1886,6 +2714,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-1203265256702797368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 369.07602, y: 3220.224}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -1203265256702797368}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -1203265256702797368}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1012
+  dialogNeed: 0
+  dialogText: "\u597D\u597D\u8003\u8651\u4E4B\u540E\u544A\u8BC9\u5927\u5BB6\u5427"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-1186435122840961197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2070,6 +2944,98 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-728094283366127542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 751.6046, y: 3257.4148}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -728094283366127542}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -728094283366127542}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1021
+  dialogNeed: 0
+  dialogText: "\u5514\uFF0C\u4E8B\u60C5\u4E0D\u5C11\u554A......"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-135607760032468940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 72, y: 2104}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -135607760032468940}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -135607760032468940}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 704
+  dialogNeed: 0
+  dialogText: "\u54C8\u54C8\u54C8\u54C8\uFF0C\u4EA4\u7ED9\u6211\u4EEC\u5C31\u597D"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-98134608500245415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2212,6 +3178,39 @@ MonoBehaviour:
   - {fileID: -2095662060666534021}
   - {fileID: -998068152618405417}
   - {fileID: -947359498278928632}
+  - {fileID: 4931569381379450190}
+  - {fileID: -8014870479557368310}
+  - {fileID: 3578758675364895415}
+  - {fileID: -135607760032468940}
+  - {fileID: 6158286648766224457}
+  - {fileID: -8237552084144605757}
+  - {fileID: -5087698543794292096}
+  - {fileID: -6015402055432805001}
+  - {fileID: -5582705488392213416}
+  - {fileID: -2386715868371111485}
+  - {fileID: -8777126598600258477}
+  - {fileID: -5580593339242463136}
+  - {fileID: 3984207533314179759}
+  - {fileID: -5671853898969647239}
+  - {fileID: 4769480821263848704}
+  - {fileID: -4746155243665553792}
+  - {fileID: -6258146075568230429}
+  - {fileID: -7265009600687411300}
+  - {fileID: 6645135628066422720}
+  - {fileID: -7503236670216352547}
+  - {fileID: -4671395804078718716}
+  - {fileID: -4562600562600281341}
+  - {fileID: -3371282759921190731}
+  - {fileID: 6111823504822237499}
+  - {fileID: 7975449046275428283}
+  - {fileID: -1203265256702797368}
+  - {fileID: -728094283366127542}
+  - {fileID: 7905736157817837098}
+  - {fileID: 8652928717012879860}
+  - {fileID: 4360507724112089897}
+  - {fileID: 9163942964741862466}
+  - {fileID: -8985650978695021191}
+  - {fileID: -7611132510912104585}
 --- !u!114 &45930839359055378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2902,6 +3901,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &3578758675364895415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -136, y: 2088}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 3578758675364895415}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 3578758675364895415}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 703
+  dialogNeed: 0
+  dialogText: "\u63A5\u4E0B\u6765\u7684\u4E00\u4E2A\u6708\u4E5F\u8981\u9EBB\u70E6\u60A8\u548C\u5927\u5BB6\u4E86\uFF01"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &3755362572096779020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3040,6 +4085,98 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &3984207533314179759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -287.95227, y: 2874.8855}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 3984207533314179759}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 3984207533314179759}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 902
+  dialogNeed: 0
+  dialogText: "\u8BF6\uFF01\uFF01"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &4360507724112089897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1555.623, y: 3307.002}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 4360507724112089897}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 4360507724112089897}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1031
+  dialogNeed: 0
+  dialogText: "\u54C7\u554A\uFF01"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &4405650854946687079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3086,6 +4223,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &4769480821263848704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 179.58267, y: 2871.3435}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 4769480821263848704}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 4769480821263848704}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 904
+  dialogNeed: 0
+  dialogText: "\u8BF6\u563F\u563F.."
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &4815873725938826929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3129,6 +4312,52 @@ MonoBehaviour:
   dialogCharacter: 0
   mainCharacter: 1
   maskType: 1
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &4931569381379450190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -562.4519, y: 2102.745}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 4931569381379450190}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 4931569381379450190}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 701
+  dialogNeed: 0
+  dialogText: "\u7EEA\u5C0F\u59D0\uFF0C_____\u3001______\u5DF2\u7ECF\u5B8C\u6210\u4E86\uFF01"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
@@ -3454,6 +4683,98 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &6111823504822237499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -275.55545, y: 3216.6821}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 6111823504822237499}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 6111823504822237499}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1002
+  dialogNeed: 0
+  dialogText: "\u4E00\u53E3\u6C14\u5B8C\u6210\u5427"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &6158286648766224457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -550.0552, y: 2458.709}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 6158286648766224457}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 6158286648766224457}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 801
+  dialogNeed: 0
+  dialogText: "\u7B49\u4E0D\u53CA\u4E86\uFF0C\u5FEB\u5F00\u59CB\u9274\u9152\u4F1A\u5427\uFF01"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &6433960524158201738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3592,6 +4913,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &6645135628066422720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1389.1522, y: 2894.3665}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 6645135628066422720}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 6645135628066422720}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 921
+  dialogNeed: 0
+  dialogText: "\u7EC8\u4E8E\u6765\u5566......\u8BF7\u591A\u82B1\u70B9\u65F6\u95F4\u5173\u6CE8\u4E00\u4E0B\u5B69\u5B50\u4EEC\u7684____\u3001_____\u5427"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &7658653403794377614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3680,6 +5047,98 @@ MonoBehaviour:
   dialogText: "\u4F5C\u4E3A\u7B2C\u4E00\u6B21\u917F\u9152\u53EF\u4EE5\u8BF4\u662F\u76F8\u5F53\u4E0D\u9519\u4E86\uFF0C\u4E0D\u8981\u5FC3\u6025\u7684\u6162\u6162\u52AA\u529B\u6765\u5427"
   dialogCharacter: 2
   mainCharacter: 1
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &7905736157817837098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 974.7462, y: 3271.5825}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 7905736157817837098}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 7905736157817837098}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1022
+  dialogNeed: 0
+  dialogText: "\u5FD9\u8D77\u6765\u4E86\u662F\u597D\u4E8B\u554A"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &7975449046275428283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 106.973114, y: 3225.537}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 7975449046275428283}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 7975449046275428283}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1011
+  dialogNeed: 0
+  dialogText: "\u4ECE\u54EA\u4E00\u4E2A\u5F00\u59CB\u505A\u597D\u5462.....\uFF1F"
+  dialogCharacter: 0
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -3822,6 +5281,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &8652928717012879860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1197.8878, y: 3289.2922}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 8652928717012879860}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 8652928717012879860}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1023
+  dialogNeed: 0
+  dialogText: "\u597D\u60F3\u51FA\u53BB\u73A9\u554A......"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &9036255771420568059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3908,6 +5413,52 @@ MonoBehaviour:
   guideID: 316
   dialogNeed: 1
   dialogText: "\u70B9\u51FB\u786E\u8BA4\u4EE5\u5B8C\u6210\u53C2\u6570\u8BBE\u7F6E\uFF0C\u8BF7\u6CE8\u610F\u5B8C\u6210\u8BBE\u7F6E\u4E4B\u540E\u4E0D\u53EF\u4EE5\u518D\u8FD4\u56DE\u4FEE\u6539"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &9163942964741862466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1776.9937, y: 3312.315}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: 9163942964741862466}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: 9163942964741862466}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 1032
+  dialogNeed: 0
+  dialogText: "\u597D\u591A\u4E8B\u60C5\u8981\u505A\uFF01"
   dialogCharacter: 0
   mainCharacter: 0
   maskType: 0

@@ -43,6 +43,29 @@ public class RoundPanel : BasePanel
             FragmentsManager.InitialFragments();
         }
         FragmentsManager.UpdateFragments(newFragments);
+        if(GuideControl.id>=602)
+        {
+            if(newFragments.Count<5)
+            {
+                GuideControl.id = 1001;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
+            else if(newFragments.Count<8)
+            {
+                GuideControl.id = 1011;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
+            else if (newFragments.Count < 12)
+            {
+                GuideControl.id = 1021;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
+            else
+            {
+                GuideControl.id = 1031;
+                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+            }
+        }
     }
     /// <summary>
     /// 结束函数
