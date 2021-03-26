@@ -40,7 +40,7 @@ MonoBehaviour:
   guideID: 218
   dialogNeed: 1
   dialogText: ......
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -86,7 +86,7 @@ MonoBehaviour:
   guideID: 304
   dialogNeed: 1
   dialogText: "\u54BF\uFF01\uFF01"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   guideID: 408
   dialogNeed: 1
   dialogText: "\u603B\u611F\u89C9\u8FD9\u4E2A\u4EBA\u602A\u602A\u7684"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -178,7 +178,7 @@ MonoBehaviour:
   guideID: 104
   dialogNeed: 1
   dialogText: ......
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -270,7 +270,7 @@ MonoBehaviour:
   guideID: 303
   dialogNeed: 1
   dialogText: "\u7528\u4F60\u7684\u795E\u6027\u53BB\u89C2\u5BDF\u4E00\u4E0B\u8BD5\u8BD5"
-  dialogCharacter: 4
+  dialogCharacter: 2
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: Guidenode
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 482.66846, y: 672.40295}
+  position: {x: 312, y: 664}
   ports:
     keys:
     - NextID
@@ -316,7 +316,7 @@ MonoBehaviour:
   guideID: 305
   dialogNeed: 1
   dialogText: "\u4F60\u4EEC\u9152\u574A\u7684\u4EBA\u90FD\u559C\u6B22\u5728\u80CC\u540E\u5192\u51FA\u6765\u4E48\uFF01"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -408,7 +408,7 @@ MonoBehaviour:
   guideID: 108
   dialogNeed: 1
   dialogText: "\u90A3\u5C31\u5148\u4ECE\u8FD9\u91CC\u5165\u624B\uFF0C\u62DC\u6258\u4E13\u95E8\u7684\u4EBA\u6765\u5E2E\u5FD9\u5B8C\u6210\u539F\u6599\u91C7\u96C6\u5427"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -454,7 +454,7 @@ MonoBehaviour:
   guideID: 406
   dialogNeed: 1
   dialogText: "\u8BF7\u60A8\u8BD5\u7740\u7528\u795E\u6027\u548C\u5B83\u4EEC\u6C9F\u901A\u5427"
-  dialogCharacter: 5
+  dialogCharacter: 3
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -500,7 +500,7 @@ MonoBehaviour:
   guideID: 209
   dialogNeed: 1
   dialogText: "\u6B63\u662F\u5728\u4E0B"
-  dialogCharacter: 2
+  dialogCharacter: 1
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -546,7 +546,7 @@ MonoBehaviour:
   guideID: 505
   dialogNeed: 1
   dialogText: "\u8FD9\u4E5F\u662F\u53CD\u601D\u7684\u597D\u65F6\u5019\u5462\uFF0C\u56DE\u987E\u4E00\u4E0B\u4E4B\u524D\u7684\u917F\u9152\u5386\u7A0B\u5427"
-  dialogCharacter: 4
+  dialogCharacter: 2
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -592,7 +592,7 @@ MonoBehaviour:
   guideID: 212
   dialogNeed: 1
   dialogText: "\u4E0D\u8981\u5C0F\u770B\u795E\u554A\uFF01"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -638,7 +638,7 @@ MonoBehaviour:
   guideID: 210
   dialogNeed: 1
   dialogText: "\u5BB6\u7236\u53EE\u5631\u4E86\u6211\u8981\u591A\u5E2E\u5E2E\u4F60\uFF0C\u597D\u8BA9\u4F60\u5C3D\u5FEB\u4E0A\u624B\uFF0C\u6BD5\u7ADF\u793E\u65E5\u5C31\u8981\u6765\u4E86"
-  dialogCharacter: 2
+  dialogCharacter: 1
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -681,10 +681,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  guideID: 312
+  guideID: 314
   dialogNeed: 1
   dialogText: "\u8BD5\u8BD5\u770B\uFF1F\u51B3\u5B9A\u597D\u600E\u4E48\u505A\u4E4B\u540E\u5C31\u544A\u8BC9\u6211\u5427"
-  dialogCharacter: 4
+  dialogCharacter: 2
   mainCharacter: 1
   maskType: 3
   rectMask: {fileID: 0}
@@ -730,8 +730,8 @@ MonoBehaviour:
   guideID: 103
   dialogNeed: 1
   dialogText: "\u4F46\u603B\u7684\u6765\u8BB2\u771F\u662F\u6BEB\u65E0\u5934\u7EEA"
-  dialogCharacter: 1
-  mainCharacter: 0
+  dialogCharacter: 0
+  mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_Name: Guidenode
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1352, y: 680}
+  position: {x: 1368, y: 680}
   ports:
     keys:
     - NextID
@@ -773,7 +773,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  guideID: 308
+  guideID: 310
   dialogNeed: 1
   dialogText: "\u9664\u4E86\u9009\u62E9\u91C7\u8D2D\u7684\u7269\u54C1\u4E4B\u5916\uFF0C\u6709\u65F6\u8FD8\u9700\u8981\u5BF9\u5DE5\u827A\u8FC7\u7A0B\u4E2D\u4E00\u4E9B\u5176\u4ED6\u7684\u5C5E\u6027\u8FDB\u884C\u8BBE\u7F6E"
   dialogCharacter: 0
@@ -819,10 +819,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  guideID: 313
+  guideID: 315
   dialogNeed: 1
   dialogText: "\u55EF\u55EF"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 3
   rectMask: {fileID: 0}
@@ -868,7 +868,7 @@ MonoBehaviour:
   guideID: 503
   dialogNeed: 1
   dialogText: "\u5148\u770B\u770B\u5404\u9879\u5F97\u5206\u5427"
-  dialogCharacter: 4
+  dialogCharacter: 2
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -914,7 +914,7 @@ MonoBehaviour:
   guideID: 204
   dialogNeed: 1
   dialogText: "\u4F60\u5C31\u662F\u65B0\u6765\u7684\u90A3\u4E2A\u5C0F\u6BDB\u5934\uFF1F"
-  dialogCharacter: 2
+  dialogCharacter: 1
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1007,7 +1007,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u70B9\u51FB\u8D2D\u4E70\u4EE5\u5B8C\u6210\u91C7\u8D2D\u59D4\u6258"
   dialogCharacter: 1
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 1
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -1049,10 +1049,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  guideID: 309
+  guideID: 311
   dialogNeed: 1
   dialogText: "\u80FD\u6E05\u6670\u7684\u611F\u89C9\u5230\u8FD9\u4E2A\u6B65\u9AA4\u4F1A\u600E\u4E48\u5F71\u54CD\u9152\u7684\u5C5E\u6027\u4E86......"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1190,7 +1190,7 @@ MonoBehaviour:
   guideID: 109
   dialogNeed: 1
   dialogText: "\u5C06\u56DE\u5FC6\u8D77\u7684\u5DE5\u5E8F\u5361\u7247\u62D6\u5165\u89C4\u5212\u76D8\u4E2D\u4EE5\u786E\u5B9A\u5F00\u59CB\u8FDB\u884C\u8FD9\u4E00\u9879\u5DE5\u5E8F"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 0
   maskType: 2
   rectMask: {fileID: 0}
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   guideID: 214
   dialogNeed: 1
   dialogText: ......
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1334,6 +1334,52 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
+--- !u!114 &-3608825311882915141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -584, y: 1736}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -3608825311882915141}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -3608825311882915141}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 601
+  dialogNeed: 1
+  dialogText: "\u6839\u636E\u4E0A\u4E00\u56DE\u5408\u7684\u64CD\u4F5C\u4EA7\u751F\u4E86\u65B0\u7684\u788E\u7247"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
 --- !u!114 &-3293820483103070851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,7 +1422,7 @@ MonoBehaviour:
   dialogText: "\u73B0\u5728\u5C31\u8981\u8010\u5FC3\u7B49\u5F85\u4E86\u5427......"
   dialogCharacter: 0
   mainCharacter: 0
-  maskType: 1
+  maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
@@ -1420,7 +1466,7 @@ MonoBehaviour:
   guideID: 403
   dialogNeed: 1
   dialogText: "\u8BE5\u8BF4\u5DF2\u7ECF\u5BF9\u4F60\u4EEC\u4ECE\u540E\u9762\u5192\u51FA\u6765\u89C1\u602A\u4E0D\u602A\u4E86\u4E48...."
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1466,7 +1512,7 @@ MonoBehaviour:
   guideID: 215
   dialogNeed: 1
   dialogText: ............
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1604,9 +1650,55 @@ MonoBehaviour:
   guideID: 216
   dialogNeed: 1
   dialogText: ..................
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-2095662060666534021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -312, y: 1752}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -2095662060666534021}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -2095662060666534021}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 602
+  dialogNeed: 1
+  dialogText: "\u5C06\u788E\u7247\u201C\u7C89\u788E\u6DA6\u6599\u201D\u62D6\u5165\u5706\u76D8"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 2
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
@@ -1650,7 +1742,7 @@ MonoBehaviour:
   guideID: 405
   dialogNeed: 1
   dialogText: "\u662F\u7684\uFF0C\u5728\u8FDB\u5165\u4E0B\u4E00\u4E2A\u6D41\u7A0B\u4E4B\u524D\u5B83\u4EEC\u4F1A\u5728\u8FD9\u91CC\u4E34\u65F6\u4F11\u606F"
-  dialogCharacter: 5
+  dialogCharacter: 3
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1742,7 +1834,7 @@ MonoBehaviour:
   guideID: 206
   dialogNeed: 1
   dialogText: "\u4ECE\u54EA\u5192\u51FA\u6765\u7684\uFF01\uFF01\uFF01"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1788,7 +1880,7 @@ MonoBehaviour:
   guideID: 110
   dialogNeed: 1
   dialogText: "\u63A5\u4E0B\u6765\u5C31\u53BB\u62DC\u6258\u5DE5\u574A\u91CC\u7684\u5927\u5BB6\u5E2E\u5FD9\u5F00\u59CB\u91C7\u96C6\u642C\u8FD0\u539F\u6599\u5427\uFF01"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1834,7 +1926,99 @@ MonoBehaviour:
   guideID: 414
   dialogNeed: 1
   dialogText: "\u5B83\u4EEC\u770B\u8D77\u6765\u5F88\u9AD8\u5174\u5462.....\u8BF7\u60A8\u4EE5\u540E\u4E5F\u5E38\u6765\u8FD9\u91CC\u770B\u770B\u5427"
-  dialogCharacter: 5
+  dialogCharacter: 3
+  mainCharacter: 1
+  maskType: 0
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-998068152618405417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 776, y: 680}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -998068152618405417}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -998068152618405417}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 307
+  dialogNeed: 1
+  dialogText: "\u70B9\u51FB\u9AD8\u4EAE\u533A\u57DF\u8FDB\u5165\u84B8\u716E\u5BA4"
+  dialogCharacter: 0
+  mainCharacter: 0
+  maskType: 1
+  rectMask: {fileID: 0}
+  circleMask: {fileID: 0}
+  NextID: 0
+--- !u!114 &-947359498278928632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
+  m_Name: Guidenode
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1000, y: 680}
+  ports:
+    keys:
+    - guideID
+    - NextID
+    values:
+    - _fieldName: guideID
+      _node: {fileID: -947359498278928632}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: NextID
+      _node: {fileID: -947359498278928632}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  guideID: 308
+  dialogNeed: 1
+  dialogText: "\u8FD9\u4E2A\u9AD8\u4EAE\u7684\u5C31\u662F\u7C89\u788E\u673A\u4E86\u5427"
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1880,8 +2064,8 @@ MonoBehaviour:
   guideID: 102
   dialogNeed: 1
   dialogText: "\u5C31\u7B97\u542C\u8001\u7239\u8BF4\u8FD9\u6B21\u4E0B\u6765\u662F\u8981\u4E3A\u4E86\u4E0B\u4E00\u6B21\u793E\u65E5\u53BB\u917F\u9152"
-  dialogCharacter: 1
-  mainCharacter: 0
+  dialogCharacter: 0
+  mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -1923,10 +2107,10 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  guideID: 310
+  guideID: 312
   dialogNeed: 1
   dialogText: "\u4E0D\u53EF\u601D\u8BAE......"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2024,6 +2208,10 @@ MonoBehaviour:
   - {fileID: -3846870204242266160}
   - {fileID: -3293820483103070851}
   - {fileID: -4476532609544989133}
+  - {fileID: -3608825311882915141}
+  - {fileID: -2095662060666534021}
+  - {fileID: -998068152618405417}
+  - {fileID: -947359498278928632}
 --- !u!114 &45930839359055378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,7 +2344,7 @@ MonoBehaviour:
   guideID: 203
   dialogNeed: 1
   dialogText: "\u91C7\u96C6\u5355....\uFF1F"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2202,7 +2390,7 @@ MonoBehaviour:
   guideID: 506
   dialogNeed: 1
   dialogText: "\u55EF\uFF01"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2248,7 +2436,7 @@ MonoBehaviour:
   guideID: 501
   dialogNeed: 1
   dialogText: "\u8FD9\u5C31\u662F\u6210\u679C\u554A.......\u603B\u7B97\u662F\u78D5\u78D5\u7ECA\u7ECA\u7684\u641E\u5B9A\u4E86\u554A......"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2340,7 +2528,7 @@ MonoBehaviour:
   guideID: 402
   dialogNeed: 1
   dialogText: "\u6BD5\u7ADF\u9634\u51C9\u901A\u98CE\u7684\u73AF\u5883\u4F1A\u8BA9\u5B83\u4EEC\u5F88\u8212\u670D\u561B\u561B"
-  dialogCharacter: 5
+  dialogCharacter: 3
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2451,7 +2639,7 @@ MonoBehaviour:
   m_Name: Guidenode
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 776, y: 664}
+  position: {x: 552, y: 680}
   ports:
     keys:
     - NextID
@@ -2478,7 +2666,7 @@ MonoBehaviour:
   guideID: 306
   dialogNeed: 1
   dialogText: "\u7528\u795E\u6027\u89C2\u5BDF\u554A......\u8BD5\u8BD5\u770B\u5427"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2524,7 +2712,7 @@ MonoBehaviour:
   guideID: 404
   dialogNeed: 1
   dialogText: "\u8FD9\u4E9B\u5C31\u662F\u4E34\u65F6\u50A8\u5B58\u5728\u8FD9\u91CC\u7684\u4E2D\u95F4\u4EA7\u7269\u4E48"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2570,7 +2758,7 @@ MonoBehaviour:
   guideID: 219
   dialogNeed: 1
   dialogText: "\u4E0D\u8BB8\u7B11\uFF01\uFF01\uFF01"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2589,7 +2777,7 @@ MonoBehaviour:
   m_Name: Guidenode
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1064, y: 680}
+  position: {x: 1176, y: 680}
   ports:
     keys:
     - NextID
@@ -2613,7 +2801,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  guideID: 307
+  guideID: 309
   dialogNeed: 1
   dialogText: "\u70B9\u51FB\u9AD8\u4EAE\u533A\u57DF\u8FDB\u5165\u5177\u4F53\u6570\u503C\u8BBE\u7F6E"
   dialogCharacter: 0
@@ -2662,7 +2850,7 @@ MonoBehaviour:
   guideID: 213
   dialogNeed: 1
   dialogText: "\u6211\u6765\u4E4B\u524D\u53EF\u662F\u51C6\u5907\u4E86\u5F88\u4E45\u7684\uFF01"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2708,7 +2896,7 @@ MonoBehaviour:
   guideID: 105
   dialogNeed: 1
   dialogText: "\u6CA1\u529E\u6CD5\u5566\uFF0C\u603B\u4E4B\u5148\u4ECE\u5B66\u5230\u7684\u4E1C\u897F\u5F00\u59CB\u56DE\u5FC6\u5427"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2754,7 +2942,7 @@ MonoBehaviour:
   guideID: 207
   dialogNeed: 1
   dialogText: "\u8FD8\u6709\u571F\u5730\u795E\u7684\u5E74\u9F84\u80AF\u5B9A\u6BD4\u4F60\u5927\uFF01\uFF01\uFF01\u4F60\u624D\u662F\u5C0F\u6BDB\u5934\u5427\uFF01\uFF01\uFF01"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2800,7 +2988,7 @@ MonoBehaviour:
   guideID: 502
   dialogNeed: 1
   dialogText: "\u8FD9\u624D\u521A\u662F\u4E2A\u5F00\u59CB\u5462"
-  dialogCharacter: 4
+  dialogCharacter: 2
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2846,7 +3034,7 @@ MonoBehaviour:
   guideID: 208
   dialogNeed: 1
   dialogText: "\u8BF4\u8D77\u6765\u8D1F\u8D23\u8FD0\u8D27\u7684\u4EBA\u662F\u8C01\u554A\uFF0C\u4ED6\u73B0\u5728\u5728\u54EA\u5462\uFF1F\u4F60\u65E2\u7136\u6765\u4E86\u5C31\u5E2E\u6211\u627E\u627E\u4ED6\u5427"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2892,7 +3080,7 @@ MonoBehaviour:
   guideID: 302
   dialogNeed: 1
   dialogText: "\u7C89\u788E\u6DA6\u6599\uFF0C\u662F\u600E\u4E48\u4E2A\u505A\u6CD5\u5462\uFF1F"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 1
   rectMask: {fileID: 0}
@@ -2938,7 +3126,7 @@ MonoBehaviour:
   guideID: 201
   dialogNeed: 1
   dialogText: "\u91C7\u96C6\u539F\u6599\u7684\u8BDD,\u5E94\u8BE5\u53BB\u8FD9\u91CC\u5427"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 1
   rectMask: {fileID: 0}
@@ -3119,7 +3307,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  guideID: 311
+  guideID: 313
   dialogNeed: 1
   dialogText: "\u62D6\u52A8\u6ED1\u52A8\u6761\uFF0C\u53EF\u4EE5\u5BF9\u9152\u7684\u90E8\u5206\u5C5E\u6027\u8FDB\u884C\u8BBE\u7F6E\uFF0C\u53F3\u4FA7\u4F1A\u5C55\u793A\u51FA\u5176\u5BF9\u9152\u7684\u5C5E\u6027\u5E26\u6765\u7684\u5F71\u54CD"
   dialogCharacter: 0
@@ -3168,8 +3356,8 @@ MonoBehaviour:
   guideID: 101
   dialogNeed: 1
   dialogText: "\u4E0A\u6B21\u6765\u5230\u5730\u9762\u4E0A\uFF0C\u8FD8\u662F\u4E0A\u4E00\u6B21\u793E\u65E5\u5462......"
-  dialogCharacter: 1
-  mainCharacter: 0
+  dialogCharacter: 0
+  mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -3260,7 +3448,7 @@ MonoBehaviour:
   guideID: 407
   dialogNeed: 1
   dialogText: "\u597D......"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -3398,7 +3586,7 @@ MonoBehaviour:
   guideID: 106
   dialogNeed: 1
   dialogText: "\u6309\u7167\u6765\u5230\u4EBA\u95F4\u524D\u4E34\u65F6\u6076\u8865\u7684\u77E5\u8BC6\uFF0C\u80AF\u5B9A\u5148\u8981\u8FDB\u884C\u539F\u8F85\u6599\u7684\u5236\u5907......\u6765\u7740\uFF1F"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -3444,7 +3632,7 @@ MonoBehaviour:
   guideID: 205
   dialogNeed: 1
   dialogText: "\u54BF\u5440\u554A\uFF01\uFF01\uFF01\uFF01"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -3490,7 +3678,7 @@ MonoBehaviour:
   guideID: 509
   dialogNeed: 0
   dialogText: "\u4F5C\u4E3A\u7B2C\u4E00\u6B21\u917F\u9152\u53EF\u4EE5\u8BF4\u662F\u76F8\u5F53\u4E0D\u9519\u4E86\uFF0C\u4E0D\u8981\u5FC3\u6025\u7684\u6162\u6162\u52AA\u529B\u6765\u5427"
-  dialogCharacter: 4
+  dialogCharacter: 2
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -3536,7 +3724,7 @@ MonoBehaviour:
   guideID: 211
   dialogNeed: 1
   dialogText: "\u5C31\u7B97\u662F\u571F\u5730\u795E\u7684\u5973\u513F\uFF0C\u4F46\u662F\u5728\u52B3\u52A8\u7684\u7ECF\u9A8C\u4E0A\uFF0C\u6211\u79F0\u4F60\u4E00\u53E5\u5C0F\u6BDB\u5934\u4E5F\u6CA1\u4EC0\u4E48\u95EE\u9898"
-  dialogCharacter: 2
+  dialogCharacter: 1
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -3582,7 +3770,7 @@ MonoBehaviour:
   guideID: 401
   dialogNeed: 1
   dialogText: "\u8FD9\u91CC\u5C31\u662F\u4ED3\u5E93\u554A.....\u602A\u9634\u68EE\u7684"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -3717,7 +3905,7 @@ MonoBehaviour:
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
-  guideID: 314
+  guideID: 316
   dialogNeed: 1
   dialogText: "\u70B9\u51FB\u786E\u8BA4\u4EE5\u5B8C\u6210\u53C2\u6570\u8BBE\u7F6E\uFF0C\u8BF7\u6CE8\u610F\u5B8C\u6210\u8BBE\u7F6E\u4E4B\u540E\u4E0D\u53EF\u4EE5\u518D\u8FD4\u56DE\u4FEE\u6539"
   dialogCharacter: 0

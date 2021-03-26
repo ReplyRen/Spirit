@@ -49,6 +49,11 @@ public class CameraController : MonoBehaviour
             GuideControl.id = 203;
             gameObject.GetComponent<GuideControl>().Run();
         }
+        if (img.name == "蒸煮室" && GuideControl.id == 20) 
+        {
+            GuideControl.id = 308;
+            GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+        }
     }
     private void Update()
     {

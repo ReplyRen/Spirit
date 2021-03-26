@@ -17,6 +17,7 @@ public class GuideManager : MonoBehaviour
     private GameObject character;
     private GameObject character1;
     private GameObject character2;
+    private GameObject character3;
     private GameObject mainCharacter;
     private GameObject Image;
     public DialogGraph dialogGraph;
@@ -100,16 +101,18 @@ public class GuideManager : MonoBehaviour
         guideInfoDict[229].rectMask = next.GetComponent<RectTransform>();
         guideObject.Add(11, next);
         guideInfoDict[301].circleMask = zongLan.GetComponent<RectTransform>();
-        guideObject.Add(301, zongLan);
+        //guideObject.Add(301, zongLan);
         guideInfoDict[302].rectMask = fenSuiJi.GetComponent<RectTransform>();
-        guideObject.Add(304, fenSuiJi);
-        guideInfoDict[307].rectMask = fenSuiJi.GetComponent<RectTransform>();
-        guideObject.Add(307, fenSuiJi);
-        guideInfoDict[311].rectMask = Status.GetComponent<RectTransform>();
-        guideObject.Add(311, Status);
-        guideInfoDict[312].rectMask = Status.GetComponent<RectTransform>();
-        guideObject.Add(312, Status);
+        //guideObject.Add(304, fenSuiJi);
+        guideInfoDict[307].rectMask = zhengZhu.GetComponent<RectTransform>();
+        guideObject.Add(307, zhengZhu);
+        guideInfoDict[309].rectMask = fenSuiJi.GetComponent<RectTransform>();
+        guideObject.Add(309, fenSuiJi);
         guideInfoDict[313].rectMask = Status.GetComponent<RectTransform>();
+        guideObject.Add(313, Status);
+        guideInfoDict[314].rectMask = Status.GetComponent<RectTransform>();
+        guideObject.Add(314, Status);
+        guideInfoDict[315].rectMask = Status.GetComponent<RectTransform>();
         guideObject.Add(13, Status);
         guideInfoDict[410].rectMask = card1.GetComponent<RectTransform>();
         guideObject.Add(410, card1);
@@ -123,10 +126,8 @@ public class GuideManager : MonoBehaviour
     #region 操作
     private void Update()
     {
-        Debug.Log(GuideControl.id + "-");
         if (guideObject.ContainsKey(GuideControl.id))
         {
-            Debug.Log(GuideControl.id + "+");
             rectMask.GetComponent<EventPermeate>().target = guideObject[GuideControl.id];
             circleMask.GetComponent<EventPermeate>().target = guideObject[GuideControl.id];
         }
@@ -143,6 +144,7 @@ public class GuideManager : MonoBehaviour
         character = guideCanvas.transform.GetChild(2).gameObject;
         character1 = character.transform.GetChild(0).gameObject;
         character2 = character.transform.GetChild(1).gameObject;
+        character3 = character.transform.GetChild(3).gameObject;
         mainCharacter = character.transform.GetChild(2).gameObject;
         Image = guideCanvas.transform.GetChild(3).gameObject;
     }
@@ -188,14 +190,22 @@ public class GuideManager : MonoBehaviour
             case 0:
                 character1.SetActive(false);
                 character2.SetActive(false);
+                character3.SetActive(false);
                 break;
             case 1:
                 character1.SetActive(true);
                 character2.SetActive(false);
+                character3.SetActive(false);
                 break;
             case 2:
                 character1.SetActive(false);
                 character2.SetActive(true);
+                character3.SetActive(false);
+                break;
+            case 3:
+                character1.SetActive(false);
+                character2.SetActive(false);
+                character3.SetActive(true);
                 break;
         }
         if (guideInfo.mainCharacter == 0)

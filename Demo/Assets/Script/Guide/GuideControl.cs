@@ -6,11 +6,14 @@ public class GuideControl : MonoBehaviour
 {
     GuideInfo guideInfo = new GuideInfo();
     public static int id;
+    public static bool newGamer;
     public GameObject replace;
     private bool ifCan;
     // Start is called before the first frame update
     void Start()
     {
+        if (!newGamer)
+            return;
         replace = GameObject.Find("替身107");
         Invoke("SpecialEvent", 0.01f);
         Invoke("Run", 0.02f);
@@ -20,7 +23,7 @@ public class GuideControl : MonoBehaviour
     public void Run()
     {
         Debug.Log(id);
-        if (id <= 18 && id >= 2) 
+        if ((id <= 18 && id >= 2) || id == 20) 
             return;
         if(gameObject.GetComponent<GuideManager>().guideInfoDict.ContainsKey(id))
         {
@@ -70,12 +73,15 @@ public class GuideControl : MonoBehaviour
                     gameObject.GetComponent<ShakeCamera>().enabled = true;
                     break;
                 case 307:
+                    id = 20;
+                    return;
+                case 309:
                     id = 12;
                     return;
-                case 313:
+                case 314:
                     id = 13;
                     return;
-                case 314:
+                case 315:
                     id = 14;
                     return;
                 case 410:
@@ -89,6 +95,9 @@ public class GuideControl : MonoBehaviour
                     return;
                 case 507:
                     id = 18;
+                    return;
+                case 602:
+                    id = 19;
                     return;
             }
             id += 1;
@@ -108,6 +117,7 @@ public class GuideControl : MonoBehaviour
     public void SpecialEvent()
     {
         gameObject.GetComponent<GuideManager>().guideInfoDict[107].circleMask = replace.gameObject.GetComponent<RectTransform>();
+        gameObject.GetComponent<GuideManager>().guideInfoDict[602].circleMask = replace.gameObject.GetComponent<RectTransform>();
     }
     void swift()
     {

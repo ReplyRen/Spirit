@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     int currentUI;//当前打开UI在list中的序号
     int num = 10;//UI总数
     public static bool isOpen = false;
+    private bool check = true;
     //bool isConfirm = false;
     UIManager instance = null;
     private void Awake()
@@ -76,7 +77,7 @@ public class UIManager : MonoBehaviour
             }
             if (GuideControl.id == 12 && currentUI == 1)
             {
-                GuideControl.id = 308;
+                GuideControl.id = 310;
                 GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
             }
             if (GuideControl.id == 14 && btn.name == "仓库")

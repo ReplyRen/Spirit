@@ -92,9 +92,9 @@ public class GameManager : MonoBehaviour
             gameObject.GetComponent<GuideManager>().AddMaskEventDelay();
             gameObject.GetComponent<GuideControl>().Run();
         }
-        if (GuideControl.id == 11)
+        if (GuideControl.id == 19)
         {
-            GuideControl.id = 301;
+            GuideControl.id = 302;
             gameObject.GetComponent<GuideControl>().Run();
         }
     }
@@ -106,6 +106,11 @@ public class GameManager : MonoBehaviour
         uiManager.NextDay();
         StartRound();
         roundPanel.InitialRoundPanel(fragmentList);
+        if (GuideControl.id == 11)
+        {
+            GuideControl.id = 601;
+            gameObject.GetComponent<GuideControl>().Run();
+        }
     }
 
     public void NextRoundClick()
