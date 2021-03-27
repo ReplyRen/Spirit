@@ -1143,10 +1143,10 @@ MonoBehaviour:
       _dynamic: 0
   guideID: 315
   dialogNeed: 1
-  dialogText: "\u55EF\u55EF"
+  dialogText: "\u5B8C\u6210\u4E86"
   dialogCharacter: 0
   mainCharacter: 1
-  maskType: 3
+  maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
@@ -4354,7 +4354,7 @@ MonoBehaviour:
       _dynamic: 0
   guideID: 701
   dialogNeed: 0
-  dialogText: "\u7EEA\u5C0F\u59D0\uFF0C_____\u3001______\u5DF2\u7ECF\u5B8C\u6210\u4E86\uFF01"
+  dialogText: "\u7EEA\u5C0F\u59D0\uFF0C\u5DF2\u7ECF\u5B8C\u6210\u4E86\uFF01"
   dialogCharacter: 0
   mainCharacter: 0
   maskType: 0

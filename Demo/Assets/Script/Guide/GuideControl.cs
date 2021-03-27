@@ -6,7 +6,7 @@ public class GuideControl : MonoBehaviour
 {
     GuideInfo guideInfo = new GuideInfo();
     public static int id;
-    public static bool newGamer;
+    public static bool newGamer = true;
     public GameObject replace;
     private bool ifCan;
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class GuideControl : MonoBehaviour
     public void Run()
     {
         Debug.Log(id);
-        if ((id <= 18 && id >= 2) || id == 20) 
+        if ((id <= 18 && id >= 2&&id!=13&&id!=14) || id == 20) 
             return;
         if(gameObject.GetComponent<GuideManager>().guideInfoDict.ContainsKey(id))
         {
@@ -111,7 +111,7 @@ public class GuideControl : MonoBehaviour
         {
             Run();
             ifCan = false;
-            Invoke("swift", 0.5f);
+            Invoke("swift", 1);
         }
     }
     public void SpecialEvent()

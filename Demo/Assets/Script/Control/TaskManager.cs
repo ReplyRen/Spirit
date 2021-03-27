@@ -16,11 +16,29 @@ public class TaskManager : MonoBehaviour
         TextAsset taskData = Resources.Load("Data/" + name) as TextAsset;
         string[] des = taskData.text.Split('|');
         task.name = des[0];
-        task.description = des[1] + "<color=red>" + des[2] + "</color>" + des[3] + "<color=red>" + des[4] + "</color>" + des[5];
-        task.bonus = des[6];
-        task.punishment = des[7];
-        task.isTimeLimit = int.TryParse(des[2], out task.roundCount);
-        task.isScoreLimit = float.TryParse(des[4], out task.targetScore);
+        for(int i=1;i<des.Length-2;i++)
+        {
+            if(des[i][0]=='#')
+            {
+                des[i] = des[i].Replace("#", "");
+                task.roundCount = int.Parse(des[i]);
+                des[i] = "<color=red>" + des[i] + "</color>";
+            }
+            if(des[i][0]=='$')
+            {
+                des[i] = des[i].Replace("$", "");
+                task.targetScore = float.Parse(des[i]);
+                des[i] = "<color=red>" + des[i] + "</color>";
+            }
+            if (des[i][0] == '%')
+            {
+                des[i] = des[i].Replace("%", "");
+                task.category = des[i];
+                des[i] = "<color=red>" + des[i] + "</color>";
+            }
+            task.description += des[i];
+        }
+        task.bonus = des[des.Length-2];
         tasks.Add(task);
     }
     public void InstanceTask(Task task)

@@ -17,7 +17,9 @@ public class UIManager : MonoBehaviour
     GameManager gameManager;
     CameraController cameraController;
     List<GameObject> panelCanvas = new List<GameObject>();
+    List<string> names;
     GuideControl guideControl;
+    GuideManager guideManager;
     int currentUI;//当前打开UI在list中的序号
     int num = 10;//UI总数
     public static bool isOpen = false;
@@ -221,7 +223,7 @@ public class UIManager : MonoBehaviour
         if (currentUI == 0) buttonList[buttonList.Count - 1].SetActive(true);
         if (GuideControl.id == 13 && currentUI == 1)
         {
-            GuideControl.id = 314;
+            GuideControl.id = 315;
             guideControl.Run();
         }
     }
@@ -303,6 +305,25 @@ public class UIManager : MonoBehaviour
         if(GuideControl.id>=602)
         {
             GuideControl.id = 701;
+            if (GuideControl.id == 701)
+            {
+                GuideInfo guideInfo = new GuideInfo();
+                guideManager.guideInfoDict.TryGetValue(701, out guideInfo);
+                string[] str = guideInfo.dialogText.Split(',');
+                guideInfo.dialogText = str[0];
+                for(int i=0;i<names.Count;i++)
+                {
+                    if(i==names.Count-1)
+                    {
+                        guideInfo.dialogText += "和" + "<color=red>" + names[i] + "</color>";
+                    }
+                    else
+                    {
+                        guideInfo.dialogText += "," + "<color=red>" + names[i] + "</color>";
+                    }
+                }
+                guideInfo.dialogText += str[1];
+            }
             guideControl.Run();
         }
     }
@@ -398,12 +419,18 @@ public class UIManager : MonoBehaviour
 
     public void NextDay()
     {
+        names.Clear();
+        for(int i=0;i<fragmentsOnDisc.Count;i++)
+        {
+            names.Add(fragmentsOnDisc[i].name);
+        }
         SetStatus(false);
         panelList[11].SetActive(false);
     }
     //
     void Start()
     {
+        guideManager = GameObject.Find("Main Camera").GetComponent<GuideManager>();
         guideControl = GameObject.Find("Main Camera").GetComponent<GuideControl>();
         gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
         viewPanel = GameObject.Find("PanelCanvas").transform.Find("检视Panel").GetComponent<ViewPanel>();

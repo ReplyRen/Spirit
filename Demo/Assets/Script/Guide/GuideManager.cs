@@ -109,7 +109,7 @@ public class GuideManager : MonoBehaviour
         guideInfoDict[309].rectMask = fenSuiJi.GetComponent<RectTransform>();
         guideObject.Add(309, fenSuiJi);
         guideInfoDict[313].rectMask = Status.GetComponent<RectTransform>();
-        guideObject.Add(313, Status);
+        //guideObject.Add(313, Status);
         guideInfoDict[314].rectMask = Status.GetComponent<RectTransform>();
         guideObject.Add(314, Status);
         guideInfoDict[315].rectMask = Status.GetComponent<RectTransform>();

@@ -9,17 +9,13 @@ public class Task
     //任务描述
     public string description;
     //时间限制
-    public int roundCount;
+    public int roundCount = 0;
     //目标分数
-    public float targetScore;
+    public float targetScore = 0;
+    //
+    public string category = null;
     //是否完成
     public bool isFinished = false;
     //完成奖励
     public string bonus;
-    //未完成惩罚
-    public string punishment;
-    //
-    public bool isTimeLimit = false;
-    //
-    public bool isScoreLimit = false;
 }
