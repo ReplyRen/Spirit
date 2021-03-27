@@ -101,6 +101,7 @@ public class GuideControl : MonoBehaviour
                     return;
             }
             id += 1;
+            if (id == 510) newGamer = false;
         }
         else
             gameObject.GetComponent<GuideManager>().Hide();
@@ -111,7 +112,7 @@ public class GuideControl : MonoBehaviour
         {
             Run();
             ifCan = false;
-            Invoke("swift", 1);
+            Invoke("swift", 1f);
         }
     }
     public void SpecialEvent()

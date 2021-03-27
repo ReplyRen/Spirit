@@ -14,7 +14,7 @@ public class Fade : MonoBehaviour
     bool isFirst = true;
     void Start()
     {
-        fade = GameObject.Find("PanelCanvas").transform.Find("Fade").GetComponent<Image>();
+        fade = GameObject.Find("FadeCanvas").transform.Find("Fade").GetComponent<Image>();
         fade.color = fadeOut;
         FadeIn();
     }

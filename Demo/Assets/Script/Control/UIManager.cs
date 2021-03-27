@@ -74,17 +74,25 @@ public class UIManager : MonoBehaviour
                 isOpen = true;
                 panelCanvas[3].SetActive(true);
                 cameraController.locked = true;
-                if(GuideControl.id>=602&&currentUI==9)
+                if(currentUI==9)
                 {
-                    int a = Random.Range(1, 10);
-                    if(a%2==0)
+                    if (!guideControl.newGamer)
                     {
-                        GuideControl.id = 801;
-                        guideControl.Run();
+                        int a = Random.Range(1, 10);
+                        if (a % 2 == 0)
+                        {
+                            GuideControl.id = 801;
+                            guideControl.Run();
+                        }
+                        else
+                        {
+                            GuideControl.id = 811;
+                            guideControl.Run();
+                        }
                     }
                     else
                     {
-                        GuideControl.id = 811;
+                        GuideControl.id = 501;
                         guideControl.Run();
                     }
                 }

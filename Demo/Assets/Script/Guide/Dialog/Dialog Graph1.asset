@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: Guidenode
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 168, y: 648}
+  position: {x: 104, y: 648}
   ports:
     keys:
     - NextID
@@ -317,7 +317,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u7528\u4F60\u7684\u795E\u6027\u53BB\u89C2\u5BDF\u4E00\u4E0B\u8BD5\u8BD5"
   dialogCharacter: 2
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -593,7 +593,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u8BF7\u60A8\u8BD5\u7740\u7528\u795E\u6027\u548C\u5B83\u4EEC\u6C9F\u901A\u5427"
   dialogCharacter: 3
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -685,7 +685,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u6B63\u662F\u5728\u4E0B"
   dialogCharacter: 1
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -731,7 +731,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u8FD9\u4E5F\u662F\u53CD\u601D\u7684\u597D\u65F6\u5019\u5462\uFF0C\u56DE\u987E\u4E00\u4E0B\u4E4B\u524D\u7684\u917F\u9152\u5386\u7A0B\u5427"
   dialogCharacter: 2
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -823,7 +823,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u5BB6\u7236\u53EE\u5631\u4E86\u6211\u8981\u591A\u5E2E\u5E2E\u4F60\uFF0C\u597D\u8BA9\u4F60\u5C3D\u5FEB\u4E0A\u624B\uFF0C\u6BD5\u7ADF\u793E\u65E5\u5C31\u8981\u6765\u4E86"
   dialogCharacter: 1
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -915,7 +915,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u8BD5\u8BD5\u770B\uFF1F\u51B3\u5B9A\u597D\u600E\u4E48\u505A\u4E4B\u540E\u5C31\u544A\u8BC9\u6211\u5427"
   dialogCharacter: 2
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 3
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -1191,7 +1191,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u5148\u770B\u770B\u5404\u9879\u5F97\u5206\u5427"
   dialogCharacter: 2
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -1237,7 +1237,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u4F60\u5C31\u662F\u65B0\u6765\u7684\u90A3\u4E2A\u5C0F\u6BDB\u5934\uFF1F"
   dialogCharacter: 1
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -1420,7 +1420,7 @@ MonoBehaviour:
   guideID: 225
   dialogNeed: 1
   dialogText: "\u70B9\u51FB\u8D2D\u4E70\u4EE5\u5B8C\u6210\u91C7\u8D2D\u59D4\u6258"
-  dialogCharacter: 1
+  dialogCharacter: 0
   mainCharacter: 0
   maskType: 1
   rectMask: {fileID: 0}
@@ -2571,7 +2571,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u662F\u7684\uFF0C\u5728\u8FDB\u5165\u4E0B\u4E00\u4E2A\u6D41\u7A0B\u4E4B\u524D\u5B83\u4EEC\u4F1A\u5728\u8FD9\u91CC\u4E34\u65F6\u4F11\u606F"
   dialogCharacter: 3
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -2801,7 +2801,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u5B83\u4EEC\u770B\u8D77\u6765\u5F88\u9AD8\u5174\u5462.....\u8BF7\u60A8\u4EE5\u540E\u4E5F\u5E38\u6765\u8FD9\u91CC\u770B\u770B\u5427"
   dialogCharacter: 3
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -3483,7 +3483,7 @@ MonoBehaviour:
   dialogText: "\u70B9\u51FB\u7B2C\u4E8C\u9875\u67E5\u770B\u5DE5\u827A\u56DE\u987E"
   dialogCharacter: 0
   mainCharacter: 0
-  maskType: 1
+  maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
@@ -3528,7 +3528,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u6BD5\u7ADF\u9634\u51C9\u901A\u98CE\u7684\u73AF\u5883\u4F1A\u8BA9\u5B83\u4EEC\u5F88\u8212\u670D\u561B\u561B"
   dialogCharacter: 3
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -4034,7 +4034,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u8FD9\u624D\u521A\u662F\u4E2A\u5F00\u59CB\u5462"
   dialogCharacter: 2
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -5046,7 +5046,7 @@ MonoBehaviour:
   dialogNeed: 0
   dialogText: "\u4F5C\u4E3A\u7B2C\u4E00\u6B21\u917F\u9152\u53EF\u4EE5\u8BF4\u662F\u76F8\u5F53\u4E0D\u9519\u4E86\uFF0C\u4E0D\u8981\u5FC3\u6025\u7684\u6162\u6162\u52AA\u529B\u6765\u5427"
   dialogCharacter: 2
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
@@ -5184,7 +5184,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u5C31\u7B97\u662F\u571F\u5730\u795E\u7684\u5973\u513F\uFF0C\u4F46\u662F\u5728\u52B3\u52A8\u7684\u7ECF\u9A8C\u4E0A\uFF0C\u6211\u79F0\u4F60\u4E00\u53E5\u5C0F\u6BDB\u5934\u4E5F\u6CA1\u4EC0\u4E48\u95EE\u9898"
   dialogCharacter: 1
-  mainCharacter: 1
+  mainCharacter: 0
   maskType: 0
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}

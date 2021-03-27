@@ -138,15 +138,15 @@ public class GuideManager : MonoBehaviour
         rectMask = mask.transform.GetChild(0).gameObject;
         circleMask = mask.transform.GetChild(1).gameObject;
 
-        dialogImage = guideCanvas.transform.GetChild(1).gameObject;
+        dialogImage = guideCanvas.transform.GetChild(3).gameObject;
         dialog = dialogImage.transform.GetChild(0).gameObject;
 
-        character = guideCanvas.transform.GetChild(2).gameObject;
+        character = guideCanvas.transform.GetChild(1).gameObject;
         character1 = character.transform.GetChild(0).gameObject;
         character2 = character.transform.GetChild(1).gameObject;
         character3 = character.transform.GetChild(3).gameObject;
         mainCharacter = character.transform.GetChild(2).gameObject;
-        Image = guideCanvas.transform.GetChild(3).gameObject;
+        Image = guideCanvas.transform.GetChild(2).gameObject;
     }
     public void Show(int GuideID)
     {
