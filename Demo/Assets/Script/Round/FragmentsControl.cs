@@ -49,12 +49,12 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     /// 偏移量与缩放
     /// </summary>
     Vector2 offset = new Vector3();    //用来得到鼠标和图片的差值
-    Vector3 imgReduceScale = new Vector3(1f, 1f, 1);   //设置图片缩放
+    Vector3 imgReduceScale = new Vector3(0.85f, 0.85f, 1);   //设置图片缩放
     Vector3 imgMovingScale = new Vector3(0.6f, 0.6f, 1);
     Vector3 imgNormalScale = new Vector3(0.3f, 0.3f, 1);   //正常大小
 
     Vector3 imgNormalRotate = new Vector3(0, 0, 0);
-    Vector3 imgChangeRotate = new Vector3(0, 0, 25);
+    Vector3 imgChangeRotate = new Vector3(0, 0, 10);
 
     private int preIndex;           //纪录之前的序号，-1代表未在圆盘上
     public GameObject myCamera;
@@ -358,9 +358,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             if (i == FragmentsManager.fragmentsOnRound.Count)
                 FragmentsManager.fragmentsOnRound.Add(fragmentInformation);
             if(fragmentInformation.model==FragmentModel.thirty)
-                imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 190f;
+                imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 155f;
             else
-                imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 200f;
+                imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 160f;
             imgRect.localEulerAngles = new Vector3(0, 0, index * 3);
             imgRect.localScale = imgReduceScale;
             if (preIndex != -1)

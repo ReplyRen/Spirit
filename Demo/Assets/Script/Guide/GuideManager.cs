@@ -40,7 +40,7 @@ public class GuideManager : MonoBehaviour
     public void Start()
     {
         guideCanvas = GameObject.Find("GuideCanvas");
-        round = GameObject.Find("圆盘");
+        round = GameObject.Find("Round");
         LoadData();
         disfObject();
         AddMaskEvent();
@@ -141,12 +141,12 @@ public class GuideManager : MonoBehaviour
         dialogImage = guideCanvas.transform.GetChild(3).gameObject;
         dialog = dialogImage.transform.GetChild(0).gameObject;
 
-        character = guideCanvas.transform.GetChild(1).gameObject;
+        character = guideCanvas.transform.GetChild(2).gameObject;
         character1 = character.transform.GetChild(0).gameObject;
         character2 = character.transform.GetChild(1).gameObject;
         character3 = character.transform.GetChild(3).gameObject;
         mainCharacter = character.transform.GetChild(2).gameObject;
-        Image = guideCanvas.transform.GetChild(2).gameObject;
+        Image = guideCanvas.transform.GetChild(1).gameObject;
     }
     public void Show(int GuideID)
     {

@@ -12,18 +12,18 @@ public class GuideControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        id = 101;
         if (!newGamer)
             return;
-        replace = GameObject.Find("替身107");
+        //replace = GameObject.Find("替身107");
         Invoke("SpecialEvent", 0.01f);
         Invoke("Run", 0.02f);
-        id = 101;
         ifCan = true;
     }
     public void Run()
     {
         Debug.Log(id);
-        if ((id <= 18 && id >= 2&&id!=13&&id!=14) || id == 20) 
+        if ((id <= 18 && id >= 2 && id != 13 && id != 14 && id != 17) || id == 20)
             return;
         if(gameObject.GetComponent<GuideManager>().guideInfoDict.ContainsKey(id))
         {
