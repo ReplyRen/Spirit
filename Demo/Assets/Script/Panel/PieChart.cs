@@ -76,10 +76,10 @@ public class PieChart : MonoBehaviour
         }
         GameObject obj1 = Instantiate(legend, gameObject.transform);
         obj1.SetActive(true);
-        if (list.Count > 2)
+        if (list.Count > 3)
             obj1.transform.localPosition = new Vector3(-250 + 220 * (list.Count - 4), -250);
         else
-            obj1.transform.localPosition = new Vector3(-250 + 220 * list.Count, -200);
+            obj1.transform.localPosition = new Vector3(-250 + 220 * (list.Count - 1), -200);
         obj1.GetComponent<Image>().color = colors[list.Count - 1];
         obj1.GetComponentInChildren<Text>().text = inclusions[list.Count - 1].name;
         lengeds.Add(obj1);

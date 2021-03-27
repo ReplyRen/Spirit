@@ -6,7 +6,7 @@ public class GuideControl : MonoBehaviour
 {
     GuideInfo guideInfo = new GuideInfo();
     public static int id;
-    public static bool newGamer = true;
+    public bool newGamer = true;
     public GameObject replace;
     private bool ifCan;
     // Start is called before the first frame update

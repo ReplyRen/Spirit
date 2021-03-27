@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     GameManager gameManager;
     CameraController cameraController;
     List<GameObject> panelCanvas = new List<GameObject>();
-    List<string> names;
+    List<string> names=new List<string>();
     GuideControl guideControl;
     GuideManager guideManager;
     int currentUI;//当前打开UI在list中的序号

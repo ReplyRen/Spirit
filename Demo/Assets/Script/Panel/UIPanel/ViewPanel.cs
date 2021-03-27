@@ -64,10 +64,6 @@ public class ViewPanel : MonoBehaviour
         baseObjs.Add(b);
         Init(baseObjs);
     }
-    private void Start()
-    {
-        Test();
-    }
 
     public void Init(List<BaseObject> baseObjs)
     {

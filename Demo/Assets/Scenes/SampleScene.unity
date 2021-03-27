@@ -512,6 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e919421a468d542a51ee6ab6677fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newGamer: 0
   replace: {fileID: 0}
 --- !u!114 &519420038
 MonoBehaviour:
