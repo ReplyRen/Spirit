@@ -7,9 +7,8 @@ public class TaskManager : MonoBehaviour
 {
     public List<Task> tasks = new List<Task>();
     GameObject taskList;
-    GameObject finishBtn;
-    Text taskDescription;
-    Text reward;
+    GameObject taskPanel;
+    bool isFailed = false;
     public void LoadTask(string name)
     {
         Task task = new Task();
@@ -21,7 +20,8 @@ public class TaskManager : MonoBehaviour
             if(des[i][0]=='#')
             {
                 des[i] = des[i].Replace("#", "");
-                task.roundCount = int.Parse(des[i]);
+                task.roundLimit = int.Parse(des[i]);
+                task.roundCount = task.roundLimit;
                 des[i] = "<color=red>" + des[i] + "</color>";
             }
             if(des[i][0]=='$')
@@ -39,54 +39,64 @@ public class TaskManager : MonoBehaviour
             task.description += des[i];
         }
         task.bonus = des[des.Length-2];
+        task.isDoing = true;
         tasks.Add(task);
     }
     public void InstanceTask(Task task)
     {
-        GameObject temp = Resources.Load("Assets/Resources/Prefab/UIPrefab/Task") as GameObject;
-        Button btn = temp.GetComponent<Button>();
+        Object a = Resources.Load("Prefab/UIPrefab/Task") as GameObject;
+        GameObject temp = Instantiate(a) as GameObject;
         temp.transform.SetParent(taskList.transform);
+        temp.transform.localScale = new Vector3(1, 1, 1);
         temp.name = task.name;
         temp.transform.GetChild(0).GetComponent<Text>().text = task.name;
-        btn.onClick.AddListener(OnClickTask);
+        temp.transform.GetChild(1).GetComponent<Text>().text = task.description;
+        if (task.roundLimit == 0) temp.transform.GetChild(2).GetComponent<Text>().text = task.bonus;
+        else temp.transform.GetChild(2).GetComponent<Text>().text = "剩余" + "<color=red>" + task.roundCount + "</color>" + "月" + "   " + task.bonus;
     }
-    public void OnClickTask()
+    public void OpenPanel()
     {
-        var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-        if (btn.gameObject.transform.GetChild(1).gameObject.activeSelf) btn.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        taskPanel.SetActive(true);
         for(int i=0;i<tasks.Count;i++)
         {
-            if(tasks[i].name==btn.name)
+            if(tasks[i].isFinished)
             {
-                taskDescription.text = tasks[i].description;
-                reward.text = tasks[i].bonus;
-                if (tasks[i].isFinished) SetFinish();
-                else ResetFinish();
+                taskList.transform.GetChild(i).transform.GetChild(4).gameObject.SetActive(true);
             }
         }
     }
-    void ResetFinish()
+    public void ClosePanel()
     {
-        finishBtn.GetComponent<Image>().color = new Color(1, 1, 1, 0.35f);
-        finishBtn.transform.GetChild(0).GetComponent<Text>().color = new Color(1, 1, 1, 0.35f);
-        finishBtn.GetComponent<Button>().interactable = false;
-    }
-    void SetFinish()
-    {
-        finishBtn.GetComponent<Image>().color = new Color(1, 1, 1, 1);
-        finishBtn.transform.GetChild(0).GetComponent<Text>().color = new Color(1, 1, 1, 1);
-        finishBtn.GetComponent<Button>().interactable = true;
+        taskPanel.SetActive(false);
     }
     void Test()
     {
+        for(int i=0;i<2;i++)
+        {
+            LoadTask("任务" + (i + 1));
+            InstanceTask(tasks[i]);
+        }
+    }
+    public void NextMonth()
+    {
+        for(int i=0;i<tasks.Count;i++)
+        {
+            if (tasks[i].isDoing) tasks[i].roundCount--;
+            else tasks[i].roundCount++;
+        }
 
+        gameObject.SetActive(false);
+    }
+    public void Settle()
+    {
+        gameObject.SetActive(true);
     }
     void Start()
-    {
-        taskList = gameObject.transform.Find("TaskList").gameObject;
-        taskDescription = gameObject.transform.Find("TaskDes").GetComponent<Text>();
-        reward = gameObject.transform.Find("Reward").GetComponent<Text>();
-        finishBtn = gameObject.transform.Find("Finish").gameObject;
+    {        
+        taskPanel = gameObject.transform.Find("TaskPanel").gameObject;
+        taskList = taskPanel.transform.Find("TaskList").gameObject;
+        gameObject.SetActive(false);
+        Test();
     }
     void Update()
     {
