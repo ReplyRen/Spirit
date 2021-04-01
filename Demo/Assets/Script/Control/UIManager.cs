@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     int num = 10;//UI总数
     public static bool isOpen = false;
     private bool check = true;
+    string[] str1 = null;
     //bool isConfirm = false;
     UIManager instance = null;
     private void Awake()
@@ -319,11 +320,11 @@ public class UIManager : MonoBehaviour
             {
                 GuideInfo guideInfo = new GuideInfo();
                 guideManager.guideInfoDict.TryGetValue(701, out guideInfo);
-                string[] str = guideInfo.dialogText.Split('，');
-                guideInfo.dialogText = str[0];
+                if(str1==null) str1 = guideInfo.dialogText.Split('，');
+                guideInfo.dialogText = str1[0];
                 for(int i=0;i<names2.Count;i++)
                 {
-                    if(i==names2.Count-1)
+                    if (i == names2.Count - 1 && names2.Count > 1) 
                     {
                         guideInfo.dialogText += "和" + "<color=red>" + names2[i] + "</color>";
                     }
@@ -332,7 +333,7 @@ public class UIManager : MonoBehaviour
                         guideInfo.dialogText += "," + "<color=red>" + names2[i] + "</color>";
                     }
                 }
-                guideInfo.dialogText += str[1];
+                guideInfo.dialogText += str1[1];
             }
             guideControl.Run();
         }
@@ -356,6 +357,7 @@ public class UIManager : MonoBehaviour
         confirmList[9].GetComponent<UIObject>().isConfirm = false;
         for (int i = 0; i < fragmentsOnDisc.Count; i++)
         {
+            Debug.Log(fragmentsOnDisc.Count);
             switch (fragmentsOnDisc[i].name)
             {
                 case "原、辅料准备":

@@ -9,13 +9,17 @@ public class GuideControl : MonoBehaviour
     public bool newGamer = true;
     public GameObject fragmentLayout;
     private GameObject replace;
-    private bool ifCan;
+    private bool ifCan = true;
     // Start is called before the first frame update
     void Start()
     {
-        id = 101;
-        if (!newGamer)
+        if (newGamer)
+            id = 101;
+        else
+        {
+            id = 1001;
             return;
+        }
         //replace = GameObject.Find("替身107");
         Invoke("SpecialEvent", 0.01f);
         Invoke("Run", 0.02f);
