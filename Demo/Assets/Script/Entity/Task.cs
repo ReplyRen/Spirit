@@ -15,11 +15,15 @@ public class Task
     //
     public string category = null;
     //是否完成
-    public bool isFinished = false;
+    public bool isFinished = true;
     //完成奖励
     public string bonus;
     //
     public int roundCount = 0;
     //
-    public bool isDoing = true;
+    public bool isDoing = false;
+    //
+    public int instanceRound = 0;
+    //
+    public string step = null;
 }
