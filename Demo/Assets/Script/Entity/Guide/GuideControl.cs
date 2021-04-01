@@ -94,14 +94,14 @@ public class GuideControl : MonoBehaviour
                     id = 17;
                     return;
                 case 507:
-                    id = 18;
+                    id = 700;
                     return;
                 case 602:
                     id = 19;
                     return;
             }
             id += 1;
-            if (id == 510) newGamer = false;
+            if (id == 507) newGamer = false;
         }
         else
             gameObject.GetComponent<GuideManager>().Hide();

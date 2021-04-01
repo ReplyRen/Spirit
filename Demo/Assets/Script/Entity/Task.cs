@@ -21,5 +21,5 @@ public class Task
     //
     public int roundCount = 0;
     //
-    public bool isDoing = false;
+    public bool isDoing = true;
 }

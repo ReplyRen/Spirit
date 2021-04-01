@@ -17,7 +17,8 @@ public class UIManager : MonoBehaviour
     GameManager gameManager;
     CameraController cameraController;
     List<GameObject> panelCanvas = new List<GameObject>();
-    List<string> names=new List<string>();
+    List<string> names1=new List<string>();
+    List<string> names2 = new List<string>();
     GuideControl guideControl;
     GuideManager guideManager;
     int currentUI;//当前打开UI在list中的序号
@@ -61,7 +62,7 @@ public class UIManager : MonoBehaviour
                 //panelList[10].SetActive(true);
                 panelCanvas[3].SetActive(true);
                 cameraController.locked = true;
-                if(GuideControl.id>=602)
+                if(!guideControl.newGamer)
                 {
                     GuideControl.id = 901;
                     guideControl.Run();
@@ -309,25 +310,26 @@ public class UIManager : MonoBehaviour
                     buttonList[9].SetActive(true);
                     break;*/
             }
+            names1.Add(fragmentsOnDisc[i].name);
         }
-        if(GuideControl.id>=602)
+        if(!guideControl.newGamer)
         {
             GuideControl.id = 701;
             if (GuideControl.id == 701)
             {
                 GuideInfo guideInfo = new GuideInfo();
                 guideManager.guideInfoDict.TryGetValue(701, out guideInfo);
-                string[] str = guideInfo.dialogText.Split(',');
+                string[] str = guideInfo.dialogText.Split('，');
                 guideInfo.dialogText = str[0];
-                for(int i=0;i<names.Count;i++)
+                for(int i=0;i<names2.Count;i++)
                 {
-                    if(i==names.Count-1)
+                    if(i==names2.Count-1)
                     {
-                        guideInfo.dialogText += "和" + "<color=red>" + names[i] + "</color>";
+                        guideInfo.dialogText += "和" + "<color=red>" + names2[i] + "</color>";
                     }
                     else
                     {
-                        guideInfo.dialogText += "," + "<color=red>" + names[i] + "</color>";
+                        guideInfo.dialogText += "," + "<color=red>" + names2[i] + "</color>";
                     }
                 }
                 guideInfo.dialogText += str[1];
@@ -427,11 +429,12 @@ public class UIManager : MonoBehaviour
 
     public void NextDay()
     {
-        names.Clear();
-        for(int i=0;i<fragmentsOnDisc.Count;i++)
+        names2.Clear();
+        for(int i=0;i<names1.Count;i++)
         {
-            names.Add(fragmentsOnDisc[i].name);
+            names2.Add(names1[i]);
         }
+        names1.Clear();
         SetStatus(false);
         panelList[11].SetActive(false);
     }

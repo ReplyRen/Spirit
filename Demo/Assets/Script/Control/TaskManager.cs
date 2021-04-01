@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class TaskManager : MonoBehaviour
 {
     public List<Task> tasks = new List<Task>();
+    int month = 1;
     GameObject taskList;
     GameObject taskPanel;
     bool isFailed = false;
+    string name;
+    float score;
     public void LoadTask(string name)
     {
         Task task = new Task();
@@ -39,7 +42,6 @@ public class TaskManager : MonoBehaviour
             task.description += des[i];
         }
         task.bonus = des[des.Length-2];
-        task.isDoing = true;
         tasks.Add(task);
     }
     public void InstanceTask(Task task)
@@ -69,6 +71,55 @@ public class TaskManager : MonoBehaviour
     {
         taskPanel.SetActive(false);
     }
+    public void Check(List<BaseFragment> newList)
+    {
+        for (int j = 0; j < newList.Count; j++)
+        {
+            if (newList[j].name == "鉴酒")
+            {
+                /*name =;
+                score =;*/
+                for (int i = 0; i < tasks.Count; i++)
+                {
+                    tasks[i].isDoing = false;
+                    if (tasks[i].name != null)
+                    {
+                        if (tasks[i].name == name)
+                        {
+                            tasks[i].isFinished = true;
+                            tasks[i].isDoing = false;
+                        }
+                        else continue;
+                    }
+                    if(tasks[i].targetScore!=0)
+                    {
+                        if(score>= tasks[i].targetScore)
+                        {
+                            tasks[i].isFinished = true;
+                            tasks[i].isDoing = false;
+                        }
+                        else
+                        {
+                            tasks[i].isFinished = false;
+                            continue;
+                        }
+                    }
+                    if(tasks[i].roundLimit!=0)
+                    {
+                        if(tasks[i].roundCount>0)
+                        {
+                            tasks[i].isFinished = true;
+                            tasks[i].isDoing = false;
+                        }
+                        else
+                        {
+                            tasks[i].isFinished = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
     void Test()
     {
         for(int i=0;i<2;i++)
@@ -84,7 +135,15 @@ public class TaskManager : MonoBehaviour
             if (tasks[i].isDoing) tasks[i].roundCount--;
             else tasks[i].roundCount++;
         }
-
+        month++;
+        /*switch(month)
+        {
+            case 1:
+                LoadTask();
+                InstanceTask();
+        }*/
+        name = null;
+        score = 0;
         gameObject.SetActive(false);
     }
     public void Settle()
