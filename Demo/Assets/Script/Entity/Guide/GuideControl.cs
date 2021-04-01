@@ -115,7 +115,13 @@ public class GuideControl : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0)&&ifCan)
+        if (Input.touchCount > 0 && ifCan)
+        {
+            Run();
+            ifCan = false;
+            Invoke("swift", 1f);
+        }
+        else if (Input.GetMouseButtonDown(0) && ifCan)
         {
             Run();
             ifCan = false;

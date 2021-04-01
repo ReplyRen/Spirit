@@ -69,7 +69,7 @@ public class CircleGuidanceController : MonoBehaviour
     public void RefreshMask()
     {
         //获取画布
-        canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
+        canvas = GameObject.FindGameObjectWithTag("GuideCanvas").GetComponent<Canvas>();
         //获取高亮区域的四个顶点的世界坐标
         target.GetWorldCorners(_corners);
         //计算最终高亮显示区域的半径
