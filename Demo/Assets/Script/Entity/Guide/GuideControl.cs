@@ -100,9 +100,6 @@ public class GuideControl : MonoBehaviour
                 case 507:
                     id = 18;
                     return;
-                case 601:
-                    gameObject.GetComponent<GuideManager>().guideInfoDict[602].circleMask = fragmentLayout.transform.GetChild(0).gameObject.GetComponent<RectTransform>();
-                    break;
                 case 602:
                     id = 19;
                     return;
@@ -119,13 +116,13 @@ public class GuideControl : MonoBehaviour
         {
             Run();
             ifCan = false;
-            Invoke("swift", 1f);
+            Invoke("swift", 0.1f);
         }
         else if (Input.GetMouseButtonDown(0) && ifCan)
         {
             Run();
             ifCan = false;
-            Invoke("swift", 1f);
+            Invoke("swift", 0.1f);
         }
     }
     void swift()

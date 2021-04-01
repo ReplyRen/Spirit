@@ -16,6 +16,7 @@ public class FragmentsUpdate : MonoBehaviour
         ClearFragments();
         foreach(var fragment in FragmentsManager.GetFragments())
         {
+            //Debug.Log(fragment.name);
             fragment.obj = StaticMethod.LoadPrefab("Prefab/fragment");
             fragment.obj = Instantiate(fragment.obj);
             fragment.obj.transform.SetParent(transform);

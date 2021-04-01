@@ -106,9 +106,13 @@ public class GameManager : MonoBehaviour
         uiManager.NextDay();
         StartRound();
         roundPanel.InitialRoundPanel(fragmentList);
+        foreach (var fr in fragmentList)
+            Debug.Log(fr.name);
+        yield return new WaitForFixedUpdate();
         if (GuideControl.id == 11)
         {
             GuideControl.id = 601;
+            gameObject.GetComponent<GuideManager>().guideInfoDict[602].circleMask = GameObject.Find("Fragments Layout").transform.GetChild(0).gameObject.GetComponent<RectTransform>();
             gameObject.GetComponent<GuideControl>().Run();
         }
     }
