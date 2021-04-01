@@ -13,7 +13,9 @@ public class Guidenode : Node
     public string dialogText;
 
     public int dialogCharacter;// 0-无,1-角色1,角色2
+    public bool if_invisiable1; //true半隐
     public bool mainCharacter;//主角是否在
+    public bool if_invisiable2;//主角
 
     public int maskType;//none-0/rect-1/circle-2/still-3
     public GameObject rectMask;

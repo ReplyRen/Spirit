@@ -361,6 +361,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 166f;
             else if(fragmentInformation.model==FragmentModel.thirty)
                 imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 158f;
+            else if (fragmentInformation.model == FragmentModel.sixty)
+                imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 162f;
             else
                 imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 160f;
             imgRect.localEulerAngles = new Vector3(0, 0, index * 3);

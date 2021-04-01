@@ -68,6 +68,8 @@ public class GuideManager : MonoBehaviour
                 guideInfo.mainCharacter = 1;
             else
                 guideInfo.mainCharacter = 0;
+            guideInfo.if_invisiable1 = node.if_invisiable1;
+            guideInfo.if_invisiable2 = node.if_invisiable2;
             guideInfo.maskType = node.maskType;
 
             guideInfoDict.Add(guideInfo.guideID, guideInfo);
@@ -196,22 +198,70 @@ public class GuideManager : MonoBehaviour
                 character1.SetActive(true);
                 character2.SetActive(false);
                 character3.SetActive(false);
+                if (guideInfo.if_invisiable1)
+                {
+                    Color temp = character1.GetComponent<Image>().color;
+                    temp = new Color(0.4f, 0.4f, 0.4f, 1);
+                    character1.GetComponent<Image>().color = temp;
+                }
+                else
+                {
+                    Color temp = character1.GetComponent<Image>().color;
+                    temp = new Color(1f, 1f, 1f, 1);
+                    character1.GetComponent<Image>().color = temp;
+                }
                 break;
             case 2:
                 character1.SetActive(false);
                 character2.SetActive(true);
                 character3.SetActive(false);
+                if (guideInfo.if_invisiable1)
+                {
+                    Color temp = character2.GetComponent<Image>().color;
+                    temp = new Color(0.4f, 0.4f, 0.4f, 1);
+                    character2.GetComponent<Image>().color = temp;
+                }
+                else
+                {
+                    Color temp = character2.GetComponent<Image>().color;
+                    temp =new Color(1f, 1f, 1f, 1);
+                    character2.GetComponent<Image>().color = temp;
+                }
                 break;
             case 3:
                 character1.SetActive(false);
                 character2.SetActive(false);
                 character3.SetActive(true);
+                if (guideInfo.if_invisiable1)
+                {
+                    Color temp = character3.GetComponent<Image>().color;
+                    temp = new Color(0.4f, 0.4f, 0.4f, 1);
+                    character3.GetComponent<Image>().color = temp;
+                }
+                else
+                {
+                    Color temp = character3.GetComponent<Image>().color;
+                    temp = new Color(1f, 1f, 1f, 1);
+                    character3.GetComponent<Image>().color = temp;
+                }
                 break;
         }
         if (guideInfo.mainCharacter == 0)
             mainCharacter.SetActive(false);
         else
             mainCharacter.SetActive(true);
+        if(guideInfo.if_invisiable2)
+        {
+            Color temp = mainCharacter.GetComponent<Image>().color;
+            temp = new Color(0.4f, 0.4f, 0.4f, 1);
+            mainCharacter.GetComponent<Image>().color = temp;
+        }
+        else
+        {
+            Color temp = mainCharacter.GetComponent<Image>().color;
+            temp = new Color(1f, 1f, 1f, 1);
+            mainCharacter.GetComponent<Image>().color = temp;
+        }
     }
     public void Hide()
     {

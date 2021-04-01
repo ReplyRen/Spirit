@@ -7,7 +7,8 @@ public class GuideControl : MonoBehaviour
     GuideInfo guideInfo = new GuideInfo();
     public static int id;
     public bool newGamer = true;
-    public GameObject replace;
+    public GameObject fragmentLayout;
+    private GameObject replace;
     private bool ifCan;
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,9 @@ public class GuideControl : MonoBehaviour
             gameObject.GetComponent<GuideManager>().Show(id);
             switch (id)
             {
+                case 103:
+                    gameObject.GetComponent<GuideManager>().guideInfoDict[107].circleMask = fragmentLayout.transform.GetChild(0).gameObject.GetComponent<RectTransform>();
+                    break;
                 case 107:
                     id = 0;
                     return;
@@ -94,14 +98,17 @@ public class GuideControl : MonoBehaviour
                     id = 17;
                     return;
                 case 507:
-                    id = 700;
+                    id = 18;
                     return;
+                case 601:
+                    gameObject.GetComponent<GuideManager>().guideInfoDict[602].circleMask = fragmentLayout.transform.GetChild(0).gameObject.GetComponent<RectTransform>();
+                    break;
                 case 602:
                     id = 19;
                     return;
             }
             id += 1;
-            if (id == 507) newGamer = false;
+            if (id == 510) newGamer = false;
         }
         else
             gameObject.GetComponent<GuideManager>().Hide();
@@ -114,11 +121,6 @@ public class GuideControl : MonoBehaviour
             ifCan = false;
             Invoke("swift", 1f);
         }
-    }
-    public void SpecialEvent()
-    {
-        gameObject.GetComponent<GuideManager>().guideInfoDict[107].circleMask = replace.gameObject.GetComponent<RectTransform>();
-        gameObject.GetComponent<GuideManager>().guideInfoDict[602].circleMask = replace.gameObject.GetComponent<RectTransform>();
     }
     void swift()
     {
