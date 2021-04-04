@@ -8,10 +8,6 @@ public class EvaluationPanel : MonoBehaviour
     public Text scoreText;
 
 
-    private void Start()
-    {
-        Test();
-    }
     private void Test()
     {
         BaseObject obj = new BaseObject();
@@ -194,7 +190,8 @@ public class EvaluationPanel : MonoBehaviour
         float P3 = ReturnScore(obj.fineness, normal.fineness);
         float P4 = ReturnScore(obj.intensity, normal.intensity);
         float P5 = ReturnScore(obj.flavor, normal.flavor);
-        return (normalScore - 3 * errorCount) / normalScore * (P1 + P2 + P3 + P4) / 4 * Mathf.Sqrt(P5);
+        float x = (P1 + P2 + P3 + P4) / 4 * Mathf.Sqrt(P5);
+        return (normalScore - 3 * errorCount) - 2400 * Mathf.Exp(-6 * x) * 25;
 
     }
     private float ReturnScore(float a, float normal)

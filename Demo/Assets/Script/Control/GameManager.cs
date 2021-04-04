@@ -135,6 +135,15 @@ public class GameManager : MonoBehaviour
         StartCoroutine(WaitFor1());
     }
 
+    public (string,float) GetDeviation(BaseObject obj)
+    {
+        switch (obj.GetKind().ToString())
+        {
+
+        }
+        return ("1", 1);
+    }
+
     #region 流程逻辑
     /// <summary>
     /// 下一回合
