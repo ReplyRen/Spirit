@@ -73,6 +73,8 @@ public class CellarPanel : MonoBehaviour
             ee = valueChange * 0.6f;
             fragment1.element = SetEvaluations("陈酿温度（低）").element;
             fragment1.evaluation = SetEvaluations("陈酿温度（低）").evaluation;
+            fragment1.baseObject.review.Clear();
+            fragment1.baseObject.review.Add("陈酿温度：偏低");
         }
         else if (valueSet1.value <= 0.666f)
         {
@@ -83,6 +85,8 @@ public class CellarPanel : MonoBehaviour
             ee = 0.6f + valueChange * 0.2f;
             fragment1.element = SetEvaluations("陈酿温度（中）").element;
             fragment1.evaluation = SetEvaluations("陈酿温度（中）").evaluation;
+            fragment1.baseObject.review.Clear();
+            fragment1.baseObject.review.Add("陈酿温度：适中");
         }
         else
         {
@@ -93,6 +97,8 @@ public class CellarPanel : MonoBehaviour
             ee = 0.8f + valueChange * 0.2f;
             fragment1.element = SetEvaluations("陈酿温度（高）").element;
             fragment1.evaluation = SetEvaluations("陈酿温度（高）").evaluation;
+            fragment1.baseObject.review.Clear();
+            fragment1.baseObject.review.Add("陈酿温度：偏高");
         }
         //2
         if (valueSet2.value <= 0.333f)
@@ -107,6 +113,8 @@ public class CellarPanel : MonoBehaviour
             ii = valueChange * 0.3f;
             fragment2.element = SetEvaluations("陈酿湿度（低）").element;
             fragment2.evaluation = SetEvaluations("陈酿湿度（低）").evaluation;
+            fragment2.baseObject.review.Clear();
+            fragment2.baseObject.review.Add("陈酿湿度：偏低");
         }
         else if (valueSet2.value <= 0.666f)
         {
@@ -120,6 +128,8 @@ public class CellarPanel : MonoBehaviour
             ii = 0.3f + valueChange * 0;
             fragment2.element = SetEvaluations("陈酿湿度（中）").element;
             fragment2.evaluation = SetEvaluations("陈酿湿度（中）").evaluation;
+            fragment2.baseObject.review.Clear();
+            fragment2.baseObject.review.Add("陈酿湿度：适中");
         }
         else
         {
@@ -133,6 +143,8 @@ public class CellarPanel : MonoBehaviour
             ii = 0.3f + valueChange * 0.7f;
             fragment2.element = SetEvaluations("陈酿湿度（高）").element;
             fragment2.evaluation = SetEvaluations("陈酿湿度（高）").evaluation;
+            fragment2.baseObject.review.Clear();
+            fragment2.baseObject.review.Add("陈酿湿度：偏高");
         }
         //3
         if (valueSet3.value <= 0.333f)
@@ -141,6 +153,8 @@ public class CellarPanel : MonoBehaviour
             cc3 = valueChange * 0.3f;
             fragment3.element = SetEvaluations("陈酿时长（低）").element;
             fragment3.evaluation = SetEvaluations("陈酿时长（低）").evaluation;
+            fragment3.baseObject.review.Clear();
+            fragment3.baseObject.review.Add("陈酿时长：偏低");
         }
         else if (valueSet3.value <= 0.666f)
         {
@@ -148,6 +162,8 @@ public class CellarPanel : MonoBehaviour
             cc3 = 0.3f + valueChange * 0.4f;
             fragment3.element = SetEvaluations("陈酿时长（中）").element;
             fragment3.evaluation = SetEvaluations("陈酿时长（中）").evaluation;
+            fragment3.baseObject.review.Clear();
+            fragment3.baseObject.review.Add("陈酿时长：适中");
         }
         else
         {
@@ -155,6 +171,8 @@ public class CellarPanel : MonoBehaviour
             cc3 = 0.7f + valueChange * 0.3f;
             fragment3.element = SetEvaluations("陈酿时长（高）").element;
             fragment3.evaluation = SetEvaluations("陈酿时长（高）").evaluation;
+            fragment3.baseObject.review.Clear();
+            fragment3.baseObject.review.Add("陈酿时长：偏高");
         }
         a.value = (aa + aa2) / 2;
         b.value = (bb + bb2) / 2;
@@ -168,5 +186,9 @@ public class CellarPanel : MonoBehaviour
         pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
         fragmentsOnDisc[index].element = fragment1.element + fragment2.element + fragment3.element;
         fragmentsOnDisc[index].evaluation = fragment1.evaluation + fragment2.evaluation + fragment3.evaluation;
+        fragmentsOnDisc[index].baseObject.review.Clear();
+        fragmentsOnDisc[index].baseObject.review.Add(fragment1.baseObject.review[0]);
+        fragmentsOnDisc[index].baseObject.review.Add(fragment2.baseObject.review[0]);
+        fragmentsOnDisc[index].baseObject.review.Add(fragment3.baseObject.review[0]);
     }
 }

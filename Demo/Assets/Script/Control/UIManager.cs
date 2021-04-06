@@ -357,7 +357,6 @@ public class UIManager : MonoBehaviour
         confirmList[9].GetComponent<UIObject>().isConfirm = false;
         for (int i = 0; i < fragmentsOnDisc.Count; i++)
         {
-            Debug.Log(fragmentsOnDisc.Count);
             switch (fragmentsOnDisc[i].name)
             {
                 case "原、辅料准备":

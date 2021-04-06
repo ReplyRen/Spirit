@@ -48,6 +48,7 @@ public class MixPanel : MonoBehaviour
         fragment = instance.fragmentDic[name];
         fragmentsOnDisc[index].element = fragment.element;
         fragmentsOnDisc[index].evaluation = fragment.evaluation;
+        fragmentsOnDisc[index].baseObject.review.Add(name);
     }
     void Update()
     {

@@ -50,6 +50,9 @@ public class StorePanel : MonoBehaviour
         fragment = instance.fragmentDic[name];
         fragmentsOnDisc[index].element = fragment.element;
         fragmentsOnDisc[index].evaluation = fragment.evaluation;
+        name = name.Replace("（", "：");
+        name = name.Replace("）", "");
+        fragmentsOnDisc[index].baseObject.review.Add(name);
     }
     void Update()
     {
