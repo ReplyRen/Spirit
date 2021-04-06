@@ -5,7 +5,26 @@ using UnityEngine.UI;
 
 public class DJTest : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject a;
+    public GameObject b;
+    public Animator an;
+    public void SetBoola()
+    {
+        an.SetBool("a", true);
+        a.SetActive(true);
+    }
+    public void SetBoolb()
+    {
+        an.SetBool("b", true);
+        b.SetActive(true);
+    }
+    public void Close()
+    {
+        an.SetBool("a", false);
+        an.SetBool("b", false);
+        a.SetActive(false);
+        b.SetActive(false);
+    }
     void Start()
     {
         
