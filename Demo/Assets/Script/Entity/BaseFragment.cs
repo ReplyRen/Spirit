@@ -52,7 +52,7 @@ public class BaseFragment
     /// <summary>
     /// 对应酒基
     /// </summary>
-    public BaseObject baseObject;
+    public BaseObject baseObject=new BaseObject();
 
     /// <summary>
     /// 是否完成

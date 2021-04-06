@@ -135,13 +135,28 @@ public class GameManager : MonoBehaviour
         StartCoroutine(WaitFor1());
     }
 
-    public (string,float) GetDeviation(BaseObject obj)
+    public (string kind,float deviation) GetDeviation(BaseObject obj)
     {
-        switch (obj.GetKind().ToString())
-        {
+        Evaluation e = evaluationDic[obj.GetKind().ToString()];
+        List<int> l = new List<int>();
+        float ins=Mathf.Abs(GetRatio(e.intensity, e.intensity, obj.evaluation.intensity, obj.evaluation.intensity));
+        float rich= Mathf.Abs(GetRatio(e.intensity, e.rich, obj.evaluation.intensity, obj.evaluation.rich));
+        float con= Mathf.Abs(GetRatio(e.intensity, e.continuity, obj.evaluation.intensity, obj.evaluation.continuity));
+        float fin= Mathf.Abs(GetRatio(e.intensity, e.fineness, obj.evaluation.intensity, obj.evaluation.fineness));
+        float fla = Mathf.Abs(GetRatio(e.intensity, e.flavor, obj.evaluation.intensity, obj.evaluation.flavor));
 
-        }
+        string res = "";
+        float resf = 0;
+
         return ("1", 1);
+    }
+    private float GetRatio(float n1,float t1,float n2,float t2)
+    {
+        float a = t1 / n1;
+        if (n2 == 0)
+            n2 = 0.01f;
+        float b = t2 / n2;
+        return b / a;
     }
 
     #region 流程逻辑
@@ -199,6 +214,7 @@ public class GameManager : MonoBehaviour
             baseObject.evaluation = fragment.evaluation;
             baseObject.mains = fragment.mains;
             baseObject.minors = fragment.minors;
+            baseObject.review = fragment.baseObject.review;
         }
         else
         {
@@ -207,6 +223,7 @@ public class GameManager : MonoBehaviour
             baseObject.alcoholQueue = fragment.baseObject.alcoholQueue;
             baseObject.mains = fragment.baseObject.mains;
             baseObject.minors = fragment.baseObject.minors;
+            baseObject.review = fragment.baseObject.review;
             if (baseObject.alcoholQueue.Count >= 6)
             {
                 baseObject.alcoholQueue.Dequeue();
@@ -603,6 +620,35 @@ public class GameManager : MonoBehaviour
 
         fragment.evaluation = evaluation;
         return fragment;
+    }
+
+    /// <summary>
+    /// 评价字典
+    /// </summary>
+    public Dictionary<string, Evaluation> evaluationDic = new Dictionary<string, Evaluation>();
+    private void LoadEvaluation()
+    {
+        TextAsset data = Resources.Load("Data/Evaluate") as TextAsset;
+
+        string[] str = data.text.Split('\n');
+
+        for (int i = 1; i < str.Length - 1; i++)
+        {
+            var e = evaluationDecode(str[i]);
+            evaluationDic.Add(e.name, e.evaluation);
+        }
+    }
+    private (string name,Evaluation evaluation) evaluationDecode(string str)
+    {
+        string[] ss = str.Split('|');
+        Evaluation e = new Evaluation();
+        e.baseScore = int.Parse(ss[1]);
+        e.intensity = int.Parse(ss[2]);
+        e.rich= int.Parse(ss[3]);
+        e.continuity = int.Parse(ss[4]);
+        e.fineness = int.Parse(ss[5]);
+        e.flavor = int.Parse(ss[6]);
+        return (name, e);
     }
     #endregion
 }

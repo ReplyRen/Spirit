@@ -5,9 +5,20 @@ using UnityEngine.UI;
 
 public class EvaluationPanel : MonoBehaviour
 {
-    public Text scoreText;
+    [SerializeField]
+    private Text scoreText;
+    [SerializeField]
+    private Text kindText;
 
+    [SerializeField]
+    private GameObject ePanel;
+    [SerializeField]
+    private GameObject bPanel;
 
+    private void Start()
+    {
+        Test();
+    }
     private void Test()
     {
         BaseObject obj = new BaseObject();
@@ -24,6 +35,7 @@ public class EvaluationPanel : MonoBehaviour
     {
         float score = GetScore(obj)*100f;
         scoreText.text = score.ToString();
+        kindText.text = "品类：" + obj.GetKind().ToString();
         gameObject.GetComponentInChildren<EvaluationChart>().Init(obj.evaluation);
 
     }
@@ -35,46 +47,7 @@ public class EvaluationPanel : MonoBehaviour
         float normalScore = 0;
         int errorCount = 0;
 
-        if (obj.mains.Contains(主料.麸皮))
-        {
-            kind = "芝麻香型";
-        }
-        else if (obj.mains.Contains(主料.大米))
-        {
-            if (obj.mains.Count == 1)
-            {
-                kind = "米香型";
-            }
-            else
-            {
-                kind = "特香型";
-            }
-        }
-        else if (obj.mains.Contains(主料.小麦))
-        {
-            kind = "兼香型";
-        }
-        else if (obj.mains.Contains(主料.糯性高梁))
-        {
-            kind = "酱香型";
-            kind = "浓香型";
-        }
-        else
-        {
-            if (obj.minors.Contains(辅料.猪肉))
-                kind = "豉香型";
-            else if (obj.minors.Contains(辅料.草药))
-                kind = "药香型";
-            else if (obj.minors.Count > 4)
-                kind = "馥郁香型";
-            else if (obj.minors.Contains(辅料.稻壳))
-                kind = "凤香型";
-            else
-            {
-                kind = "老白干香型";
-                kind = "清香型";
-            }
-        }
+        kind = obj.GetKind().ToString();
 
         switch (kind)
         {
@@ -191,7 +164,9 @@ public class EvaluationPanel : MonoBehaviour
         float P4 = ReturnScore(obj.intensity, normal.intensity);
         float P5 = ReturnScore(obj.flavor, normal.flavor);
         float x = (P1 + P2 + P3 + P4) / 4 * Mathf.Sqrt(P5);
-        return (normalScore - 3 * errorCount) - 2400 * Mathf.Exp(-6 * x) * 25;
+        float res = (normalScore - 3 * errorCount) - 24.5f * Mathf.Exp(-6 * x) + 25;
+        return (res > 100) ? 100 : res;
+
 
     }
     private float ReturnScore(float a, float normal)
@@ -201,10 +176,16 @@ public class EvaluationPanel : MonoBehaviour
         P = 2.1f * (-x * x * x + 1) * x;
         return P;
     }
-    private int Difference(List<辅料> real, params 辅料[] normal)
+
+    public void EClick()
     {
-        int res = 0;
-        return res;
+        ePanel.SetActive(true);
+        bPanel.SetActive(false);
+    }
+    public void BClick()
+    {
+        ePanel.SetActive(false);
+        bPanel.SetActive(true);
     }
 
 

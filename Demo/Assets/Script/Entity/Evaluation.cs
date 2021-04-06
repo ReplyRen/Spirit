@@ -5,6 +5,10 @@ using UnityEngine;
 public class Evaluation
 {
     /// <summary>
+    /// 基础分
+    /// </summary>
+    public float baseScore = 0;
+    /// <summary>
     /// 强度
     /// </summary>
     public float intensity = 0;

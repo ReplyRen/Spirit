@@ -29,6 +29,8 @@ public class BaseObject
     /// </summary>
     public Evaluation evaluation;
 
+    public List<string> review = new List<string>();
+
     public Queue<float> alcoholQueue = new Queue<float>();
 
     /// <summary>
