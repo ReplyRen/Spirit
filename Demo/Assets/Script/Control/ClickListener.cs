@@ -33,12 +33,20 @@ public class ClickListener : MonoBehaviour
 
 		if (go == null)
 		{
-			Debug.Log("Click Nothing");
+			AudioManager.PlayEffectMusic("click");
 		}
 		else
 		{
-			if (go.TryGetComponent<Button>(out Button button))
-				AudioManager.PlayEffectMusic("ButtonTemp");
+			int index = int.MaxValue;
+			go.TryGetComponent<UIObject>(out UIObject uIObject);
+			if(uIObject!=null)
+			index = uIObject.index;
+			if (go.TryGetComponent<Button>(out Button button) && index != 999)
+				AudioManager.PlayEffectMusic("button");
+			else if (index == 999)
+				AudioManager.PlayEffectMusic("page turn");
+			else
+				AudioManager.PlayEffectMusic("click");
 		}
 		
 	}

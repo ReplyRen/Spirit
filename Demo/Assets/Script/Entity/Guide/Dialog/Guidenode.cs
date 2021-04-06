@@ -12,9 +12,13 @@ public class Guidenode : Node
     [TextArea(5,20)]
     public string dialogText;
 
-    public int dialogCharacter;// 0-无,1-角色1,角色2
+    public int dialogCharacter;// 0-无,1-角色1,角色2，角色3
+    public Character1Face Character1f;
+    public Character2Face Character2f;
+    public Character3Face Character3f;
     public bool if_invisiable1; //true半隐
     public bool mainCharacter;//主角是否在
+    public CharacterMainFace CharacterMainf;
     public bool if_invisiable2;//主角
 
     public int maskType;//none-0/rect-1/circle-2/still-3
@@ -34,3 +38,19 @@ public class Guidenode : Node
         return ID + 1; // Replace this
 	}
 }
+public enum Character1Face
+{
+    平常,苦脸,流汗
+};
+public enum Character2Face
+{
+    平常,笑
+};
+public enum Character3Face
+{
+    平常,偷笑,低气压
+};
+public enum CharacterMainFace
+{
+    平常,沉思,哼,惊讶,恼羞成怒
+};

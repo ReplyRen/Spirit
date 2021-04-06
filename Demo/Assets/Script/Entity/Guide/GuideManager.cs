@@ -72,6 +72,10 @@ public class GuideManager : MonoBehaviour
             guideInfo.if_invisiable2 = node.if_invisiable2;
             guideInfo.maskType = node.maskType;
 
+            guideInfo.Character1f = node.Character1f;
+            guideInfo.Character2f = node.Character2f;
+            guideInfo.Character3f = node.Character3f;
+            guideInfo.CharacterMainf = node.CharacterMainf;
             guideInfoDict.Add(guideInfo.guideID, guideInfo);
         }
 
@@ -198,6 +202,8 @@ public class GuideManager : MonoBehaviour
                 character1.SetActive(true);
                 character2.SetActive(false);
                 character3.SetActive(false);
+                character1.GetComponent<Image>().sprite= StaticMethod.LoadSprite("Sprite/对话/1" +
+                    guideInfo.Character1f);
                 if (guideInfo.if_invisiable1)
                 {
                     Color temp = character1.GetComponent<Image>().color;
@@ -215,6 +221,8 @@ public class GuideManager : MonoBehaviour
                 character1.SetActive(false);
                 character2.SetActive(true);
                 character3.SetActive(false);
+                character2.GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/对话/2" +
+                    guideInfo.Character2f);
                 if (guideInfo.if_invisiable1)
                 {
                     Color temp = character2.GetComponent<Image>().color;
@@ -232,6 +240,8 @@ public class GuideManager : MonoBehaviour
                 character1.SetActive(false);
                 character2.SetActive(false);
                 character3.SetActive(true);
+                character3.GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/对话/3" +
+                    guideInfo.Character3f);
                 if (guideInfo.if_invisiable1)
                 {
                     Color temp = character3.GetComponent<Image>().color;
@@ -250,7 +260,9 @@ public class GuideManager : MonoBehaviour
             mainCharacter.SetActive(false);
         else
             mainCharacter.SetActive(true);
-        if(guideInfo.if_invisiable2)
+        mainCharacter.GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/对话/Main" +
+                    guideInfo.CharacterMainf);
+        if (guideInfo.if_invisiable2)
         {
             Color temp = mainCharacter.GetComponent<Image>().color;
             temp = new Color(0.4f, 0.4f, 0.4f, 1);
@@ -262,6 +274,7 @@ public class GuideManager : MonoBehaviour
             temp = new Color(1f, 1f, 1f, 1);
             mainCharacter.GetComponent<Image>().color = temp;
         }
+        
     }
     public void Hide()
     {
