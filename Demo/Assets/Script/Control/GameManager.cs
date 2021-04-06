@@ -144,11 +144,16 @@ public class GameManager : MonoBehaviour
         float con= Mathf.Abs(GetRatio(e.intensity, e.continuity, obj.evaluation.intensity, obj.evaluation.continuity));
         float fin= Mathf.Abs(GetRatio(e.intensity, e.fineness, obj.evaluation.intensity, obj.evaluation.fineness));
         float fla = Mathf.Abs(GetRatio(e.intensity, e.flavor, obj.evaluation.intensity, obj.evaluation.flavor));
-
-        string res = "";
-        float resf = 0;
-
-        return ("1", 1);
+        if (ins > rich && ins > con && ins > fin && ins > fla)
+            return ("强度", ins);
+        else if (rich > ins && rich > con && rich > fin && rich > fla)
+            return ("浓郁度", rich);
+        else if (con > ins && con > rich && con > fin && con > fla)
+            return ("连绵度", con);
+        else if (fin > ins && fin > rich && fin > con && fin > fla)
+            return ("陈敛细腻度", fin);
+        else
+            return ("风味", fla);
     }
     private float GetRatio(float n1,float t1,float n2,float t2)
     {

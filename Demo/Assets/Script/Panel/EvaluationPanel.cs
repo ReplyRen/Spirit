@@ -9,34 +9,53 @@ public class EvaluationPanel : MonoBehaviour
     private Text scoreText;
     [SerializeField]
     private Text kindText;
+    [SerializeField]
+    private Text evaluateText;
+    [SerializeField]
+    private Text reviewText;
 
     [SerializeField]
     private GameObject ePanel;
     [SerializeField]
     private GameObject bPanel;
 
-    private void Start()
-    {
-        Test();
-    }
     private void Test()
     {
         BaseObject obj = new BaseObject();
         obj.evaluation = new Evaluation();
-        obj.evaluation.intensity = 80;
-        obj.evaluation.rich = 90;
-        obj.evaluation.continuity = 80;
-        obj.evaluation.fineness = 70;
-        obj.evaluation.flavor = 55;
+        obj.evaluation.intensity = 30;
+        obj.evaluation.rich = 30;
+        obj.evaluation.continuity = 30;
+        obj.evaluation.fineness = 30;
+        obj.evaluation.flavor = 30;
         obj.mains.Add(主料.麸皮);
+        obj.review.Add("发酵时间：偏高");
+        obj.review.Add("发酵温度：偏高");
+        Evaluate(obj);
+    }
+    public void Init(BaseObject obj)
+    {
         Evaluate(obj);
     }
     private void Evaluate(BaseObject obj)
     {
-        float score = GetScore(obj)*100f;
+        float score = GetScore(obj);
+        if (score >= 90)
+            evaluateText.text = "五维俱佳，乃神仙之酒";
+        else if (score >= 80)
+            evaluateText.text = "味香酒醇，属王公之酒";
+        else if (score >= 60)
+            evaluateText.text = "品味适度，为市井之酒";
+        else
+            evaluateText.text = "诸味不调，当弃之";
         scoreText.text = score.ToString();
         kindText.text = "品类：" + obj.GetKind().ToString();
         gameObject.GetComponentInChildren<EvaluationChart>().Init(obj.evaluation);
+        reviewText.text = "";
+        foreach (var a in obj.review)
+        {
+            reviewText.text += a+"\n";
+        }
 
     }
     private float GetScore(BaseObject obj)
@@ -164,10 +183,12 @@ public class EvaluationPanel : MonoBehaviour
         float P4 = ReturnScore(obj.intensity, normal.intensity);
         float P5 = ReturnScore(obj.flavor, normal.flavor);
         float x = (P1 + P2 + P3 + P4) / 4 * Mathf.Sqrt(P5);
-        float res = (normalScore - 3 * errorCount) - 24.5f * Mathf.Exp(-6 * x) + 25;
-        return (res > 100) ? 100 : res;
-
-
+        float res = (normalScore - 3 * errorCount) - 2400f * Mathf.Exp(-6 * x) + 25;
+        if (res > 100)
+            res = 100;
+        if (res < 0)
+            res = 0;
+        return res;
     }
     private float ReturnScore(float a, float normal)
     {
