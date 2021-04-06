@@ -511,4 +511,5 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             transform.GetChild(i).gameObject.SetActive(false);
         }
     }
+
 }

@@ -120,13 +120,13 @@ public class GuideControl : MonoBehaviour
         {
             Run();
             ifCan = false;
-            Invoke("swift", 0.1f);
+            Invoke("swift", 2.1f);
         }
         else if (Input.GetMouseButtonDown(0) && ifCan)
         {
             Run();
             ifCan = false;
-            Invoke("swift", 0.1f);
+            Invoke("swift", 2.1f);
         }
     }
     void swift()
