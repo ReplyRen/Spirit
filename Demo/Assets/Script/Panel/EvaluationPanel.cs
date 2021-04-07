@@ -18,7 +18,10 @@ public class EvaluationPanel : MonoBehaviour
     private GameObject ePanel;
     [SerializeField]
     private GameObject bPanel;
-
+    private void Start()
+    {
+        Test();
+    }
     private void Test()
     {
         BaseObject obj = new BaseObject();
@@ -35,11 +38,12 @@ public class EvaluationPanel : MonoBehaviour
     }
     public void Init(BaseObject obj)
     {
+        gameObject.SetActive(true);
         Evaluate(obj);
     }
     private void Evaluate(BaseObject obj)
     {
-        float score = GetScore(obj);
+        float score = GetScore(obj)*100;
         if (score >= 90)
             evaluateText.text = "五维俱佳，乃神仙之酒";
         else if (score >= 80)
@@ -183,7 +187,8 @@ public class EvaluationPanel : MonoBehaviour
         float P4 = ReturnScore(obj.intensity, normal.intensity);
         float P5 = ReturnScore(obj.flavor, normal.flavor);
         float x = (P1 + P2 + P3 + P4) / 4 * Mathf.Sqrt(P5);
-        float res = (normalScore - 3 * errorCount) - 2400f * Mathf.Exp(-6 * x) + 25;
+        float res;
+        res = Mathf.Pow(x, 50 / (normalScore - 3 * errorCount));
         if (res > 100)
             res = 100;
         if (res < 0)
@@ -207,6 +212,10 @@ public class EvaluationPanel : MonoBehaviour
     {
         ePanel.SetActive(false);
         bPanel.SetActive(true);
+    }
+    public void Close()
+    {
+        gameObject.SetActive(false);
     }
 
 
