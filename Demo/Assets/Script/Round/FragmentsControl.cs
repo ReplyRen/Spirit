@@ -27,6 +27,8 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     private RectTransform lineRect;         //线的rect
     private GameObject angleTip;            //提示模板
     private RectTransform angleTipRect;
+    private GameObject sign;
+    private int batchNum;
 
     /// <summary>
     /// 两个bool值用来调整拖动逻辑的
@@ -80,8 +82,12 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         pointDown = false;
 
         preIndex = -1;
+        batchNum = fragmentInformation.baseObject.batch + 1;
         GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
+        sign = transform.GetChild(2).gameObject;
+        sign.SetActive(true);
+        sign.GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" + batchNum.ToString());
         GetComponent<Image>().SetNativeSize();
 
         imgRect.localEulerAngles = imgChangeRotate;
@@ -183,6 +189,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 imgRect.localScale = imgMovingScale;
                 GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_yuanpian");
+                sign.SetActive(false);
                 HideBlack();
                 GetComponent<Image>().SetNativeSize();
             }
@@ -197,6 +204,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 imgRect.localScale = imgMovingScale;
                 GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
+                sign.SetActive(true);
                 ShowBlack();
                 GetComponent<Image>().SetNativeSize();
             }
@@ -314,6 +322,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                     ChangeChildOrder();
                     GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
+                    sign.SetActive(true);
                     ShowBlack();
                     GetComponent<Image>().SetNativeSize();
                     imgRect = rectTransform;
@@ -338,6 +347,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                     ChangeChildOrder();
                     GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
+                    sign.SetActive(true);
                     ShowBlack();
                     GetComponent<Image>().SetNativeSize();
                     imgRect = rectTransform;
@@ -393,6 +403,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 ChangeChildOrder();
             GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
+            sign.SetActive(true);
             ShowBlack();
             GetComponent<Image>().SetNativeSize();
             imgRect = rectTransform;

@@ -46,7 +46,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -202,7 +202,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -254,7 +254,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -358,7 +358,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -406,7 +406,7 @@ MonoBehaviour:
   dialogText: "\u54C8\u54C8\uFF0C\u90A3\u662F\u81EA\u7136\u7684\u3002"
   dialogCharacter: 2
   Character1f: 0
-  Character2f: 0
+  Character2f: 1
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
@@ -462,7 +462,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 4
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -613,7 +613,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u6211\u8BF4\uFF0C\u4F60\u53EA\u662F\u60F3\u559D\u591A\u4E86\u627E\u501F\u53E3\u6478\u9C7C\u5427\u3002"
   dialogCharacter: 1
-  Character1f: 0
+  Character1f: 2
   Character2f: 0
   Character3f: 0
   if_invisiable1: 1
@@ -667,10 +667,10 @@ MonoBehaviour:
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 1
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -769,12 +769,12 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u6B63\u662F\u5728\u4E0B\u3002"
   dialogCharacter: 1
-  Character1f: 0
+  Character1f: 2
   Character2f: 0
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -878,7 +878,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 4
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -925,12 +925,12 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u5BB6\u7236\u53EE\u5631\u4E86\u6211\u8981\u591A\u5E2E\u5E2E\u4F60\uFF0C\u597D\u8BA9\u4F60\u5C3D\u5FEB\u4E0A\u624B\uFF0C\u6BD5\u7ADF\u793E\u65E5\u5C31\u8981\u6765\u4E86\u3002"
   dialogCharacter: 1
-  Character1f: 0
+  Character1f: 1
   Character2f: 0
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -982,7 +982,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 1
   maskType: 3
   rectMask: {fileID: 0}
@@ -1083,10 +1083,10 @@ MonoBehaviour:
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 2
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -1190,7 +1190,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1398,7 +1398,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -1549,7 +1549,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u5F53\u6211\u50BB\u4E48\uFF01\uFF01\uFF01"
   dialogCharacter: 1
-  Character1f: 0
+  Character1f: 1
   Character2f: 0
   Character3f: 0
   if_invisiable1: 1
@@ -1655,10 +1655,10 @@ MonoBehaviour:
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 1
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -1710,7 +1710,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -1861,7 +1861,7 @@ MonoBehaviour:
   dialogNeed: 1
   dialogText: "\u8BF6\u5440\uFF01\u88AB\u770B\u7A7F\u4E86\u4E48\uFF01"
   dialogCharacter: 1
-  Character1f: 0
+  Character1f: 2
   Character2f: 0
   Character3f: 0
   if_invisiable1: 0
@@ -1963,14 +1963,14 @@ MonoBehaviour:
       _dynamic: 0
   guideID: 911
   dialogNeed: 1
-  dialogText: "\u5B69\u5B50\u4EEC\u7684\u72B6\u6001\u90FD\u4E0D\u9519\u5462...\u7A0D\u5FAE\u6CE8\u610F\u4E00\u4E0B\uFF0C\u5C31\u597D\u4E86\u3002"
+  dialogText: "\u5B69\u5B50\u4EEC\u7684\u72B6\u6001\u90FD\u4E0D\u9519\u5462...\u7A0D\u5FAE\u6CE8\u610F\u4E00\u4E0B_____\u3001_____\u5C31\u597D\u4E86\u3002"
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 2
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -2019,10 +2019,10 @@ MonoBehaviour:
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 2
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -2071,10 +2071,10 @@ MonoBehaviour:
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 2
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -2282,7 +2282,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -2539,10 +2539,10 @@ MonoBehaviour:
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 2
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -2594,7 +2594,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -2646,7 +2646,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -2750,7 +2750,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -2903,10 +2903,10 @@ MonoBehaviour:
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 1
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -3010,7 +3010,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 4
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -3114,7 +3114,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -3163,7 +3163,7 @@ MonoBehaviour:
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 1
   if_invisiable1: 0
   mainCharacter: 1
   CharacterMainf: 0
@@ -3270,7 +3270,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -3374,7 +3374,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -3478,7 +3478,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -3763,7 +3763,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -3921,7 +3921,7 @@ MonoBehaviour:
   mainCharacter: 0
   CharacterMainf: 0
   if_invisiable2: 0
-  maskType: 0
+  maskType: 2
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
@@ -3968,10 +3968,10 @@ MonoBehaviour:
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 2
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -4127,7 +4127,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -4179,7 +4179,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -4231,7 +4231,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 4
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -4335,7 +4335,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -4387,7 +4387,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -4491,7 +4491,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 4
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -4543,7 +4543,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -4562,7 +4562,7 @@ MonoBehaviour:
   m_Name: Guidenode
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1368, y: 328}
+  position: {x: 1368, y: 312}
   ports:
     keys:
     - NextID
@@ -4595,7 +4595,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -4647,7 +4647,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -4699,7 +4699,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -4751,7 +4751,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 1
   rectMask: {fileID: 0}
@@ -5268,10 +5268,10 @@ MonoBehaviour:
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 1
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -5479,7 +5479,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -5531,7 +5531,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -5576,14 +5576,14 @@ MonoBehaviour:
       _dynamic: 0
   guideID: 921
   dialogNeed: 1
-  dialogText: "\u7EC8\u4E8E\u6765\u5566......\u8BF7\u591A\u4E9B\u7CBE\u529B\u5173\u6CE8\u4E00\u4E0B\u5B69\u5B50\u4EEC\u7684\uFF0C\u5427\u3002"
+  dialogText: "\u7EC8\u4E8E\u6765\u5566......\u8BF7\u591A\u4E9B\u7CBE\u529B\u5173\u6CE8\u4E00\u4E0B\u5B69\u5B50\u4EEC\u7684____\u3001_____\u5427\u3002"
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
-  Character3f: 0
+  Character3f: 2
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -5635,7 +5635,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -5687,7 +5687,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -5739,7 +5739,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -5791,7 +5791,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -5843,7 +5843,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 1
   maskType: 0
   rectMask: {fileID: 0}
@@ -5895,7 +5895,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 0
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 1
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -5999,7 +5999,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 2
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}
@@ -6155,7 +6155,7 @@ MonoBehaviour:
   Character3f: 0
   if_invisiable1: 1
   mainCharacter: 1
-  CharacterMainf: 0
+  CharacterMainf: 3
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}

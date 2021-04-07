@@ -8,8 +8,9 @@ public class GuideControl : MonoBehaviour
     public static int id;
     public bool newGamer = true;
     public GameObject fragmentLayout;
+    public GameObject dialog;
     private GameObject replace;
-    private bool ifCan = true;
+    public bool ifCan = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class GuideControl : MonoBehaviour
         }
         //replace = GameObject.Find("替身107");
         Invoke("SpecialEvent", 0.01f);
-        Invoke("Run", 0.02f);
+        Invoke("Run", 0.1f);
         ifCan = true;
     }
     public void Run()
@@ -108,25 +109,41 @@ public class GuideControl : MonoBehaviour
                     id = 19;
                     return;
             }
+            if (id == 509)
+            {
+                id = -1;
+                newGamer = false;
+                gameObject.GetComponent<GuideManager>().Hide();
+            }
             id += 1;
-            if (id == 510) newGamer = false;
+            
         }
         else
             gameObject.GetComponent<GuideManager>().Hide();
     }
     private void Update()
     {
-        if (Input.touchCount > 0 && ifCan)
+        if (Input.touchCount > 0 && !ifCan)
+        {
+            dialog.GetComponent<StartGameCtrl>().ShowAllText();
+            ifCan = true;
+        }
+        else if (Input.GetMouseButtonDown(0) && !ifCan)
+        {
+            dialog.GetComponent<StartGameCtrl>().ShowAllText();
+            ifCan = true;
+        }
+        else if (Input.touchCount > 0 && ifCan)
         {
             Run();
             ifCan = false;
-            Invoke("swift", 2.1f);
+            //Invoke("swift", 2.1f);
         }
         else if (Input.GetMouseButtonDown(0) && ifCan)
         {
             Run();
             ifCan = false;
-            Invoke("swift", 2.1f);
+            //Invoke("swift", 2.1f);
         }
     }
     void swift()

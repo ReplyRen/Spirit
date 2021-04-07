@@ -210,6 +210,8 @@ public class EvaluationPanel : MonoBehaviour
     }
     public void BClick()
     {
+        if (GuideControl.id == 18)
+            GuideControl.id = 508;
         ePanel.SetActive(false);
         bPanel.SetActive(true);
     }

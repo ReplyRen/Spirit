@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using XNode;
-using DG.Tweening;
 
 public class GuideManager : MonoBehaviour
 {
@@ -187,9 +186,8 @@ public class GuideManager : MonoBehaviour
             Image.SetActive(false);
             mask.SetActive(true);
         }
-        dialog.GetComponent<Text>().text = "";
-        Text text = dialog.GetComponent<Text>();
-        text.DOText(guideInfo.dialogText, 2);
+        //dialog.GetComponent<Text>().text = "";
+        dialog.GetComponent<StartGameCtrl>().PlayText(guideInfo.dialogText);
         if (guideInfo.dialogNeed == 0)
             dialogImage.SetActive(false);
         else
@@ -288,6 +286,7 @@ public class GuideManager : MonoBehaviour
     {
         GuideInfo guideInfo = new GuideInfo();
         guideInfoDict.TryGetValue(GuideID, out guideInfo);
+        Text text = dialog.GetComponent<Text>();
         dialog.GetComponent<Text>().text = guideInfo.dialogText;
     }
     #endregion
