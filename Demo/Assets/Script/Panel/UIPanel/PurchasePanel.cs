@@ -107,6 +107,10 @@ public class PurchasePanel : MonoBehaviour
             GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
         }
     }
+    public void Reset()
+    {
+        buy.GetComponent<UIObject>().isConfirm = false;
+    }
     void Change(bool a,params int[] index)
     {
         if (!a)

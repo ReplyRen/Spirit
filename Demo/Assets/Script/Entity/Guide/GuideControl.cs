@@ -11,6 +11,7 @@ public class GuideControl : MonoBehaviour
     public GameObject dialog;
     private GameObject replace;
     public bool ifCan = true;
+    private bool timer = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -111,9 +112,10 @@ public class GuideControl : MonoBehaviour
             }
             if (id == 509)
             {
-                id = -1;
+                id = 605;
                 newGamer = false;
                 gameObject.GetComponent<GuideManager>().Hide();
+                return;
             }
             id += 1;
             
@@ -123,15 +125,23 @@ public class GuideControl : MonoBehaviour
     }
     private void Update()
     {
+        if (!timer)
+            return;
         if (Input.touchCount > 0 && !ifCan)
         {
-            dialog.GetComponent<StartGameCtrl>().ShowAllText();
+            if(dialog.activeSelf)
+                dialog.GetComponent<StartGameCtrl>().ShowAllText();
             ifCan = true;
+            timer = false;
+            Invoke("swift", 0.5f);
         }
         else if (Input.GetMouseButtonDown(0) && !ifCan)
         {
-            dialog.GetComponent<StartGameCtrl>().ShowAllText();
+            if (dialog.activeSelf)
+                dialog.GetComponent<StartGameCtrl>().ShowAllText();
             ifCan = true;
+            timer = false;
+            Invoke("swift", 0.5f);
         }
         else if (Input.touchCount > 0 && ifCan)
         {
@@ -148,6 +158,6 @@ public class GuideControl : MonoBehaviour
     }
     void swift()
     {
-        ifCan = true;
+        timer = true;
     }
 }

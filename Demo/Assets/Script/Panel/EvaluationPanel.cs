@@ -44,6 +44,7 @@ public class EvaluationPanel : MonoBehaviour
     private void Evaluate(BaseObject obj)
     {
         float score = GetScore(obj)*100;
+        Debug.Log(score);
         if (score >= 90)
             evaluateText.text = "五维俱佳，乃神仙之酒";
         else if (score >= 80)

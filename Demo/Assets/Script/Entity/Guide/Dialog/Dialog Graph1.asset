@@ -676,58 +676,6 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
---- !u!114 &-8014870479557368310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
-  m_Name: Guidenode
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -344, y: 2088}
-  ports:
-    keys:
-    - guideID
-    - NextID
-    values:
-    - _fieldName: guideID
-      _node: {fileID: -8014870479557368310}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: NextID
-      _node: {fileID: -8014870479557368310}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  guideID: 702
-  dialogNeed: 1
-  dialogText: "\u597D\u7684\uFF01"
-  dialogCharacter: 2
-  Character1f: 0
-  Character2f: 0
-  Character3f: 0
-  if_invisiable1: 1
-  mainCharacter: 1
-  CharacterMainf: 0
-  if_invisiable2: 0
-  maskType: 0
-  rectMask: {fileID: 0}
-  circleMask: {fileID: 0}
-  NextID: 0
 --- !u!114 &-7986523699378325259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3380,58 +3328,6 @@ MonoBehaviour:
   rectMask: {fileID: 0}
   circleMask: {fileID: 0}
   NextID: 0
---- !u!114 &-135607760032468940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
-  m_Name: Guidenode
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 72, y: 2104}
-  ports:
-    keys:
-    - guideID
-    - NextID
-    values:
-    - _fieldName: guideID
-      _node: {fileID: -135607760032468940}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: NextID
-      _node: {fileID: -135607760032468940}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  guideID: 704
-  dialogNeed: 1
-  dialogText: "\u54C8\u54C8\u54C8\u54C8\uFF0C\u4EA4\u7ED9\u6211\u4EEC\u5C31\u597D\u3002"
-  dialogCharacter: 2
-  Character1f: 0
-  Character2f: 0
-  Character3f: 0
-  if_invisiable1: 0
-  mainCharacter: 1
-  CharacterMainf: 0
-  if_invisiable2: 1
-  maskType: 0
-  rectMask: {fileID: 0}
-  circleMask: {fileID: 0}
-  NextID: 0
 --- !u!114 &-98134608500245415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3581,9 +3477,6 @@ MonoBehaviour:
   - {fileID: -998068152618405417}
   - {fileID: -947359498278928632}
   - {fileID: 4931569381379450190}
-  - {fileID: -8014870479557368310}
-  - {fileID: 3578758675364895415}
-  - {fileID: -135607760032468940}
   - {fileID: 6158286648766224457}
   - {fileID: -8237552084144605757}
   - {fileID: -5087698543794292096}
@@ -4388,58 +4281,6 @@ MonoBehaviour:
   if_invisiable1: 0
   mainCharacter: 1
   CharacterMainf: 2
-  if_invisiable2: 0
-  maskType: 0
-  rectMask: {fileID: 0}
-  circleMask: {fileID: 0}
-  NextID: 0
---- !u!114 &3578758675364895415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe038d68c379cd44dbee09f240d9917b, type: 3}
-  m_Name: Guidenode
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: -136, y: 2088}
-  ports:
-    keys:
-    - guideID
-    - NextID
-    values:
-    - _fieldName: guideID
-      _node: {fileID: 3578758675364895415}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: NextID
-      _node: {fileID: 3578758675364895415}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  guideID: 703
-  dialogNeed: 1
-  dialogText: "\u63A5\u4E0B\u6765\u7684\u4E00\u4E2A\u6708\u4E5F\u8981\u9EBB\u70E6\u60A8\u548C\u5927\u5BB6\u4E86\uFF01"
-  dialogCharacter: 2
-  Character1f: 0
-  Character2f: 0
-  Character3f: 0
-  if_invisiable1: 1
-  mainCharacter: 1
-  CharacterMainf: 0
   if_invisiable2: 0
   maskType: 0
   rectMask: {fileID: 0}

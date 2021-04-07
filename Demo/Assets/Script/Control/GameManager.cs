@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     {
 
     }
-
+    bool isa = false;
     IEnumerator WaitFor1()
     {
         yield return new WaitForSeconds(1.2f);
@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour
         StartRound();
         roundPanel.InitialRoundPanel(fragmentList);*/
         StartCoroutine(WaitFor2());
+        isa = false;
     }
 
     public void SwitchClick()
@@ -134,7 +135,11 @@ public class GameManager : MonoBehaviour
             fragmentOnDisc.Add(fragment);
         uiManager.gameObject.SetActive(true);
         uiManager.InitializeFactory(fragmentOnDisc);*/
-        StartCoroutine(WaitFor1());
+        if (!isa)
+        {
+            StartCoroutine(WaitFor1());
+            isa = true;
+        }
     }
 
     public (string kind,float deviation) GetDeviation(BaseObject obj)

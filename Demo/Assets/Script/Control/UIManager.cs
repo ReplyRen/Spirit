@@ -234,7 +234,7 @@ public class UIManager : MonoBehaviour
         var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         buttonList[currentUI].transform.GetComponent<UIObject>().isConfirm = true;
         mats[currentUI].SetFloat("_Flag", 1);
-        if (panelList[currentUI].name != "采购部Panel") btn.SetActive(false);
+        if (panelList[currentUI].name != "采购部Panel" && panelList[currentUI].name != "评价Panel") btn.SetActive(false);
         try
         {
             quickSetList[currentUI - 1].SetActive(false);
@@ -350,11 +350,11 @@ public class UIManager : MonoBehaviour
                 {
                     if (i == names2.Count - 1 && names2.Count > 1) 
                     {
-                        guideInfo.dialogText += "和" + "<color=red>" + names2[i] + "</color>";
+                        guideInfo.dialogText += "和" +names2[i] ;
                     }
                     else
                     {
-                        guideInfo.dialogText += "，" + "<color=red>" + names2[i] + "</color>";
+                        guideInfo.dialogText += "，" + names2[i] ;
                     }
                 }
                 guideInfo.dialogText += str1[1];

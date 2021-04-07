@@ -187,7 +187,8 @@ public class GuideManager : MonoBehaviour
             mask.SetActive(true);
         }
         //dialog.GetComponent<Text>().text = "";
-        dialog.GetComponent<StartGameCtrl>().PlayText(guideInfo.dialogText);
+        if (dialog.activeSelf)
+            dialog.GetComponent<StartGameCtrl>().PlayText(guideInfo.dialogText);
         if (guideInfo.dialogNeed == 0)
             dialogImage.SetActive(false);
         else
