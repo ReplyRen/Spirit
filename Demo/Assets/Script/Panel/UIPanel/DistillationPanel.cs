@@ -14,6 +14,8 @@ public class DistillationPanel : MonoBehaviour
     Inclusion g = new Inclusion("高级酸", 0);
     Inclusion h = new Inclusion("高级酯", 0);
     Inclusion i = new Inclusion("高级醇", 0);
+    BaseFragment fragment1 = new BaseFragment();
+    BaseFragment fragment2 = new BaseFragment();
     BaseFragment fragment = new BaseFragment();
     List<BaseFragment> fragmentsOnDisc;
     GameManager instance;
@@ -63,6 +65,65 @@ public class DistillationPanel : MonoBehaviour
             }
         }
     }
+    public void Confirm()
+    {
+        switch (status)
+        {
+            case 1:
+                if (valueSet1.value <= 0.333f)
+                {
+                    fragment1.element = SetEvaluations("蒸馏温度（低）").element;
+                    fragment1.evaluation = SetEvaluations("蒸馏温度（低）").evaluation;
+                    fragment1.baseObject.review.Clear();
+                    fragment1.baseObject.review.Add("蒸馏温度：偏低");
+                }
+                else if (valueSet1.value <= 0.666f)
+                {
+                    fragment1.element = SetEvaluations("蒸馏温度（中）").element;
+                    fragment1.evaluation = SetEvaluations("蒸馏温度（中）").evaluation;
+                    fragment1.baseObject.review.Clear();
+                    fragment1.baseObject.review.Add("蒸馏温度：适中");
+                }
+                else
+                {
+                    fragment1.element = SetEvaluations("蒸馏温度（高）").element;
+                    fragment1.evaluation = SetEvaluations("蒸馏温度（高）").evaluation;
+                    fragment1.baseObject.review.Clear();
+                    fragment1.baseObject.review.Add("蒸馏温度：偏高");
+                }
+                //2
+                if (valueSet2.value <= 0.333f)
+                {
+                    fragment2.element = SetEvaluations("蒸馏时长（低）").element;
+                    fragment2.evaluation = SetEvaluations("蒸馏时长（低）").evaluation;
+                    fragment2.baseObject.review.Clear();
+                    fragment2.baseObject.review.Add("蒸馏时长：偏低");
+                }
+                else if (valueSet2.value <= 0.666f)
+                {
+                    fragment2.element = SetEvaluations("蒸馏时长（中）").element;
+                    fragment2.evaluation = SetEvaluations("蒸馏时长（中）").evaluation;
+                    fragment2.baseObject.review.Clear();
+                    fragment2.baseObject.review.Add("蒸馏时长：适中");
+                }
+                else
+                {
+                    fragment2.element = SetEvaluations("蒸馏时长（高）").element;
+                    fragment2.evaluation = SetEvaluations("蒸馏时长（高）").evaluation;
+                    fragment2.baseObject.review.Clear();
+                    fragment2.baseObject.review.Add("蒸馏时长：偏高");
+                }
+                fragmentsOnDisc[index].element = fragment1.element + fragment2.element;
+                fragmentsOnDisc[index].evaluation = fragment1.evaluation + fragment2.evaluation;
+                fragmentsOnDisc[index].baseObject.review.Clear();
+                fragmentsOnDisc[index].baseObject.review.Add(fragment1.baseObject.review[0]);
+                fragmentsOnDisc[index].baseObject.review.Add(fragment2.baseObject.review[0]);
+                break;
+            case 2:
+                SetEvaluation("看花摘酒");
+                break;
+        }
+    }
     public void Init()
     {
         valueSet1.value = 0;
@@ -88,8 +149,6 @@ public class DistillationPanel : MonoBehaviour
         switch (status)
         {
             case 1:
-                BaseFragment fragment1 = new BaseFragment();
-                BaseFragment fragment2 = new BaseFragment();
                 float aa, bb, cc, gg, hh, ii;
                 float aa2, bb2, cc2, gg2, hh2, ii2;
                 if (valueSet1.value <= 0.333f)
@@ -101,10 +160,6 @@ public class DistillationPanel : MonoBehaviour
                     gg = valueChange * 1;
                     hh = valueChange * 1;
                     ii = valueChange * 1;
-                    fragment1.element = SetEvaluations("蒸馏温度（低）").element;
-                    fragment1.evaluation = SetEvaluations("蒸馏温度（低）").evaluation;
-                    fragment1.baseObject.review.Clear();
-                    fragment1.baseObject.review.Add("蒸馏温度：低");
                 }
                 else if (valueSet1.value <= 0.666f)
                 {
@@ -115,10 +170,6 @@ public class DistillationPanel : MonoBehaviour
                     gg = 1 - valueChange * 0.4f;
                     hh = 1 - valueChange * 0.5f;
                     ii = 1 - valueChange * 0.3f;
-                    fragment1.element = SetEvaluations("蒸馏温度（中）").element;
-                    fragment1.evaluation = SetEvaluations("蒸馏温度（中）").evaluation;
-                    fragment1.baseObject.review.Clear();
-                    fragment1.baseObject.review.Add("蒸馏温度：中");
                 }
                 else
                 {
@@ -129,10 +180,6 @@ public class DistillationPanel : MonoBehaviour
                     gg = 0.6f - valueChange * 0.3f;
                     hh = 0.5f - valueChange * 0.2f;
                     ii = 0.7f - valueChange * 0.3f;
-                    fragment1.element = SetEvaluations("蒸馏温度（高）").element;
-                    fragment1.evaluation = SetEvaluations("蒸馏温度（高）").evaluation;
-                    fragment1.baseObject.review.Clear();
-                    fragment1.baseObject.review.Add("蒸馏温度：高");
                 }
                 //2
                 if (valueSet2.value <= 0.333f)
@@ -144,10 +191,6 @@ public class DistillationPanel : MonoBehaviour
                     gg2 = valueChange * 1;
                     hh2 = valueChange * 1;
                     ii2 = valueChange * 1;
-                    fragment2.element = SetEvaluations("蒸馏时长（低）").element;
-                    fragment2.evaluation = SetEvaluations("蒸馏时长（低）").evaluation;
-                    fragment2.baseObject.review.Clear();
-                    fragment2.baseObject.review.Add("蒸馏时长：低");
                 }
                 else if (valueSet2.value <= 0.666f)
                 {
@@ -158,10 +201,6 @@ public class DistillationPanel : MonoBehaviour
                     gg2 = 1 - valueChange * 0.4f;
                     hh2 = 1 - valueChange * 0.5f;
                     ii2 = 1 - valueChange * 0.3f;
-                    fragment2.element = SetEvaluations("蒸馏时长（中）").element;
-                    fragment2.evaluation = SetEvaluations("蒸馏时长（中）").evaluation;
-                    fragment2.baseObject.review.Clear();
-                    fragment2.baseObject.review.Add("蒸馏时长：中");
                 }
                 else
                 {
@@ -172,10 +211,6 @@ public class DistillationPanel : MonoBehaviour
                     gg2 = 0.6f - valueChange * 0.3f;
                     hh2 = 0.5f - valueChange * 0.2f;
                     ii2 = 0.7f - valueChange * 0.3f;
-                    fragment2.element = SetEvaluations("蒸馏时长（高）").element;
-                    fragment2.evaluation = SetEvaluations("蒸馏时长（高）").evaluation;
-                    fragment2.baseObject.review.Clear();
-                    fragment2.baseObject.review.Add("蒸馏时长：高");
                 }
                 a.value = (aa + aa2) / 2;
                 b.value = (bb + bb2) / 2;
@@ -186,11 +221,6 @@ public class DistillationPanel : MonoBehaviour
                 float sum = a.value + b.value + c.value;
                 barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
                 pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
-                fragmentsOnDisc[index].element = fragment1.element + fragment2.element;
-                fragmentsOnDisc[index].evaluation = fragment1.evaluation + fragment2.evaluation;
-                fragmentsOnDisc[index].baseObject.review.Clear();
-                fragmentsOnDisc[index].baseObject.review.Add(fragment1.baseObject.review[0]);
-                fragmentsOnDisc[index].baseObject.review.Add(fragment2.baseObject.review[0]);
                 break;
             case 2:
                 if (valueSet.value <= 0.25f)
@@ -218,7 +248,6 @@ public class DistillationPanel : MonoBehaviour
                     f.value = 1 - valueChange * 0.2f;
                 }
                 barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
-                SetEvaluation("看花摘酒");
                 break;
         }
     }

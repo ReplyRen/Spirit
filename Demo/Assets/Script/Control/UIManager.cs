@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     public static bool isOpen = false;
     private bool check = true;
     string[] str1 = null;
+    string[] str2 = null;
+    string[] str3 = null;
     //bool isConfirm = false;
     UIManager instance = null;
     private void Awake()
@@ -65,7 +67,29 @@ public class UIManager : MonoBehaviour
                 cameraController.locked = true;
                 if(!guideControl.newGamer)
                 {
-                    GuideControl.id = 901;
+                    var a = gameManager.GetDeviation(fragmentsOnDisc[fragmentsOnDisc.Count - 1].baseObject);
+                    if (a.deviation <= 0.05)
+                        GuideControl.id = 901;
+                    else if (a.deviation > 0.05 && a.deviation <= 0.1) 
+                    {
+                        GuideControl.id = 911;
+                        GuideInfo guideInfo = new GuideInfo();
+                        guideManager.guideInfoDict.TryGetValue(911, out guideInfo);
+                        if (str2 == null) str2 = guideInfo.dialogText.Split('，');
+                        guideInfo.dialogText = str2[0];
+                        guideInfo.dialogText += "<color=red>" + a.kind + "</color>";
+                        guideInfo.dialogText += str2[1];
+                    }
+                    else
+                    {
+                        GuideControl.id = 921;
+                        GuideInfo guideInfo = new GuideInfo();
+                        guideManager.guideInfoDict.TryGetValue(921, out guideInfo);
+                        if (str3 == null) str3 = guideInfo.dialogText.Split('，');
+                        guideInfo.dialogText = str3[0];
+                        guideInfo.dialogText += "<color=red>" + a.kind + "</color>";
+                        guideInfo.dialogText += str3[1];
+                    }
                     guideControl.Run();
                 }
             }
@@ -330,7 +354,7 @@ public class UIManager : MonoBehaviour
                     }
                     else
                     {
-                        guideInfo.dialogText += "," + "<color=red>" + names2[i] + "</color>";
+                        guideInfo.dialogText += "，" + "<color=red>" + names2[i] + "</color>";
                     }
                 }
                 guideInfo.dialogText += str1[1];
@@ -354,7 +378,7 @@ public class UIManager : MonoBehaviour
             }
             catch { }
         }
-        confirmList[9].GetComponent<UIObject>().isConfirm = false;
+        //confirmList[9].GetComponent<UIObject>().isConfirm = false;
         for (int i = 0; i < fragmentsOnDisc.Count; i++)
         {
             switch (fragmentsOnDisc[i].name)

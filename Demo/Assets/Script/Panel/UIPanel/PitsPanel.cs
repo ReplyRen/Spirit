@@ -14,6 +14,9 @@ public class PitsPanel : MonoBehaviour
     Inclusion g = new Inclusion("高级酸", 0);
     Inclusion h = new Inclusion("高级酯", 0);
     Inclusion i = new Inclusion("高级醇", 0);
+    BaseFragment fragment1 = new BaseFragment();
+    BaseFragment fragment2 = new BaseFragment();
+    BaseFragment fragment3 = new BaseFragment();
     BaseFragment fragment = new BaseFragment();
     GameManager instance;
     List<BaseFragment> fragmentsOnDisc;
@@ -34,9 +37,13 @@ public class PitsPanel : MonoBehaviour
         fragment = instance.fragmentDic[name];
         fragmentsOnDisc[index].element = fragment.element;
         fragmentsOnDisc[index].evaluation = fragment.evaluation;
-        name = name.Replace("（", "：");
-        name = name.Replace("）", "");
-        fragmentsOnDisc[index].baseObject.review.Add(name);
+        try
+        {
+            name = name.Replace("（", "：偏");
+            name = name.Replace("）", "");
+            fragmentsOnDisc[index].baseObject.review.Add(name);
+        }
+        catch { }
     }
     BaseFragment SetEvaluations(string name)
     {
@@ -102,6 +109,105 @@ public class PitsPanel : MonoBehaviour
             }
         }
     }
+    public void Confirm()
+    {
+        switch (status)
+        {
+            case 1:
+                SetEvaluation("修窖");
+                break;
+            case 2:
+                if (valueSet.value <= 0.333f)
+                {
+                    SetEvaluation("加曲量（低）");
+                }
+                else if (valueSet.value <= 0.666f)
+                {
+                    SetEvaluation("加曲量（中）");
+                }
+                else
+                {
+                    SetEvaluation("加曲量（高）");
+                }
+                break;
+            case 3:
+                if (valueSet1.value <= 0.333f)
+                {
+                    fragment1.element = SetEvaluations("发酵温度（低）").element;
+                    fragment1.evaluation = SetEvaluations("发酵温度（低）").evaluation;
+                    fragment1.baseObject.review.Clear();
+                    fragment1.baseObject.review.Add("发酵温度：偏低");
+                }
+                else if (valueSet1.value <= 0.666f)
+                {
+                    fragment1.element = SetEvaluations("发酵温度（中）").element;
+                    fragment1.evaluation = SetEvaluations("发酵温度（中）").evaluation;
+                    fragment1.baseObject.review.Clear();
+                    fragment1.baseObject.review.Add("发酵温度：适中");
+                }
+                else
+                {
+                    fragment1.element = SetEvaluations("发酵温度（高）").element;
+                    fragment1.evaluation = SetEvaluations("发酵温度（高）").evaluation;
+                    fragment1.baseObject.review.Clear();
+                    fragment1.baseObject.review.Add("发酵温度：偏高");
+                }
+                //2
+                if (valueSet2.value <= 0.333f)
+                {
+                    fragment2.element = SetEvaluations("发酵酸度（低）").element;
+                    fragment2.evaluation = SetEvaluations("发酵酸度（低）").evaluation;
+                    fragment2.baseObject.review.Clear();
+                    fragment2.baseObject.review.Add("发酵酸度：偏低");
+                }
+                else if (valueSet2.value <= 0.666f)
+                {
+                    fragment2.element = SetEvaluations("发酵酸度（中）").element;
+                    fragment2.evaluation = SetEvaluations("发酵酸度（中）").evaluation;
+                    fragment2.baseObject.review.Clear();
+                    fragment2.baseObject.review.Add("发酵酸度：适中");
+                }
+                else
+                {
+                    fragment2.element = SetEvaluations("发酵酸度（高）").element;
+                    fragment2.evaluation = SetEvaluations("发酵酸度（高）").evaluation;
+                    fragment2.baseObject.review.Clear();
+                    fragment2.baseObject.review.Add("发酵酸度：偏高");
+                }
+                //3
+                if (valueSet3.value <= 0.333f)
+                {
+                    fragment3.element = SetEvaluations("发酵时长（低）").element;
+                    fragment3.evaluation = SetEvaluations("发酵时长（低）").evaluation;
+                    fragment3.baseObject.review.Clear();
+                    fragment3.baseObject.review.Add("发酵时长：偏低");
+                }
+                else if (valueSet3.value <= 0.666f)
+                {
+                    fragment3.element = SetEvaluations("发酵时长（中）").element;
+                    fragment3.evaluation = SetEvaluations("发酵时长（中）").evaluation;
+                    fragment3.baseObject.review.Clear();
+                    fragment3.baseObject.review.Add("发酵时长：适中");
+                }
+                else
+                {
+                    fragment3.element = SetEvaluations("发酵时长（高）").element;
+                    fragment3.evaluation = SetEvaluations("发酵时长（高）").evaluation;
+                    fragment3.baseObject.review.Clear();
+                    fragment3.baseObject.review.Add("发酵时长：偏高");
+                }
+                fragmentsOnDisc[index].element = fragment1.element + fragment2.element + fragment3.element;
+                fragmentsOnDisc[index].evaluation = fragment1.evaluation + fragment2.evaluation + fragment3.evaluation;
+                fragmentsOnDisc[index].baseObject.review.Clear();
+                fragmentsOnDisc[index].baseObject.review.Add(fragment1.baseObject.review[0]);
+                fragmentsOnDisc[index].baseObject.review.Add(fragment2.baseObject.review[0]);
+                fragmentsOnDisc[index].baseObject.review.Add(fragment3.baseObject.review[0]);
+                break;
+            case 4:
+                SetEvaluation("加原辅料");
+                break;
+        }
+    }
     public void Init()
     {
         valueSet.value = 0;
@@ -160,7 +266,6 @@ public class PitsPanel : MonoBehaviour
                 float sum = a.value + b.value + c.value;
                 barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
                 pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
-                SetEvaluation("修窖");
                 break;
             case 2:
                 if (valueSet.value <= 0.333f)
@@ -170,7 +275,6 @@ public class PitsPanel : MonoBehaviour
                     g.value = valueChange * 0.3f;
                     h.value = valueChange * 0.3f;
                     i.value = valueChange * 0.3f;
-                    SetEvaluation("加曲量（低）");
 
                 }
                 else if (valueSet.value <= 0.666f)
@@ -180,7 +284,6 @@ public class PitsPanel : MonoBehaviour
                     g.value = 0.3f + valueChange * 0.2f;
                     h.value = 0.3f + valueChange * 0.2f;
                     i.value = 0.3f + valueChange * 0.2f;
-                    SetEvaluation("加曲量（中）");
                 }
                 else
                 {
@@ -189,7 +292,6 @@ public class PitsPanel : MonoBehaviour
                     g.value = 0.5f + valueChange * 0.5f;
                     h.value = 0.5f + valueChange * 0.5f;
                     i.value = 0.5f + valueChange * 0.5f;
-                    SetEvaluation("加曲量（高）");
                 }
                 sum = a.value + b.value + c.value;
                 barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
@@ -198,9 +300,6 @@ public class PitsPanel : MonoBehaviour
                 I = i.value;
                 break;
             case 3:
-                BaseFragment fragment1 = new BaseFragment();
-                BaseFragment fragment2 = new BaseFragment();
-                BaseFragment fragment3 = new BaseFragment();
                 float aa, bb, cc, ff, gg, hh, ii;
                 float aa2, bb2, cc2;
                 float aa3, bb3, cc3, gg3, hh3, ii3;
@@ -213,10 +312,6 @@ public class PitsPanel : MonoBehaviour
                     gg = valueChange * 0.3f;
                     hh = valueChange * 0.5f;
                     ii = valueChange * 0.3f;
-                    fragment1.element = SetEvaluations("发酵温度（低）").element;
-                    fragment1.evaluation = SetEvaluations("发酵温度（低）").evaluation;
-                    fragment1.baseObject.review.Clear();
-                    fragment1.baseObject.review.Add("发酵温度：低");
                 }
                 else if (valueSet1.value <= 0.666f)
                 {
@@ -227,10 +322,6 @@ public class PitsPanel : MonoBehaviour
                     gg = 0.3f + valueChange * 0.7f;
                     hh = 0.5f + valueChange * 0.5f;
                     ii = 0.3f + valueChange * 0.2f;
-                    fragment1.element = SetEvaluations("发酵温度（中）").element;
-                    fragment1.evaluation = SetEvaluations("发酵温度（中）").evaluation;
-                    fragment1.baseObject.review.Clear();
-                    fragment1.baseObject.review.Add("发酵温度：中");
                 }
                 else
                 {
@@ -241,10 +332,6 @@ public class PitsPanel : MonoBehaviour
                     gg = 1 - valueChange * 0.2f;
                     hh = 1 - valueChange * 0.3f;
                     ii = 0.5f + valueChange * 0.5f;
-                    fragment1.element = SetEvaluations("发酵温度（高）").element;
-                    fragment1.evaluation = SetEvaluations("发酵温度（高）").evaluation;
-                    fragment1.baseObject.review.Clear();
-                    fragment1.baseObject.review.Add("发酵温度：高");
                 }
                 //2
                 if (valueSet2.value <= 0.333f)
@@ -254,10 +341,6 @@ public class PitsPanel : MonoBehaviour
                     bb2 = 0.5f + valueChange * 0.7f;
                     cc2 = 0.5f + valueChange * 1;
                     ff = valueChange * 0.3f;
-                    fragment2.element = SetEvaluations("发酵酸度（低）").element;
-                    fragment2.evaluation = SetEvaluations("发酵酸度（低）").evaluation;
-                    fragment2.baseObject.review.Clear();
-                    fragment2.baseObject.review.Add("发酵酸度：低");
                 }
                 else if (valueSet2.value <= 0.666f)
                 {
@@ -266,10 +349,6 @@ public class PitsPanel : MonoBehaviour
                     bb2 = 0.5f + 0.7f + valueChange * 0.3f;
                     cc2 = 0.5f + 1 - valueChange * 0.2f;
                     ff = 0.3f + valueChange * 0.7f;
-                    fragment2.element = SetEvaluations("发酵酸度（中）").element;
-                    fragment2.evaluation = SetEvaluations("发酵酸度（中）").evaluation;
-                    fragment2.baseObject.review.Clear();
-                    fragment2.baseObject.review.Add("发酵酸度：中");
                 }
                 else
                 {
@@ -278,10 +357,6 @@ public class PitsPanel : MonoBehaviour
                     bb2 = 0.5f + 1 - valueChange * 0.2f;
                     cc2 = 0.5f + 0.8f - valueChange * 0.3f;
                     ff = 1 - valueChange * 0.3f;
-                    fragment2.element = SetEvaluations("发酵酸度（高）").element;
-                    fragment2.evaluation = SetEvaluations("发酵酸度（高）").evaluation;
-                    fragment2.baseObject.review.Clear();
-                    fragment2.baseObject.review.Add("发酵酸度：高");
                 }
                 //3
                 if (valueSet3.value <= 0.333f)
@@ -293,10 +368,6 @@ public class PitsPanel : MonoBehaviour
                     gg3 = valueChange * 0.3f;
                     hh3 = valueChange * 0.5f;
                     ii3 = valueChange * 0.3f;
-                    fragment3.element = SetEvaluations("发酵时长（低）").element;
-                    fragment3.evaluation = SetEvaluations("发酵时长（低）").evaluation;
-                    fragment3.baseObject.review.Clear();
-                    fragment3.baseObject.review.Add("发酵时长：低");
                 }
                 else if (valueSet3.value <= 0.666f)
                 {
@@ -307,10 +378,6 @@ public class PitsPanel : MonoBehaviour
                     gg3 = 0.3f + valueChange * 0.7f;
                     hh3 = 0.5f + valueChange * 0.5f;
                     ii3 = 0.3f + valueChange * 0.2f;
-                    fragment3.element = SetEvaluations("发酵时长（中）").element;
-                    fragment3.evaluation = SetEvaluations("发酵时长（中）").evaluation;
-                    fragment3.baseObject.review.Clear();
-                    fragment3.baseObject.review.Add("发酵时长：中");
                 }
                 else
                 {
@@ -321,10 +388,6 @@ public class PitsPanel : MonoBehaviour
                     gg3 = 1 - valueChange * 0.2f;
                     hh3 = 1 - valueChange * 0.3f;
                     ii3 = 0.5f + valueChange * 0.5f;
-                    fragment3.element = SetEvaluations("发酵时长（高）").element;
-                    fragment3.evaluation = SetEvaluations("发酵时长（高）").evaluation;
-                    fragment3.baseObject.review.Clear();
-                    fragment3.baseObject.review.Add("发酵时长：高");
                 }
                 a.value = (aa + aa2 + aa3) / 3;
                 b.value = (bb + bb2 + bb3) / 3;
@@ -336,12 +399,6 @@ public class PitsPanel : MonoBehaviour
                 sum = a.value + b.value + c.value;
                 barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
                 pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
-                fragmentsOnDisc[index].element = fragment1.element + fragment2.element + fragment3.element;
-                fragmentsOnDisc[index].evaluation = fragment1.evaluation + fragment2.evaluation + fragment3.evaluation;
-                fragmentsOnDisc[index].baseObject.review.Clear();
-                fragmentsOnDisc[index].baseObject.review.Add(fragment1.baseObject.review[0]);
-                fragmentsOnDisc[index].baseObject.review.Add(fragment2.baseObject.review[0]);
-                fragmentsOnDisc[index].baseObject.review.Add(fragment3.baseObject.review[0]);
                 break;
             case 4:
                 if (valueSet4.value <= 0.333f)
@@ -360,7 +417,6 @@ public class PitsPanel : MonoBehaviour
                     e.value = 1 - valueChange * 0.7f;
                 }
                 barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
-                SetEvaluation("加原辅料");
                 break;
         }
     }
