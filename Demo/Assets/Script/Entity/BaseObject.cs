@@ -29,6 +29,11 @@ public class BaseObject
     /// </summary>
     public Evaluation evaluation;
 
+    /// <summary>
+    /// 批次
+    /// </summary>
+    public int batch;
+
     public List<string> review = new List<string>();
 
     public Queue<float> alcoholQueue = new Queue<float>();

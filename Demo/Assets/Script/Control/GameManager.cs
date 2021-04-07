@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public float level;
 
+    public int batch = 0;
+
     /// <summary>
     /// 碎片队列
     /// </summary>
@@ -198,6 +200,11 @@ public class GameManager : MonoBehaviour
                 {
                     if (fragmentOnDisc[i].baseObject != null)//移除仓库中此碎片的酒基
                         baseList.Remove(fragmentOnDisc[i].baseObject);
+                    batch--;
+                    foreach (var a in baseList)
+                    {
+                        a.batch--;
+                    }
                 }
                 else
                 {
@@ -220,6 +227,8 @@ public class GameManager : MonoBehaviour
             baseObject.mains = fragment.mains;
             baseObject.minors = fragment.minors;
             baseObject.review = fragment.baseObject.review;
+            batch++;
+            baseObject.batch = batch;
         }
         else
         {
@@ -229,6 +238,7 @@ public class GameManager : MonoBehaviour
             baseObject.mains = fragment.baseObject.mains;
             baseObject.minors = fragment.baseObject.minors;
             baseObject.review = fragment.baseObject.review;
+            baseObject.batch = fragment.baseObject.batch;
             if (baseObject.alcoholQueue.Count >= 6)
             {
                 baseObject.alcoholQueue.Dequeue();
