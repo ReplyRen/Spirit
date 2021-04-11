@@ -10,10 +10,11 @@ public class TaskManager : MonoBehaviour
     GameObject taskList;
     GameObject taskPanel;
     GameObject tip;
+    GameObject tips;
     EvaluationPanel evaluationPanel;
     GameManager gameManager;
     bool isFailed = false;
-    string name;
+    string name = null;
     float score;
     public void LoadTask(string name)
     {
@@ -61,6 +62,7 @@ public class TaskManager : MonoBehaviour
         if (task.roundLimit == 0) temp.transform.GetChild(2).GetComponent<Text>().text = task.bonus;
         else temp.transform.GetChild(2).GetComponent<Text>().text = "剩余" + "<color=red>" + task.roundCount + "</color>" + "月" + "   " + task.bonus;
         tip.SetActive(true);
+        tips.SetActive(true);
     }
     public void OpenPanel()
     {
@@ -210,6 +212,7 @@ public class TaskManager : MonoBehaviour
         gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
         evaluationPanel = GameObject.Find("PanelCanvas").transform.Find("评价Panel").GetComponent<EvaluationPanel>();
         tip = GameObject.Find("Task").transform.GetChild(0).gameObject;
+        tips = gameObject.transform.Find("Tips").gameObject;
         taskPanel = gameObject.transform.Find("TaskPanel").gameObject;
         taskList = taskPanel.transform.Find("TaskList").gameObject;
         gameObject.SetActive(false);
@@ -217,6 +220,7 @@ public class TaskManager : MonoBehaviour
     }
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0)&&tips.activeSelf)
+            tips.SetActive(false);
     }
 }
