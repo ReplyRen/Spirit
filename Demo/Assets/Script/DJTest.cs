@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DJTest : MonoBehaviour
 {
-    public GameObject a;
+    /*public GameObject a;
     public GameObject b;
     public Animator an;
     public void SetBoola()
@@ -24,6 +24,30 @@ public class DJTest : MonoBehaviour
         an.SetBool("b", false);
         a.SetActive(false);
         b.SetActive(false);
+    }*/
+    public void A()
+    {
+        Debug.Log("a");
+        Invoke("ajk", 2);
+    }
+    public void B()
+    {
+        Debug.Log("b");
+        Invoke("ajk", 2);
+    }
+    public void C()
+    {
+        Debug.Log("c");
+        Invoke("ajk", 2);
+    }
+    public void D()
+    {
+        Debug.Log("d");
+        Invoke("ajk", 2);
+    }
+    void ajk()
+    {
+        Debug.Log("ala");
     }
     void Start()
     {

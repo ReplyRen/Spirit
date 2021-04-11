@@ -10,6 +10,8 @@ public class TaskManager : MonoBehaviour
     GameObject taskList;
     GameObject taskPanel;
     GameObject tip;
+    EvaluationPanel evaluationPanel;
+    GameManager gameManager;
     bool isFailed = false;
     string name;
     float score;
@@ -63,11 +65,22 @@ public class TaskManager : MonoBehaviour
     public void OpenPanel()
     {
         taskPanel.SetActive(true);
-        for(int i=0;i<tasks.Count;i++)
+        for(int i= tasks.Count-1; i>=0;i--)
         {
-            if(tasks[i].isFinished)
+            if (tasks[i].isFinished && !isFailed) 
             {
-                taskList.transform.GetChild(i).transform.GetChild(4).gameObject.SetActive(true);
+                for (int j = taskList.transform.childCount - 1; j >= 0; j--) 
+                {
+                    if (taskList.transform.GetChild(j).gameObject.name == tasks[i].name)
+                    {
+                        taskList.transform.GetChild(j).transform.GetChild(4).gameObject.SetActive(true);
+                        if(tasks[i].roundCount<=-2)
+                        {
+                            tasks.Remove(tasks[i]);
+                            Destroy(taskList.transform.GetChild(j).gameObject);
+                        }
+                    }
+                }
             }
         }
         tip.SetActive(false);
@@ -78,20 +91,45 @@ public class TaskManager : MonoBehaviour
     }
     public void Check(List<BaseFragment> newList)
     {
-        for(int i=0;i<tasks.Count;i++)
+        for(int j = 0; j < newList.Count; j++) 
         {
-            for(int j=0;j<newList.Count;j++)
+            for(int i = 0; i < tasks.Count; i++)
             {
-                if (tasks[i].step == newList[i].name) 
+                if (tasks[i].step == newList[j].name) 
                 {
                     if (tasks[i].step == "鉴酒") 
                     {
+                        score = evaluationPanel.GetScore(newList[j].baseObject);
+                        name = newList[j].baseObject.GetKind().ToString();
                         if (tasks[i].roundLimit != 0)
                         {
                             if (tasks[i].roundCount > 0)
                             {
                                 tasks[i].isFinished = true;
-                                tasks[i].isDoing = false;
+                            }
+                            else
+                            {
+                                tasks[i].isFinished = false;
+                                break;
+                            }
+                        }
+                        if(tasks[i].targetScore!=0)
+                        {
+                            if(tasks[i].targetScore<=score)
+                            {
+                                tasks[i].isFinished = true;
+                            }
+                            else
+                            {
+                                tasks[i].isFinished = false;
+                                break;
+                            }
+                        }
+                        if(tasks[i].category!=null)
+                        {
+                            if(tasks[i].category==name)
+                            {
+                                tasks[i].isFinished = true;
                             }
                             else
                             {
@@ -107,55 +145,6 @@ public class TaskManager : MonoBehaviour
             }
         }
     }
-    public void Check1(List<BaseFragment> newList)
-    {
-        for (int j = 0; j < newList.Count; j++)
-        {
-            if (newList[j].name == "鉴酒")
-            {
-                /*name =;
-                score =;*/
-                for (int i = 0; i < tasks.Count; i++)
-                {
-                    tasks[i].isDoing = false;
-                    if (tasks[i].name != null)
-                    {
-                        if (tasks[i].name == name)
-                        {
-                            tasks[i].isFinished = true;
-                            tasks[i].isDoing = false;
-                        }
-                        else continue;
-                    }
-                    if(tasks[i].targetScore!=0)
-                    {
-                        if(score>= tasks[i].targetScore)
-                        {
-                            tasks[i].isFinished = true;
-                            tasks[i].isDoing = false;
-                        }
-                        else
-                        {
-                            tasks[i].isFinished = false;
-                            continue;
-                        }
-                    }
-                    if(tasks[i].roundLimit!=0)
-                    {
-                        if(tasks[i].roundCount>0)
-                        {
-                            tasks[i].isFinished = true;
-                            tasks[i].isDoing = false;
-                        }
-                        else
-                        {
-                            tasks[i].isFinished = false;
-                        }
-                    }
-                }
-            }
-        }
-    }
     void Test()
     {
         for(int i=0;i<2;i++)
@@ -164,34 +153,62 @@ public class TaskManager : MonoBehaviour
             InstanceTask(tasks[i]);
         }
     }
-    public void NextMonth()//xiecheng
+    IEnumerator WaitFor()
     {
-        month++;
-        for(int i=0;i<tasks.Count;i++)
+        yield return new WaitForSeconds(1.2f);
+        Check(gameManager.fragmentOnDisc);
+        for (int i = 0; i < tasks.Count; i++)
         {
-            if(month==tasks[i].instanceRound)
+            if (month == tasks[i].instanceRound)
             {
                 tasks[i].isDoing = true;
                 tasks[i].isFinished = false;
                 InstanceTask(tasks[i]);
             }
-            if (tasks[i].isDoing)
+            if (tasks[i].roundLimit != 0)
+            {
+                if (tasks[i].isDoing)
+                {
+                    tasks[i].roundCount--;
+                    if (tasks[i].roundCount == 0)
+                    {
+                        tasks[i].isDoing = false;
+                        tasks[i].roundCount--;
+                    }
+                }
+                else if(tasks[i].roundCount<0)
+                    tasks[i].roundCount--;
+            }
+            else if(tasks[i].isFinished&&tasks[i].isDoing)
             {
                 tasks[i].roundCount--;
-                if (tasks[i].roundLimit != 0 && tasks[i].roundCount == 0)
-                    tasks[i].isDoing = false;
             }
         }
+        Settle();
+    }
+    public void NextMonth()
+    {
+        month++;
+        StartCoroutine(WaitFor());
         name = null;
         score = 0;
         gameObject.SetActive(false);
     }
     public void Settle()//jiesuan
     {
-        gameObject.SetActive(true);
+        for(int i=0;i<tasks.Count;i++)
+        {
+            if (!tasks[i].isDoing && !tasks[i].isFinished)
+            {
+                isFailed = true;
+                break;
+            }
+        }
     }
     void Start()
     {
+        gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
+        evaluationPanel = GameObject.Find("PanelCanvas").transform.Find("评价Panel").GetComponent<EvaluationPanel>();
         tip = GameObject.Find("Task").transform.GetChild(0).gameObject;
         taskPanel = gameObject.transform.Find("TaskPanel").gameObject;
         taskList = taskPanel.transform.Find("TaskList").gameObject;

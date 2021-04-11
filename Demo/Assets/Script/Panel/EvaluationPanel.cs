@@ -20,7 +20,7 @@ public class EvaluationPanel : MonoBehaviour
     private GameObject bPanel;
     private void Start()
     {
-        Test();
+        //Test();
     }
     private void Test()
     {
@@ -63,7 +63,7 @@ public class EvaluationPanel : MonoBehaviour
         }
 
     }
-    private float GetScore(BaseObject obj)
+    public float GetScore(BaseObject obj)
     {
         float res = -1;
         string kind = "";
