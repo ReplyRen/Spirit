@@ -7,10 +7,11 @@ public class TaskManager : MonoBehaviour
 {
     public List<Task> tasks = new List<Task>();
     int month = 1;
+    GameObject taskButton;
     GameObject taskList;
     GameObject taskPanel;
     GameObject tip;
-    GameObject tips;
+    public GameObject tips;
     EvaluationPanel evaluationPanel;
     GameManager gameManager;
     bool isFailed = false;
@@ -69,30 +70,38 @@ public class TaskManager : MonoBehaviour
         taskPanel.SetActive(true);
         for(int i= tasks.Count-1; i>=0;i--)
         {
-            if (tasks[i].isFinished && !isFailed) 
+            for (int j = taskList.transform.childCount - 1; j >= 0; j--) 
             {
-                for (int j = taskList.transform.childCount - 1; j >= 0; j--) 
+                if (taskList.transform.GetChild(j).gameObject.name == tasks[i].name)
                 {
-                    if (taskList.transform.GetChild(j).gameObject.name == tasks[i].name)
+                    if (tasks[i].isFinished && !isFailed)
                     {
                         taskList.transform.GetChild(j).transform.GetChild(4).gameObject.SetActive(true);
-                        if(tasks[i].roundCount<=-2)
+                        if (tasks[i].roundCount <= -2)
                         {
                             tasks.Remove(tasks[i]);
                             Destroy(taskList.transform.GetChild(j).gameObject);
                         }
+
                     }
+                    if (tasks[i].roundLimit == 0) taskList.transform.GetChild(j).GetChild(2).GetComponent<Text>().text = tasks[i].bonus;
+                    else if (tasks[i].roundCount > 0)
+                        taskList.transform.GetChild(j).GetChild(2).GetComponent<Text>().text = "剩余" + "<color=red>" + tasks[i].roundCount + "</color>" + "月" + "   " + tasks[i].bonus;
+                    else
+                        taskList.transform.GetChild(j).GetChild(2).GetComponent<Text>().text = "剩余时间无";
                 }
             }
+            
         }
         tip.SetActive(false);
-        Debug.Log("month:"+month);
+       /* Debug.Log("month:"+month);
         Debug.Log("isfailed" + isFailed);
         for(int i=0;i<2;i++)
         {
             Debug.Log(tasks[i].isDoing + "+" + tasks[i].isFinished + i);
             Debug.Log("roundCount" + i + ":" + tasks[i].roundCount);
-        }
+            Debug.Log(tasks[i].step);
+        }*/
     }
     public void ClosePanel()
     {
@@ -148,7 +157,18 @@ public class TaskManager : MonoBehaviour
                     }
                     else
                     {
-
+                        if (tasks[i].roundLimit != 0)
+                        {
+                            if (tasks[i].roundCount > 0)
+                            {
+                                tasks[i].isFinished = true;
+                            }
+                            else
+                            {
+                                tasks[i].isFinished = false;
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -165,15 +185,10 @@ public class TaskManager : MonoBehaviour
     IEnumerator WaitFor()
     {
         yield return new WaitForSeconds(1.2f);
+        taskButton.SetActive(false);
         Check(gameManager.fragmentOnDisc);
         for (int i = 0; i < tasks.Count; i++)
         {
-            if (month == tasks[i].instanceRound)
-            {
-                tasks[i].isDoing = true;
-                tasks[i].isFinished = false;
-                InstanceTask(tasks[i]);
-            }
             if (tasks[i].roundLimit != 0)
             {
                 if (tasks[i].isDoing)
@@ -192,6 +207,12 @@ public class TaskManager : MonoBehaviour
             {
                 tasks[i].roundCount--;
             }
+            if (month == tasks[i].instanceRound)
+            {
+                tasks[i].isDoing = true;
+                tasks[i].isFinished = false;
+                InstanceTask(tasks[i]);
+            }
         }
         Settle();
     }
@@ -201,6 +222,15 @@ public class TaskManager : MonoBehaviour
         StartCoroutine(WaitFor());
         name = null;
         score = 0;
+    }
+    IEnumerator WaitFor2()
+    {
+        yield return new WaitForSeconds(1.2f);
+        taskButton.SetActive(true);
+    }
+    public void Switch()
+    {
+        StartCoroutine(WaitFor2());
     }
     public void Settle()//jiesuan
     {
@@ -215,6 +245,7 @@ public class TaskManager : MonoBehaviour
     }
     void Start()
     {
+        taskButton = gameObject.transform.Find("Task").gameObject;
         gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
         evaluationPanel = GameObject.Find("PanelCanvas").transform.Find("评价Panel").GetComponent<EvaluationPanel>();
         tip = GameObject.Find("Task").transform.GetChild(0).gameObject;
@@ -222,6 +253,7 @@ public class TaskManager : MonoBehaviour
         taskPanel = gameObject.transform.Find("TaskPanel").gameObject;
         taskList = taskPanel.transform.Find("TaskList").gameObject;
         taskPanel.SetActive(false);
+        taskButton.SetActive(false);
         for(int i=0;i<2;i++)
         {
             LoadTask("任务" + (i + 1));

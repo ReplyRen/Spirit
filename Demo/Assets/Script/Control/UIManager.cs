@@ -147,7 +147,6 @@ public class UIManager : MonoBehaviour
             cameraController.locked = true;
             if (GuideControl.id == 4 && currentUI == 0)
             {
-                //Debug.Log("dadada");
                 GuideControl.id = 221;
                 guideControl.Run();
             }
@@ -340,7 +339,7 @@ public class UIManager : MonoBehaviour
         if(!guideControl.newGamer)
         {
             GuideControl.id = 701;
-            if (GuideControl.id == 701)
+            if (GuideControl.id == 701 && names2.Count>0) 
             {
                 GuideInfo guideInfo = new GuideInfo();
                 guideManager.guideInfoDict.TryGetValue(701, out guideInfo);
@@ -358,8 +357,8 @@ public class UIManager : MonoBehaviour
                     }
                 }
                 guideInfo.dialogText += str1[1];
+                guideControl.Run();
             }
-            guideControl.Run();
         }
     }
     bool a;
