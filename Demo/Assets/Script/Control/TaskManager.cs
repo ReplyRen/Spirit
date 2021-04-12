@@ -86,6 +86,13 @@ public class TaskManager : MonoBehaviour
             }
         }
         tip.SetActive(false);
+        Debug.Log("month:"+month);
+        Debug.Log("isfailed" + isFailed);
+        for(int i=0;i<2;i++)
+        {
+            Debug.Log(tasks[i].isDoing + "+" + tasks[i].isFinished + i);
+            Debug.Log("roundCount" + i + ":" + tasks[i].roundCount);
+        }
     }
     public void ClosePanel()
     {
@@ -194,7 +201,6 @@ public class TaskManager : MonoBehaviour
         StartCoroutine(WaitFor());
         name = null;
         score = 0;
-        gameObject.SetActive(false);
     }
     public void Settle()//jiesuan
     {
@@ -215,8 +221,13 @@ public class TaskManager : MonoBehaviour
         tips = gameObject.transform.Find("Tips").gameObject;
         taskPanel = gameObject.transform.Find("TaskPanel").gameObject;
         taskList = taskPanel.transform.Find("TaskList").gameObject;
-        gameObject.SetActive(false);
-        Test();
+        taskPanel.SetActive(false);
+        for(int i=0;i<2;i++)
+        {
+            LoadTask("任务" + (i + 1));
+        }
+        //gameObject.SetActive(false);
+        //Test();
     }
     void Update()
     {

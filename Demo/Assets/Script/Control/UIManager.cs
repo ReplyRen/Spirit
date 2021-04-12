@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     string[] str1 = null;
     string[] str2 = null;
     string[] str3 = null;
-    //bool isConfirm = false;
+    bool isConfirm = false;
     UIManager instance = null;
     private void Awake()
     {
@@ -249,12 +249,12 @@ public class UIManager : MonoBehaviour
             }
             catch {}
         }
-        //isConfirm = true;
-        /*for(int i=0;i<buttonList.Count-1;i++)
+        isConfirm = true;
+        for(int i=0;i<buttonList.Count-1;i++)
         {
             if (buttonList[i].GetComponent<UIObject>().isUse && !buttonList[i].GetComponent<UIObject>().isConfirm) isConfirm = false;
-        }*/
-        if (currentUI == 0) buttonList[buttonList.Count - 1].SetActive(true);
+        }
+        if (isConfirm) buttonList[buttonList.Count - 1].SetActive(true);
         if (GuideControl.id == 13 && currentUI == 1)
         {
             GuideControl.id = 315;
@@ -362,8 +362,10 @@ public class UIManager : MonoBehaviour
             guideControl.Run();
         }
     }
+    bool a;
     public void ResetState()///初始化工厂
     {
+        a = false;
         for (int i = 0; i < num; i++)
         {
             buttonList[i].GetComponent<UIObject>().isUse = false;
@@ -385,19 +387,22 @@ public class UIManager : MonoBehaviour
             {
                 case "原、辅料准备":
                     buttonList[0].GetComponent<UIObject>().isUse = true;
-                    buttonList[buttonList.Count - 1].SetActive(false);
+                    a = true;
                     currentUI = 0;
                     break;
                 case "粉碎润料":
                     buttonList[1].GetComponent<UIObject>().isUse = true;
+                    a = true;
                     currentUI = 1;
                     break;
                 case "配料":
                     buttonList[2].GetComponent<UIObject>().isUse = true;
+                    a = true;
                     currentUI = 2;
                     break;
                 case "蒸煮摊凉":
                     buttonList[3].GetComponent<UIObject>().isUse = true;
+                    a = true;
                     currentUI = 3;
                     break;
                 case "修窖":
@@ -405,35 +410,38 @@ public class UIManager : MonoBehaviour
                 case "发酵":
                 case "加原辅料":
                     buttonList[4].GetComponent<UIObject>().isUse = true;
+                    a = true;
                     currentUI = 4;
                     break;
                 case "上甑":
                     buttonList[5].GetComponent<UIObject>().isUse = true;
+                    a = true;
                     currentUI = 5;
                     break;
                 case "蒸馏":
                 case "看花摘酒":
                     buttonList[6].GetComponent<UIObject>().isUse = true;
+                    a = true;
                     currentUI = 6;
                     break;
                 case "陈酿":
                     buttonList[7].GetComponent<UIObject>().isUse = true;
+                    a = true;
                     currentUI = 7;
                     break;
                 case "勾兑勾调":
                     buttonList[8].GetComponent<UIObject>().isUse = true;
+                    a = true;
                     currentUI = 8;
                     break;
-               /* case "灌装":
-                    buttonList[9].GetComponent<UIObject>().isUse = true;
-                    currentUI = 9;
-                    break;*/
                 case "鉴酒":
                     buttonList[9].GetComponent<UIObject>().isUse = true;
+                    a = true;
                     currentUI = 9;
                     break;
             }
         }
+        if (a) buttonList[buttonList.Count - 1].SetActive(false);
     }
     public void ResetOutline()///初始化高亮
     {
