@@ -54,7 +54,7 @@ public class RectGuidanceController : MonoBehaviour
     /// <summary>
     /// 动画收缩时间
     /// </summary>
-    private float _shrinkTime = 0.5f;
+    private float _shrinkTime = 0.3f;
 
 
     /// <summary>

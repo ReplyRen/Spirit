@@ -29,11 +29,12 @@ public class StartGameCtrl : MonoBehaviour
         str = str1;
         //Debug.Log(str.Length);
         StopAllCoroutines();
-        StartCoroutine(ShowText(str.Length));
+        StartCoroutine(ShowText());
     }
-    IEnumerator ShowText(int strLength)
+    IEnumerator ShowText()
     {
         s = "";
+        int strLength = str.Length;
         int i = 0;
         while (i < strLength)
         {

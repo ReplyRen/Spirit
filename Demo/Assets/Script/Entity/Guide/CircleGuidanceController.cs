@@ -43,7 +43,7 @@ public class CircleGuidanceController : MonoBehaviour
     /// <summary>
     /// 高亮区域缩放的动画时间
     /// </summary>
-    private float _shrinkTime = 0.5f;
+    private float _shrinkTime = 0.3f;
 
     /// <summary>
     /// 世界坐标向画布坐标转换

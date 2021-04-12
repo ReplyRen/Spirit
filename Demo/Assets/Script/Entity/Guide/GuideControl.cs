@@ -9,7 +9,10 @@ public class GuideControl : MonoBehaviour
     public bool newGamer = true;
     public GameObject fragmentLayout;
     public GameObject dialog;
+    public GameObject dialogImage;
+    public GameObject skipObject;
     private GameObject replace;
+    
     public bool ifCan = true;
     private bool timer = true;
     // Start is called before the first frame update
@@ -19,13 +22,14 @@ public class GuideControl : MonoBehaviour
             id = 101;
         else
         {
-            id = 1001;
+            id = 702;
             return;
         }
         //replace = GameObject.Find("替身107");
         Invoke("SpecialEvent", 0.01f);
         Invoke("Run", 0.1f);
         ifCan = true;
+        skipObject.SetActive(true);
     }
     public void Run()
     {
@@ -52,7 +56,7 @@ public class GuideControl : MonoBehaviour
                 case 202:
                     id = 3;
                     return;
-                case 204:
+                case 205:
                     gameObject.GetComponent<ShakeCamera>().enabled = true;
                     break;
                 case 220:
@@ -129,7 +133,7 @@ public class GuideControl : MonoBehaviour
             return;
         if (Input.touchCount > 0 && !ifCan)
         {
-            if(dialog.activeSelf)
+            if(dialogImage.activeSelf)
                 dialog.GetComponent<StartGameCtrl>().ShowAllText();
             ifCan = true;
             timer = false;
@@ -137,7 +141,7 @@ public class GuideControl : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0) && !ifCan)
         {
-            if (dialog.activeSelf)
+            if (dialogImage.activeSelf)
                 dialog.GetComponent<StartGameCtrl>().ShowAllText();
             ifCan = true;
             timer = false;
@@ -147,17 +151,20 @@ public class GuideControl : MonoBehaviour
         {
             Run();
             ifCan = false;
-            //Invoke("swift", 2.1f);
         }
         else if (Input.GetMouseButtonDown(0) && ifCan)
         {
             Run();
             ifCan = false;
-            //Invoke("swift", 2.1f);
         }
     }
     void swift()
     {
         timer = true;
+    }
+    public void skip()
+    {
+        id = 702;
+        Run();
     }
 }
