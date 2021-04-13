@@ -128,7 +128,6 @@ public class CellarPanel : MonoBehaviour
         }
         fragmentsOnDisc[index].element = fragment1.element + fragment2.element + fragment3.element;
         fragmentsOnDisc[index].evaluation = fragment1.evaluation + fragment2.evaluation + fragment3.evaluation;
-        fragmentsOnDisc[index].baseObject.review.Clear();
         fragmentsOnDisc[index].baseObject.review.Add(fragment1.baseObject.review[0]);
         fragmentsOnDisc[index].baseObject.review.Add(fragment2.baseObject.review[0]);
         fragmentsOnDisc[index].baseObject.review.Add(fragment3.baseObject.review[0]);

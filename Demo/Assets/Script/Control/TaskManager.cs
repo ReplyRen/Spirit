@@ -11,6 +11,7 @@ public class TaskManager : MonoBehaviour
     GameObject taskList;
     GameObject taskPanel;
     GameObject tip;
+    public GameObject libraryButton;
     public GameObject tips;
     EvaluationPanel evaluationPanel;
     GameManager gameManager;
@@ -117,7 +118,12 @@ public class TaskManager : MonoBehaviour
                 {
                     if (tasks[i].step == "鉴酒") 
                     {
-                        score = evaluationPanel.GetScore(newList[j].baseObject);
+                        score = evaluationPanel.GetScore(newList[j].baseObject) * 100;
+                        Debug.Log(score);
+                        Debug.Log(tasks[i].name+"roundCount:"+ tasks[i].roundCount);
+                        Debug.Log("targetScore:" + tasks[i].targetScore);
+                        Debug.Log("category:" + tasks[i].category);
+                        Debug.Log(isFailed);
                         name = newList[j].baseObject.GetKind().ToString();
                         if (tasks[i].roundLimit != 0)
                         {
@@ -186,6 +192,7 @@ public class TaskManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
         taskButton.SetActive(false);
+        libraryButton.SetActive(false);
         Check(gameManager.fragmentOnDisc);
         for (int i = 0; i < tasks.Count; i++)
         {
@@ -227,6 +234,7 @@ public class TaskManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
         taskButton.SetActive(true);
+        libraryButton.SetActive(true);
     }
     public void Switch()
     {
@@ -236,6 +244,7 @@ public class TaskManager : MonoBehaviour
     {
         for(int i=0;i<tasks.Count;i++)
         {
+            Debug.Log(tasks[i].isFinished + "   " + tasks[i].isDoing+i);
             if (!tasks[i].isDoing && !tasks[i].isFinished)
             {
                 isFailed = true;
@@ -245,15 +254,17 @@ public class TaskManager : MonoBehaviour
     }
     void Start()
     {
+        libraryButton = GameObject.Find("Library").gameObject;
         taskButton = gameObject.transform.Find("Task").gameObject;
         gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
         evaluationPanel = GameObject.Find("PanelCanvas").transform.Find("评价Panel").GetComponent<EvaluationPanel>();
-        tip = GameObject.Find("Task").transform.GetChild(0).gameObject;
-        tips = gameObject.transform.Find("Tips").gameObject;
+        tip = taskButton.transform.GetChild(0).gameObject;
+        tips = taskButton.transform.Find("Tips").gameObject;
         taskPanel = gameObject.transform.Find("TaskPanel").gameObject;
         taskList = taskPanel.transform.Find("TaskList").gameObject;
         taskPanel.SetActive(false);
         taskButton.SetActive(false);
+        libraryButton.SetActive(false);
         for(int i=0;i<2;i++)
         {
             LoadTask("任务" + (i + 1));

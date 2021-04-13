@@ -115,7 +115,6 @@ public class DistillationPanel : MonoBehaviour
                 }
                 fragmentsOnDisc[index].element = fragment1.element + fragment2.element;
                 fragmentsOnDisc[index].evaluation = fragment1.evaluation + fragment2.evaluation;
-                fragmentsOnDisc[index].baseObject.review.Clear();
                 fragmentsOnDisc[index].baseObject.review.Add(fragment1.baseObject.review[0]);
                 fragmentsOnDisc[index].baseObject.review.Add(fragment2.baseObject.review[0]);
                 break;

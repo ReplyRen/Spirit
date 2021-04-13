@@ -57,6 +57,22 @@ public class SmashPanel : MonoBehaviour
             fragmentsOnDisc[index].baseObject.review.Add(name);
         }
         catch { }
+        Debug.Log(name);
+    }
+    public void Confirm()
+    {
+        if (valueSet.value <= 0.333f)
+        {
+            SetEvaluation("粉碎强度（低）");
+        }
+        else if (valueSet.value <= 0.666f)
+        {
+            SetEvaluation("粉碎强度（中）");
+        }
+        else
+        {
+            SetEvaluation("粉碎强度（高）");
+        }
     }
     void Update()
     {   
@@ -66,7 +82,6 @@ public class SmashPanel : MonoBehaviour
             b.value = 0.5f + valueChange * 0.4f;
             c.value = 0.5f + valueChange * 0.7f;
             d.value = valueChange * 0.4f;
-            SetEvaluation("粉碎强度（低）");
         }
         else if(valueSet.value<=0.666f)
         {
@@ -74,7 +89,6 @@ public class SmashPanel : MonoBehaviour
             b.value = 0.5f + 0.4f + valueChange * 0.2f;
             c.value = 0.5f + 0.7f + valueChange * 0.3f;
             d.value = 0.4f + valueChange * 0.2f;
-            SetEvaluation("粉碎强度（中）");
         }
         else
         {
@@ -82,7 +96,6 @@ public class SmashPanel : MonoBehaviour
             b.value = 0.5f + 0.6f + valueChange * 0.4f;
             c.value = 0.5f + 1 - valueChange * 0.2f;
             d.value = 0.6f + valueChange * 0.4f;
-            SetEvaluation("粉碎强度（高）");
         }
         float sum = b.value + c.value;
         barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);

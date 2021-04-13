@@ -1911,7 +1911,7 @@ MonoBehaviour:
       _dynamic: 0
   guideID: 911
   dialogNeed: 1
-  dialogText: "\u5B69\u5B50\u4EEC\u7684\u72B6\u6001\u90FD\u4E0D\u9519\u5462...\u7A0D\u5FAE\u6CE8\u610F\u4E00\u4E0B_____\u3001_____\u5C31\u597D\u4E86\u3002"
+  dialogText: "\u5B69\u5B50\u4EEC\u7684\u72B6\u6001\u90FD\u4E0D\u9519\u5462...\u7A0D\u5FAE\u6CE8\u610F\u4E00\u4E0B\uFF0C\u5C31\u597D\u4E86\u3002"
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
@@ -5417,7 +5417,7 @@ MonoBehaviour:
       _dynamic: 0
   guideID: 921
   dialogNeed: 1
-  dialogText: "\u7EC8\u4E8E\u6765\u5566......\u8BF7\u591A\u4E9B\u7CBE\u529B\u5173\u6CE8\u4E00\u4E0B\u5B69\u5B50\u4EEC\u7684____\u3001_____\u5427\u3002"
+  dialogText: "\u7EC8\u4E8E\u6765\u5566......\u8BF7\u591A\u4E9B\u7CBE\u529B\u5173\u6CE8\u4E00\u4E0B\u5B69\u5B50\u4EEC\u7684\uFF0C\u5427\u3002"
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0

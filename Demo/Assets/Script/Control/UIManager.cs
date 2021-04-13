@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     List<string> names2 = new List<string>();
     GuideControl guideControl;
     GuideManager guideManager;
+    [SerializeField]
+    EvaluationPanel evaluationPanel;
     int currentUI;//当前打开UI在list中的序号
     int num = 10;//UI总数
     public static bool isOpen = false;
@@ -56,14 +58,14 @@ public class UIManager : MonoBehaviour
             {
                 panelList[currentUI].SetActive(true);
                 isOpen = true;
-                panelCanvas[3].SetActive(true);
+                panelCanvas[5].SetActive(true);
                 cameraController.locked = true;
             }
             else if (btn.name == "仓库")
             {
                 viewPanel.Init(gameManager.baseList);
                 //panelList[10].SetActive(true);
-                panelCanvas[3].SetActive(true);
+                panelCanvas[5].SetActive(true);
                 cameraController.locked = true;
                 if(!guideControl.newGamer)
                 {
@@ -77,7 +79,7 @@ public class UIManager : MonoBehaviour
                         guideManager.guideInfoDict.TryGetValue(911, out guideInfo);
                         if (str2 == null) str2 = guideInfo.dialogText.Split('，');
                         guideInfo.dialogText = str2[0];
-                        guideInfo.dialogText += "<color=red>" + a.kind + "</color>";
+                        guideInfo.dialogText += a.kind;
                         guideInfo.dialogText += str2[1];
                     }
                     else
@@ -87,7 +89,7 @@ public class UIManager : MonoBehaviour
                         guideManager.guideInfoDict.TryGetValue(921, out guideInfo);
                         if (str3 == null) str3 = guideInfo.dialogText.Split('，');
                         guideInfo.dialogText = str3[0];
-                        guideInfo.dialogText += "<color=red>" + a.kind + "</color>";
+                        guideInfo.dialogText +=a.kind;
                         guideInfo.dialogText += str3[1];
                     }
                     guideControl.Run();
@@ -98,10 +100,15 @@ public class UIManager : MonoBehaviour
                 panelList[btn.GetComponent<UIObject>().index].SetActive(true);
                 currentUI = btn.GetComponent<UIObject>().index;
                 isOpen = true;
-                panelCanvas[3].SetActive(true);
+                panelCanvas[5].SetActive(true);
                 cameraController.locked = true;
                 if(currentUI==9)
                 {
+                    for(int i=0;i<fragmentsOnDisc.Count;i++)
+                    {
+                        if (fragmentsOnDisc[i].name == "鉴酒")
+                            evaluationPanel.Init(fragmentsOnDisc[i].baseObject);
+                    }
                     if (!guideControl.newGamer)
                     {
                         int a = Random.Range(1, 10);
@@ -143,7 +150,7 @@ public class UIManager : MonoBehaviour
         else
         {
             panelList[currentUI].SetActive(true);
-            panelCanvas[3].SetActive(true);
+            panelCanvas[5].SetActive(true);
             cameraController.locked = true;
             if (GuideControl.id == 4 && currentUI == 0)
             {
@@ -218,7 +225,7 @@ public class UIManager : MonoBehaviour
         }
         cameraController.locked = false;
         isOpen = false;
-        panelCanvas[3].SetActive(false);
+        panelCanvas[5].SetActive(false);
         if (GuideControl.id == 9 && currentUI == 0) 
         {
             GuideControl.id = 227;
@@ -502,7 +509,7 @@ public class UIManager : MonoBehaviour
             }
             catch { }
             //
-            temp = GameObject.Find("PanelCanvas").transform.GetChild(i - 3).gameObject;
+            temp = GameObject.Find("PanelCanvas").transform.GetChild(i - 1).gameObject;
             try
             {
                 text = temp.transform.Find("Title");
@@ -525,7 +532,7 @@ public class UIManager : MonoBehaviour
         temp = GameObject.Find("FactoryPanel");
         panelList.Add(temp);
         buttonList.Add(temp.transform.Find("Next").gameObject);
-        for (i = 0; i < 4; i++)
+        for (i = 0; i < 6; i++)
         {
             temp = GameObject.Find("PanelCanvas").transform.GetChild(i).gameObject;
             panelCanvas.Add(temp);

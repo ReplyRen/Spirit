@@ -57,6 +57,22 @@ public class StorePanel : MonoBehaviour
             fragmentsOnDisc[index].baseObject.review.Add(name);
         }
         catch { }
+        Debug.Log(name);
+    }
+    public void Confirm()
+    {
+        if (valueSet.value <= 0.333f)
+        {
+            SetEvaluation("原、辅料配比（低）");
+        }
+        else if (valueSet.value <= 0.666f)
+        {
+            SetEvaluation("原、辅料配比（中）");
+        }
+        else
+        {
+            SetEvaluation("原、辅料配比（高）");
+        }
     }
     void Update()
     {
@@ -67,7 +83,6 @@ public class StorePanel : MonoBehaviour
             b.value = valueChange * 0.9f;
             c.value = valueChange * 0.6f;
             e.value = valueChange * 0.6f;
-            SetEvaluation("原、辅料配比（低）");
         }
         else if (valueSet.value <= 0.666f)
         {
@@ -76,7 +91,6 @@ public class StorePanel : MonoBehaviour
             b.value = 0.9f + valueChange * 0;
             c.value = 0.6f + valueChange * 0.2f;
             e.value = 0.6f + valueChange * 0.2f;
-            SetEvaluation("原、辅料配比（中）");
         }
         else
         {
@@ -85,7 +99,6 @@ public class StorePanel : MonoBehaviour
             b.value = 0.9f + valueChange * 0.1f;
             c.value = 0.8f + valueChange * 0.2f;
             e.value = 0.8f + valueChange * 0.2f;
-            SetEvaluation("原、辅料配比（高）");
         }
         float sum = a.value + b.value + c.value;
         barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);

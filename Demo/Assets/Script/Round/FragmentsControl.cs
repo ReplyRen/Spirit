@@ -82,7 +82,6 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         pointDown = false;
 
         preIndex = -1;
-        Debug.Log(fragmentInformation.baseObject.batch);
         if (fragmentInformation.baseObject.batch != 0)
             batchNum = fragmentInformation.baseObject.batch;
         else
