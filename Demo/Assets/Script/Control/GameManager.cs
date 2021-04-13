@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
         uiManager = GameObject.FindWithTag("FactoryPanel").GetComponent<UIManager>();
         calendar = GameObject.FindWithTag("Calendar").GetComponent<Calendar>();
         LoadData();
+        LoadEvaluation();
 
     }
     private void Start()
@@ -142,6 +143,7 @@ public class GameManager : MonoBehaviour
 
     public (string kind, float deviation) GetDeviation(BaseObject obj)
     {
+        Debug.Log(obj.GetKind());
         Evaluation e = evaluationDic[obj.GetKind().ToString()];
         List<int> l = new List<int>();
         float ins = Mathf.Abs(GetRatio(e.intensity, e.intensity, obj.evaluation.intensity, obj.evaluation.intensity));
@@ -664,11 +666,13 @@ public class GameManager : MonoBehaviour
         TextAsset data = Resources.Load("Data/Evaluate") as TextAsset;
 
         string[] str = data.text.Split('\n');
-
-        for (int i = 1; i < str.Length - 1; i++)
+        Debug.Log(str[1]);
+        for (int i = 1; i < str.Length-1; i++)
         {
             var e = evaluationDecode(str[i]);
+            Debug.Log(e.name);
             evaluationDic.Add(e.name, e.evaluation);
+
         }
     }
     private (string name, Evaluation evaluation) evaluationDecode(string str)
@@ -681,7 +685,7 @@ public class GameManager : MonoBehaviour
         e.continuity = int.Parse(ss[4]);
         e.fineness = int.Parse(ss[5]);
         e.flavor = int.Parse(ss[6]);
-        return (name, e);
+        return (ss[0], e);
     }
     #endregion
 }
