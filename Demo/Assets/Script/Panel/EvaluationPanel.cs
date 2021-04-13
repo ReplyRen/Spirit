@@ -56,11 +56,12 @@ public class EvaluationPanel : MonoBehaviour
         scoreText.text = score.ToString();
         kindText.text = "品类：" + obj.GetKind().ToString();
         gameObject.GetComponentInChildren<EvaluationChart>().Init(obj.evaluation);
-        reviewText.text = "";
+        string str = "";
         foreach (var a in obj.review)
         {
-            reviewText.text += a+"\n";
+            str += a+"\n";
         }
+        reviewText.text = str;
 
     }
     public float GetScore(BaseObject obj)
