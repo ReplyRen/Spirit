@@ -48,6 +48,20 @@ public class BaseObject
     /// </summary>
     public List<辅料> minors = new List<辅料>();
 
+
+
+    /// <summary>
+    /// 配料，粉碎润料，蒸煮摊晾并行
+    /// </summary>
+    public List<string> vs = new List<string>();
+
+    public BaseObject()
+    {
+        vs.Add("粉碎润料");
+        vs.Add("配料");
+        vs.Add("蒸煮摊凉");
+    }
+
     public int mainStep = 1;
 
     public Kind GetKind()
@@ -96,14 +110,14 @@ public class BaseObject
 }
 public enum 主料
 {
-    糯性高梁,高粱,大米,小麦,麸皮
+    糯性高梁, 高粱, 大米, 小麦, 麸皮
 }
 public enum 辅料
 {
-    高粱皮,豌豆,大米,稻壳,猪肉,草药,糯米,小麦,玉米
+    高粱皮, 豌豆, 大米, 稻壳, 猪肉, 草药, 糯米, 小麦, 玉米
 }
 public enum Kind
 {
-    酱香型,浓香型,清香型,兼香型,米香型,凤香型,芝麻香型,豉香型,特香型,药香型,老白干香型,馥郁香型
+    酱香型, 浓香型, 清香型, 兼香型, 米香型, 凤香型, 芝麻香型, 豉香型, 特香型, 药香型, 老白干香型, 馥郁香型
 }
 

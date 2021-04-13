@@ -5215,7 +5215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e919421a468d542a51ee6ab6677fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGamer: 1
+  newGamer: 0
   fragmentLayout: {fileID: 1069829366}
   dialog: {fileID: 1059993666}
   dialogImage: {fileID: 1987185492}
@@ -6236,6 +6236,11 @@ PrefabInstance:
       propertyPath: speed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 360102936323371482, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: evaluationPanel
+      value: 
+      objectReference: {fileID: 1337085507}
     - target: {fileID: 360102936323371483, guid: f5a18e6d4daa05a46aa81a5600c73814,
         type: 3}
       propertyPath: m_Name

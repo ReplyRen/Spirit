@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     List<string> names2 = new List<string>();
     GuideControl guideControl;
     GuideManager guideManager;
+    [SerializeField]
     EvaluationPanel evaluationPanel;
     int currentUI;//当前打开UI在list中的序号
     int num = 10;//UI总数
@@ -479,7 +480,6 @@ public class UIManager : MonoBehaviour
     //
     void Start()
     {
-        evaluationPanel= GameObject.Find("Main Camera").GetComponent<EvaluationPanel>();
         guideManager = GameObject.Find("Main Camera").GetComponent<GuideManager>();
         guideControl = GameObject.Find("Main Camera").GetComponent<GuideControl>();
         gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();

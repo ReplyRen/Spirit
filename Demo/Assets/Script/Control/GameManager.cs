@@ -108,8 +108,6 @@ public class GameManager : MonoBehaviour
         uiManager.NextDay();
         StartRound();
         roundPanel.InitialRoundPanel(fragmentList);
-        foreach (var fr in fragmentList)
-            Debug.Log(fr.name);
         yield return new WaitForFixedUpdate();
         if (GuideControl.id == 11)
         {
@@ -142,14 +140,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public (string kind,float deviation) GetDeviation(BaseObject obj)
+    public (string kind, float deviation) GetDeviation(BaseObject obj)
     {
         Evaluation e = evaluationDic[obj.GetKind().ToString()];
         List<int> l = new List<int>();
-        float ins=Mathf.Abs(GetRatio(e.intensity, e.intensity, obj.evaluation.intensity, obj.evaluation.intensity));
-        float rich= Mathf.Abs(GetRatio(e.intensity, e.rich, obj.evaluation.intensity, obj.evaluation.rich));
-        float con= Mathf.Abs(GetRatio(e.intensity, e.continuity, obj.evaluation.intensity, obj.evaluation.continuity));
-        float fin= Mathf.Abs(GetRatio(e.intensity, e.fineness, obj.evaluation.intensity, obj.evaluation.fineness));
+        float ins = Mathf.Abs(GetRatio(e.intensity, e.intensity, obj.evaluation.intensity, obj.evaluation.intensity));
+        float rich = Mathf.Abs(GetRatio(e.intensity, e.rich, obj.evaluation.intensity, obj.evaluation.rich));
+        float con = Mathf.Abs(GetRatio(e.intensity, e.continuity, obj.evaluation.intensity, obj.evaluation.continuity));
+        float fin = Mathf.Abs(GetRatio(e.intensity, e.fineness, obj.evaluation.intensity, obj.evaluation.fineness));
         float fla = Mathf.Abs(GetRatio(e.intensity, e.flavor, obj.evaluation.intensity, obj.evaluation.flavor));
         if (ins > rich && ins > con && ins > fin && ins > fla)
             return ("强度", ins);
@@ -162,7 +160,7 @@ public class GameManager : MonoBehaviour
         else
             return ("风味", fla);
     }
-    private float GetRatio(float n1,float t1,float n2,float t2)
+    private float GetRatio(float n1, float t1, float n2, float t2)
     {
         float a = t1 / n1;
         if (n2 == 0)
@@ -244,6 +242,7 @@ public class GameManager : MonoBehaviour
             baseObject.minors = fragment.baseObject.minors;
             baseObject.review = fragment.baseObject.review;
             baseObject.batch = fragment.baseObject.batch;
+            baseObject.vs = fragment.baseObject.vs;
             if (baseObject.alcoholQueue.Count >= 6)
             {
                 baseObject.alcoholQueue.Dequeue();
@@ -257,12 +256,15 @@ public class GameManager : MonoBehaviour
                 baseObject.name = "原、辅料";
                 break;
             case "粉碎润料":
+                baseObject.vs.Remove("粉碎润料");
                 baseObject.name = "原、辅料（碎）";
                 break;
             case "蒸煮摊凉":
+                baseObject.vs.Remove("蒸煮摊凉");
                 baseObject.name = "原、辅料（煮）";
                 break;
             case "配料":
+                baseObject.vs.Remove("配料");
                 baseObject.name = "原、辅料（配）";
                 break;
             case "修窖":
@@ -334,6 +336,10 @@ public class GameManager : MonoBehaviour
                 fragmentList.Add(f);//添加碎片队列
             }
         }
+        foreach(var a in fragmentList)
+        {
+            Debug.Log(a.baseObject.name);
+        }
         BaseFragment fragment = SetFragment(fragmentDic["原、辅料准备"]);
         fragmentList.Add(fragment);
     }
@@ -351,6 +357,12 @@ public class GameManager : MonoBehaviour
             case "原、辅料（碎）":
             case "原、辅料（煮）":
             case "原、辅料（配）":
+                if (baseObject.vs.Contains("配料"))
+                    name.Add("配料");
+                if (baseObject.vs.Contains("蒸煮摊凉"))
+                    name.Add("蒸煮摊凉");
+                if (baseObject.vs.Contains("粉碎润料"))
+                    name.Add("粉碎润料");
                 name.Add("修窖");
                 break;
             case "原、辅料（窖）":
@@ -394,6 +406,7 @@ public class GameManager : MonoBehaviour
             fragment.baseObject = baseObject;
             fragments.Add(fragment);
         }
+        Debug.Log("batch:" + baseObject.batch);
         return fragments;
     }
 
@@ -459,7 +472,7 @@ public class GameManager : MonoBehaviour
         {
             season = Season.秋;
         }
-        else if ((num > 9 && num <= 11)||num==0)
+        else if ((num > 9 && num <= 11) || num == 0)
         {
             season = Season.冬;
         }
@@ -629,7 +642,7 @@ public class GameManager : MonoBehaviour
                 fragment.model = FragmentModel.oneHundredAndTwenty;
                 break;
         }
-        fragment.facility = ss[18];          
+        fragment.facility = ss[18];
 
         Evaluation evaluation = new Evaluation();
         evaluation.intensity = float.Parse(ss[13]);
@@ -658,13 +671,13 @@ public class GameManager : MonoBehaviour
             evaluationDic.Add(e.name, e.evaluation);
         }
     }
-    private (string name,Evaluation evaluation) evaluationDecode(string str)
+    private (string name, Evaluation evaluation) evaluationDecode(string str)
     {
         string[] ss = str.Split('|');
         Evaluation e = new Evaluation();
         e.baseScore = int.Parse(ss[1]);
         e.intensity = int.Parse(ss[2]);
-        e.rich= int.Parse(ss[3]);
+        e.rich = int.Parse(ss[3]);
         e.continuity = int.Parse(ss[4]);
         e.fineness = int.Parse(ss[5]);
         e.flavor = int.Parse(ss[6]);
