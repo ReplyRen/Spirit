@@ -120,6 +120,10 @@ public class TaskManager : MonoBehaviour
                     {
                         score = evaluationPanel.GetScore(newList[j].baseObject) * 100;
                         Debug.Log(score);
+                        Debug.Log(tasks[i].name+"roundCount:"+ tasks[i].roundCount);
+                        Debug.Log("targetScore:" + tasks[i].targetScore);
+                        Debug.Log("category:" + tasks[i].category);
+                        Debug.Log(isFailed);
                         name = newList[j].baseObject.GetKind().ToString();
                         if (tasks[i].roundLimit != 0)
                         {
@@ -240,6 +244,7 @@ public class TaskManager : MonoBehaviour
     {
         for(int i=0;i<tasks.Count;i++)
         {
+            Debug.Log(tasks[i].isFinished + "   " + tasks[i].isDoing+i);
             if (!tasks[i].isDoing && !tasks[i].isFinished)
             {
                 isFailed = true;

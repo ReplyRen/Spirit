@@ -79,7 +79,7 @@ public class UIManager : MonoBehaviour
                         guideManager.guideInfoDict.TryGetValue(911, out guideInfo);
                         if (str2 == null) str2 = guideInfo.dialogText.Split('，');
                         guideInfo.dialogText = str2[0];
-                        guideInfo.dialogText += "<color=red>" + a.kind + "</color>";
+                        guideInfo.dialogText += a.kind;
                         guideInfo.dialogText += str2[1];
                     }
                     else
@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
                         guideManager.guideInfoDict.TryGetValue(921, out guideInfo);
                         if (str3 == null) str3 = guideInfo.dialogText.Split('，');
                         guideInfo.dialogText = str3[0];
-                        guideInfo.dialogText += "<color=red>" + a.kind + "</color>";
+                        guideInfo.dialogText +=a.kind;
                         guideInfo.dialogText += str3[1];
                     }
                     guideControl.Run();
