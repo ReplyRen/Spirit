@@ -341,7 +341,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                         FragmentsManager.fragmentsOnRound.Remove(fragmentInformation);
                     }
                     //Debug.LogWarning("来自同一个base,替换这个地方为产生tips");
-                    StaticMethod.Tips("来自同一个酒基,无法同时放置！");
+                    StaticMethod.Tips("使用同一个材料,无法同时放置！");
                     return;
                 }
                 else if (FragmentsManager.fragmentsOnRound[i].facility == fragmentInformation.facility)
