@@ -202,6 +202,9 @@ public class PitsPanel : MonoBehaviour
                 fragmentsOnDisc[index].baseObject.review.Add(fragment1.baseObject.review[0]);
                 fragmentsOnDisc[index].baseObject.review.Add(fragment2.baseObject.review[0]);
                 fragmentsOnDisc[index].baseObject.review.Add(fragment3.baseObject.review[0]);
+                Debug.Log(fragment1.baseObject.review[0]);
+                Debug.Log(fragment2.baseObject.review[0]);
+                Debug.Log(fragment3.baseObject.review[0]);
                 break;
             case 4:
                 SetEvaluation("加原辅料");
