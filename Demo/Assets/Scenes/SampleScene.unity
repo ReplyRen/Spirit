@@ -5215,7 +5215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e919421a468d542a51ee6ab6677fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGamer: 0
+  newGamer: 1
   fragmentLayout: {fileID: 1069829366}
   dialog: {fileID: 1059993666}
   dialogImage: {fileID: 1987185492}
