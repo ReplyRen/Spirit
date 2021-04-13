@@ -82,7 +82,11 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
         pointDown = false;
 
         preIndex = -1;
-        batchNum = fragmentInformation.baseObject.batch + 1;
+        Debug.Log(fragmentInformation.baseObject.batch);
+        if (fragmentInformation.baseObject.batch != 0)
+            batchNum = fragmentInformation.baseObject.batch;
+        else
+            batchNum = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<GameManager>().batch + 1;
         GetComponent<Image>().sprite = StaticMethod.LoadSprite("Sprite/圆盘/" +
                     fragmentInformation.name + "_xiao");
         sign = transform.GetChild(2).gameObject;
