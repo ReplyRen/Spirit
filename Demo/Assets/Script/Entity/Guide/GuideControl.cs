@@ -165,6 +165,7 @@ public class GuideControl : MonoBehaviour
     public void skip()
     {
         id = 702;
+        newGamer = false;
         Run();
     }
 }

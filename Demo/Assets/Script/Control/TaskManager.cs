@@ -118,7 +118,8 @@ public class TaskManager : MonoBehaviour
                 {
                     if (tasks[i].step == "鉴酒") 
                     {
-                        score = evaluationPanel.GetScore(newList[j].baseObject);
+                        score = evaluationPanel.GetScore(newList[j].baseObject) * 100;
+                        Debug.Log(score);
                         name = newList[j].baseObject.GetKind().ToString();
                         if (tasks[i].roundLimit != 0)
                         {

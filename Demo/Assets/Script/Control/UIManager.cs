@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     List<string> names2 = new List<string>();
     GuideControl guideControl;
     GuideManager guideManager;
+    EvaluationPanel evaluationPanel;
     int currentUI;//当前打开UI在list中的序号
     int num = 10;//UI总数
     public static bool isOpen = false;
@@ -102,6 +103,11 @@ public class UIManager : MonoBehaviour
                 cameraController.locked = true;
                 if(currentUI==9)
                 {
+                    for(int i=0;i<fragmentsOnDisc.Count;i++)
+                    {
+                        if (fragmentsOnDisc[i].name == "鉴酒")
+                            evaluationPanel.Init(fragmentsOnDisc[i].baseObject);
+                    }
                     if (!guideControl.newGamer)
                     {
                         int a = Random.Range(1, 10);
@@ -473,6 +479,7 @@ public class UIManager : MonoBehaviour
     //
     void Start()
     {
+        evaluationPanel= GameObject.Find("Main Camera").GetComponent<EvaluationPanel>();
         guideManager = GameObject.Find("Main Camera").GetComponent<GuideManager>();
         guideControl = GameObject.Find("Main Camera").GetComponent<GuideControl>();
         gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
