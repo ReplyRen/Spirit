@@ -5215,7 +5215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e919421a468d542a51ee6ab6677fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGamer: 1
+  newGamer: 0
   fragmentLayout: {fileID: 1069829366}
   dialog: {fileID: 1059993666}
   dialogImage: {fileID: 1987185492}
@@ -5780,6 +5780,11 @@ PrefabInstance:
     - target: {fileID: 1747867966, guid: 54082c06da22f964792d3be3cc13a161, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469114774506329050, guid: 54082c06da22f964792d3be3cc13a161,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5689392023297311111, guid: 54082c06da22f964792d3be3cc13a161,
         type: 3}
@@ -7036,17 +7041,17 @@ PrefabInstance:
     - target: {fileID: 5848422081395599620, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5848422081395599620, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5848422081395599620, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5848422082215467318, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
         type: 3}

@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
     {
         panelList[11].SetActive(true);
     }
+    bool isab = false;
     //打开/关闭panel
     public void OpenUI()
     {
@@ -67,7 +68,7 @@ public class UIManager : MonoBehaviour
                 //panelList[10].SetActive(true);
                 panelCanvas[5].SetActive(true);
                 cameraController.locked = true;
-                if(!guideControl.newGamer)
+                if (!guideControl.newGamer && !isab)
                 {
                     var a = gameManager.GetDeviation(fragmentsOnDisc[fragmentsOnDisc.Count - 1].baseObject);
                     if (a.deviation <= 0.05)
@@ -93,6 +94,7 @@ public class UIManager : MonoBehaviour
                         guideInfo.dialogText += str3[1];
                     }
                     guideControl.Run();
+                    isab = true;
                 }
             }
             else if (btn.GetComponent<UIObject>().isUse && cameraController.large)
@@ -309,6 +311,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void InitializeFactory(List<BaseFragment> newList)
     {
+        isab = false;
         panelList[11].SetActive(true);
         fragmentsOnDisc = newList;
         ResetState();
@@ -356,11 +359,11 @@ public class UIManager : MonoBehaviour
                 {
                     if (i == names2.Count - 1 && names2.Count > 1) 
                     {
-                        guideInfo.dialogText += "和" +names2[i] ;
+                        guideInfo.dialogText += "和" +names2[i];
                     }
                     else
                     {
-                        guideInfo.dialogText += "，" + names2[i] ;
+                        guideInfo.dialogText += "，" +  names2[i];
                     }
                 }
                 guideInfo.dialogText += str1[1];
@@ -444,6 +447,10 @@ public class UIManager : MonoBehaviour
                     buttonList[9].GetComponent<UIObject>().isUse = true;
                     a = true;
                     currentUI = 9;
+                    RoundPanel.ri1 = true;
+                    RoundPanel.ri2 = true;
+                    RoundPanel.ri3 = true;
+                    RoundPanel.ri4 = true;
                     break;
             }
         }

@@ -12,6 +12,7 @@ public class RoundPanel : BasePanel
     {
 
     }
+    static public bool ri1 = true, ri2 = true, ri3 = true, ri4 = true;
     /// <summary>
     /// 初始化函数
     /// </summary>
@@ -44,25 +45,29 @@ public class RoundPanel : BasePanel
         }
         else if (GuideControl.id >= 602)
         {
-            if (newFragments.Count < 5)
+            if (newFragments.Count < 5 &&ri1)
             {
                 GuideControl.id = 1001;
                 GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                ri1 = false;
             }
-            else if (newFragments.Count < 8)
+            else if (newFragments.Count < 8&&ri2)
             {
                 GuideControl.id = 1011;
                 GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                ri2 = false;
             }
-            else if (newFragments.Count < 12)
+            else if (newFragments.Count < 12&&ri3)
             {
                 GuideControl.id = 1021;
                 GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                ri3 = false;
             }
-            else
+            else if(ri4)
             {
                 GuideControl.id = 1031;
                 GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                ri4 = false;
             }
         }
         FragmentsManager.UpdateFragments(newFragments);

@@ -3857,7 +3857,7 @@ MonoBehaviour:
       _dynamic: 0
   guideID: 402
   dialogNeed: 1
-  dialogText: "\u6BD5\u7ADF\u9634\u51C9\u901A\u98CE\u7684\u73AF\u5883\u4F1A\u8BA9\u5B83\u4EEC\u5F88\u8212\u670D\u561B\u561B\u3002"
+  dialogText: "\u6BD5\u7ADF\u9634\u51C9\u901A\u98CE\u7684\u73AF\u5883\u4F1A\u8BA9\u5B83\u4EEC\u5F88\u8212\u670D\u561B\u3002"
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
@@ -4741,8 +4741,8 @@ MonoBehaviour:
       _dynamic: 0
   guideID: 701
   dialogNeed: 1
-  dialogText: "\u7EEA\u5C0F\u59D0\uFF0C\u5DF2\u7ECF\u5B8C\u6210\u4E86\uFF01"
-  dialogCharacter: 2
+  dialogText: "\uFF0C\u5DF2\u7ECF\u5B8C\u6210\u4E86\uFF01"
+  dialogCharacter: 0
   Character1f: 0
   Character2f: 0
   Character3f: 0
@@ -5417,7 +5417,7 @@ MonoBehaviour:
       _dynamic: 0
   guideID: 921
   dialogNeed: 1
-  dialogText: "\u7EC8\u4E8E\u6765\u5566......\u8BF7\u591A\u4E9B\u7CBE\u529B\u5173\u6CE8\u4E00\u4E0B\u5B69\u5B50\u4EEC\u7684\uFF0C\u5427\u3002"
+  dialogText: "\u7EC8\u4E8E\u6765\u5566......\u8BF7\u591A\u82B1\u4E9B\u7CBE\u529B\u5173\u6CE8\u4E00\u4E0B\u5B69\u5B50\u4EEC\u7684\u5C5E\u6027\u5427\uFF01\u8FD9\u6837\u4E0B\u53BB\u6700\u7EC8\u4ED6\u4EEC\u7684\uFF0C\u5C5E\u6027\u4F1A\u4E0D\u597D\u5462\u3002"
   dialogCharacter: 3
   Character1f: 0
   Character2f: 0
