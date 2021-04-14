@@ -176,7 +176,7 @@ public class GuideControl : MonoBehaviour
         }
         else if (id >= 301 && id <= 315)
         {
-            id = 15;
+            id = 14;
             gameObject.GetComponent<GuideManager>().Hide();
         }
         else if (id >= 401 && id <= 415)
