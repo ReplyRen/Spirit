@@ -342,8 +342,12 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log(a.baseObject.name);
         }
-        BaseFragment fragment = SetFragment(fragmentDic["原、辅料准备"]);
-        fragmentList.Add(fragment);
+        if (batch < 4)
+        {
+            BaseFragment fragment = SetFragment(fragmentDic["原、辅料准备"]);
+            fragmentList.Add(fragment);
+        }
+
     }
     private List<BaseFragment> ObjectToFragment(BaseObject baseObject)
     {

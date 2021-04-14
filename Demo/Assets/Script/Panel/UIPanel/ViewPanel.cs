@@ -78,7 +78,7 @@ public class ViewPanel : MonoBehaviour
         {
             cards[i].SetActive(false);
         }
-        if (baseObjs != null)
+        if (baseObjs.Count>0)
         {
             UpdateChart(baseObjs[0]);
             currentObj = baseObjs[0];
