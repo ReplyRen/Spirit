@@ -164,8 +164,31 @@ public class GuideControl : MonoBehaviour
     }
     public void skip()
     {
-        id = 702;
-        newGamer = false;
-        Run();
+        if (id >= 101 && id <= 111)
+        {
+            id = 2;
+            gameObject.GetComponent<GuideManager>().Hide();
+        }
+        else if (id >= 201 && id <= 229)
+        {
+            id = 11;
+            gameObject.GetComponent<GuideManager>().Hide();
+        }
+        else if (id >= 301 && id <= 315)
+        {
+            id = 15;
+            gameObject.GetComponent<GuideManager>().Hide();
+        }
+        else if (id >= 401 && id <= 415)
+        {
+            id = 17;
+            gameObject.GetComponent<GuideManager>().Hide();
+        }
+        else
+        {
+            id = 702;
+            Run();
+            newGamer = false;
+        }
     }
 }
