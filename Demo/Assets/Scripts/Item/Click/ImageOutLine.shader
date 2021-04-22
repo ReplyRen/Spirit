@@ -54,6 +54,7 @@
                 left = tex2D(_MainTex,i.uv + (float2(-1,0)* _MainTex_TexelSize.xy* _MinOffset)).a;
                 top = tex2D(_MainTex,i.uv + (float2(0,1) * _MainTex_TexelSize.xy* _MinOffset)).a;
                 bottom = tex2D(_MainTex,i.uv + (float2(0,-1) * _MainTex_TexelSize.xy* _MinOffset)).a;
+
                 if (right == 0 && left == 0 && top == 0 && bottom == 0)return fixed4(1, 1, 1, 0);
                 float IsEdge = right * left* top * bottom;
                 col.rgb = lerp(_OutLineCol.rgb,col.rgb,IsEdge);
