@@ -45,29 +45,41 @@ public class RoundPanel : BasePanel
         }
         else if (GuideControl.id >= 602)
         {
-            if (newFragments.Count < 5 &&ri1)
+            if (newFragments.Count < 5)
             {
-                GuideControl.id = 1001;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
-                ri1 = false;
+                if (ri1)
+                {
+                    GuideControl.id = 1001;
+                    GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                    ri1 = false;
+                }
             }
-            else if (newFragments.Count < 8&&ri2)
+            else if (newFragments.Count < 8)
             {
-                GuideControl.id = 1011;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
-                ri2 = false;
+                if (ri2)
+                {
+                    GuideControl.id = 1011;
+                    GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                    ri2 = false;
+                }
             }
-            else if (newFragments.Count < 12&&ri3)
+            else if (newFragments.Count < 12)
             {
-                GuideControl.id = 1021;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
-                ri3 = false;
+                if (ri3)
+                {
+                    GuideControl.id = 1021;
+                    GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                    ri3 = false;
+                }
             }
-            else if(ri4)
+            else 
             {
-                GuideControl.id = 1031;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
-                ri4 = false;
+                if (ri4)
+                {
+                    GuideControl.id = 1031;
+                    GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                    ri4 = false;
+                }
             }
         }
         FragmentsManager.UpdateFragments(newFragments);

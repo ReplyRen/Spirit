@@ -4741,7 +4741,7 @@ MonoBehaviour:
       _dynamic: 0
   guideID: 701
   dialogNeed: 1
-  dialogText: "\uFF0C\u5DF2\u7ECF\u5B8C\u6210\u4E86\uFF01"
+  dialogText: "\u5DF2\u7ECF\u5B8C\u6210\u4E86\uFF01"
   dialogCharacter: 0
   Character1f: 0
   Character2f: 0

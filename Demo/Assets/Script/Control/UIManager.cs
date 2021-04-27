@@ -5,47 +5,44 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public List<GameObject> buttonList = new List<GameObject>();
-    public List<GameObject> panelList = new List<GameObject>();
-    public List<GameObject> confirmList = new List<GameObject>();
-    public List<GameObject> quickSetList = new List<GameObject>();
-    public List<BaseFragment> fragmentsOnDisc;
-    public Shader shader;
-    public Material mt;
-    public List<Material> mats;
-    ViewPanel viewPanel;
-    GameManager gameManager;
-    CameraController cameraController;
-    List<GameObject> panelCanvas = new List<GameObject>();
-    List<string> names1=new List<string>();
-    List<string> names2 = new List<string>();
+    [SerializeField]
+    List<GameObject> buttonList = new List<GameObject>();
+    [SerializeField]
+    List<GameObject> panelList = new List<GameObject>();
+    [SerializeField]
+    List<GameObject> confirmList = new List<GameObject>();
+    [SerializeField]
+    List<GameObject> quickSetList = new List<GameObject>();
+    [SerializeField]
     GuideControl guideControl;
+    [SerializeField]
     GuideManager guideManager;
     [SerializeField]
     EvaluationPanel evaluationPanel;
+    [SerializeField]
+    ViewPanel viewPanel;
+    [SerializeField]
+    GameManager gameManager;
+    [SerializeField]
+    CameraController cameraController;
+    [SerializeField]
+    SpecialEffect specialEffect;
+
+    List<BaseFragment> fragmentsOnDisc;
+
+    List<GameObject> panelCanvas = new List<GameObject>();
+    List<string> names1=new List<string>();
+    List<string> names2 = new List<string>();
+
     int currentUI;//当前打开UI在list中的序号
     int num = 10;//UI总数
     public static bool isOpen = false;
     private bool check = true;
-    string[] str1 = null;
+    string str1 = null;
     string[] str2 = null;
     string[] str3 = null;
     bool isConfirm = false;
-    UIManager instance = null;
-    private void Awake()
-    {
-        if (instance != null)
-            Destroy(this);
-        instance = this;
-    }
-    public void CloseFactory()//关闭工厂panel
-    {
-        panelList[11].SetActive(false);
-    }
-    public void OpenFactory()//打开工厂panel
-    {
-        panelList[11].SetActive(true);
-    }
+
     bool isab = false;
     //打开/关闭panel
     public void OpenUI()
@@ -65,7 +62,6 @@ public class UIManager : MonoBehaviour
             else if (btn.name == "仓库")
             {
                 viewPanel.Init(gameManager.baseList);
-                //panelList[10].SetActive(true);
                 panelCanvas[5].SetActive(true);
                 cameraController.locked = true;
                 if (!guideControl.newGamer && !isab)
@@ -241,7 +237,7 @@ public class UIManager : MonoBehaviour
         Slider slider;
         var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         buttonList[currentUI].transform.GetComponent<UIObject>().isConfirm = true;
-        mats[currentUI].SetFloat("_Flag", 1);
+        specialEffect.mats[currentUI].SetFloat("_Flag", 1);
         if (panelList[currentUI].name != "采购部Panel" && panelList[currentUI].name != "评价Panel") btn.SetActive(false);
         try
         {
@@ -353,20 +349,23 @@ public class UIManager : MonoBehaviour
             {
                 GuideInfo guideInfo = new GuideInfo();
                 guideManager.guideInfoDict.TryGetValue(701, out guideInfo);
-                if(str1==null) str1 = guideInfo.dialogText.Split('，');
-                guideInfo.dialogText = str1[0];
-                for(int i=0;i<names2.Count;i++)
+                if(str1==null) str1 = guideInfo.dialogText;
+                if(names2.Count > 0) guideInfo.dialogText = names2[0];
+                for(int i=1;i<names2.Count;i++)
                 {
-                    if (i == names2.Count - 1 && names2.Count > 1) 
-                    {
-                        guideInfo.dialogText += "和" +names2[i];
-                    }
-                    else
-                    {
-                        guideInfo.dialogText += "，" +  names2[i];
+                    if (names2.Count > 1)
+                    { 
+                        if (i == names2.Count - 1)
+                        {
+                            guideInfo.dialogText += "和" + names2[i];
+                        }
+                        else
+                        {
+                            guideInfo.dialogText += "，" + names2[i];
+                        }
                     }
                 }
-                guideInfo.dialogText += str1[1];
+                guideInfo.dialogText += str1;
                 guideControl.Run();
             }
         }
@@ -460,8 +459,8 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < num; i++)
         {
-            if (buttonList[i].GetComponent<UIObject>().isUse) mats[i].SetFloat("_Flag", 0);
-            else mats[i].SetFloat("_Flag", 1);
+            if (buttonList[i].GetComponent<UIObject>().isUse) specialEffect.mats[i].SetFloat("_Flag", 0);
+            else specialEffect.mats[i].SetFloat("_Flag", 1);
         }
     }
     #endregion
@@ -487,42 +486,15 @@ public class UIManager : MonoBehaviour
     //
     void Start()
     {
-        guideManager = GameObject.Find("Main Camera").GetComponent<GuideManager>();
-        guideControl = GameObject.Find("Main Camera").GetComponent<GuideControl>();
-        gameManager = GameObject.Find("Main Camera").GetComponent<GameManager>();
-        viewPanel = GameObject.Find("PanelCanvas").transform.Find("检视Panel").GetComponent<ViewPanel>();
-        cameraController = GameObject.Find("Main Camera").GetComponent<CameraController>();
         fragmentsOnDisc = gameManager.fragmentOnDisc;
         GameObject temp;
         int i;
         for (i = 7; i < num + 8; i++) /// 初始化list
         {
-            Transform text;
-            try
-            {
-                temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
-                text = temp.transform.Find("Text");
-                if (temp.name != "Next")
-                {
-                    text.GetComponent<Text>().text = temp.name;
-                    buttonList.Add(temp);
-                    Material mat = Instantiate(mt);
-                    mat.SetFloat("_Flag", 0);
-                    mat.SetFloat("_MinOffset", 8f);
-                    mat.SetColor("_OutLineCol", Color.yellow);
-                    temp.GetComponent<Image>().material = mat;
-                    mats.Add(temp.GetComponent<Image>().material);
-                }
-            }
-            catch { }
+            temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
+            buttonList.Add(temp);
             //
             temp = GameObject.Find("PanelCanvas").transform.GetChild(i - 1).gameObject;
-            try
-            {
-                text = temp.transform.Find("Title");
-                text.GetComponent<Text>().text = temp.name.Replace("Panel", "");
-            }
-            catch { }
             panelList.Add(temp);
             //
             try
