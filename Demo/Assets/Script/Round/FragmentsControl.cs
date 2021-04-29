@@ -22,6 +22,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
     private Vector3 prePosition;            //之前位置
     public GameObject round;                //圆盘
     public GameObject information;          //信息牌
+    private GameObject Text1;
+    private GameObject Text2;
+    private GameObject Text3;
     private RectTransform roundRect;        //圆盘的rect
     private GameObject line;                //提示线
     private RectTransform lineRect;         //线的rect
@@ -95,6 +98,9 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
 
         imgRect.localEulerAngles = imgChangeRotate;
         myCamera = GameObject.Find("Main Camera");
+        Text1 = information.transform.GetChild(4).GetChild(2).gameObject;
+        Text2 = information.transform.GetChild(4).GetChild(3).gameObject;
+        Text3 = information.transform.GetChild(4).GetChild(4).gameObject;
 
         switch (fragmentInformation.model)
         {
@@ -236,7 +242,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
                 angleTipRect.localEulerAngles = new Vector3(0, 0, index * 3);
                 if(endDrag)
                     imgRect.localScale = imgMovingScale;
-                if(Round.PlaceRight(index,fragmentInformation.model)==0)
+                if(Round.PlaceRight(index,fragmentInformation.model)==0||!Round.ResourceRight(index,fragmentInformation.name))
                 {
                     angleTip.GetComponent<Image>().color = Color.red - new Color(0, 0, 0, 0.5f);
                 }
@@ -314,7 +320,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
         }
         endDrag = true;
-        if (inRound && Round.PlaceRight(index, fragmentInformation.model) == 1) 
+        if (inRound && Round.PlaceRight(index, fragmentInformation.model) == 1&&Round.ResourceRight(index,fragmentInformation.name)) 
         {
             int i = 0;
             for (i = 0; i < FragmentsManager.fragmentsOnRound.Count; i++)
@@ -375,7 +381,7 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             else if(fragmentInformation.model==FragmentModel.thirty)
                 imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 158f;
             else if (fragmentInformation.model == FragmentModel.sixty)
-                imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 162f;
+                imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 165f;
             else
                 imgRect.anchoredPosition = roundRect.anchoredPosition + new Vector2(-(float)Math.Sin(index * 3 * exp), (float)Math.Cos(index * 3 * exp)) * 160f;
             AudioManager.PlayEffectMusic("embed");
@@ -478,6 +484,85 @@ public class FragmentsControl : MonoBehaviour, IPointerDownHandler, IDragHandler
             fragmentInformation.name + "_fangda");
         information.transform.GetChild(4).GetChild(0).gameObject.GetComponent<Text>().text = fragmentInformation.name;
         information.transform.GetChild(4).GetChild(1).gameObject.GetComponent<Text>().text = "\u3000\u3000"+fragmentInformation.description;
+        switch(fragmentInformation.name)
+        {
+            case "原、辅料准备":
+                Text1.GetComponent<Text>().text ="1";
+                Text2.GetComponent<Text>().text ="0";
+                Text3.GetComponent<Text>().text ="1";
+                break;
+            case "粉碎润料":
+                Text1.GetComponent<Text>().text ="1";
+                Text2.GetComponent<Text>().text ="1";
+                Text3.GetComponent<Text>().text ="1";
+                break;
+            case "配料":
+                Text1.GetComponent<Text>().text = "0";
+                Text2.GetComponent<Text>().text = "1";
+                Text3.GetComponent<Text>().text = "0";
+                break;
+            case "蒸煮摊凉":
+                Text1.GetComponent<Text>().text = "1";
+                Text2.GetComponent<Text>().text = "1";
+                Text3.GetComponent<Text>().text = "1";
+                break;
+            case "修窖":
+                Text1.GetComponent<Text>().text = "1";
+                Text2.GetComponent<Text>().text = "1";
+                Text3.GetComponent<Text>().text = "1";
+                break;
+            case "制曲、入曲":
+                Text1.GetComponent<Text>().text = "2";
+                Text2.GetComponent<Text>().text = "1";
+                Text3.GetComponent<Text>().text = "1";
+                break;
+            case "发酵":
+                Text1.GetComponent<Text>().text = "1";
+                Text2.GetComponent<Text>().text = "2";
+                Text3.GetComponent<Text>().text = "1";
+                break;
+            case "加原辅料":
+                Text1.GetComponent<Text>().text = "0";
+                Text2.GetComponent<Text>().text = "1";
+                Text3.GetComponent<Text>().text = "0";
+                break;
+            case "上甑":
+                Text1.GetComponent<Text>().text = "1";
+                Text2.GetComponent<Text>().text = "1";
+                Text3.GetComponent<Text>().text = "1";
+                break;
+            case "蒸馏":
+                Text1.GetComponent<Text>().text = "1";
+                Text2.GetComponent<Text>().text = "2";
+                Text3.GetComponent<Text>().text = "1";
+                break;
+            case "看花摘酒":
+                Text1.GetComponent<Text>().text = "1";
+                Text2.GetComponent<Text>().text = "1";
+                Text3.GetComponent<Text>().text = "1";
+                break;
+            case "陈酿":
+                Text1.GetComponent<Text>().text = "1";
+                Text2.GetComponent<Text>().text = "2";
+                Text3.GetComponent<Text>().text = "1";
+                break;
+            case "勾兑勾调":
+                Text1.GetComponent<Text>().text = "1";
+                Text2.GetComponent<Text>().text = "1";
+                Text3.GetComponent<Text>().text = "0";
+                break;
+            case "罐装":
+                Text1.GetComponent<Text>().text = "1";
+                Text2.GetComponent<Text>().text = "1";
+                Text3.GetComponent<Text>().text = "1";
+                break;
+            case "鉴酒":
+                Text1.GetComponent<Text>().text = "1";
+                Text2.GetComponent<Text>().text = "0";
+                Text3.GetComponent<Text>().text = "1";
+                break;
+        }
+        
         //根据name改变信息版内容
         //Debug.Log(fragmentInformation.name + ":" + fragmentInformation.model);
         ifClose = false;

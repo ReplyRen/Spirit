@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -3547995665775891208
     second: "\u4FEE\u7A96_yuanpian_0"
+  - first:
+      213: 4566211587166566198
+    second: "\u4FEE\u7A96_yuanpian_0"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -26,6 +29,7 @@ TextureImporter:
   isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -60,6 +64,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -128,8 +133,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fc6dc47dbcf2cec0800000000000000
-      internalID: -3547995665775891208
+      spriteID: 637f556ee317e5f30800000000000000
+      internalID: 4566211587166566198
       vertices: []
       indices: 
       edges: []

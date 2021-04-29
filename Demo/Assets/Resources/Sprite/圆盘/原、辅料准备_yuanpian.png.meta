@@ -29,6 +29,7 @@ TextureImporter:
   isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -120,10 +122,10 @@ TextureImporter:
       name: "\u539F\u3001\u8F85\u6599\u51C6\u5907_yuanpian_0"
       rect:
         serializedVersion: 2
-        x: 7
-        y: 6
-        width: 578
-        height: 404
+        x: 0
+        y: 3
+        width: 422
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +133,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9022ce8011a61d950800000000000000
-      internalID: 6472070760904794633
+      spriteID: 61736056c940a88c0800000000000000
+      internalID: -3996376649581578474
       vertices: []
       indices: 
       edges: []
