@@ -4663,7 +4663,7 @@ MonoBehaviour:
   m_Name: Guidenode
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -680, y: 232}
+  position: {x: -696, y: 232}
   ports:
     keys:
     - NextID
@@ -4747,7 +4747,7 @@ MonoBehaviour:
   Character2f: 0
   Character3f: 0
   if_invisiable1: 0
-  mainCharacter: 1
+  mainCharacter: 0
   CharacterMainf: 0
   if_invisiable2: 1
   maskType: 0

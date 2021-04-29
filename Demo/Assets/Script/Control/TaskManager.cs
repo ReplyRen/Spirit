@@ -65,6 +65,7 @@ public class TaskManager : MonoBehaviour
         else temp.transform.GetChild(2).GetComponent<Text>().text = "剩余" + "<color=red>" + task.roundCount + "</color>" + "月" + "   " + task.bonus;
         tip.SetActive(true);
         tips.SetActive(true);
+        OpenPanel();
     }
     public void OpenPanel()
     {
@@ -114,6 +115,8 @@ public class TaskManager : MonoBehaviour
         {
             for(int i = 0; i < tasks.Count; i++)
             {
+                Debug.Log(newList[j].name+"11");
+                Debug.Log(tasks[i].step + "22");
                 if (tasks[i].step == newList[j].name) 
                 {
                     if (tasks[i].step == "鉴酒") 
@@ -214,14 +217,8 @@ public class TaskManager : MonoBehaviour
             {
                 tasks[i].roundCount--;
             }
-            if (month == tasks[i].instanceRound)
-            {
-                tasks[i].isDoing = true;
-                tasks[i].isFinished = false;
-                InstanceTask(tasks[i]);
-            }
         }
-        Settle();
+       // Settle();
     }
     public void NextMonth()
     {
@@ -235,6 +232,16 @@ public class TaskManager : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         taskButton.SetActive(true);
         libraryButton.SetActive(true);
+        Check(gameManager.fragmentOnDisc);
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            if (month == tasks[i].instanceRound)
+            {
+                tasks[i].isDoing = true;
+                tasks[i].isFinished = false;
+                InstanceTask(tasks[i]);
+            }
+        }
     }
     public void Switch()
     {
@@ -250,6 +257,11 @@ public class TaskManager : MonoBehaviour
                 isFailed = true;
                 break;
             }
+
+        }
+        if (!isFailed)
+        {
+            OpenPanel();
         }
     }
     void Start()
@@ -265,7 +277,7 @@ public class TaskManager : MonoBehaviour
         taskPanel.SetActive(false);
         taskButton.SetActive(false);
         libraryButton.SetActive(false);
-        for(int i=0;i<2;i++)
+        for(int i=0;i<1;i++)
         {
             LoadTask("任务" + (i + 1));
         }
