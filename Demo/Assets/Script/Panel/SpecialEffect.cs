@@ -14,13 +14,13 @@ public class SpecialEffect : MonoBehaviour
     
     public List<Material> mats;
 
-    void Start()
+    void Awake()
     {
         GameObject temp;
         int i;
         for (i = 7; i < 10 + 8; i++) /// 初始化list
         {
-            temp = GameObject.Find("FactoryPanel").transform.GetChild(i).gameObject;
+            temp = GameObject.Find("Canvas").transform.Find("FactoryPanel").GetChild(i).gameObject;
             if (temp.name != "Next")
             {
                 Material mat = Instantiate(mt);
