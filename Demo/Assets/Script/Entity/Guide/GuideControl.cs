@@ -129,7 +129,7 @@ public class GuideControl : MonoBehaviour
     }
     private void Update()
     {
-        if (!timer)
+        if (!timer || id == 10 || id == 229)  
             return;
         if (Input.touchCount > 0 && !ifCan)
         {

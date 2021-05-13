@@ -69,7 +69,9 @@ public class CameraController : MonoBehaviour
                     if(GuideControl.id==10)
                     {
                         GuideControl.id = 228;
-                        GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                        //GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                        Invoke("GuideRun", 0.3f);
+                        Invoke("GuideRun", 1.3f);
                     }
                 }
                 oldPos1 = tempPos1;
@@ -82,7 +84,9 @@ public class CameraController : MonoBehaviour
             if (GuideControl.id == 10)
             {
                 GuideControl.id = 228;
-                GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                //GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+                Invoke("GuideRun", 0.3f);
+                Invoke("GuideRun", 1.3f);
             }
         }
 
@@ -137,5 +141,8 @@ public class CameraController : MonoBehaviour
         else
             return true;
     }
-
+    private void GuideRun()
+    {
+        GameObject.Find("Main Camera").GetComponent<GuideControl>().Run();
+    }
 }
