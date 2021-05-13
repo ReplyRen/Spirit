@@ -325,7 +325,7 @@ public class UIManager : MonoBehaviour
                     buttonList[2].SetActive(false);
                     buttonList[3].SetActive(true);
                     break;
-                case "看花摘酒":
+                /*case "看花摘酒":
                 case "陈酿":
                     buttonList[7].SetActive(true);
                     buttonList[8].SetActive(false);
@@ -333,7 +333,7 @@ public class UIManager : MonoBehaviour
                 case "勾兑勾调":
                     buttonList[7].SetActive(false);
                     buttonList[8].SetActive(true);
-                    break;
+                    break;*/
                 /*case "灌装":
                     buttonList[7].SetActive(false);
                     buttonList[8].SetActive(false);

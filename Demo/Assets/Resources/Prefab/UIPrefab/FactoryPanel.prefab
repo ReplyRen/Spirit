@@ -423,7 +423,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 360102935995096384}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -897,7 +897,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 360102935995096384}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1717,8 +1717,8 @@ RectTransform:
   - {fileID: 360102935368872141}
   - {fileID: 360102935675484436}
   - {fileID: 360102935613437276}
-  - {fileID: 360102934944585176}
   - {fileID: 360102935532611164}
+  - {fileID: 360102934944585176}
   - {fileID: 360102934839509292}
   - {fileID: 360102935929853055}
   - {fileID: 360102934917019170}
@@ -1761,9 +1761,7 @@ MonoBehaviour:
   viewPanel: {fileID: 0}
   gameManager: {fileID: 0}
   cameraController: {fileID: 0}
-  shader: {fileID: 4800000, guid: 3bf6973e8e36a384b84bcf6d54836f4a, type: 3}
-  mt: {fileID: 2100000, guid: 1b7b8dda9e72d4449a9b78f9174fc85c, type: 2}
-  mats: []
+  specialEffect: {fileID: 0}
 --- !u!1 &387324647878481985
 GameObject:
   m_ObjectHideFlags: 0
