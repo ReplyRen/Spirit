@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class PitsPanel : MonoBehaviour
 {
-    Inclusion a = new Inclusion("酸含量", 0.5f);
-    Inclusion b = new Inclusion("酯含量", 0.5f);
-    Inclusion c = new Inclusion("醇含量", 0.5f);
+    Inclusion a = new Inclusion("酸含量", 0);
+    Inclusion b = new Inclusion("酯含量", 0);
+    Inclusion c = new Inclusion("醇含量", 0);
     Inclusion d = new Inclusion("微生物", 0);
     Inclusion e = new Inclusion("产量", 0);
     Inclusion f = new Inclusion("质感", 0);
     Inclusion g = new Inclusion("高级酸", 0);
     Inclusion h = new Inclusion("高级酯", 0);
     Inclusion i = new Inclusion("高级醇", 0);
+    List<Inclusion> inclusions = new List<Inclusion>();
+    UIManager uiManager;
+    StaticsFix staticsFix;
     BaseFragment fragment1 = new BaseFragment();
     BaseFragment fragment2 = new BaseFragment();
     BaseFragment fragment3 = new BaseFragment();
@@ -31,7 +34,52 @@ public class PitsPanel : MonoBehaviour
     float valueChange;
     int status;
     int index;
-    float G, H, I;
+    int batch;
+    int bi;
+    bool isConfirm = false;
+    void Non()
+    {
+        inclusions.Clear();
+        inclusions.Add(a);
+        inclusions.Add(b);
+        inclusions.Add(c);
+        inclusions.Add(d);
+        inclusions.Add(e);
+        inclusions.Add(f);
+        inclusions.Add(g);
+        inclusions.Add(h);
+        inclusions.Add(i);
+    }
+    void GetBatch()
+    {
+        switch (batch)
+        {
+            case 1:
+                bi = staticsFix.b1;
+                break;
+            case 2:
+                bi = staticsFix.b2;
+                break;
+            case 3:
+                bi = staticsFix.b3;
+                break;
+            case 4:
+                bi = staticsFix.b4;
+                break;
+        }
+    }
+    void Check(int s)
+    {
+        a.value = staticsFix.baseObj[s].element.acid;
+        b.value = staticsFix.baseObj[s].element.ester;
+        c.value = staticsFix.baseObj[s].element.alcohol;
+        d.value = staticsFix.baseObj[s].element.microbe;
+        e.value = staticsFix.baseObj[s].element.yield;
+        f.value = staticsFix.baseObj[s].element.taste;
+        g.value = staticsFix.baseObj[s].element.advancedAcid;
+        h.value = staticsFix.baseObj[s].element.advancedEster;
+        i.value = staticsFix.baseObj[s].element.advancedAlcohol;
+    }
     void SetEvaluation(string name)
     {
         fragment = instance.fragmentDic[name];
@@ -111,10 +159,13 @@ public class PitsPanel : MonoBehaviour
     }
     public void Confirm()
     {
+        isConfirm = true;
         switch (status)
         {
             case 1:
                 SetEvaluation("修窖");
+                Non();
+                staticsFix.AddElement(inclusions, bi);
                 break;
             case 2:
                 if (valueSet.value <= 0.333f)
@@ -129,6 +180,8 @@ public class PitsPanel : MonoBehaviour
                 {
                     SetEvaluation("加曲量（高）");
                 }
+                Non();
+                staticsFix.AddElement(inclusions, bi);
                 break;
             case 3:
                 if (valueSet1.value <= 0.333f)
@@ -201,28 +254,37 @@ public class PitsPanel : MonoBehaviour
                 fragmentsOnDisc[index].baseObject.review.Add(fragment1.baseObject.review[0]);
                 fragmentsOnDisc[index].baseObject.review.Add(fragment2.baseObject.review[0]);
                 fragmentsOnDisc[index].baseObject.review.Add(fragment3.baseObject.review[0]);
-                Debug.Log(fragment1.baseObject.review[0]);
-                Debug.Log(fragment2.baseObject.review[0]);
-                Debug.Log(fragment3.baseObject.review[0]);
+                Non();
+                staticsFix.AddElement(inclusions, bi);
                 break;
             case 4:
                 SetEvaluation("加原辅料");
+                Non();
+                staticsFix.AddElement(inclusions, bi);
                 break;
         }
     }
     public void Init()
     {
+        isConfirm = false;
         valueSet.value = 0;
         valueSet0.value = 0;
         valueSet1.value = 0;
         valueSet2.value = 0;
         valueSet3.value = 0;
         valueSet4.value = 0;
+        batch = uiManager.buttonList[uiManager.currentUI].GetComponent<UIObject>().batch;
+        GetBatch();
+        Check(bi);
+        float sum = staticsFix.baseObj[bi].element.acid + staticsFix.baseObj[bi].element.ester + staticsFix.baseObj[bi].element.alcohol;
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
-        pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
+        pieChart.GetComponent<PieChart>().Init(sum, a, b, c);
     }
     void Start()
     {
+        Non();
+        staticsFix = GameObject.Find("Main Camera").GetComponent<StaticsFix>();
+        uiManager = GameObject.Find("Canvas").transform.Find("FactoryPanel").GetComponent<UIManager>();
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
         valueSet = gameObject.transform.Find("StatusSet").GetComponent<Slider>();
@@ -233,7 +295,6 @@ public class PitsPanel : MonoBehaviour
         valueSet4 = gameObject.transform.Find("StatusSet4").GetComponent<Slider>();
         barChart = gameObject.transform.Find("Histogram").gameObject;
         pieChart = gameObject.transform.Find("PieChart").gameObject;
-        Init();
         gameObject.SetActive(false);
     }
     void Update()
@@ -265,9 +326,17 @@ public class PitsPanel : MonoBehaviour
                     c.value = 0.5f + 0.4f + valueChange * 0.6f;
                     d.value = 0.7f + valueChange * 0.3f;
                 }
-                float sum = a.value + b.value + c.value;
-                barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
-                pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
+                if (!isConfirm)
+                {
+                    a.value = a.value * 0.22f + staticsFix.baseObj[bi].element.acid;
+                    b.value = b.value * 0.2f + staticsFix.baseObj[bi].element.ester;
+                    c.value = c.value * 0.2f + staticsFix.baseObj[bi].element.alcohol;
+                    d.value = d.value * 0.7f + staticsFix.baseObj[bi].element.microbe;
+                    float sum = a.value + b.value + c.value;
+                    barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
+                    pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
+                }
+
                 break;
             case 2:
                 if (valueSet.value <= 0.333f)
@@ -295,11 +364,16 @@ public class PitsPanel : MonoBehaviour
                     h.value = 0.5f + valueChange * 0.5f;
                     i.value = 0.5f + valueChange * 0.5f;
                 }
-                sum = a.value + b.value + c.value;
-                barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
-                G = g.value;
-                H = h.value;
-                I = i.value;
+                if (!isConfirm)
+                {
+                    e.value = e.value * 0.4f + staticsFix.baseObj[bi].element.yield;
+                    g.value = g.value * 0.25f + staticsFix.baseObj[bi].element.advancedAcid;
+                    h.value = h.value * 0.25f + staticsFix.baseObj[bi].element.advancedEster;
+                    i.value = i.value * 0.25f + staticsFix.baseObj[bi].element.advancedAlcohol;
+                    float sum = a.value + b.value + c.value;
+                    barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
+                }
+
                 break;
             case 3:
                 float aa, bb, cc, ff, gg, hh, ii;
@@ -391,16 +465,20 @@ public class PitsPanel : MonoBehaviour
                     hh3 = 1 - valueChange * 0.3f;
                     ii3 = 0.5f + valueChange * 0.5f;
                 }
-                a.value = (aa + aa2 + aa3) / 3;
-                b.value = (bb + bb2 + bb3) / 3;
-                c.value = (cc + cc2 + cc3) / 3;
-                f.value = ff;
-                g.value = (G + gg + gg3) / 3;
-                h.value = (H + hh + hh3) / 3;
-                i.value = (I + ii + ii3) / 3;
-                sum = a.value + b.value + c.value;
-                barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
-                pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
+                if (!isConfirm)
+                {
+                    a.value = (aa + aa2 + aa3) / 3 * 0.22f + staticsFix.baseObj[bi].element.acid;
+                    b.value = (bb + bb2 + bb3) / 3 * 0.2f + staticsFix.baseObj[bi].element.ester;
+                    c.value = (cc + cc2 + cc3) / 3 * 0.2f + staticsFix.baseObj[bi].element.alcohol;
+                    f.value = ff * 0.325f + staticsFix.baseObj[bi].element.taste;
+                    g.value = (gg + gg3) / 2 * 0.25f + staticsFix.baseObj[bi].element.advancedAcid;
+                    h.value = (hh + hh3) / 2 * 0.25f + staticsFix.baseObj[bi].element.advancedEster;
+                    i.value = (ii + ii3) / 2 * 0.25f + staticsFix.baseObj[bi].element.advancedAlcohol;
+                    float sum = a.value + b.value + c.value;
+                    barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
+                    pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
+                }
+
                 break;
             case 4:
                 if (valueSet4.value <= 0.333f)
@@ -418,7 +496,11 @@ public class PitsPanel : MonoBehaviour
                     valueChange = (valueSet4.value - 0.666f) / 0.333f;
                     e.value = 1 - valueChange * 0.7f;
                 }
-                barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
+                if (!isConfirm)
+                {
+                    e.value = e.value * 0.4f + staticsFix.baseObj[bi].element.yield;
+                    barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
+                }
                 break;
         }
     }

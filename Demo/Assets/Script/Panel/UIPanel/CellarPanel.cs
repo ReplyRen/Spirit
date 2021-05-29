@@ -14,6 +14,9 @@ public class CellarPanel : MonoBehaviour
     Inclusion g = new Inclusion("高级酸", 0);
     Inclusion h = new Inclusion("高级酯", 0);
     Inclusion i = new Inclusion("高级醇", 0);
+    List<Inclusion> inclusions = new List<Inclusion>();
+    UIManager uiManager;
+    StaticsFix staticsFix;
     BaseFragment fragment1 = new BaseFragment();
     BaseFragment fragment2 = new BaseFragment();
     BaseFragment fragment3 = new BaseFragment();
@@ -27,6 +30,52 @@ public class CellarPanel : MonoBehaviour
     GameObject pieChart;
     float valueChange;
     int index;
+    int batch;
+    int bi;
+    bool isConfirm = false;
+    void Non()
+    {
+        inclusions.Clear();
+        inclusions.Add(a);
+        inclusions.Add(b);
+        inclusions.Add(c);
+        inclusions.Add(d);
+        inclusions.Add(e);
+        inclusions.Add(f);
+        inclusions.Add(g);
+        inclusions.Add(h);
+        inclusions.Add(i);
+    }
+    void GetBatch()
+    {
+        switch (batch)
+        {
+            case 1:
+                bi = staticsFix.b1;
+                break;
+            case 2:
+                bi = staticsFix.b2;
+                break;
+            case 3:
+                bi = staticsFix.b3;
+                break;
+            case 4:
+                bi = staticsFix.b4;
+                break;
+        }
+    }
+    void Check(int s)
+    {
+        a.value = staticsFix.baseObj[s].element.acid;
+        b.value = staticsFix.baseObj[s].element.ester;
+        c.value = staticsFix.baseObj[s].element.alcohol;
+        d.value = staticsFix.baseObj[s].element.microbe;
+        e.value = staticsFix.baseObj[s].element.yield;
+        f.value = staticsFix.baseObj[s].element.taste;
+        g.value = staticsFix.baseObj[s].element.advancedAcid;
+        h.value = staticsFix.baseObj[s].element.advancedEster;
+        i.value = staticsFix.baseObj[s].element.advancedAlcohol;
+    }
     BaseFragment SetEvaluations(string name)
     {
         BaseFragment fragment = instance.fragmentDic[name];
@@ -34,14 +83,22 @@ public class CellarPanel : MonoBehaviour
     }
     public void Init()
     {
+        isConfirm = false;
         valueSet1.value = 0;
         valueSet2.value = 0;
         valueSet3.value = 0;
+        batch = uiManager.buttonList[uiManager.currentUI].GetComponent<UIObject>().batch;
+        GetBatch();
+        Check(bi);
+        float sum = staticsFix.baseObj[bi].element.acid + staticsFix.baseObj[bi].element.ester + staticsFix.baseObj[bi].element.alcohol;
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
         pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
     }
     void Start()
     {
+        Non();
+        staticsFix = GameObject.Find("Main Camera").GetComponent<StaticsFix>();
+        uiManager = GameObject.Find("Canvas").transform.Find("FactoryPanel").GetComponent<UIManager>();
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
         valueSet1 = gameObject.transform.Find("StatusSet1").GetComponent<Slider>();
@@ -49,7 +106,6 @@ public class CellarPanel : MonoBehaviour
         valueSet3 = gameObject.transform.Find("StatusSet3").GetComponent<Slider>();
         barChart = gameObject.transform.Find("Histogram").gameObject;
         pieChart = GameObject.Find("酒窖Panel").transform.Find("PieChart").gameObject;
-        Init();
         for(int i=0;i<fragmentsOnDisc.Count;i++)
         {
             if(fragmentsOnDisc[i].name== "陈酿")
@@ -61,6 +117,7 @@ public class CellarPanel : MonoBehaviour
     }
     public void Confirm()
     {
+        isConfirm = true;
         if (valueSet1.value <= 0.333f)
         {
             fragment1.element = SetEvaluations("陈酿温度（低）").element;
@@ -131,6 +188,8 @@ public class CellarPanel : MonoBehaviour
         fragmentsOnDisc[index].baseObject.review.Add(fragment1.baseObject.review[0]);
         fragmentsOnDisc[index].baseObject.review.Add(fragment2.baseObject.review[0]);
         fragmentsOnDisc[index].baseObject.review.Add(fragment3.baseObject.review[0]);
+        Non();
+        staticsFix.AddElement(inclusions, bi);
     }
     void Update()
     {
@@ -211,15 +270,19 @@ public class CellarPanel : MonoBehaviour
             valueChange = (valueSet3.value - 0.666f) / 0.333f;
             cc3 = 0.7f + valueChange * 0.3f;
         }
-        a.value = (aa + aa2) / 2;
-        b.value = (bb + bb2) / 2;
-        c.value = (cc + cc2 + cc3) / 3;
-        f.value = ee;
-        g.value = gg;
-        h.value = hh;
-        i.value = ii;
-        float sum = a.value + b.value + c.value;
-        barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
-        pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
+        if (!isConfirm)
+        {
+            a.value = (aa + aa2) / 2 * 0.22f + staticsFix.baseObj[bi].element.acid;
+            b.value = (bb + bb2) / 2 * 0.2f + staticsFix.baseObj[bi].element.ester;
+            c.value = (cc + cc2 + cc3) / 3 * 0.2f + staticsFix.baseObj[bi].element.alcohol;
+            f.value = ee * 0.325f + staticsFix.baseObj[bi].element.taste;
+            g.value = gg * 0.25f + staticsFix.baseObj[bi].element.advancedAcid;
+            h.value = hh * 0.25f + staticsFix.baseObj[bi].element.advancedEster;
+            i.value = ii * 0.25f + staticsFix.baseObj[bi].element.advancedAlcohol;
+            float sum = a.value + b.value + c.value;
+            barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
+            pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
+        }
+
     }
 }

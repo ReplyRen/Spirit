@@ -17,4 +17,6 @@ public class UIObject : MonoBehaviour
     /// 索引
     /// </summary>
     public int index;
+
+    public int batch;
 }

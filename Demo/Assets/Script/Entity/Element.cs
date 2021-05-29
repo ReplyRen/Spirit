@@ -9,47 +9,47 @@ public class Element
     /// <summary>
     /// 酸含量
     /// </summary>
-    public float acid;
+    public float acid=0;
 
     /// <summary>
     /// 酯含量
     /// </summary>
-    public float ester;
+    public float ester=0;
 
     /// <summary>
     /// 醇含量
     /// </summary>
-    public float alcohol;
+    public float alcohol=0;
 
     /// <summary>
     /// 微生物含量
     /// </summary>
-    public float microbe;
+    public float microbe=0;
 
     /// <summary>
     /// 产量
     /// </summary>
-    public float yield;
+    public float yield=0;
 
     /// <summary>
     /// 质感
     /// </summary>
-    public float taste;
+    public float taste=0;
 
     /// <summary>
     /// 高级酸
     /// </summary>
-    public float advancedAcid;
+    public float advancedAcid=0;
 
     /// <summary>
     /// 高级酯
     /// </summary>
-    public float advancedEster;
+    public float advancedEster=0;
 
     /// <summary>
     /// 高级醇
     /// </summary>
-    public float advancedAlcohol;
+    public float advancedAlcohol=0;
 
     /// <summary>
     /// 未命名

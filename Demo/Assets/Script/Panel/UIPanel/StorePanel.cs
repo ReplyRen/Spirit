@@ -14,6 +14,9 @@ public class StorePanel : MonoBehaviour
     Inclusion g = new Inclusion("高级酸", 0);
     Inclusion h = new Inclusion("高级酯", 0);
     Inclusion i = new Inclusion("高级醇", 0);
+    List<Inclusion> inclusions = new List<Inclusion>();
+    UIManager uiManager;
+    StaticsFix staticsFix;
     BaseFragment fragment = new BaseFragment();
     GameManager instance;
     List<BaseFragment> fragmentsOnDisc;
@@ -22,20 +25,89 @@ public class StorePanel : MonoBehaviour
     GameObject pieChart;
     float valueChange;
     int index;
+    int batch;
+    int bi;
+    bool isConfirm = false;
+    void Non()
+    {
+        inclusions.Clear();
+        inclusions.Add(a);
+        inclusions.Add(b);
+        inclusions.Add(c);
+        inclusions.Add(d);
+        inclusions.Add(e);
+        inclusions.Add(f);
+        inclusions.Add(g);
+        inclusions.Add(h);
+        inclusions.Add(i);
+    }
+    void GetBatch()
+    {
+        switch (batch)
+        {
+            case 1:
+                bi = staticsFix.b1;
+                break;
+            case 2:
+                bi = staticsFix.b2;
+                break;
+            case 3:
+                bi = staticsFix.b3;
+                break;
+            case 4:
+                bi = staticsFix.b4;
+                break;
+        }
+    }
+    bool CheckB(int s)
+    {
+        bool isIn = false;
+        for(int i=0;i<staticsFix.baseObj.Count;i++)
+        {
+            if(staticsFix.baseObj[i].batch==s)
+            {
+                isIn = true;
+                break;
+            }
+        }
+        return isIn;
+    }
+    void Check(int s)
+    {
+        a.value = staticsFix.baseObj[s].element.acid;
+        b.value = staticsFix.baseObj[s].element.ester;
+        c.value = staticsFix.baseObj[s].element.alcohol;
+        d.value = staticsFix.baseObj[s].element.microbe;
+        e.value = staticsFix.baseObj[s].element.yield;
+        f.value = staticsFix.baseObj[s].element.taste;
+        g.value = staticsFix.baseObj[s].element.advancedAcid;
+        h.value = staticsFix.baseObj[s].element.advancedEster;
+        i.value = staticsFix.baseObj[s].element.advancedAlcohol;
+    }
     public void Init()
     {
+        isConfirm = false;
+        batch = uiManager.buttonList[uiManager.currentUI].GetComponent<UIObject>().batch;
+        if (!CheckB(batch))
+        {
+            staticsFix.InitStart(batch);
+        }
+        GetBatch();
+        Check(bi);
         valueSet.value = 0;
         barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
         pieChart.GetComponent<PieChart>().Init(1.5f, a, b, c);
     }
-    void Start()
+    void Awake()
     {
+        Non();
+        staticsFix = GameObject.Find("Main Camera").GetComponent<StaticsFix>();
+        uiManager = GameObject.Find("Canvas").transform.Find("FactoryPanel").GetComponent<UIManager>();
         instance = GameObject.Find("Main Camera").GetComponent<GameManager>();
         fragmentsOnDisc = instance.fragmentOnDisc;
         valueSet = GameObject.Find("储藏室Panel").transform.Find("StatusSet").GetComponent<Slider>();
         barChart = GameObject.Find("储藏室Panel").transform.Find("Histogram").gameObject;
         pieChart = GameObject.Find("储藏室Panel").transform.Find("PieChart").gameObject;
-        Init();
         for (int i = 0; i < fragmentsOnDisc.Count; i++)
         {
             if (fragmentsOnDisc[i].name == "配料")
@@ -57,7 +129,6 @@ public class StorePanel : MonoBehaviour
             fragmentsOnDisc[index].baseObject.review.Add(name);
         }
         catch { }
-        Debug.Log(name);
     }
     public void Confirm()
     {
@@ -73,6 +144,9 @@ public class StorePanel : MonoBehaviour
         {
             SetEvaluation("原、辅料配比（高）");
         }
+        Non();
+        isConfirm = true;
+        staticsFix.AddElement(inclusions, bi);
     }
     void Update()
     {
@@ -100,8 +174,16 @@ public class StorePanel : MonoBehaviour
             c.value = 0.8f + valueChange * 0.2f;
             e.value = 0.8f + valueChange * 0.2f;
         }
-        float sum = a.value + b.value + c.value;
-        barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
-        pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
+        if (!isConfirm)
+        {
+            a.value = a.value * 0.12f + staticsFix.baseObj[bi].element.acid;
+            b.value = b.value * 0.1f + staticsFix.baseObj[bi].element.ester;
+            c.value = c.value * 0.1f + staticsFix.baseObj[bi].element.alcohol;
+            e.value = e.value * 0.15f + staticsFix.baseObj[bi].element.yield;
+            float sum = a.value + b.value + c.value;
+            barChart.GetComponent<Histogram>().UpdateLength(d, e, f, g, h, i);
+            pieChart.GetComponent<PieChart>().UpdateChart(sum, a, b, c);
+        }
+
     }
 }

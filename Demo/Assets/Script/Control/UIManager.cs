@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    List<GameObject> buttonList = new List<GameObject>();
+    public List<GameObject> buttonList = new List<GameObject>();
     [SerializeField]
     List<GameObject> panelList = new List<GameObject>();
     [SerializeField]
@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     List<string> names1=new List<string>();
     List<string> names2 = new List<string>();
 
-    int currentUI;//当前打开UI在list中的序号
+    public int currentUI;//当前打开UI在list中的序号
     int num = 10;//UI总数
     public static bool isOpen = false;
     private bool check = true;
@@ -58,6 +58,33 @@ public class UIManager : MonoBehaviour
                 isOpen = true;
                 panelCanvas[5].SetActive(true);
                 cameraController.locked = true;
+                if (currentUI == 9)
+                {
+                    for (int i = 0; i < fragmentsOnDisc.Count; i++)
+                    {
+                        if (fragmentsOnDisc[i].name == "鉴酒")
+                            evaluationPanel.Init(fragmentsOnDisc[i].baseObject);
+                    }
+                    if (!guideControl.newGamer)
+                    {
+                        int a = Random.Range(1, 10);
+                        if (a % 2 == 0)
+                        {
+                            GuideControl.id = 801;
+                            guideControl.Run();
+                        }
+                        else
+                        {
+                            GuideControl.id = 811;
+                            guideControl.Run();
+                        }
+                    }
+                    else
+                    {
+                        GuideControl.id = 501;
+                        guideControl.Run();
+                    }
+                }
             }
             else if (btn.name == "仓库")
             {
@@ -174,7 +201,7 @@ public class UIManager : MonoBehaviour
             ///若参数未确认，则设置参数初值
         if (!buttonList[currentUI].GetComponent<UIObject>().isConfirm && !panelList[10].activeSelf)
         {
-            switch (buttonList[currentUI].name)
+            /*switch (buttonList[currentUI].name)
             {
                 case "粉碎机":
                     panelList[currentUI].GetComponent<SmashPanel>().Init();
@@ -200,7 +227,7 @@ public class UIManager : MonoBehaviour
                 case "调酒室":
                     panelList[currentUI].GetComponent<MixPanel>().Init();
                     break;
-            }
+            }*/
             for (int i = 0; i < panelList[currentUI].transform.childCount; i++)
             {
                 try
@@ -378,6 +405,7 @@ public class UIManager : MonoBehaviour
         {
             buttonList[i].GetComponent<UIObject>().isUse = false;
             buttonList[i].GetComponent<UIObject>().isConfirm = false;
+            buttonList[i].GetComponent<UIObject>().batch = 0;
         }
         for (int i = 0; i < confirmList.Count - 1; i++)
         {
@@ -397,21 +425,25 @@ public class UIManager : MonoBehaviour
                     buttonList[0].GetComponent<UIObject>().isUse = true;
                     a = true;
                     currentUI = 0;
+                    buttonList[0].GetComponent<UIObject>().batch = fragmentsOnDisc[i].baseObject.batch;
                     break;
                 case "粉碎润料":
                     buttonList[1].GetComponent<UIObject>().isUse = true;
                     a = true;
                     currentUI = 1;
+                    buttonList[1].GetComponent<UIObject>().batch = fragmentsOnDisc[i].baseObject.batch;
                     break;
                 case "配料":
                     buttonList[2].GetComponent<UIObject>().isUse = true;
                     a = true;
                     currentUI = 2;
+                    buttonList[2].GetComponent<UIObject>().batch = fragmentsOnDisc[i].baseObject.batch;
                     break;
                 case "蒸煮摊凉":
                     buttonList[3].GetComponent<UIObject>().isUse = true;
                     a = true;
                     currentUI = 3;
+                    buttonList[3].GetComponent<UIObject>().batch = fragmentsOnDisc[i].baseObject.batch;
                     break;
                 case "修窖":
                 case "制曲、入曲":
@@ -420,27 +452,32 @@ public class UIManager : MonoBehaviour
                     buttonList[4].GetComponent<UIObject>().isUse = true;
                     a = true;
                     currentUI = 4;
+                    buttonList[4].GetComponent<UIObject>().batch = fragmentsOnDisc[i].baseObject.batch;
                     break;
                 case "上甑":
-                    buttonList[5].GetComponent<UIObject>().isUse = true;
-                    a = true;
-                    currentUI = 5;
-                    break;
-                case "蒸馏":
-                case "看花摘酒":
                     buttonList[6].GetComponent<UIObject>().isUse = true;
                     a = true;
                     currentUI = 6;
+                    buttonList[6].GetComponent<UIObject>().batch = fragmentsOnDisc[i].baseObject.batch;
+                    break;
+                case "蒸馏":
+                case "看花摘酒":
+                    buttonList[5].GetComponent<UIObject>().isUse = true;
+                    a = true;
+                    currentUI = 5;
+                    buttonList[5].GetComponent<UIObject>().batch = fragmentsOnDisc[i].baseObject.batch;
                     break;
                 case "陈酿":
                     buttonList[7].GetComponent<UIObject>().isUse = true;
                     a = true;
                     currentUI = 7;
+                    buttonList[7].GetComponent<UIObject>().batch = fragmentsOnDisc[i].baseObject.batch;
                     break;
                 case "勾兑勾调":
                     buttonList[8].GetComponent<UIObject>().isUse = true;
                     a = true;
                     currentUI = 8;
+                    buttonList[8].GetComponent<UIObject>().batch = fragmentsOnDisc[i].baseObject.batch;
                     break;
                 case "鉴酒":
                     buttonList[9].GetComponent<UIObject>().isUse = true;
