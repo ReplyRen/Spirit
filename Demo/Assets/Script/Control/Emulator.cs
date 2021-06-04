@@ -196,8 +196,8 @@ public class Emulator : MonoBehaviour
 
         HP1 = wineRatio1 * wine1[1] + timeScale;
         HP2 = wineRatio2 * wine2[1] + timeScale;
-        HPrate1 = (float)Math.Pow((float.Parse(HPrateIn[0].text) + float.Parse(HPrateIn[1].text) / (float.Parse(HPrateIn[2].text) * wine1[2])), float.Parse(HPrateIn[3].text));
-        HPrate2 = (float)Math.Pow((float.Parse(HPrateIn[0].text) + float.Parse(HPrateIn[1].text) / (float.Parse(HPrateIn[2].text) * wine2[2])),float.Parse(HPrateIn[3].text));
+        HPrate1 = float.Parse(HPrateIn[0].text) + float.Parse(HPrateIn[1].text) / (float)Math.Pow((float.Parse(HPrateIn[2].text) * wine1[2]), float.Parse(HPrateIn[3].text));
+        HPrate2 = float.Parse(HPrateIn[0].text) + float.Parse(HPrateIn[1].text) / (float)Math.Pow((float.Parse(HPrateIn[2].text) * wine1[2]), float.Parse(HPrateIn[3].text)) ;
 
         cruise_X1 = wine1[0] / judgeRatio_H * float.Parse(cruise_XIn[0].text);
         cruise_P1 = float.Parse(cruise_PIn[0].text) * float.Parse(cruise_PIn[1].text) * (float.Parse(cruise_PIn[3].text) - (float)Math.Pow(cruise_X1,float.Parse(cruise_PIn[2].text))) * cruise_X1;
