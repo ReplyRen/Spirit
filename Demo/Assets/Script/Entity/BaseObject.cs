@@ -55,11 +55,27 @@ public class BaseObject
     /// </summary>
     public List<string> vs = new List<string>();
 
+    /// <summary>
+    /// 流程
+    /// </summary>
+    public Process process;
+
     public BaseObject()
     {
         vs.Add("粉碎润料");
         vs.Add("配料");
         vs.Add("蒸煮摊凉");
+    }
+    public void AddAttributes()
+    {
+        if (process == null)
+        {
+            Debug.LogError("Process为空");
+            return;
+        }
+        element = element + process.fragment.element;
+        evaluation = evaluation + process.fragment.evaluation;
+
     }
 
     public int mainStep = 1;
@@ -120,4 +136,3 @@ public enum Kind
 {
     酱香型, 浓香型, 清香型, 兼香型, 米香型, 凤香型, 芝麻香型, 豉香型, 特香型, 药香型, 老白干香型, 馥郁香型
 }
-

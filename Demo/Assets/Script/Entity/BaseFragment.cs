@@ -71,6 +71,8 @@ public class BaseFragment
     /// </summary>
     public List<辅料> minors = new List<辅料>();
 
+    public Process process;
+
     public void DurationDecrease()
     {
         duration--;
