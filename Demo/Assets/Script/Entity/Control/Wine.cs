@@ -9,6 +9,8 @@ using System.Timers;
 public class Wine : MonoBehaviour
 {
     public BaseObject obj;
+    public string name;
+    public float primaryScore;
 
     public float time = 0;
     public float HP = 0;
@@ -24,18 +26,30 @@ public class Wine : MonoBehaviour
     public float P_L;
     public float bonus;
 
+    public List<float> statics = new List<float>();
+
     
+    void GetStatics()
+    {
+        name = obj.name;
+        statics.Add(obj.evaluation.intensity);
+        statics.Add(obj.evaluation.rich);
+        statics.Add(obj.evaluation.continuity);
+        statics.Add(obj.evaluation.fineness);
+        statics.Add(obj.evaluation.flavor);
+    }
     public void Calculate()
     {
+        GetStatics();
         float a = GetKind();
         HP = a * obj.evaluation.rich + time;
         HPrate = 1 + 200 / (float)Math.Pow(1000 * obj.evaluation.continuity, 0.5f);
         cruiseP = 0.75f * 2.1f * (1 - (float)Math.Pow(obj.evaluation.intensity / expectStr * 0.63, 3)) * obj.evaluation.intensity / expectStr * 0.63f;
-        mark_B = a * 100 * obj.evaluation.baseScore * (float)Math.Pow((1 + obj.evaluation.flavor / 120), 0.5);
+        mark_B = a * 100 * primaryScore * (float)Math.Pow((1 + obj.evaluation.flavor / 120), 0.5);
         P_B = (1 + obj.evaluation.flavor / 500) * cruiseP * 1.05f;
-        mark_M = a * 100 * obj.evaluation.baseScore;
+        mark_M = a * 100 * primaryScore;
         P_M = cruiseP;
-        mark_L = a * 100 * obj.evaluation.baseScore * (1 + obj.evaluation.fineness / 200);
+        mark_L = a * 100 * primaryScore * (1 + obj.evaluation.fineness / 200);
         P_L = cruiseP * (1 + obj.evaluation.fineness / 150);
         bonus = a * 300 * (1 + obj.evaluation.fineness / 50) * (1 + obj.evaluation.intensity / 200) * (1 + obj.evaluation.flavor / 500);
     }

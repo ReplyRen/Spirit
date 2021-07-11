@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
     CameraController cameraController;
     [SerializeField]
     SpecialEffect specialEffect;
+    [SerializeField]
+    GameObject wine;
 
     List<BaseFragment> fragmentsOnDisc;
 
@@ -132,7 +134,17 @@ public class UIManager : MonoBehaviour
                     for(int i=0;i<fragmentsOnDisc.Count;i++)
                     {
                         if (fragmentsOnDisc[i].name == "鉴酒")
+                        {
                             evaluationPanel.Init(fragmentsOnDisc[i].baseObject);
+                            Object a = Resources.Load("Assets/Resources/Prefab/UIPrefab/Wine.prefab");
+                            GameObject w = Instantiate(a) as GameObject;
+                            w.transform.SetParent(wine.transform);
+                            w.transform.localScale = new Vector3(1, 1, 1);
+                            Wine ww = w.GetComponent<Wine>();
+                            ww.obj = fragmentsOnDisc[i].baseObject;
+                            ww.primaryScore = evaluationPanel.GetScore(fragmentsOnDisc[i].baseObject);
+                            ww.Calculate();
+                        }
                     }
                     if (!guideControl.newGamer)
                     {
