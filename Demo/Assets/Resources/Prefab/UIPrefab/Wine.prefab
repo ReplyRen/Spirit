@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6668865794198073139}
   - component: {fileID: 5415734005335387791}
   - component: {fileID: 7647308560167492766}
+  - component: {fileID: 9200440717177602982}
   m_Layer: 5
   m_Name: Wine
   m_TagString: Untagged
@@ -118,7 +119,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6668865794198073139}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9200440717177602982}
+        m_MethodName: SelectWine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7647308560167492766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: 
+  primaryScore: 0
   time: 0
   HP: 0
   cruiseP: 0
@@ -145,3 +158,15 @@ MonoBehaviour:
   P_L: 0
   bonus: 0
   statics: []
+--- !u!114 &9200440717177602982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7834875125370843243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c3f74aa7b73554d90699a7df9aa17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -10,6 +10,7 @@ public class WineButtonAct : MonoBehaviour
     {
         var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         wine = btn.GetComponent<Wine>();
+        bazzar.GetWine(wine);
     }
     public void UploadWine()
     {

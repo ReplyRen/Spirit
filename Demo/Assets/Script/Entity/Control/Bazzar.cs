@@ -15,9 +15,9 @@ public class Bazzar : MonoBehaviour
     List<Wine> winesE = new List<Wine>();
     List<Wine> winesP = new List<Wine>();
     List<Wine> wines = new List<Wine>();
-    public List<Score> scores;
-    public List<List<Score>> judgeScore;
-    public List<List<List<Score>>> wineScore;
+    public List<Score> scores = new List<Score>();
+    public List<List<Score>> judgeScore = new List<List<Score>>();
+    public List<List<List<Score>>> wineScore = new List<List<List<Score>>>();
 
     float timeRange = 30;
 
@@ -68,7 +68,7 @@ public class Bazzar : MonoBehaviour
     {
         TextAsset data = Resources.Load("Data/JudegspreferData") as TextAsset;
         string[] s1 = data.text.Split('\n');
-        for (int i = 0; i < s1.Length - 1; i++)
+        for (int i = 0; i < s1.Length; i++)
         {
            // Debug.Log(s1[i]);
             DataDecode(s1[i], 1);
@@ -79,14 +79,15 @@ public class Bazzar : MonoBehaviour
     {
         TextAsset data = Resources.Load("Data/WineData") as TextAsset;
         string[] s1 = data.text.Split('\n');
-        for (int i = 0; i < s1.Length - 1; i++)
+        for (int i = 0; i < s1.Length; i++)
         {
             DataDecode(s1[i], 2);
         }
+        Debug.Log(winesE.Count);
     }
     public void GetWine(Wine w)
     {
-        wines.Add(w);
+        winesP.Add(w);
     }
     void CalculateScore(Wine wine,Judge judge)
     {
@@ -144,11 +145,11 @@ public class Bazzar : MonoBehaviour
             if (judge.isMain)
             {
                 float i1 = 0 ;
-                for(int k=0;k<5;k++)
+                for(int k=0;k<judges.Count;k++)
                 {
                     //if(judge.prefers[i]==1)
                     //{
-                        i1 += judge.prefers[i] * 0.1f * wine.statics[i] / judge.exceptStrength;
+                        i1 += judge.prefers[k] * 0.1f * wine.statics[k] / judge.exceptStrength;
                    // }
                 }
                 J_M = 1 + i1;
@@ -157,11 +158,11 @@ public class Bazzar : MonoBehaviour
             else
             {
                 float i1 = 0;
-                for (int k = 0; k < 5; k++)
+                for (int k = 0; k < judges.Count; k++)
                 {
                     //if (judge.prefers[i] == 1)
                     //{
-                    i1 += judge.prefers[i] * 0.1f * wine.statics[i] / judge.exceptStrength;
+                    i1 += judge.prefers[k] * 0.1f * wine.statics[k] / judge.exceptStrength;
                    // }
                 }
                 J_M = 1 + i1;
@@ -189,13 +190,17 @@ public class Bazzar : MonoBehaviour
         scores.Clear();
         for(int i=0;i<wines.Count;i++)
         {
+            List<List<Score>> b = new List<List<Score>>();
             for(int j=0;j<judges.Count;j++)
             {
                 CalculateScore(wines[i], judges[j]);
-                judgeScore.Add(scores);
+                List<Score> a = new List<Score>();
+                for (int k = 0; k < scores.Count; k++)
+                    a.Add(scores[k]);
+                b.Add(a);
                 scores.Clear();
             }
-            wineScore.Add(judgeScore);
+            wineScore.Add(b);
         }
     }
     void CreateMatch()
@@ -205,17 +210,32 @@ public class Bazzar : MonoBehaviour
     }
     public void Test()
     {
-        RollJudge();
-        for (int i = 0; i < judges.Count; i++)
+        CreateMatch();
+        for(int i=0;i<winesP.Count;i++)
         {
-            Debug.Log(judges[i]);
+            wines.Add(winesP[i]);
+        }
+        Confirm();
+        Debug.Log(wineScore.Count + "|||" + wineScore[0].Count + "|||" + wineScore[0][0].Count);
+        for (int i=0;i<wineScore.Count;i++)
+        {
+            Debug.Log("wine" + i);
+            for(int j=0;j<wineScore[i].Count;j++)
+            {
+                Debug.Log("judege" + j);
+                for(int k=0;k<wineScore[i][j].Count;k++)
+                {
+                    Debug.Log(wineScore[i][j][k].score+"|000");
+                }
+            }
         }
     }
     void Start()
     {
         ReadJudgesData();
         ReadWineData();
-        RollJudge();
+        CreateMatch();
+        // Test();
     }
 
     // Update is called once per frame
@@ -253,7 +273,6 @@ public class Bazzar : MonoBehaviour
             int b = UnityEngine.Random.Range(0, a.Count);
             judges.Add(commonJudges[a[b]]);
             a.Remove(a[b]);
-
         }
     }
     public struct Score

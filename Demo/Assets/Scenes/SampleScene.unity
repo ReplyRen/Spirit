@@ -5946,7 +5946,7 @@ RectTransform:
   - {fileID: 680173821}
   - {fileID: 774380741}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7338,8 +7338,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 433184603}
-        m_MethodName: UploadWine
+      - m_Target: {fileID: 519420041}
+        m_MethodName: Test
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8285,6 +8285,11 @@ PrefabInstance:
       propertyPath: speed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 360102936323371482, guid: f5a18e6d4daa05a46aa81a5600c73814,
+        type: 3}
+      propertyPath: bazzar
+      value: 
+      objectReference: {fileID: 519420041}
     - target: {fileID: 360102936323371482, guid: f5a18e6d4daa05a46aa81a5600c73814,
         type: 3}
       propertyPath: viewPanel
@@ -10155,7 +10160,7 @@ PrefabInstance:
     - target: {fileID: 8845031538514442488, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8845031538514442488, guid: 5c566bcfcb22e9443b8510c29c4ffe3b,
         type: 3}
