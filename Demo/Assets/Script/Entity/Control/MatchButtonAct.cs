@@ -11,7 +11,10 @@ public class MatchButtonAct : MonoBehaviour
     [SerializeField]
     GameObject winesPanel;
     [SerializeField]
-    GameObject bulr;
+    Bazzar bazzar;
+    [SerializeField]
+    List<GameObject> markets;
+    UIObject UIObject;
 
     IEnumerator WaitFor()
     {
@@ -36,6 +39,20 @@ public class MatchButtonAct : MonoBehaviour
     public void OpenMatch()
     {
         matchPanel.SetActive(true);
+    }
+    public void CloseMatch()
+    {
+        matchPanel.SetActive(false);
+    }
+    public void CreatMod()
+    {
+
+    }
+    public void JoinMod()
+    {
+        var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+        UIObject = btn.gameObject.GetComponent<UIObject>();
+        markets[UIObject.index].SetActive(true);
     }
     void Start()
     {

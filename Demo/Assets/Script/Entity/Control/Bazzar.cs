@@ -11,14 +11,15 @@ public class Bazzar : MonoBehaviour
 
     List<Judge> mainJudges = new List<Judge>();
     List<Judge> commonJudges = new List<Judge>();
-    List<Judge> judges = new List<Judge>();
+    public List<Judge> judges = new List<Judge>();
     List<Wine> winesE = new List<Wine>();
     List<Wine> winesP = new List<Wine>();
-    List<Wine> wines = new List<Wine>();
+    public List<Wine> wines = new List<Wine>();
     public List<Score> scores = new List<Score>();
     public List<List<Score>> judgeScore = new List<List<Score>>();
     public List<List<List<Score>>> wineScore = new List<List<List<Score>>>();
 
+    public float max = 0;
     float timeRange = 30;
 
 
@@ -88,6 +89,15 @@ public class Bazzar : MonoBehaviour
     public void GetWine(Wine w)
     {
         winesP.Add(w);
+    }
+    public void JoinMatch()
+    {
+        max = 0;
+        for (int i = 0; i < winesP.Count; i++)
+        {
+            wines.Add(winesP[i]);
+        }
+        Confirm();
     }
     void CalculateScore(Wine wine,Judge judge)
     {
@@ -191,17 +201,30 @@ public class Bazzar : MonoBehaviour
         for(int i=0;i<wines.Count;i++)
         {
             List<List<Score>> b = new List<List<Score>>();
+            float mTemp = 0;
             for(int j=0;j<judges.Count;j++)
             {
                 CalculateScore(wines[i], judges[j]);
                 List<Score> a = new List<Score>();
                 for (int k = 0; k < scores.Count; k++)
+                {
                     a.Add(scores[k]);
+                    mTemp += scores[k].score;
+                }
                 b.Add(a);
                 scores.Clear();
             }
+            if (max <= mTemp) max = mTemp;
             wineScore.Add(b);
         }
+        int tt = (int)max;
+        int t = 1;
+        while (tt >= 10) 
+        {
+            tt /= 10;
+            t *= 10;
+        }
+        max += UnityEngine.Random.Range(0, t);
     }
     void CreateMatch()
     {
@@ -211,11 +234,7 @@ public class Bazzar : MonoBehaviour
     public void Test()
     {
         CreateMatch();
-        for(int i=0;i<winesP.Count;i++)
-        {
-            wines.Add(winesP[i]);
-        }
-        Confirm();
+        JoinMatch();
         Debug.Log(wineScore.Count + "|||" + wineScore[0].Count + "|||" + wineScore[0][0].Count);
         for (int i=0;i<wineScore.Count;i++)
         {
@@ -251,7 +270,7 @@ public class Bazzar : MonoBehaviour
         {
             a.Add(i);
         }
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             int b = UnityEngine.Random.Range(0, a.Count);
             wines.Add(winesE[a[b]]);
