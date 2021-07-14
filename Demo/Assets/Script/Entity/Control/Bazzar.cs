@@ -88,12 +88,13 @@ public class Bazzar : MonoBehaviour
     }
     public void GetWine(Wine w)
     {
+        winesP.Clear();
         winesP.Add(w);
     }
     public void JoinMatch()
     {
         max = 0;
-        for (int i = 0; i < winesP.Count; i++)
+        for (int i = 0; i < 1; i++)
         {
             wines.Add(winesP[i]);
         }
@@ -226,7 +227,7 @@ public class Bazzar : MonoBehaviour
         }
         max += UnityEngine.Random.Range(0, t);
     }
-    void CreateMatch()
+    public void CreateMatch()
     {
         RollJudge();
         RollWine();

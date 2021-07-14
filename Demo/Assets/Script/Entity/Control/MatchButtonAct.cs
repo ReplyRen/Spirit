@@ -14,7 +14,12 @@ public class MatchButtonAct : MonoBehaviour
     Bazzar bazzar;
     [SerializeField]
     List<GameObject> markets;
+    [SerializeField]
+    List<GameObject> matches;
     UIObject UIObject;
+    List<int> sk = new List<int>();
+    public int date = 0;
+    int count = 0;
 
     IEnumerator WaitFor()
     {
@@ -46,16 +51,27 @@ public class MatchButtonAct : MonoBehaviour
     }
     public void CreatMod()
     {
+        date++;
+        if(date==2||date==7||date==14)
+        {
+            int a = UnityEngine.Random.Range(0, sk.Count);
+            matches[sk[a]].SetActive(true);
+            bazzar.CreateMatch();
 
+        }
     }
     public void JoinMod()
     {
         var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         UIObject = btn.gameObject.GetComponent<UIObject>();
         markets[UIObject.index].SetActive(true);
+        bazzar.JoinMatch();
+        btn.gameObject.transform.parent.gameObject.SetActive(false);
     }
     void Start()
     {
+        for (int i = 0; i < 3; i++)
+            sk.Add(i);
         matchBtn.SetActive(false);
         matchPanel.SetActive(false);
         winesPanel.SetActive(false);
