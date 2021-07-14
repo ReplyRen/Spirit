@@ -68,6 +68,16 @@ public class UIManager : MonoBehaviour
                     {
                         if (fragmentsOnDisc[i].name == "鉴酒")
                             evaluationPanel.Init(fragmentsOnDisc[i].baseObject);
+                        Object a = Resources.Load("Prefab/UIPrefab/Wine") as GameObject;
+                        GameObject w = Instantiate(a) as GameObject;
+                        w.transform.SetParent(wine.transform);
+                        w.transform.localScale = new Vector3(1, 1, 1);
+                        Wine ww = w.GetComponent<Wine>();
+                        ww.obj = fragmentsOnDisc[i].baseObject;
+                        //  ww.obj.evaluation = fragmentsOnDisc[i].baseObject.evaluation;
+                        ww.primaryScore = 100 * evaluationPanel.GetScore(fragmentsOnDisc[i].baseObject);
+                        ww.Calculate();
+                        bazzar.GetWine(ww);
                     }
                     if (!guideControl.newGamer)
                     {

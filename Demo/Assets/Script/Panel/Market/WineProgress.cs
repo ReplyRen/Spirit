@@ -15,17 +15,19 @@ public class WineProgress : MonoBehaviour
     Text wineScore;
     [SerializeField]
     UIObject UIObject;
+    [SerializeField]
+    Match match;
     float score = 0;
     float maxScore = 0;
     int b = 0, c = 0;
+    int inn = 0;
     string s1=null, s2=null;
 
-    public void AddScore(float s)
+    void Number()
     {
-        score += s;
         int a = (int)(score / maxScore * 100);
         if (b < a / 10)
-        { 
+        {
             b = a / 10;
             switch (b)
             {
@@ -98,26 +100,44 @@ public class WineProgress : MonoBehaviour
             if (b > 1) wineScore.text = s1 + "拾" + s2;
             else wineScore.text = s1 + s2;
         }
-
+    }
+    public void AddScore(float s)
+    {
+        maxScore = bazzar.max;
+        score = s;
     }
     public void SetStatus()
     {
-        name.text = bazzar.wines[UIObject.index].name;
+        //match.wines.Add(bazzar.winesP[0]);
+        //name.text = match.wines[UIObject.index].name;
         maxScore = bazzar.max;
         wineScore.text = "零";
     }
     public void Close()
     {
         score = 0;
+        slider.value = 0;
+        isOver = false;
     }
     void Start()
     {
-        
+        slider.value = 0;
     }
-
+    float t = 0.1f;
+    public bool isOver = false;
     // Update is called once per frame
     void Update()
     {
-        slider.value = score / maxScore;
+        t -= Time.deltaTime;
+        if(t<=0&&slider.value< score / maxScore)
+        {
+            slider.value += score / maxScore * 0.2f;
+            t = 0.1f;
+        }
+        if(slider.value>= score / maxScore &&!isOver)
+        {
+            Number();
+            isOver = true;
+        }
     }
 }

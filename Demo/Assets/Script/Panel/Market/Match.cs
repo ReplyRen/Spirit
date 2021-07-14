@@ -70,6 +70,7 @@ public class Match : MonoBehaviour
     }
     public void Dating()
     {
+        Debug.Log(wines.Count + "|||||");
         dateRange--;
         if (dateRange > 0)
         {
@@ -93,6 +94,8 @@ public class Match : MonoBehaviour
         }
         else if (dateRange > -5)
         {
+            wines.Clear();
+            judges.Clear();
             join.SetActive(false);
             isCreate = false;
             time.text = "休市中";

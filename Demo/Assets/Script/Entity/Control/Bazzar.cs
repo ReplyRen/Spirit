@@ -13,7 +13,7 @@ public class Bazzar : MonoBehaviour
     List<Judge> commonJudges = new List<Judge>();
     public List<Judge> judges = new List<Judge>();
     List<Wine> winesE = new List<Wine>();
-    List<Wine> winesP = new List<Wine>();
+    public List<Wine> winesP = new List<Wine>();
     public List<Wine> wines = new List<Wine>();
     public List<Score> scores = new List<Score>();
     public List<List<Score>> judgeScore = new List<List<Score>>();
@@ -88,16 +88,15 @@ public class Bazzar : MonoBehaviour
     }
     public void GetWine(Wine w)
     {
+        winesP.Clear();
         winesP.Add(w);
     }
-    public void JoinMatch()
+    public void JoinMatch(List<Wine> wines,List<Judge> judges)
     {
         max = 0;
-        for (int i = 0; i < winesP.Count; i++)
-        {
-            wines.Add(winesP[i]);
-        }
-        Confirm();
+        wineScore.Clear();
+        if(wines.Count<4) wines.Add(winesP[0]);
+        Confirm(wines, judges);
     }
     void CalculateScore(Wine wine,Judge judge)
     {
@@ -183,7 +182,7 @@ public class Bazzar : MonoBehaviour
             int a = UnityEngine.Random.Range(1, 101);
             if(a<=100*P)
             {
-                ss.score = M;
+                ss.score = M/1000;
                 ss.isZero = false;
                 scores.Add(ss);
             }
@@ -195,7 +194,7 @@ public class Bazzar : MonoBehaviour
             }
         }
     }
-    void Confirm()
+    void Confirm(List<Wine> wines, List<Judge> judges)
     {
         scores.Clear();
         for(int i=0;i<wines.Count;i++)
@@ -214,6 +213,7 @@ public class Bazzar : MonoBehaviour
                 b.Add(a);
                 scores.Clear();
             }
+            //mTemp /= 5;
             if (max <= mTemp) max = mTemp;
             wineScore.Add(b);
         }
@@ -225,6 +225,8 @@ public class Bazzar : MonoBehaviour
             t *= 10;
         }
         max += UnityEngine.Random.Range(0, t);
+        Debug.Log("max=" + max);
+        //Test();
     }
     public void CreateMatch()
     {
@@ -233,8 +235,8 @@ public class Bazzar : MonoBehaviour
     }
     public void Test()
     {
-        CreateMatch();
-        JoinMatch();
+       // CreateMatch();
+        //JoinMatch();
         Debug.Log(wineScore.Count + "|||" + wineScore[0].Count + "|||" + wineScore[0][0].Count);
         for (int i=0;i<wineScore.Count;i++)
         {

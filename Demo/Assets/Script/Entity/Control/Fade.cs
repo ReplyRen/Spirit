@@ -23,7 +23,7 @@ public class Fade : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         FadeIn();
     }
-    void FadeIn()
+    public void FadeIn()
     {
         isFadeIn = true;
         fade.color = new Color(0, 0, 0, fade.color.a - speed * Time.deltaTime);

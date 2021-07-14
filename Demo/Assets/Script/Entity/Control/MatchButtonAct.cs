@@ -50,23 +50,18 @@ public class MatchButtonAct : MonoBehaviour
     }
     public void CreatMod()
     {
-        date++;
-        if(date==2||date==7||date==14)
-        {
-            int a = UnityEngine.Random.Range(0, sk.Count);
-            matches[sk[a]].SetActive(true);
-            bazzar.CreateMatch();
-            Match m = matches[sk[a]].GetComponent<Match>();
-            m.GetPrefers(bazzar.judges);
-        }
+        
     }
     public void JoinMod()
     {
         var btn = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         UIObject = btn.gameObject.GetComponent<UIObject>();
+
+        Match m = btn.transform.parent.gameObject.GetComponent<Match>();
+        m.isJoin = true;
+        bazzar.JoinMatch(m.wines,m.judges);
         markets[UIObject.index].SetActive(true);
-        btn.transform.parent.gameObject.SetActive(false);
-        bazzar.JoinMatch();
+        btn.SetActive(false);
     }
     void Start()
     {
