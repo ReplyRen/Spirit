@@ -226,7 +226,7 @@ public class Bazzar : MonoBehaviour
         }
         max += UnityEngine.Random.Range(0, t);
     }
-    void CreateMatch()
+    public void CreateMatch()
     {
         RollJudge();
         RollWine();
