@@ -37,7 +37,6 @@ public class Wine : MonoBehaviour
         statics.Add(obj.evaluation.continuity);
         statics.Add(obj.evaluation.fineness);
         statics.Add(obj.evaluation.flavor);
-        Debug.Log("1112|||3");
     }
     public void Calculate()
     {

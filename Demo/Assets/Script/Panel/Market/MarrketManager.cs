@@ -27,14 +27,16 @@ public class MarrketManager : MonoBehaviour
                 for(int k=0;k<bazzar.wineScore[i][j].Count;k++)
                 {
                     tmp += bazzar.wineScore[i][j][k].score;
+                    Debug.Log("wineScore" + "[" + i + "]" + "[" + j + "]" + "[" + k + "]" + bazzar.wineScore[i][j][k].score);
                 }
             }
-            //tmp /= 5;
+            tmp /= 5;
             scores.Add(tmp);
         }
 
         for(int i=0;i<scores.Count;i++)
         {
+            Debug.Log("scores" + i + ":" + scores[i]);
             wineProgresses[i].AddScore(scores[i]);
             isa = true;
         }
@@ -70,7 +72,7 @@ public class MarrketManager : MonoBehaviour
     {
         
     }
-    float t = 0.15f;
+    float t = 0.5f;
     float t2 = 2;
     // Update is called once per frame
     void Update()

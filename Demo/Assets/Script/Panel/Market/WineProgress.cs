@@ -129,9 +129,9 @@ public class WineProgress : MonoBehaviour
     void Update()
     {
         t -= Time.deltaTime;
-        if(t<=0&&slider.value< score / maxScore)
+        if(slider.value< score / maxScore)
         {
-            slider.value += score / maxScore * 0.2f;
+            slider.value += score / maxScore * 0.01f;
             t = 0.1f;
         }
         if(slider.value>= score / maxScore &&!isOver)

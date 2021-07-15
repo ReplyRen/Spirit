@@ -70,7 +70,6 @@ public class Match : MonoBehaviour
     }
     public void Dating()
     {
-        Debug.Log(wines.Count + "|||||");
         dateRange--;
         if (dateRange > 0)
         {
@@ -98,6 +97,7 @@ public class Match : MonoBehaviour
             judges.Clear();
             join.SetActive(false);
             isCreate = false;
+            isJoin = false;
             time.text = "休市中";
         }
         else
@@ -106,7 +106,7 @@ public class Match : MonoBehaviour
             prefer.text = "选派评委中";
         }
     }
-    void Start()
+    void Awake()
     {
         join.SetActive(false);
         time.text = "距离开市还有" + "<color=red>" + dateRange + "</color>" + "月";

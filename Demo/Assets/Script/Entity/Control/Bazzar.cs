@@ -106,7 +106,7 @@ public class Bazzar : MonoBehaviour
         float J_M, J_P;
         float P, M;
         Score ss = new Score();
-        timeRange = (timeRange - 10) * 1.2f + 10;
+        timeRange = (30 - 10) * 1.2f + 10;
         for (int i = 0; i < timeRange + 1; i++)
         {
             if (i < 10)
@@ -213,7 +213,7 @@ public class Bazzar : MonoBehaviour
                 b.Add(a);
                 scores.Clear();
             }
-            //mTemp /= 5;
+            mTemp /= 5;
             if (max <= mTemp) max = mTemp;
             wineScore.Add(b);
         }
