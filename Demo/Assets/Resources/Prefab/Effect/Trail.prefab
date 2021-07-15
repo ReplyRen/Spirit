@@ -44,10 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156e935db25ab594f9407cdf0a53f540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticlePrefab: {fileID: 2998225831711961627, guid: add3f145eee73ce4081ff1ece3366711,
-    type: 3}
   MoveSpeed: 1
-  Emmiter: 0
   obj: {fileID: 3204967457690988139}
   OrignalPoint: {x: -1.08, y: -0.67, z: 1}
   TargetPoint: {x: 0.86, y: 0.74, z: 1}
@@ -155,7 +152,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

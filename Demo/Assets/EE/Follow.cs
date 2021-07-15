@@ -9,17 +9,18 @@ public class Follow : MonoBehaviour
     private bool IsMoving = false;
     private float BezierVal = 0;
     public Vector3 OrignalPoint,TargetPoint,ControlPoint;
-    public void PlayeEffect()
+    public void PlayeEffect(System.Action OnEnd)
     {
-
+        Debug.Log("PlayEffect!");
         if (!IsMoving)
         {
             obj.SetActive(true);
             BezierVal = 0;
-            StartCoroutine(MoveToward());
+            StartCoroutine(MoveToward(OnEnd));
 
         }
     }
+    /*
     public void InitTrail(Vector3 From,Vector3 To,Vector3 Control)
     {
         OrignalPoint = From;
@@ -28,12 +29,13 @@ public class Follow : MonoBehaviour
         StartCoroutine(MoveToward());
 
     }
+    */
     //贝塞尔曲线
     Vector3 Bezier(Vector3 a,Vector3 b,Vector3 c,float t)
     {
         return (1 - t) * (1 - t) * a + 2 * t * (1 - t) * b + t * t * c;
     }
-    IEnumerator MoveToward()
+    IEnumerator MoveToward(System.Action OnEnd)
     {
         int move_times = 0;
         IsMoving = true;
@@ -53,6 +55,7 @@ public class Follow : MonoBehaviour
         while (distance >= 0.02f);
         IsMoving = false;
         obj.SetActive(false);
+        OnEnd();
         yield return null;
     }
 #if UNITY_EDITOR

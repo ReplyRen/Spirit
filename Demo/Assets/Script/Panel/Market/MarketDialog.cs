@@ -68,7 +68,7 @@ public class MarketDialog : MonoBehaviour
         if (score != null)
         {
             score.color = new Color(0.5283019f, 0.3555209f, 0.2267711f, score.color.a - 0.8f*Time.deltaTime);
-            score.transform.position = new Vector3(score.transform.position.x, score.transform.position.y + 270 * s1* Time.deltaTime, score.transform.position.z);
+            //score.transform.position = new Vector3(score.transform.position.x, score.transform.position.y + 270 * s1* Time.deltaTime, score.transform.position.z);
         }
         t1 -= Time.deltaTime;
         if(score!=null&&t1<=0)Destroy(score.gameObject);

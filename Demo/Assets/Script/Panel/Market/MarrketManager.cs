@@ -100,8 +100,9 @@ public class MarrketManager : MonoBehaviour
         {
             t = 0.1f;
             wineProgresses[ii].AddScore(bazzar.wineScore[ii][jj][kk].score/5);
-            bursts[ii].GetComponent<ParticleSystem>().Play();
-            trails[ii].PlayeEffect();
+            trails[ii].PlayeEffect(()=> {
+                bursts[ii].GetComponent<ParticleSystem>().Play();
+            });
             ii++;
             if (ii == 4)
             {
