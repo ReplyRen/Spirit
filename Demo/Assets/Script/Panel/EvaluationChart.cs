@@ -42,5 +42,6 @@ public class EvaluationChart : MonoBehaviour
         {
             lineRenderer.SetPosition(i, points[i]);
         }
+        points.Clear();
     }
 }

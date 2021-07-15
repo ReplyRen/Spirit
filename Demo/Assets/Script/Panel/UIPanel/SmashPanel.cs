@@ -54,6 +54,21 @@ public class SmashPanel : MonoBehaviour
         pieChart.GetComponent<PieChart>().Init(1, b, c);
         valueSet.value = 0;
     }
+    public void Merge()
+    {
+        Inclusion a = new Inclusion("酸含量", 0.5f);
+        Inclusion b = new Inclusion("酯含量", 0.5f);
+        Inclusion c = new Inclusion("醇含量", 0.5f);
+        Inclusion d = new Inclusion("微生物", 0);
+        Inclusion e = new Inclusion("产量", 0);
+        Inclusion f = new Inclusion("质感", 0);
+        Inclusion g = new Inclusion("高级酸", 0);
+        Inclusion h = new Inclusion("高级酯", 0);
+        Inclusion i = new Inclusion("高级醇", 0);
+        barChart.GetComponent<Histogram>().Init(d, e, f, g, h, i);
+        pieChart.GetComponent<PieChart>().Init(1, b, c);
+        valueSet.value = 0;
+    }
     void Awake()
     {
         Non();

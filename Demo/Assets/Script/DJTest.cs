@@ -5,58 +5,45 @@ using UnityEngine.UI;
 
 public class DJTest : MonoBehaviour
 {
-    /*public GameObject a;
-    public GameObject b;
-    public Animator an;
-    public void SetBoola()
+    [SerializeField]
+    GameObject dialog;
+    [SerializeField]
+    GameObject tt;
+    void CreateDialog()
     {
-        an.SetBool("a", true);
-        a.SetActive(true);
-    }
-    public void SetBoolb()
-    {
-        an.SetBool("b", true);
-        b.SetActive(true);
-    }
-    public void Close()
-    {
-        an.SetBool("a", false);
-        an.SetBool("b", false);
-        a.SetActive(false);
-        b.SetActive(false);
-    }*/
-    public void A()
-    {
-        Debug.Log("a");
-        Invoke("ajk", 2);
-    }
-    public void B()
-    {
-        Debug.Log("b");
-        Invoke("ajk", 2);
-    }
-    public void C()
-    {
-        Debug.Log("c");
-        Invoke("ajk", 2);
-    }
-    public void D()
-    {
-        Debug.Log("d");
-        Invoke("ajk", 2);
-    }
-    void ajk()
-    {
-        Debug.Log("ala");
+        //Object a = Resources.Load("/Prefab/对话") as GameObject;
+        GameObject d = Instantiate(tt) as GameObject;
+        d.transform.SetParent(dialog.transform);
+        d.transform.localScale = new Vector3(1, 1, 1);
+        d.transform.SetSiblingIndex(0);
+        d.GetComponent<MarketDialog>().RandomScore();
     }
     void Start()
     {
         
     }
-
+    float t = 0.007f;
+    int ii = 0, jj = 0, kk = 0;
     // Update is called once per frame
     void Update()
     {
-        
+        t -= Time.deltaTime;
+        if (kk < 35  && t <= 0)
+        {
+            t = 0.007f;
+            ii++;
+            if (ii == 4)
+            {
+                ii = 0;
+                jj++;
+            }
+            if (jj == 5)
+            {
+                jj = 0;
+                kk++;
+                if (kk % 5 == 0) CreateDialog();
+            }
+        }
     }
 }
+

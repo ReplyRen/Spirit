@@ -18,7 +18,7 @@ public class WineProgress : MonoBehaviour
     [SerializeField]
     Match match;
     float score = 0;
-    float maxScore = 0;
+    public float maxScore = 0;
     int b = 0, c = 0;
     int inn = 0;
     string s1=null, s2=null;
@@ -104,7 +104,7 @@ public class WineProgress : MonoBehaviour
     public void AddScore(float s)
     {
         maxScore = bazzar.max;
-        score = s;
+        score += s;
     }
     public void SetStatus()
     {
@@ -119,16 +119,31 @@ public class WineProgress : MonoBehaviour
         slider.value = 0;
         isOver = false;
     }
-    void Start()
+    void Awake()
     {
-        slider.value = 0;
+        Close();
     }
     float t = 0.1f;
     public bool isOver = false;
+    bool test = true;
     // Update is called once per frame
     void Update()
     {
-        t -= Time.deltaTime;
+        if (test)
+        {
+            slider.value += 0.2f;
+            if (slider.value == 1)
+            {
+                test = false;
+                slider.value = 0;
+            }
+        }
+        else
+        {
+            slider.value = score / maxScore;
+            Number();
+        }
+        /*t -= Time.deltaTime;
         if(slider.value< score / maxScore)
         {
             slider.value += score / maxScore * 0.01f;
@@ -138,6 +153,6 @@ public class WineProgress : MonoBehaviour
         {
             Number();
             isOver = true;
-        }
+        }*/
     }
 }

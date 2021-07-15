@@ -68,6 +68,8 @@ public class MatchButtonAct : MonoBehaviour
         for(int i=0;i<3;i++)
         {
             sk.Add(i);
+            markets[i].SetActive(true)  ;
+            markets[i].SetActive(false);
         }
         matchBtn.SetActive(false);
         matchPanel.SetActive(false);
