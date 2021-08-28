@@ -108,12 +108,13 @@ public class MarrketManager : MonoBehaviour
             {
                 ii = 0;
                 jj++;
+                CreateDialog();
             }
             if(jj==5)
             {
                 jj = 0;
                 kk++;
-                if (kk % 4 == 0) CreateDialog();
+
             }
             if (kk == 34)
                 stop.SetActive(true);

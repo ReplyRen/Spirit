@@ -131,7 +131,7 @@ public class WineProgress : MonoBehaviour
     {
         if (test)
         {
-            slider.value += 0.2f;
+            slider.value += 0.01f;
             if (slider.value == 1)
             {
                 test = false;
